@@ -1,4 +1,7 @@
 package main.java.terms;
 
-public class Structure {
+import main.java.Term;
+
+public class Structure extends Term {
+
 }

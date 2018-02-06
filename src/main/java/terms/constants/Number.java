@@ -1,4 +1,6 @@
 package main.java.terms.constants;
 
-public class Number {
+import main.java.terms.Constant;
+
+public class Number extends Constant {
 }
