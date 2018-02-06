@@ -4,18 +4,18 @@ import main.java.terms.Constant;
 
 import static java.lang.Character.*;
 
-/* Represents an atom (a positive literal with no argument or annotation) */
+/** Class that implements a term that represents an atom (a positive literal with no argument or annotation) */
 public class Atom extends Constant{
 
-    // Fields:
-    private String functor;
+    private String label;
 
-    // Constructor:
-    public Atom(String functor){
-        this.functor = functor;
+    public Atom(String label){
+        this.label = label;
     }
 
-    // Methods:
+    public String getLabel() {
+        return label;
+    }
 
     // Check atom name is all lowercase
     public static boolean isValid(String s){

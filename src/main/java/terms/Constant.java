@@ -7,7 +7,6 @@ public class Constant extends Term {
 
 
     // Unification:
-
     public Unifier unify(Constant c){
         if (this.equals(c)){
             return new Unifier();
