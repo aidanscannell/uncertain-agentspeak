@@ -3,6 +3,7 @@ package main.java.terms;
 import main.java.Term;
 import main.java.Unifier;
 
+/** Class that implements a term that represents a Variable */
 public class Variable extends Term {
 
     private String label;
@@ -17,7 +18,9 @@ public class Variable extends Term {
 
     // Unification
     public Unifier unify(Constant c){
-        return null;
+        Unifier unifier = new Unifier();
+        unifier.put(this, c);
+        return unifier;
     }
 
     public Unifier unify(Variable var){
@@ -33,6 +36,6 @@ public class Variable extends Term {
     public Unifier unify(Structure struct){
         Unifier unifier = new Unifier();
         unifier.put(this, struct);
-        return null;
+        return unifier;
     }
 }

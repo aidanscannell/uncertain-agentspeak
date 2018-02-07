@@ -3,17 +3,23 @@ package main.java;
 import main.java.Term;
 import main.java.terms.*;
 
-
+/** Common class that implements all terms */
 public abstract class Term {
 
-//    public Unifier unify(Term term){
-//        if (term instanceof Constant){
-//            return
-//        } else if (term instanceof Variable){
-//
-//        } else if (term instanceof Structure){
-//
-//        }
-//    }
+    public Unifier unify(Term term){
+        if (term instanceof Constant){
+            return this.unify((Constant) term);
+        } else if (term instanceof Variable){
+            return this.unify((Variable) term);
+        } else if (term instanceof Structure){
+            return this.unify((Structure) term);
+        } else {
+            return null;
+        }
+    }
+
+    public abstract Unifier unify(Constant c);
+    public abstract Unifier unify(Variable var);
+    public abstract Unifier unify(Structure struct);
 
 }

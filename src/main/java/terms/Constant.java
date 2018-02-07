@@ -3,8 +3,8 @@ package main.java.terms;
 import main.java.Term;
 import main.java.Unifier;
 
+/** Class that implements a term that represents constants (atom, number, text) */
 public class Constant extends Term {
-
 
     // Unification:
     public Unifier unify(Constant c){
