@@ -2,7 +2,7 @@ package main.java.terms.constants;
 
 import main.java.terms.Constant;
 
-/** Class that implements a term that represents a number */
+/** Class that implements a constant term that represents a number */
 public class Number extends Constant {
 
     private int value;

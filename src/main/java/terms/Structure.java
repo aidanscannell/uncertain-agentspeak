@@ -6,6 +6,11 @@ import main.java.Term;
 import main.java.Unifier;
 import main.java.terms.constants.Atom;
 
+/**
+ * Class that implements a term that represents an structure taking the form "functor(arguments)"
+ *      -> functor is an atom
+ *      -> arguments is a list of terms
+ */
 public class Structure extends Term {
 
     private Atom functor;

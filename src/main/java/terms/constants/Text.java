@@ -2,7 +2,7 @@ package main.java.terms.constants;
 
 import main.java.terms.Constant;
 
-/** Class that implements a term that represents text/string */
+/** Class that implements a constant term that represents text */
 public class Text extends Constant {
 
     private String value;

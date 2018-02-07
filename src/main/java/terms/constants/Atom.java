@@ -4,7 +4,9 @@ import main.java.terms.Constant;
 
 import static java.lang.Character.*;
 
-/** Class that implements a term that represents an atom (a positive literal with no argument or annotation) */
+/** Class that implements a constant term that represents an atom
+ * (a positive literal with no argument or annotation)
+ */
 public class Atom extends Constant{
 
     private String label;
