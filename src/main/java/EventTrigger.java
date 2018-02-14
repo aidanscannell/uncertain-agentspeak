@@ -2,13 +2,13 @@ package main.java;
 
 public class EventTrigger {
 
-    private BeliefLiteral eventTrigger;
+    private BeliefLiteral beliefLiteral;
 
-    public BeliefLiteral getEventTrigger() {
-        return eventTrigger;
+    public BeliefLiteral getBeliefLiteral() {
+        return beliefLiteral;
     }
 
-    public void setEventTrigger(BeliefLiteral eventTrigger) {
-        this.eventTrigger = eventTrigger;
+    public void setBeliefLiteral(BeliefLiteral eventTrigger) {
+        this.beliefLiteral = eventTrigger;
     }
 }

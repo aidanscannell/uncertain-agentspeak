@@ -20,4 +20,8 @@ public class Event {
     public void setIntention(Intention intention) {
         this.intention = intention;
     }
+
+    public Term getTerm(){
+        return eventTrigger.getBeliefLiteral().getTerm();
+    }
 }

@@ -25,4 +25,8 @@ public class Plan {
     public ArrayList<Action> getActions() {
         return actions;
     }
+
+    public Term getTerm(){
+        return eventTrigger.getBeliefLiteral().getTerm();
+    }
 }

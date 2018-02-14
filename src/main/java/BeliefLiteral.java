@@ -15,7 +15,7 @@ public class BeliefLiteral {
         this.positive = positive;
     }
 
-    public Term getBelief() {
+    public Term getTerm() {
         return belief;
     }
 
