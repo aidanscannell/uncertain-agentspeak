@@ -1,7 +1,7 @@
 package main.java.terms;
 
-import java.sql.Struct;
 import java.util.List;
+import java.util.ArrayList;
 import main.java.Term;
 import main.java.Unifier;
 import main.java.terms.constants.Atom;
@@ -83,6 +83,15 @@ public class Structure extends Term {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public Term substitute(Unifier unifier) {
+        List<Term> newArgs = new ArrayList<Term>();
+         for (Term arg : arguments) {
+             newArgs.add(arg.substitute(unifier));
+         }
+         return new Structure(this.functor,newArgs);
     }
 
 //    /** Unify two structures if they have the same functor. */

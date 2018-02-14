@@ -1,6 +1,5 @@
 package main.java;
 
-import main.java.Term;
 import main.java.terms.*;
 
 /** Common class that implements all terms */
@@ -21,5 +20,7 @@ public abstract class Term {
     public abstract Unifier unify(Constant c);
     public abstract Unifier unify(Variable var);
     public abstract Unifier unify(Structure struct);
+
+    public abstract Term substitute(Unifier unifier);
 
 }

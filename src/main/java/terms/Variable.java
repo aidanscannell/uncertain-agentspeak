@@ -38,4 +38,14 @@ public class Variable extends Term {
         unifier.put(this, struct);
         return unifier;
     }
+
+    @Override
+    public Term substitute(Unifier unifier) {
+        if (unifier != null) {
+            Term newVar = unifier.get(this);
+            return newVar.substitute(unifier);
+        } else {
+            return this;
+        }
+    }
 }
