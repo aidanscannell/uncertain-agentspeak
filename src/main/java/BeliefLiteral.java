@@ -22,4 +22,8 @@ public class BeliefLiteral {
     public boolean isPositive() {
         return positive;
     }
+
+    public void setBelief(Term belief) {
+        this.belief = belief;
+    }
 }

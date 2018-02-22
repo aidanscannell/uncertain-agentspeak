@@ -10,4 +10,9 @@ public class IntentionSet extends LinkedList<Intention> {
         return intentions.pop();
     }
 
+    public void addIntention(Event event, IntendedMeans intendedMeans) {
+        Intention intention = event.getIntention();
+        intention.push(intendedMeans);
+        this.add(intention);
+    }
 }

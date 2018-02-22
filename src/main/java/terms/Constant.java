@@ -26,8 +26,9 @@ public class Constant extends Term {
     }
 
     @Override
-    public Term substitute(Unifier unifier) {
+    public Constant substitute(Unifier unifier) {
         return this;
     }
+
 
 }

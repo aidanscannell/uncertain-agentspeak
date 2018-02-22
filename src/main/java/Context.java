@@ -1,6 +1,12 @@
 package main.java;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
-public class Context extends ArrayList<BeliefLiteral> {
+public class Context extends LinkedList<ContextBelief> {
+
+    public Context copy(){
+        Context copy = new Context();
+        copy.addAll(this);
+        return copy;
+    }
 }

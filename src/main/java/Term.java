@@ -23,4 +23,19 @@ public abstract class Term {
 
     public abstract Term substitute(Unifier unifier);
 
+    public Unifier unify(Term term, Unifier unifier) {
+        if (!unifier.isEmpty()) {
+            Unifier copy = unifier.copy();
+            Unifier substitution = this.substitute(copy).unify(term.substitute(copy));
+            if (substitution != null) {
+                copy.putAll(substitution);
+                return copy;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+
 }
