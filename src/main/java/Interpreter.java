@@ -1,6 +1,5 @@
 package main.java;
 
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -34,6 +33,22 @@ public class Interpreter {
         this.intentionSet = intentionSet;
     }
 
+    public BeliefBase getBeliefBase() {
+        return beliefBase;
+    }
+
+    public EventSet getEventSet() {
+        return eventSet;
+    }
+
+    public IntentionSet getIntentionSet() {
+        return intentionSet;
+    }
+
+    public PlanLibrary getPlanLibrary() {
+        return planLibrary;
+    }
+
     public void run() {
 
         while (!eventSet.isEmpty()) {
@@ -54,7 +69,7 @@ public class Interpreter {
                 Intention intention = intentionSet.selectIntention();
 
                 if (intention != null) {
-                    intention.executeIntention();
+                    intention.executeIntention(intentionSet, beliefBase, eventSet);
                 }
             }
         }
@@ -78,7 +93,7 @@ public class Interpreter {
     private Deque<IntendedMeans> selectRelevantPlans(Event event) {
         Deque<IntendedMeans> relevantPlans = new LinkedList<>();
         for (Plan plan : planLibrary) {
-            if (event.getEventTrigger().getBeliefLiteral().isPositive() == plan.getEventTrigger().getBeliefLiteral().isPositive()) {
+            if (event.getEventTrigger().getBeliefGoal().getBelief().isPositive() == plan.getEventTrigger().getBeliefGoal().getBelief().isPositive()) {
                 Unifier unifier = event.getTerm().unify(plan.getTerm());
                 if (unifier != null) {
                     relevantPlans.add(new IntendedMeans(plan, unifier));
@@ -119,7 +134,7 @@ public class Interpreter {
             ContextBelief contextBelief = remaining.pop();
 
             // loop through beliefs in belief base
-            for (BeliefLiteral belief : beliefBase) {
+            for (Belief belief : beliefBase) {
 
                 // check that context belief and belief from belief base are either both positive or negative
                 if (contextBelief.getBelief().isPositive() == belief.isPositive()) {

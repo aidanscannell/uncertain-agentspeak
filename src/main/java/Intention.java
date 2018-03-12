@@ -19,4 +19,23 @@ public class Intention {
         this.intendedMeans.push(intendedMeans);
     }
 
+    public void executeIntention(IntentionSet intentionSet, BeliefBase beliefBase, EventSet eventSet){
+        IntendedMeans intendedMeans = this.intendedMeans.peekFirst();
+        boolean propogateFlag = false;
+        boolean subGoalFlag = intendedMeans.executeAction(this, beliefBase, eventSet);
+        if (!subGoalFlag) {
+            while(intendedMeans.getIndex() < intendedMeans.actionsRemaining()) {
+                if (this.intendedMeans.size() == 1) {
+                    propogateFlag = true;
+                } else {
+                    IntendedMeans top = this.pop();
+                    this.intendedMeans.getFirst().getUnifier().putAll(top.getUnifier());
+                }
+            }
+            if (!propogateFlag) {
+                intentionSet.add(this);
+            }
+        }
+    }
+
 }

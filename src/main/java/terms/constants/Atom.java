@@ -24,4 +24,9 @@ public class Atom extends Constant{
         char check = s.charAt(0);
         return isLowerCase(check);
     }
+
+    @Override
+    public String toString() {
+        return label;
+    }
 }

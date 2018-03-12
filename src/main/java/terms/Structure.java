@@ -94,7 +94,23 @@ public class Structure extends Term {
          return new Structure(this.functor,newArgs);
     }
 
-//    /** Unify two structures if they have the same functor. */
+    @Override
+    public String toString() {
+        String string = functor + "(";
+        boolean flag = true;
+        for (Term argument: arguments) {
+            if (flag) {
+                string += argument;
+            } else {
+                string += ", " + argument;
+            }
+            flag = false;
+        }
+        string += ")";
+        return string;
+    }
+
+    //    /** Unify two structures if they have the same functor. */
 //    public Unifier unify(Structure struct){
 //        if ( (this.getFunctor() == struct.getFunctor()) && (this.getArity() == struct.getArity()) ){
 //            Unifier unifier = new Unifier();

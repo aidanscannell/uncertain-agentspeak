@@ -1,14 +1,14 @@
 package main.java;
 
-public class EventTrigger {
+public abstract class EventTrigger {
 
-    private BeliefLiteral beliefLiteral;
+    private BeliefGoal beliefGoal;
 
-    public BeliefLiteral getBeliefLiteral() {
-        return beliefLiteral;
+    public BeliefGoal getBeliefGoal() {
+        return beliefGoal;
     }
 
-    public void setBeliefLiteral(BeliefLiteral eventTrigger) {
-        this.beliefLiteral = eventTrigger;
+    public void setBeliefGoal(BeliefGoal eventTrigger) {
+        this.beliefGoal = eventTrigger;
     }
 }

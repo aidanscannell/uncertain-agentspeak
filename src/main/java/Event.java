@@ -1,6 +1,6 @@
 package main.java;
 
-public class Event {
+public abstract class Event {
 
     private EventTrigger eventTrigger;
     private Intention intention;
@@ -22,6 +22,6 @@ public class Event {
     }
 
     public Term getTerm(){
-        return eventTrigger.getBeliefLiteral().getTerm();
+        return eventTrigger.getBeliefGoal().getTerm();
     }
 }

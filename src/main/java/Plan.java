@@ -8,10 +8,10 @@ public class Plan {
     private Context context;
     private ArrayList<Action> actions;
 
-    public Plan(EventTrigger eventTrigger, Context context, ArrayList<Action> action){
+    public Plan(EventTrigger eventTrigger, Context context, ArrayList<Action> actions){
         this.eventTrigger = eventTrigger;
         this.context = context;
-        this.actions = action;
+        this.actions = actions;
     }
 
     public EventTrigger getEventTrigger() {
@@ -27,6 +27,6 @@ public class Plan {
     }
 
     public Term getTerm(){
-        return eventTrigger.getBeliefLiteral().getTerm();
+        return eventTrigger.getBeliefGoal().getTerm();
     }
 }

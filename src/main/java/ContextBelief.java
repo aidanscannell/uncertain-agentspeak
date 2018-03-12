@@ -2,13 +2,13 @@ package main.java;
 
 public class ContextBelief {
 
-    private BeliefLiteral belief;
+    private Belief belief;
 
-    public void setBelief(BeliefLiteral belief) {
+    public void setBelief(Belief belief) {
         this.belief = belief;
     }
 
-    public BeliefLiteral getBelief() {
+    public Belief getBelief() {
         return belief;
     }
 }

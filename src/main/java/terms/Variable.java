@@ -48,4 +48,9 @@ public class Variable extends Term {
             return this;
         }
     }
+
+    @Override
+    public String toString() {
+        return label;
+    }
 }

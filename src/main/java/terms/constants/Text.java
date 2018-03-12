@@ -14,4 +14,9 @@ public class Text extends Constant {
     public String getValue() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

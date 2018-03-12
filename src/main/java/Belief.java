@@ -1,22 +1,33 @@
 package main.java;
 
-public class BeliefLiteral {
+public class Belief extends BeliefGoal {
 
     private Term belief;
     private boolean positive; // true implies positive literal, false implies negation
 
-    public BeliefLiteral(Term term) {
+    public Belief(Term term) {
         this.belief = term;
         this.positive = true;
     }
 
-    public BeliefLiteral(Term term, boolean positive) {
+    public Belief(Term term, boolean positive) {
         this.belief = term;
         this.positive = positive;
     }
 
+    @Override
     public Term getTerm() {
         return belief;
+    }
+
+    @Override
+    public Belief getBelief() {
+        return null;
+    }
+
+    @Override
+    public BeliefGoal substitute(Unifier unifier) {
+        return null;
     }
 
     public boolean isPositive() {

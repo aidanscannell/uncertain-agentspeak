@@ -1,13 +1,17 @@
 package main.java;
 
+import java.util.ArrayList;
+
 public class IntendedMeans {
 
     private Plan plan;
     private Unifier unifier;
+    private int index;
 
-    public IntendedMeans(Plan plan, Unifier unifer) {
+    public IntendedMeans(Plan plan, Unifier unifier) {
         this.plan = plan;
-        this.unifier = unifer;
+        this.unifier = unifier;
+        this.index = 0;
     }
 
     public Plan getPlan() {
@@ -18,11 +22,33 @@ public class IntendedMeans {
         return unifier;
     }
 
+    public int getIndex() {
+        return index;
+    }
+
     public void setPlan(Plan plan) {
         this.plan = plan;
     }
 
     public void setUnifier(Unifier unifier) {
         this.unifier = unifier;
+    }
+
+    public int actionsRemaining() {
+        return this.plan.getActions().size();
+    }
+
+    /** Executes the next action
+     *  Returns - true, if subgoal is created, otherwise
+     *          - false */
+    public boolean executeAction(Intention intention, BeliefBase beliefBase, EventSet eventSet) {
+        boolean subGoalFlag = false;
+        ArrayList<Action> actions = this.plan.getActions();
+        if (this.index < this.actionsRemaining()) {
+            Action action = actions.get(this.index);
+            subGoalFlag = action.executeAction(intention, this.unifier, beliefBase, eventSet);
+            this.index++;
+        }
+        return subGoalFlag;
     }
 }
