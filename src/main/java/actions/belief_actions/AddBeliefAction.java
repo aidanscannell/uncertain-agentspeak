@@ -20,4 +20,9 @@ public class AddBeliefAction extends BeliefAction {
         eventSet.add(externalEvent);
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "+" + super.getBelief().getTerm().toString();
+    }
 }

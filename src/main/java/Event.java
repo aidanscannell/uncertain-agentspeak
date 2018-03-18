@@ -24,4 +24,9 @@ public abstract class Event {
     public Term getTerm(){
         return eventTrigger.getBeliefGoal().getTerm();
     }
+
+    @Override
+    public String toString() {
+        return eventTrigger.toString();
+    }
 }

@@ -4,6 +4,10 @@ public class ContextBelief {
 
     private Belief belief;
 
+    public ContextBelief(Belief belief) {
+        this.belief = belief;
+    }
+
     public void setBelief(Belief belief) {
         this.belief = belief;
     }

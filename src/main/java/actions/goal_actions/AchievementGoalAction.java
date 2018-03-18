@@ -26,4 +26,9 @@ public class AchievementGoalAction extends GoalAction {
         System.out.println("Subgoal added: " + achievementGoalSub);
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "!" + achievementGoal.getBelief().getTerm().toString();
+    }
 }

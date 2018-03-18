@@ -14,4 +14,9 @@ public class AchievementGoal extends Goal {
         return new AchievementGoal(new Belief(this.getBelief().getTerm().substitute(unifier)));
     }
 
+    @Override
+    public String toString() {
+        return "!" + super.getBelief().getTerm().toString();
+    }
+
 }

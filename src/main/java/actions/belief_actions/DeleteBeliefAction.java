@@ -21,4 +21,8 @@ public class DeleteBeliefAction extends BeliefAction {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "-" + super.getBelief().getTerm().toString();
+    }
 }

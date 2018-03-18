@@ -41,4 +41,9 @@ public class TestGoalAction extends GoalAction {
         }
     }
 
+    @Override
+    public String toString() {
+        return "?" + testGoal.getBelief().getTerm().toString();
+    }
+
 }

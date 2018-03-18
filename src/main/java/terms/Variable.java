@@ -41,7 +41,7 @@ public class Variable extends Term {
 
     @Override
     public Term substitute(Unifier unifier) {
-        if (unifier != null) {
+        if (unifier != null && unifier.containsKey(this)) {
             Term newVar = unifier.get(this);
             return newVar.substitute(unifier);
         } else {

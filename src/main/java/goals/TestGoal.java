@@ -14,4 +14,9 @@ public class TestGoal extends Goal {
         return new TestGoal(new Belief(this.getBelief().getTerm().substitute(unifier)));
     }
 
+    @Override
+    public String toString() {
+        return "?" + super.getBelief().getTerm().toString();
+    }
+
 }

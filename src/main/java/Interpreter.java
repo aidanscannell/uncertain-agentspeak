@@ -51,25 +51,30 @@ public class Interpreter {
 
     public void run() {
 
+
         while (!eventSet.isEmpty()) {
 
             Event event = eventSet.selectEvent();
+            System.out.println("Event selected:\n\t" + event.toString());
 
             if (event != null) {
 
                 IntendedMeans intendedMeans = selectPlan(event);
-
+                System.out.println("\nPlan selected:\n\t" + intendedMeans.getPlan().toString());
                 if (intendedMeans != null) {
                     intentionSet.addIntention(event, intendedMeans);
+                    System.out.println("\nIntention added\n\t" + intentionSet.toString());
                 }
             }
 
             if (!intentionSet.isEmpty()) {
 
                 Intention intention = intentionSet.selectIntention();
+                System.out.println("\nIntention selected:\n\t" + intention.toString() + "\n");
 
                 if (intention != null) {
                     intention.executeIntention(intentionSet, beliefBase, eventSet);
+//                    System.out.println("\nIntention executed");
                 }
             }
         }
@@ -93,7 +98,7 @@ public class Interpreter {
     private Deque<IntendedMeans> selectRelevantPlans(Event event) {
         Deque<IntendedMeans> relevantPlans = new LinkedList<>();
         for (Plan plan : planLibrary) {
-            if (event.getEventTrigger().getBeliefGoal().getBelief().isPositive() == plan.getEventTrigger().getBeliefGoal().getBelief().isPositive()) {
+            if (event.getEventTrigger().getBeliefGoal().getBelief().isPositive() == plan.getEventTrigger().getEventTrigger().getBeliefGoal().getBelief().isPositive()) {
                 Unifier unifier = event.getTerm().unify(plan.getTerm());
                 if (unifier != null) {
                     relevantPlans.add(new IntendedMeans(plan, unifier));
@@ -111,9 +116,11 @@ public class Interpreter {
             Context context = relevantPlan.getPlan().getContext(); // get context of current plan
             if (!context.isEmpty()) {
                 Unifier applicableUnifier = unifyPlanContext(context, context, relevantPlan.getUnifier());
-                if (!applicableUnifier.isEmpty()) {
+                if (applicableUnifier != null) {
                     applicablePlans.add(new IntendedMeans(relevantPlan.getPlan(),applicableUnifier));
                 }
+            } else {
+                applicablePlans.add(relevantPlan); // add relevant plans with context "true"
             }
         }
         return applicablePlans;
@@ -127,7 +134,7 @@ public class Interpreter {
         // make a copy of the remaining context beliefs
         Context remaining = contextRemaining.copy();
 
-        if (!remaining.isEmpty()){
+        if (remaining.isEmpty()){
             return unifierOriginal;
         } else {
 

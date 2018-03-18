@@ -37,4 +37,9 @@ public class Belief extends BeliefGoal {
     public void setBelief(Term belief) {
         this.belief = belief;
     }
+
+    @Override
+    public String toString() {
+        return belief.toString();
+    }
 }

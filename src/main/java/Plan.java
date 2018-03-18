@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class Plan {
 
-    private EventTrigger eventTrigger;
+    private Event event;
     private Context context;
     private ArrayList<Action> actions;
 
-    public Plan(EventTrigger eventTrigger, Context context, ArrayList<Action> actions){
-        this.eventTrigger = eventTrigger;
+    public Plan(Event event, Context context, ArrayList<Action> actions){
+        this.event = event;
         this.context = context;
         this.actions = actions;
     }
 
-    public EventTrigger getEventTrigger() {
-        return eventTrigger;
+    public Event getEventTrigger() {
+        return event;
     }
 
     public Context getContext() {
@@ -27,6 +27,34 @@ public class Plan {
     }
 
     public Term getTerm(){
-        return eventTrigger.getBeliefGoal().getTerm();
+        return event.getEventTrigger().getBeliefGoal().getTerm();
+    }
+
+    @Override
+    public String toString() {
+        String eventTriggerString = event.toString();
+        StringBuilder contextString = new StringBuilder();
+        if (!context.isEmpty()) {
+            for (ContextBelief contextBelief : context) {
+                contextString.append(contextBelief.getBelief().getTerm().toString());
+                if (contextBelief != context.getLast()) {
+                    contextString.append(" & ");
+                }
+            }
+        } else {
+            contextString.append("true");
+        }
+        StringBuilder actionsString = new StringBuilder(" <- ");
+        if (!actions.isEmpty()) {
+            for (Action action : actions) {
+                actionsString.append(action.toString());
+                if (action != actions.get(actions.size() - 1)) {
+                    actionsString.append("; ");
+                }
+            }
+        } else {
+            actionsString.append("true");
+        }
+        return eventTriggerString + " : " + contextString + actionsString;
     }
 }

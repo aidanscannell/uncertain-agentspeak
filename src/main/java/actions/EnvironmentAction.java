@@ -19,4 +19,9 @@ public class EnvironmentAction extends Action {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return term.toString();
+    }
+
 }

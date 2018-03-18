@@ -52,7 +52,7 @@ public class Structure extends Term {
 
     /** Unify two structures if they have the same functor and arity. */
     public Unifier unify(Structure struct){
-        if ( (this.getFunctor() == struct.getFunctor()) && (this.getArity() == struct.getArity()) ){
+        if ( (this.getFunctor().toString().equals(struct.getFunctor().toString())) && (this.getArity() == struct.getArity()) ) {
             Unifier unifier = new Unifier();
             for (int i = 0; i<this.getArity(); i++){
                 Term termStruct = struct.getArgument(i);
@@ -87,7 +87,7 @@ public class Structure extends Term {
 
     @Override
     public Term substitute(Unifier unifier) {
-        List<Term> newArgs = new ArrayList<Term>();
+        List<Term> newArgs = new ArrayList<>();
          for (Term arg : arguments) {
              newArgs.add(arg.substitute(unifier));
          }
@@ -96,18 +96,18 @@ public class Structure extends Term {
 
     @Override
     public String toString() {
-        String string = functor + "(";
+        StringBuilder string = new StringBuilder(functor + "(");
         boolean flag = true;
         for (Term argument: arguments) {
             if (flag) {
-                string += argument;
+                string.append(argument);
             } else {
-                string += ", " + argument;
+                string.append(", ").append(argument);
             }
             flag = false;
         }
-        string += ")";
-        return string;
+        string.append(")");
+        return string.toString();
     }
 
     //    /** Unify two structures if they have the same functor. */

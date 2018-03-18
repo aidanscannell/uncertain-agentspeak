@@ -9,4 +9,9 @@ public class DeleteEvent extends EventTrigger {
         super.setBeliefGoal(beliefGoal);
     }
 
+    @Override
+    public String toString() {
+        return "-" + super.getBeliefGoal().toString();
+    }
+
 }

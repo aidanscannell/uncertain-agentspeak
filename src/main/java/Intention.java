@@ -8,10 +8,10 @@ public class Intention {
     private Deque<IntendedMeans> intendedMeans;
 
     public Intention(){
-        this.intendedMeans = new ArrayDeque<IntendedMeans>();
+        this.intendedMeans = new ArrayDeque<>();
     }
 
-    public IntendedMeans pop(){
+    private IntendedMeans pop(){
         return intendedMeans.pop();
     }
 
@@ -38,4 +38,15 @@ public class Intention {
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        for (IntendedMeans intendedMean : intendedMeans) {
+            string.append(intendedMean.getPlan().toString());
+            if (intendedMean != intendedMeans.getLast()) {
+                string.append("\n");
+            }
+        }
+        return string.toString();
+    }
 }
