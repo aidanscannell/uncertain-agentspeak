@@ -55,4 +55,16 @@ public class Parser {
         return (Goal) visitor.visitGoal(goalContext);
     }
 
+    public Term parseTerm(String input) {
+        ANTLRInputStream inputStream = new ANTLRInputStream(input);
+        AgentspeakLexer agentspeakLexer = new AgentspeakLexer(inputStream);
+        CommonTokenStream commonTokenStream = new CommonTokenStream(agentspeakLexer);
+        AgentspeakParser agentspeakParser= new AgentspeakParser(commonTokenStream);
+
+        AgentspeakVisitor visitor = new Visitor();
+
+        AgentspeakParser.TermContext termContext = agentspeakParser.term();
+        return (Term) visitor.visitTerm(termContext);
+    }
+
 }

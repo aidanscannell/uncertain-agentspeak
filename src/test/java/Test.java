@@ -24,11 +24,9 @@ public class Test {
     public static void main(String args[]) {
 
         interpreter();
-
-    }
-
-    public static void goals() {
-
+//        parseBeliefs();
+//        parsePlans();
+//        unification();
     }
 
     public static void interpreter() {
@@ -74,6 +72,115 @@ public class Test {
 
             // run interpreter
             interpreter.run();
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public static void unification() {
+
+        Parser parser = new Parser();
+
+        Term atom = parser.parseTerm("atom.");
+        Term variable = parser.parseTerm("X.");
+        Term structure = parser.parseTerm("struct(X,Y).");
+
+        Term term1 = parser.parseTerm("atom.");
+        Term term2 = parser.parseTerm("atom.");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("atom1.");
+        term2 = parser.parseTerm("atom2.");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("X.");
+        term2 = parser.parseTerm("X.");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("X.");
+        term2 = parser.parseTerm("Y.");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("Y.");
+        term2 = parser.parseTerm("X.");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("X.");
+        term2 = parser.parseTerm("atom.");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("atom.");
+        term2 = parser.parseTerm("X.");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("struct(X).");
+        term2 = parser.parseTerm("X.");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("strut(X).");
+        term2 = parser.parseTerm("Y.");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("struct(X).");
+        term2 = parser.parseTerm("struct(Y).");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("struct(atom).");
+        term2 = parser.parseTerm("struct(atom).");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("struct(atom,X).");
+        term2 = parser.parseTerm("struct(atom,atom1).");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("struct(a).");
+        term2 = parser.parseTerm("struct2(a).");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("struct(struct2(a,X),b).");
+        term2 = parser.parseTerm("struct(struct2(Y,c),Z).");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+
+        term1 = parser.parseTerm("struct(atom1, atom2).");
+        term2 = parser.parseTerm("struct(X,Y).");
+        System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
+    }
+
+    public static void parseBeliefs() {
+
+        try {
+            Parser parser = new Parser();
+
+            System.out.println(parser.parseBelief("atom."));
+            System.out.println(parser.parseBelief("atom(a)."));
+            System.out.println(parser.parseBelief("atom(a,b)."));
+            System.out.println(parser.parseBelief("atom(a,b,c)."));
+            System.out.println(parser.parseBelief("atom(Var)."));
+            System.out.println(parser.parseBelief("atom(Var1,Var2)."));
+            System.out.println(parser.parseBelief("atom(a,Var)."));
+            System.out.println(parser.parseBelief("atom(Var,a)."));
+            System.out.println(parser.parseBelief("atom(struct(a))."));
+            System.out.println(parser.parseBelief("atom(struct(Var))."));
+            System.out.println(parser.parseBelief("atom(struct(a,b),c)."));
+            System.out.println(parser.parseBelief("atom(struct(Var1,Var2),Var3)."));
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public static void parsePlans() {
+
+        try {
+            Parser parser = new Parser();
+
+            System.out.println(parser.parsePlan("+trigEvent : context(A) & context(B) <- envAction(A); +addBelief(B)."));
+            System.out.println(parser.parsePlan("-trigEvent : context(A) & context(B) <- !achievementAction(B); action(A)."));
+            System.out.println(parser.parsePlan("+!trigEvent : context(A) & context(B) <- envAction(A); -deleteBelief(B)."));
+            System.out.println(parser.parsePlan("-!trigEvent : context(A) & context(B) <- ?testAction(A); +addBelief(B)."));
+            System.out.println(parser.parsePlan("+?trigEvent : context(A) & context(B) <- envAction(A); +addBelief(B)."));
+            System.out.println(parser.parsePlan("-?trigEvent : context(A) & context(B) <- envAction(A); +addBelief(B)."));
 
         } catch (Exception exception) {
             exception.printStackTrace();
