@@ -35,8 +35,10 @@ public class TestGoalAction extends GoalAction {
         if (!flag) {
             Goal achievementGoalSub = this.testGoal.substitute(unifier);
             eventSet.add(new InternalEvent(new AddEvent(achievementGoalSub), intention));
+            System.out.println("New event created to resolve test goal");
             return true;
         } else {
+            System.out.println("Test goal immediately resolved");
             return false;
         }
     }

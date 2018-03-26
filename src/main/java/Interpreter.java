@@ -52,18 +52,20 @@ public class Interpreter {
     public void run() {
 
 
-        while (!eventSet.isEmpty()) {
+        while (!eventSet.isEmpty() || !intentionSet.isEmpty()) {
 
-            Event event = eventSet.selectEvent();
-            System.out.println("Event selected:\n\t" + event.toString());
+            if (!eventSet.isEmpty()) {
 
-            if (event != null) {
+                Event event = eventSet.selectEvent();
+                System.out.println("Event selected:\n\t" + event.toString());
 
-                IntendedMeans intendedMeans = selectPlan(event);
-                System.out.println("\nPlan selected:\n\t" + intendedMeans.getPlan().toString());
-                if (intendedMeans != null) {
-                    intentionSet.addIntention(event, intendedMeans);
-                    System.out.println("\nIntention added\n\t" + intentionSet.toString());
+                if (event != null) {
+                    IntendedMeans intendedMeans = selectPlan(event);
+                    if (intendedMeans != null) {
+                        System.out.println("\nPlan selected:\n\t" + intendedMeans.getPlan().toString());
+                        intentionSet.addIntention(event, intendedMeans);
+                        System.out.println("\nIntention added\n\t" + intentionSet.toString());
+                    }
                 }
             }
 
@@ -74,7 +76,7 @@ public class Interpreter {
 
                 if (intention != null) {
                     intention.executeIntention(intentionSet, beliefBase, eventSet);
-//                    System.out.println("\nIntention executed");
+                    System.out.println("\nIntention executed");
                 }
             }
         }
@@ -98,10 +100,12 @@ public class Interpreter {
     private Deque<IntendedMeans> selectRelevantPlans(Event event) {
         Deque<IntendedMeans> relevantPlans = new LinkedList<>();
         for (Plan plan : planLibrary) {
-            if (event.getEventTrigger().getBeliefGoal().getBelief().isPositive() == plan.getEventTrigger().getEventTrigger().getBeliefGoal().getBelief().isPositive()) {
-                Unifier unifier = event.getTerm().unify(plan.getTerm());
-                if (unifier != null) {
-                    relevantPlans.add(new IntendedMeans(plan, unifier));
+            if (event.getEventTrigger().getBeliefGoal().getBelief() != null) {
+                if (event.getEventTrigger().getBeliefGoal().getBelief().isPositive() == plan.getEventTrigger().getEventTrigger().getBeliefGoal().getBelief().isPositive()) {
+                    Unifier unifier = event.getTerm().unify(plan.getTerm());
+                    if (unifier != null) {
+                        relevantPlans.add(new IntendedMeans(plan, unifier));
+                    }
                 }
             }
         }

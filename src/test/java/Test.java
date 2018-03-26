@@ -27,6 +27,10 @@ public class Test {
 
     }
 
+    public static void goals() {
+
+    }
+
     public static void interpreter() {
 
         try {
@@ -40,11 +44,11 @@ public class Test {
 
             // create plans
             LinkedList<Plan> plans = new LinkedList<>();
+            plans.add(parser.parsePlan("+!travel(a, d) : true <- !travel_taxi(a, X2); !travel_flight(X2, Y2); !travel_bus(Y2, d); print('arrived')."));
+            plans.add(parser.parsePlan("+!travel_taxi(X3, Y3) : location(X3) <- ?airport(Y3); taxi(X3, Y3); -location(X3); +location(Y3)."));
+            plans.add(parser.parsePlan("+?airport(X4) : location(Y4) & closest(Y4,X4) <- true."));
             plans.add(parser.parsePlan("+!travel_flight(X5, Y5) : location(X5) & flight(X5, Y5) <- ?location(A); -location(B); +location(Y5)."));
             plans.add(parser.parsePlan("+!travel_bus(Y6, d) : location(Y6) <- ?location(C); -location(D); +location(d)."));
-            plans.add(parser.parsePlan("+?airport(X4) : location(Y4) & closest(Y4,X4) <- true."));
-            plans.add(parser.parsePlan("+!travel_taxi(X3, Y3) : location(X3) <- ?airport(Y3); taxi(X3, Y3); -location(X3); +location(Y3)."));
-            plans.add(parser.parsePlan("+!travel(a, d) : true <- !travel_taxi(a, X2); !travel_flight(X2, Y2); !travel_bus(Y2, d); print('arrived')."));
 
             // populate plan library
             while (!plans.isEmpty()) {
@@ -57,10 +61,10 @@ public class Test {
             System.out.println("\nSuccessfully created plan library:\n" + interpreter.getPlanLibrary().toString());
 
             // populate belief base
-            interpreter.getBeliefBase().add(parser.parseBelief("location(c)."));
-            interpreter.getBeliefBase().add(parser.parseBelief("closest(a,b)."));
-            interpreter.getBeliefBase().add(parser.parseBelief("closest(c,d)."));
             interpreter.getBeliefBase().add(parser.parseBelief("flight(b,c)."));
+            interpreter.getBeliefBase().add(parser.parseBelief("closest(c,d)."));
+            interpreter.getBeliefBase().add(parser.parseBelief("closest(a,b)."));
+            interpreter.getBeliefBase().add(parser.parseBelief("location(c)."));
             System.out.println("\nSuccessfully created belief base:\n" + interpreter.getBeliefBase().toString());
 
             // add event set

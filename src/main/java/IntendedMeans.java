@@ -34,8 +34,8 @@ public class IntendedMeans {
         this.unifier = unifier;
     }
 
-    public int actionsRemaining() {
-        return this.plan.getActions().size();
+    public boolean actionsRemaining() {
+        return this.index < plan.getActions().size();
     }
 
     /** Executes the next action
@@ -44,7 +44,7 @@ public class IntendedMeans {
     public boolean executeAction(Intention intention, BeliefBase beliefBase, EventSet eventSet) {
         boolean subGoalFlag = false;
         ArrayList<Action> actions = this.plan.getActions();
-        if (this.index < this.actionsRemaining()) {
+        if (actionsRemaining()) {
             Action action = actions.get(this.index);
             subGoalFlag = action.executeAction(intention, this.unifier, beliefBase, eventSet);
             this.index++;

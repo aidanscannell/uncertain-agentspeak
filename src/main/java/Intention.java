@@ -5,34 +5,38 @@ import java.util.Deque;
 
 public class Intention {
 
-    private Deque<IntendedMeans> intendedMeans;
+    private Deque<IntendedMeans> plansUnified;
 
     public Intention(){
-        this.intendedMeans = new ArrayDeque<>();
+        this.plansUnified = new ArrayDeque<>();
     }
 
     private IntendedMeans pop(){
-        return intendedMeans.pop();
+        return plansUnified.pop();
     }
 
     public void push(IntendedMeans intendedMeans){
-        this.intendedMeans.push(intendedMeans);
+        this.plansUnified.push(intendedMeans);
     }
 
     public void executeIntention(IntentionSet intentionSet, BeliefBase beliefBase, EventSet eventSet){
-        IntendedMeans intendedMeans = this.intendedMeans.peekFirst();
-        boolean propogateFlag = false;
+        IntendedMeans intendedMeans = this.plansUnified.peek();
+        boolean propagateFlag = false;
         boolean subGoalFlag = intendedMeans.executeAction(this, beliefBase, eventSet);
         if (!subGoalFlag) {
-            while(intendedMeans.getIndex() < intendedMeans.actionsRemaining()) {
-                if (this.intendedMeans.size() == 1) {
-                    propogateFlag = true;
+            while(!this.plansUnified.getFirst().actionsRemaining()) {
+                if (this.plansUnified.size() == 1) {
+                    propagateFlag = true;
                 } else {
                     IntendedMeans top = this.pop();
-                    this.intendedMeans.getFirst().getUnifier().putAll(top.getUnifier());
+                    this.plansUnified.peekFirst().getUnifier().putAll(top.getUnifier());
+                }
+                if (!this.plansUnified.peekFirst().actionsRemaining()) {
+                    System.out.println("Break out of intention while loop");
+                    break;
                 }
             }
-            if (!propogateFlag) {
+            if (!propagateFlag) {
                 intentionSet.add(this);
             }
         }
@@ -41,9 +45,9 @@ public class Intention {
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-        for (IntendedMeans intendedMean : intendedMeans) {
+        for (IntendedMeans intendedMean : plansUnified) {
             string.append(intendedMean.getPlan().toString());
-            if (intendedMean != intendedMeans.getLast()) {
+            if (intendedMean != plansUnified.getLast()) {
                 string.append("\n");
             }
         }
