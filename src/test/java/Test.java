@@ -23,10 +23,57 @@ public class Test {
 
     public static void main(String args[]) {
 
-        interpreter();
+//        example();
 //        parseBeliefs();
 //        parsePlans();
 //        unification();
+        interpreter();
+    }
+
+    public static void example() {
+
+        try {
+
+            // initialise parser
+            Parser parser = new Parser();
+
+            // initialise interpreter
+            Interpreter interpreter = new Interpreter();
+            System.out.println("Successfully initialised interpreter and parser.");
+
+            // create plans
+            LinkedList<Plan> plans = new LinkedList<>();
+            plans.add(parser.parsePlan("+!find_water : at(location(X)) & water(location(Y)) <- ?travel(X,Y) print('Found water')."));
+            plans.add(parser.parsePlan("+?travel(X,Y) : at(location(X)) & safe(location(X),location(Y)) <- ?travel(X,Y) print('Found water')."));
+
+            // populate plan library
+            while (!plans.isEmpty()) {
+                Plan plan = plans.pop();
+//            System.out.println("\nAdding to plan library: \n" + plan.toString());
+                if (plan != null) {
+                    interpreter.getPlanLibrary().add(plan);
+                }
+            }
+            System.out.println("\nSuccessfully created plan library:\n" + interpreter.getPlanLibrary().toString());
+
+            // populate belief base
+            interpreter.getBeliefBase().add(parser.parseBelief("water(location(2))."));
+            interpreter.getBeliefBase().add(parser.parseBelief("at(location(1))."));
+            interpreter.getBeliefBase().add(parser.parseBelief("safe(location(1),location(2))."));
+            interpreter.getBeliefBase().add(parser.parseBelief("location(c)."));
+            System.out.println("\nSuccessfully created belief base:\n" + interpreter.getBeliefBase().toString());
+
+            // add event set
+            interpreter.getEventSet().add(new ExternalEvent(new AddEvent(parser.parseGoal("!find_water."))));
+            System.out.println("\nSuccessfully created event set:");
+            System.out.println(interpreter.getEventSet().toString() + "\n");
+
+            // run interpreter
+            interpreter.run();
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     public static void interpreter() {
