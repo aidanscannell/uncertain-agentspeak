@@ -1,23 +1,10 @@
 package test.java;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
-import main.java.*;
-import main.java.actions.belief_actions.AddBeliefAction;
-import main.java.actions.belief_actions.DeleteBeliefAction;
-import main.java.actions.goal_actions.AchievementGoalAction;
-import main.java.actions.goal_actions.TestGoalAction;
-import main.java.event_triggers.AddEvent;
-import main.java.events.ExternalEvent;
-import main.java.goals.AchievementGoal;
-import main.java.goals.TestGoal;
-import main.java.terms.Structure;
-import main.java.terms.Variable;
-import main.java.terms.constants.Number;
-import main.java.terms.constants.Text;
-import main.java.terms.constants.Atom;
+import main.agentspeak.*;
+import main.agentspeak.event_triggers.AddEvent;
+import main.agentspeak.events.ExternalEvent;
 
 public class Test {
 
@@ -27,7 +14,7 @@ public class Test {
 //        parseBeliefs();
 //        parsePlans();
 //        unification();
-        interpreter();
+        example();
     }
 
     public static void example() {
