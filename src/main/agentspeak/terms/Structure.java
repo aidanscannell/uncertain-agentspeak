@@ -1,10 +1,11 @@
-package main.java.terms;
+package main.agentspeak.terms;
 
-import java.util.List;
+import main.agentspeak.Term;
+import main.agentspeak.Unifier;
+import main.agentspeak.terms.constants.Atom;
+
 import java.util.ArrayList;
-import main.java.Term;
-import main.java.Unifier;
-import main.java.terms.constants.Atom;
+import java.util.List;
 
 /**
  * Class that implements a term that represents an structure taking the form "functor(arguments)"
@@ -37,6 +38,16 @@ public class Structure extends Term {
 
     public int getArity(){
         return arity;
+    }
+
+    @Override
+    public boolean isGround() {
+        for (Term arg : this.arguments) {
+            if (!arg.isGround()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     // Unification

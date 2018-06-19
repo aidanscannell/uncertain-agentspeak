@@ -1,8 +1,8 @@
-package main.java.terms.constants;
+package main.agentspeak.terms.constants;
 
-import main.java.terms.Constant;
+import main.agentspeak.terms.Constant;
 
-import static java.lang.Character.*;
+import static java.lang.Character.isLowerCase;
 
 /** Class that implements a constant term that represents an atom
  * (a positive literal with no argument or annotation)

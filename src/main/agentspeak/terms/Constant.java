@@ -1,10 +1,13 @@
-package main.java.terms;
+package main.agentspeak.terms;
 
-import main.java.Term;
-import main.java.Unifier;
+import main.agentspeak.Term;
+import main.agentspeak.Unifier;
 
 /** Class that implements a term that represents constants (atom, number, text) */
 public class Constant extends Term {
+
+    @Override
+    public boolean isGround() { return true; }
 
     // Unification:
     public Unifier unify(Constant c){

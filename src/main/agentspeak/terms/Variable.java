@@ -1,7 +1,7 @@
-package main.java.terms;
+package main.agentspeak.terms;
 
-import main.java.Term;
-import main.java.Unifier;
+import main.agentspeak.Term;
+import main.agentspeak.Unifier;
 
 /** Class that implements a term that represents a Variable */
 public class Variable extends Term {
@@ -15,6 +15,9 @@ public class Variable extends Term {
     public String getLabel() {
         return label;
     }
+
+    @Override
+    public boolean isGround() { return false; }
 
     // Unification
     public Unifier unify(Constant c){
