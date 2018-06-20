@@ -33,5 +33,4 @@ public class Constant extends Term {
         return this;
     }
 
-
 }

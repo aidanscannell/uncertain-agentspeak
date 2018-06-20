@@ -121,6 +121,38 @@ public class Structure extends Term {
         return string.toString();
     }
 
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ( (functor == null) ? 0 : functor.hashCode() );
+        result = prime * result + ( (arguments == null) ? 0 : arguments.hashCode() );
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        } else if (obj == null) {
+            return false;
+        } else if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Structure other = (Structure) obj;
+        if (functor == null && other.functor == null) {
+            return false;
+        } else if (!functor.equals(other.functor)) {
+            return false;
+        }
+        if (arguments == null && other.arguments == null) {
+            return false;
+        } else if (!arguments.equals(other.arguments)) {
+            return false;
+        }
+        return true;
+    }
+
     //    /** Unify two structures if they have the same functor. */
 //    public Unifier unify(Structure struct){
 //        if ( (this.getFunctor() == struct.getFunctor()) && (this.getArity() == struct.getArity()) ){
