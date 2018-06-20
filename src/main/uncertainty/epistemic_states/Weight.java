@@ -50,4 +50,9 @@ public class Weight {
     public Weight copy() {
         return new Weight(this.positive, this.negative);
     }
+
+    @Override
+    public String toString() {
+        return "(" + positive + ", " + negative + ")";
+    }
 }

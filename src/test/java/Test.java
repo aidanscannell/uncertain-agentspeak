@@ -1,10 +1,16 @@
 package test.java;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 
 import main.agentspeak.*;
 import main.agentspeak.event_triggers.AddEvent;
 import main.agentspeak.events.ExternalEvent;
+import main.agentspeak.logical_expressions.BeliefAtom;
+import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
+import main.agentspeak.logical_expressions.terminals.belief_literals.PositiveLiteral;
+import main.agentspeak.terms.constants.Atom;
+import main.uncertainty.epistemic_states.ProbabilisticEpistemicState;
 
 public class Test {
 
@@ -14,7 +20,52 @@ public class Test {
 //        parseBeliefs();
 //        parsePlans();
 //        unification();
-        example();
+//        example();
+        gub();
+    }
+
+    public static void gub() {
+
+        try {
+
+            // initialise parser
+            Parser parser = new Parser();
+
+            // initialise interpreter
+            Interpreter interpreter = new Interpreter();
+            System.out.println("Successfully initialised interpreter and parser.");
+
+            // populate belief base
+            HashSet<BeliefAtom> atoms1 = new HashSet<BeliefAtom>();
+            atoms1.add(parser.parseBelief("atom1(a)."));
+            atoms1.add(parser.parseBelief("atom1(b)."));
+            interpreter.getBeliefBase().addEpistemicState(new ProbabilisticEpistemicState(atoms1));
+
+            HashSet<BeliefAtom> atoms2 = new HashSet<BeliefAtom>();
+            atoms2.add(parser.parseBelief("atom2(a)."));
+            atoms2.add(parser.parseBelief("atom3(b)."));
+            interpreter.getBeliefBase().addEpistemicState(new ProbabilisticEpistemicState(atoms2));
+
+            BeliefLiteral reviseAtom2 = new PositiveLiteral(parser.parseBelief("atom2(a)."));
+            System.out.println("\nRevise belief");
+            interpreter.getBeliefBase().revise(reviseAtom2, 0.6);
+            System.out.println("\nRevised belief base:\n\t" + interpreter.getBeliefBase().toString());
+
+            BeliefLiteral reviseAtom3 = new PositiveLiteral(parser.parseBelief("atom3(b)."));
+            System.out.println("\nRevise belief");
+            interpreter.getBeliefBase().revise(reviseAtom3, 0.7);
+            System.out.println("\nRevised belief base:\n\t" + interpreter.getBeliefBase().toString());
+
+            BeliefLiteral reviseAtom = new PositiveLiteral(parser.parseBelief("atom1(a)."));
+            System.out.println("\nRevise belief");
+            interpreter.getBeliefBase().revise(reviseAtom, 0.8);
+            System.out.println("\nRevised belief base:\n\t" + interpreter.getBeliefBase().toString());
+
+            System.out.println("\nSuccessfully created belief base:\n\t" + interpreter.getBeliefBase().toString());
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     public static void example() {
@@ -44,16 +95,34 @@ public class Test {
             System.out.println("\nSuccessfully created plan library:\n" + interpreter.getPlanLibrary().toString());
 
             // populate belief base
-            interpreter.getBeliefBase().add(parser.parseBelief("water(location(2))."));
-            interpreter.getBeliefBase().add(parser.parseBelief("at(location(1))."));
-            interpreter.getBeliefBase().add(parser.parseBelief("safe(location(1),location(2))."));
-            interpreter.getBeliefBase().add(parser.parseBelief("location(c)."));
+            HashSet<BeliefAtom> atoms = new HashSet<>();
+            atoms.add((new BeliefAtom(new Atom("find_water"))));
+            atoms.add((new BeliefAtom(new Atom("find_life"))));
+            interpreter.getBeliefBase().addEpistemicState(new ProbabilisticEpistemicState(atoms));
+//            interpreter.getBeliefBase().revise(new PositiveLiteral(new BeliefAtom(new Atom("find_water"))), 0.8);
+
+            HashSet<BeliefAtom> atoms2 = new HashSet<BeliefAtom>();
+            atoms2.add((new BeliefAtom(new Atom("find_water2"))));
+            atoms2.add((new BeliefAtom(new Atom("find_life2"))));
+            interpreter.getBeliefBase().addEpistemicState(new ProbabilisticEpistemicState(atoms2));
+
+            HashSet<BeliefAtom> atoms3 = new HashSet<>();
+            atoms3.add((new BeliefAtom(new Atom("find_water"))));
+            atoms3.add((new BeliefAtom(new Atom("find_life"))));
+            interpreter.getBeliefBase().addEpistemicState(new ProbabilisticEpistemicState(atoms3));
+
             System.out.println("\nSuccessfully created belief base:\n" + interpreter.getBeliefBase().toString());
 
+//            interpreter.getBeliefBase().add(parser.parseBelief("water(location(2))."));
+//            interpreter.getBeliefBase().add(parser.parseBelief("at(location(1))."));
+//            interpreter.getBeliefBase().add(parser.parseBelief("safe(location(1),location(2))."));
+//            interpreter.getBeliefBase().add(parser.parseBelief("location(c)."));
+//            System.out.println("\nSuccessfully created belief base:\n" + interpreter.getBeliefBase().toString());
+
             // add event set
-            interpreter.getEventSet().add(new ExternalEvent(new AddEvent(parser.parseGoal("!find_water."))));
-            System.out.println("\nSuccessfully created event set:");
-            System.out.println(interpreter.getEventSet().toString() + "\n");
+//            interpreter.getEventSet().add(new ExternalEvent(new AddEvent(parser.parseGoal("!find_water."))));
+//            System.out.println("\nSuccessfully created event set:");
+//            System.out.println(interpreter.getEventSet().toString() + "\n");
 
             // run interpreter
             interpreter.run();
@@ -93,10 +162,10 @@ public class Test {
             System.out.println("\nSuccessfully created plan library:\n" + interpreter.getPlanLibrary().toString());
 
             // populate belief base
-            interpreter.getBeliefBase().add(parser.parseBelief("flight(b,c)."));
-            interpreter.getBeliefBase().add(parser.parseBelief("closest(c,d)."));
-            interpreter.getBeliefBase().add(parser.parseBelief("closest(a,b)."));
-            interpreter.getBeliefBase().add(parser.parseBelief("location(c)."));
+//            interpreter.getBeliefBase().add(parser.parseBelief("flight(b,c)."));
+//            interpreter.getBeliefBase().add(parser.parseBelief("closest(c,d)."));
+//            interpreter.getBeliefBase().add(parser.parseBelief("closest(a,b)."));
+//            interpreter.getBeliefBase().add(parser.parseBelief("location(c)."));
             System.out.println("\nSuccessfully created belief base:\n" + interpreter.getBeliefBase().toString());
 
             // add event set
