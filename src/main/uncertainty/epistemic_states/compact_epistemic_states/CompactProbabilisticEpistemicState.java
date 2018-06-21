@@ -1,16 +1,17 @@
-package main.uncertainty.epistemic_states;
+package main.uncertainty.epistemic_states.compact_epistemic_states;
 
 import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
-import main.uncertainty.EpistemicState;
+import main.uncertainty.epistemic_states.CompactEpistemicState;
+import main.uncertainty.epistemic_states.Weight;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
-public class ProbabilisticEpistemicState extends EpistemicState {
+public class CompactProbabilisticEpistemicState extends CompactEpistemicState {
 
-    public ProbabilisticEpistemicState(HashSet<BeliefAtom> atoms) throws Exception {
+    public CompactProbabilisticEpistemicState(HashSet<BeliefAtom> atoms) throws Exception {
         super(atoms);
     }
 
@@ -54,11 +55,15 @@ public class ProbabilisticEpistemicState extends EpistemicState {
                 w.setPositive(weight);
                 w.setNegative(this.getMaxWeight() - weight);
             } else {
-                w.setNegative(weight);
                 w.setPositive(this.getMaxWeight() - weight);
+                w.setNegative(weight);
             }
             this.getWeightedBeliefBase().put(beliefAtom, w);
         }
+    }
+
+    public double getProbability(BeliefLiteral beliefLiteral) throws Exception {
+        return this.getWeight(beliefLiteral);
     }
 
     @Override
