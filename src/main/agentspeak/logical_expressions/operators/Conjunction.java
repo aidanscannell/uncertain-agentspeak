@@ -37,4 +37,20 @@ public class Conjunction extends Operator {
         return false;
     }
 
+    @Override
+    public HashSet<BeliefAtom> getBeliefAtoms() {
+        HashSet<BeliefAtom> beliefAtoms = new HashSet<BeliefAtom>();
+        beliefAtoms.add((BeliefAtom) left.getBeliefAtoms().clone());
+        beliefAtoms.add((BeliefAtom) right.getBeliefAtoms().clone());
+        return beliefAtoms;
+    }
+
+    @Override
+    public HashSet<BeliefLiteral> getBeliefLiterals() throws Exception {
+        HashSet<BeliefLiteral> beliefLiterals = new HashSet<BeliefLiteral>();
+        beliefLiterals.add((BeliefLiteral) left.getBeliefLiterals().clone());
+        beliefLiterals.add((BeliefLiteral) right.getBeliefLiterals().clone());
+        return beliefLiterals;
+    }
+
 }
