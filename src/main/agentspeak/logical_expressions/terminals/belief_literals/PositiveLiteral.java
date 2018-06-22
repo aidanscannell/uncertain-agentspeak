@@ -12,4 +12,8 @@ public class PositiveLiteral extends BeliefLiteral {
     public boolean isPositive() {
         return true;
     };
+
+    public NegativeLiteral negation() {
+        return new NegativeLiteral(this.getBeliefAtom());
+    }
 }

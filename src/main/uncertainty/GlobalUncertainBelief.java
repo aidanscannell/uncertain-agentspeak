@@ -1,10 +1,9 @@
 package main.uncertainty;
 
-import main.agentspeak.Belief;
 import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
-import main.agentspeak.terms.constants.Atom;
 import main.exceptions.NotGroundException;
+import main.uncertainty.epistemic_states.CompactEpistemicState;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,14 +13,14 @@ import java.util.Map;
 public abstract class GlobalUncertainBelief {
 
     private HashSet<BeliefAtom> domain;
-    private HashMap<HashSet<BeliefAtom>, EpistemicState> epistemicStates;
+    private HashMap<HashSet<BeliefAtom>, CompactEpistemicState> epistemicStates;
 
     public GlobalUncertainBelief() {
         domain = new HashSet<BeliefAtom>();
-        epistemicStates = new HashMap<HashSet<BeliefAtom>, EpistemicState>();
+        epistemicStates = new HashMap<HashSet<BeliefAtom>, CompactEpistemicState>();
     }
 
-    public void addEpistemicState(EpistemicState epistemicState) throws Exception {
+    public void addEpistemicState(CompactEpistemicState epistemicState) throws Exception {
         if(!this.domain.isEmpty() && !epistemicState.getDomain().isEmpty()) {
             for (BeliefAtom t : epistemicState.getDomain()) {
                 if (domain.contains(t)) {
@@ -34,7 +33,7 @@ public abstract class GlobalUncertainBelief {
         System.out.println("\nSuccessfully added epistemic state: \n\t" + epistemicStates.toString());
     }
 
-    HashMap<HashSet<BeliefAtom>, EpistemicState> getGUB() {
+    HashMap<HashSet<BeliefAtom>, CompactEpistemicState> getGUB() {
         return epistemicStates;
     }
 
@@ -42,14 +41,14 @@ public abstract class GlobalUncertainBelief {
         if (!beliefLiteral.isGround()) {
             throw new NotGroundException(beliefLiteral + "is not ground");
         }
-        for (Map.Entry<HashSet<BeliefAtom>, EpistemicState> epistemicStateEntry : epistemicStates.entrySet()) {
+        for (Map.Entry<HashSet<BeliefAtom>, CompactEpistemicState> epistemicStateEntry : epistemicStates.entrySet()) {
             BeliefAtom beliefAtom = beliefLiteral.getBeliefAtom();
             HashSet<BeliefAtom> domain = epistemicStateEntry.getKey();
 //            System.out.println(domain);
 //            System.out.println(beliefAtom);
             if ( domain.contains(beliefAtom) ) {
 //                System.out.println("here2");
-                EpistemicState epistemicState = epistemicStateEntry.getValue();
+                CompactEpistemicState epistemicState = epistemicStateEntry.getValue();
                 epistemicState.revise(beliefLiteral, weight);
                 epistemicStates.put(domain, epistemicState);
                 return;

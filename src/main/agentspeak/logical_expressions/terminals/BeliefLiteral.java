@@ -15,6 +15,8 @@ public abstract class BeliefLiteral extends Terminal {
         return beliefAtom;
     }
 
+    public abstract BeliefLiteral negation();
+
     @Override
     public boolean isGround() {
         return beliefAtom.isGround();

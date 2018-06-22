@@ -1,7 +1,9 @@
 package main.uncertainty.epistemic_states.compact_epistemic_states;
 
 import main.agentspeak.logical_expressions.BeliefAtom;
+import main.agentspeak.logical_expressions.operators.Conjunction;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
+import main.agentspeak.logical_expressions.terminals.primitives.Contradiction;
 import main.uncertainty.epistemic_states.CompactEpistemicState;
 import main.uncertainty.epistemic_states.Weight;
 
@@ -65,6 +67,14 @@ public class CompactProbabilisticEpistemicState extends CompactEpistemicState {
     public double getProbability(BeliefLiteral beliefLiteral) throws Exception {
         return this.getWeight(beliefLiteral);
     }
+
+    public double getLambda(BeliefLiteral beliefLiteral) throws Exception {
+        return this.getProbability(beliefLiteral);
+    }
+
+//    public double getLambda(Conjunction conjunction) throws Exception {
+//        return this.getLambda(conjunction.getLeft())
+//    }
 
     @Override
     public String toString() {
