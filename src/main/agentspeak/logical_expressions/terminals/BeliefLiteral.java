@@ -1,7 +1,10 @@
 package main.agentspeak.logical_expressions.terminals;
 
+import main.agentspeak.Belief;
 import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.logical_expressions.Terminal;
+
+import java.util.HashSet;
 
 public abstract class BeliefLiteral extends Terminal {
 
@@ -23,6 +26,20 @@ public abstract class BeliefLiteral extends Terminal {
     }
 
     public abstract boolean isPositive();
+
+    @Override
+    public HashSet<BeliefAtom> getBeliefAtoms() {
+        HashSet<BeliefAtom> beliefAtoms = new HashSet<BeliefAtom>();
+        beliefAtoms.add(beliefAtom);
+        return beliefAtoms;
+    }
+
+    @Override
+    public HashSet<BeliefLiteral> getBeliefLiterals() {
+        HashSet<BeliefLiteral> beliefLiterals = new HashSet<BeliefLiteral>();
+        beliefLiterals.add(this);
+        return beliefLiterals;
+    }
 
     @Override
     public String toString() {

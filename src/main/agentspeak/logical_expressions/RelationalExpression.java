@@ -1,6 +1,7 @@
 package main.agentspeak.logical_expressions;
 
 import com.oracle.tools.packager.Log;
+import main.agentspeak.Belief;
 import main.agentspeak.LogicalExpression;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 
@@ -39,4 +40,13 @@ public abstract class RelationalExpression extends LogicalExpression {
         return true;
     }
 
+    @Override
+    public HashSet<BeliefAtom> getBeliefAtoms() {
+        return new HashSet<BeliefAtom>();
+    }
+
+    @Override
+    public HashSet<BeliefLiteral> getBeliefLiterals() {
+        return new HashSet<BeliefLiteral>();
+    }
 }

@@ -3,6 +3,9 @@ package main.agentspeak.logical_expressions;
 import main.agentspeak.Belief;
 import main.agentspeak.LogicalExpression;
 import main.agentspeak.Term;
+import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
+
+import java.util.HashSet;
 
 public class BeliefAtom extends LogicalExpression {
 
@@ -25,8 +28,30 @@ public class BeliefAtom extends LogicalExpression {
     }
 
     @Override
+    public boolean isConjunctive() {
+        return true;
+    }
+
+    @Override
+    public boolean isDisjunctive() {
+        return true;
+    }
+
+    @Override
     public boolean isGround() {
         return belief.isGround();
+    }
+
+    @Override
+    public HashSet<BeliefAtom> getBeliefAtoms() {
+        HashSet<BeliefAtom> beliefAtoms = new HashSet<BeliefAtom>();
+        beliefAtoms.add(this);
+        return beliefAtoms;
+    }
+
+    @Override
+    public HashSet<BeliefLiteral> getBeliefLiterals() throws Exception {
+        throw new Exception("Belief atoms do contain belief literals");
     }
 
     @Override
