@@ -3,9 +3,13 @@ package main.uncertainty.epistemic_states;
 import com.oracle.tools.packager.Log;
 import main.agentspeak.Belief;
 import main.agentspeak.LogicalExpression;
-import main.agentspeak.logical_expressions.operators.Conjunction;
-import main.agentspeak.logical_expressions.operators.Disjunction;
+import main.agentspeak.logical_expressions.operators.*;
+import main.agentspeak.logical_expressions.operators.negations.NegationAsFailure;
+import main.agentspeak.logical_expressions.operators.negations.StrongNegation;
+import main.agentspeak.logical_expressions.relational_expressions.Equal;
+import main.agentspeak.logical_expressions.relational_expressions.NotEqual;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
+import main.agentspeak.logical_expressions.terminals.Primitive;
 import main.agentspeak.logical_expressions.terminals.belief_literals.NegativeLiteral;
 import main.agentspeak.logical_expressions.terminals.belief_literals.PositiveLiteral;
 import main.agentspeak.logical_expressions.terminals.primitives.Contradiction;
@@ -136,12 +140,116 @@ public class CompactEpistemicState extends EpistemicState {
         }
     }
 
-//    public double getLambda(LogicalExpression logicalExpression) throws Exception {
-//        if (!logicalExpression.isGround()) {
-//            throw new Exception("Formula is not ground");
-//        }
-//
-//    }
+    public LogicalExpression pare(LogicalExpression logicalExpression) throws Exception {
+        if (logicalExpression instanceof Conjunction) {
+            return this.pare((Conjunction) logicalExpression);
+        } else if (logicalExpression instanceof Disjunction) {
+            return this.pare((Disjunction) logicalExpression);
+        } else if (logicalExpression instanceof GreaterEqualsPlausibility) {
+            return this.pare((GreaterEqualsPlausibility) logicalExpression);
+        } else if (logicalExpression instanceof GreaterThanPlausibility) {
+            return this.pare((GreaterThanPlausibility) logicalExpression);
+        } else if (logicalExpression instanceof StrongNegation) {
+            return this.pare((StrongNegation) logicalExpression);
+        } else if (logicalExpression instanceof  NegationAsFailure) {
+            return this.pare((NegationAsFailure) logicalExpression);
+        } else if (logicalExpression instanceof Equal) {
+            return this.pare((Equal) logicalExpression);
+        } else if (logicalExpression instanceof NotEqual) {
+            return this.pare((NotEqual) logicalExpression);
+        } else if (logicalExpression instanceof BeliefAtom) {
+            return this.pare((BeliefAtom) logicalExpression);
+        } else if (logicalExpression instanceof BeliefLiteral) {
+            return this.pare((BeliefLiteral) logicalExpression);
+        } else if (logicalExpression instanceof Contradiction) {
+            return this.pare((Contradiction) logicalExpression);
+        } else if (logicalExpression instanceof Tautology) {
+            return this.pare((Tautology) logicalExpression);
+        } else {
+            throw new Exception("Formula not normalised");
+        }
+    }
+
+    public Conjunction pare(Conjunction conjunction) throws Exception {
+        return new Conjunction(this.pare(conjunction.getLeft()), this.pare(conjunction.getRight()));
+    }
+
+    public Disjunction pare(Disjunction disjunction) throws Exception {
+        return new Disjunction(this.pare(disjunction.getLeft()), this.pare(disjunction.getRight()));
+    }
+
+    // TODO: Some formulas must have each operand as a classical formula
+    public Primitive pare(GreaterEqualsPlausibility greaterEqualsPlausibility) throws Exception {
+        double left = this.getLambda(new StrongNegation(greaterEqualsPlausibility.getLeft()));
+        double right = this.getLambda(new StrongNegation(greaterEqualsPlausibility.getRight()));
+        if (left <= right) {
+            return new Tautology();
+        } else {
+            return new Contradiction();
+        }
+    }
+
+    public Primitive pare(GreaterThanPlausibility greaterThanPlausibility) throws Exception {
+        double left = this.getLambda(new StrongNegation(greaterThanPlausibility.getLeft()));
+        double right = this.getLambda(new StrongNegation(greaterThanPlausibility.getRight()));
+        if (left < right) {
+            return new Tautology();
+        } else {
+            return new Contradiction();
+        }
+    }
+
+    public StrongNegation pare(StrongNegation strongNegation) throws Exception {
+        return new StrongNegation(this.pare(strongNegation.getTerm()));
+    }
+
+    public Primitive pare(NegationAsFailure negationAsFailure) throws Exception {
+        if (this.getLambda(new StrongNegation(negationAsFailure.getTerm())) >= this.getLambda(negationAsFailure.getTerm())) {
+            return new Tautology();
+        } else {
+            return new Contradiction();
+        }
+    }
+
+    public Primitive pare(Equal equal) throws Exception {
+        if (equal.getLeft() == equal.getRight()) {
+            return new Tautology();
+        } else {
+            return new Contradiction();
+        }
+    }
+
+    public Primitive pare(NotEqual notEqual) throws Exception {
+        if (notEqual.getLeft() != notEqual.getRight()) {
+            return new Tautology();
+        } else {
+            return new Contradiction();
+        }
+    }
+
+    public BeliefAtom pare(BeliefAtom beliefAtom) throws Exception {
+        return beliefAtom;
+    }
+
+    public BeliefLiteral pare(BeliefLiteral beliefLiteral) throws Exception {
+        return beliefLiteral;
+    }
+
+    public Contradiction pare(Contradiction contradiction) throws Exception {
+        return contradiction;
+    }
+
+    public Tautology pare(Tautology tautology) throws Exception {
+        return tautology;
+    }
+
+    public double getLambda(LogicalExpression logicalExpression) throws Exception {
+        if (!logicalExpression.isGround()) {
+            throw new Exception("Formula is not ground");
+        }
+        LogicalExpression formula = this.pare(logicalExpression);
+        return this.getLambda(formula, new HashSet<BeliefLiteral>());
+    }
 
     public double getLambda(LogicalExpression logicalExpression, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
         if (logicalExpression instanceof BeliefLiteral){
@@ -154,6 +262,16 @@ public class CompactEpistemicState extends EpistemicState {
             return this.getLambda((Contradiction) logicalExpression, boundedLiterals);
         } else if (logicalExpression instanceof Tautology) {
             return this.getLambda((Tautology) logicalExpression, boundedLiterals);
+        } else if (logicalExpression instanceof NegationAsFailure) {
+            return this.getLambda((NegationAsFailure) logicalExpression, boundedLiterals);
+        } else if (logicalExpression instanceof GreaterEqualsPlausibility) {
+            return this.getLambda((GreaterEqualsPlausibility) logicalExpression, boundedLiterals);
+        } else if (logicalExpression instanceof GreaterThanPlausibility) {
+            return this.getLambda((GreaterThanPlausibility) logicalExpression, boundedLiterals);
+        } else if (logicalExpression instanceof Equal) {
+            return this.getLambda((Equal) logicalExpression, boundedLiterals);
+        } else if (logicalExpression instanceof NotEqual) {
+            return this.getLambda((NotEqual) logicalExpression, boundedLiterals);
         } else {
             throw new Exception("Formula not normalised");
         }
@@ -178,11 +296,11 @@ public class CompactEpistemicState extends EpistemicState {
         return this.getMaxWeight() - sum;
     }
 
-    public double getLambda(Contradiction contradiction, HashSet<BeliefLiteral> boundedLiterals) {
+    public double getLambda(Contradiction contradiction, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
         return this.getMinWeight();
     }
 
-    public double getLambda(Tautology tautology, HashSet<BeliefLiteral> boundedLiterals) {
+    public double getLambda(Tautology tautology, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
         return this.getMaxWeight();
     }
 
@@ -207,6 +325,26 @@ public class CompactEpistemicState extends EpistemicState {
         } else {
             return right;
         }
+    }
+
+    public double getLambda(NegationAsFailure negationAsFailure, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+        return this.getLambda(this.pare(negationAsFailure), boundedLiterals);
+    }
+
+    public double getLambda(GreaterEqualsPlausibility greaterEqualsPlausibility, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+        return this.getLambda(this.pare(greaterEqualsPlausibility), boundedLiterals);
+    }
+
+    public double getLambda(GreaterThanPlausibility greaterThanPlausibility, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+        return this.getLambda(this.pare(greaterThanPlausibility), boundedLiterals);
+    }
+
+    public double getLambda(Equal equal, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+        return this.getLambda(this.pare(equal), boundedLiterals);
+    }
+
+    public double getLambda(NotEqual notEqual, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+        return this.getLambda(this.pare(notEqual), boundedLiterals);
     }
 
 
