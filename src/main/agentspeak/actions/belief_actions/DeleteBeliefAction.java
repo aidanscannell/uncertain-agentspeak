@@ -14,7 +14,7 @@ public class DeleteBeliefAction extends BeliefAction {
     @Override
     public boolean executeAction(Intention intention, Unifier unifier, BeliefBase beliefBase, EventSet eventSet){
         Belief belief = new Belief(this.getBelief().getTerm().substitute(unifier));
-        beliefBase.remove(belief);
+//        beliefBase.remove(belief);
         System.out.println("Belief deleted: " + belief);
         ExternalEvent externalEvent = new ExternalEvent(new DeleteEvent(belief));
         eventSet.add(externalEvent);

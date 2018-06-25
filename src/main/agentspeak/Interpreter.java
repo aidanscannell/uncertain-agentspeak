@@ -144,28 +144,28 @@ public class Interpreter {
 
             ContextBelief contextBelief = remaining.pop();
 
-            // loop through beliefs in belief base
-            for (Belief belief : beliefBase) {
-
-                // check that context belief and belief from belief base are either both positive or negative
-                if (contextBelief.getBelief().isPositive() == belief.isPositive()) {
-
-                    // unify context belief and belief from belief base given the relevant unifier
-                    Unifier unifierPossible = contextBelief.getBelief().getTerm().unify(belief.getTerm(), unifierOriginal);
-
-                    // if the context belief unifies with the belief from belief base
-                    if (unifierPossible != null) {
-
-                        // attempt to unify the rest of the context with this unifier
-                        unifierPossible = unifyPlanContext(contextOriginal, remaining, unifierPossible);
-
-                        // if it unifies then return it
-                        if (unifierPossible != null) {
-                            return unifierPossible;
-                        }
-                    }
-                }
-            }
+//            // loop through beliefs in belief base
+//            for (Belief belief : beliefBase) {
+//
+//                // check that context belief and belief from belief base are either both positive or negative
+//                if (contextBelief.getBelief().isPositive() == belief.isPositive()) {
+//
+//                    // unify context belief and belief from belief base given the relevant unifier
+//                    Unifier unifierPossible = contextBelief.getBelief().getTerm().unify(belief.getTerm(), unifierOriginal);
+//
+//                    // if the context belief unifies with the belief from belief base
+//                    if (unifierPossible != null) {
+//
+//                        // attempt to unify the rest of the context with this unifier
+//                        unifierPossible = unifyPlanContext(contextOriginal, remaining, unifierPossible);
+//
+//                        // if it unifies then return it
+//                        if (unifierPossible != null) {
+//                            return unifierPossible;
+//                        }
+//                    }
+//                }
+//            }
         }
         return null;
     }

@@ -22,15 +22,15 @@ public class TestGoalAction extends GoalAction {
     @Override
     public boolean executeAction(Intention intention, Unifier unifier, BeliefBase beliefBase, EventSet eventSet) {
         boolean flag = false;
-        for (Belief belief : beliefBase) {
-            if (belief.isPositive() == this.testGoal.getBelief().isPositive()) {
-                Unifier unifierNew = this.testGoal.getBelief().getTerm().unify(belief.getTerm(), unifier);
-                if (unifierNew != null) {
-                    flag = true;
-                    unifier.putAll(unifierNew);
-                }
-            }
-        }
+//        for (Belief belief : beliefBase) {
+//            if (belief.isPositive() == this.testGoal.getBelief().isPositive()) {
+//                Unifier unifierNew = this.testGoal.getBelief().getTerm().unify(belief.getTerm(), unifier);
+//                if (unifierNew != null) {
+//                    flag = true;
+//                    unifier.putAll(unifierNew);
+//                }
+//            }
+//        }
 
         if (!flag) {
             Goal achievementGoalSub = this.testGoal.substitute(unifier);

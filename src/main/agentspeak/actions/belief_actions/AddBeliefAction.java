@@ -14,7 +14,7 @@ public class AddBeliefAction extends BeliefAction {
     @Override
     public boolean executeAction(Intention intention, Unifier unifier, BeliefBase beliefBase, EventSet eventSet){
         Belief belief = new Belief(this.getBelief().getTerm().substitute(unifier));
-        beliefBase.add(belief);
+//        beliefBase.add(belief);
         System.out.println("Belief added: " + belief);
         ExternalEvent externalEvent = new ExternalEvent(new AddEvent(belief));
         eventSet.add(externalEvent);
