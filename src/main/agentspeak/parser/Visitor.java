@@ -11,6 +11,7 @@ import main.agentspeak.event_triggers.DeleteEvent;
 import main.agentspeak.events.ExternalEvent;
 import main.agentspeak.goals.AchievementGoal;
 import main.agentspeak.goals.TestGoal;
+import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.terms.Constant;
 import main.agentspeak.terms.Structure;
 import main.agentspeak.terms.Variable;
@@ -120,14 +121,14 @@ public class Visitor extends AgentspeakBaseVisitor<Object> {
     }
 
     @Override
-    public Belief visitBelief(AgentspeakParser.BeliefContext context) {
+    public BeliefAtom visitBelief(AgentspeakParser.BeliefContext context) {
 //        Belief belief = null;
 
 //        System.out.println(context.arguments_list().children.size());
         if (context.arguments_list().children.size() == 1) {
             Term term = visitTerm(context.arguments_list().term(0));
             //            belief.setBelief(term);
-            return new Belief(term);
+            return new BeliefAtom(term);
         }
         return null;
     }

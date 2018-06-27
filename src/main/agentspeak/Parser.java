@@ -1,5 +1,6 @@
 package main.agentspeak;
 
+import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.parser.Visitor;
 import main.resources.antlr.AgentspeakLexer;
 import main.resources.antlr.AgentspeakParser;
@@ -26,7 +27,7 @@ public class Parser {
         return (Plan) visitor.visitPlan(planContext);
     }
 
-    public Belief parseBelief(String input) {
+    public BeliefAtom parseBelief(String input) {
         ANTLRInputStream inputStream = new ANTLRInputStream(input);
         AgentspeakLexer agentspeakLexer = new AgentspeakLexer(inputStream);
         CommonTokenStream commonTokenStream = new CommonTokenStream(agentspeakLexer);
@@ -36,7 +37,7 @@ public class Parser {
 
         AgentspeakParser.BeliefContext beliefContext = agentspeakParser.belief();
         //        System.out.println(belief.getTerm().toString());
-        return (Belief) visitor.visitBelief(beliefContext);
+        return (BeliefAtom) visitor.visitBelief(beliefContext);
     }
 
     public Goal parseGoal(String input) {
