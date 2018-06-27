@@ -43,12 +43,11 @@ public class CompactPossibilisticEpistemicState extends CompactEpistemicState {
 
         for (BeliefAtom beliefAtomDomain : this.getDomain()) {
             Weight w;
-            if (this.getDomain().contains(beliefAtom)) {
+            if (!this.getDomain().contains(beliefAtom)) {
                 w = this.getWeightedBeliefBase().get(beliefAtomDomain);
             } else {
                 w = this.getInitialWeight().copy();
             }
-
             if (beliefLiteral.isPositive() && beliefLiteral.getBeliefAtom() == beliefAtomDomain) {
                 w.setNegative(Math.min(w.getNegative(),1-weight));
             } else if (!beliefLiteral.isPositive() && beliefLiteral.getBeliefAtom() == beliefAtomDomain) {
