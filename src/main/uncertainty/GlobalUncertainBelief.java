@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
-public abstract class GlobalUncertainBelief {
+public class GlobalUncertainBelief {
 
     private HashSet<BeliefAtom> domain;
     private HashMap<HashSet<BeliefAtom>, CompactEpistemicState> epistemicStates;
@@ -30,7 +30,8 @@ public abstract class GlobalUncertainBelief {
         }
         this.domain.addAll(epistemicState.getDomain());
         epistemicStates.put(epistemicState.getDomain(), epistemicState);
-        System.out.println("\nSuccessfully added epistemic state: \n\t" + epistemicStates.toString());
+//        System.out.println("\nSuccessfully added epistemic state: \n\t" + epistemicStates.toString());
+        System.out.println("\nSuccessfully added epistemic state.");
     }
 
     HashMap<HashSet<BeliefAtom>, CompactEpistemicState> getGUB() {
@@ -59,19 +60,15 @@ public abstract class GlobalUncertainBelief {
 
     @Override
     public String toString() {
-        String string = "{\n\t";
+        String string = "\nGlobal Uncertain Belief:\n\t";
         Iterator it = epistemicStates.entrySet().iterator();
-//        System.out.println("Hererer");
-//        System.out.println(this.domain.toString());
-//        System.out.println(this.epistemicStates.toString());
         int i = 1;
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
-            string += "Epistemic State " + i + ": " + pair.getKey().toString() + " = " + pair.getValue().toString();
+            string += "Epistemic State " + i + ": \n\t\tDomain: " + pair.getKey().toString() + "\n\t\t" + pair.getValue().toString();
             if (it.hasNext()) {
                 string += ", \n\t";
             }
-//            it.remove(); // avoids a ConcurrentModificationException
             i += 1;
         }
         string += "\n\t}";

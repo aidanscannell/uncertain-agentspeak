@@ -1,4 +1,6 @@
 package main.uncertainty;
 
-public class EpistemicState {
+public abstract class EpistemicState {
+
+
 }

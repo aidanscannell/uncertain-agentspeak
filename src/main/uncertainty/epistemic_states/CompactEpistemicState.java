@@ -21,6 +21,8 @@ import main.uncertainty.epistemic_states.Weight;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 
 public class CompactEpistemicState extends EpistemicState {
 
@@ -348,19 +350,20 @@ public class CompactEpistemicState extends EpistemicState {
     }
 
 
-//    @Override
-//    public String toString() {
-//        String string = "{";
-//        Iterator it = weightedBeliefBase.entrySet().iterator();
-//        while (it.hasNext()) {
-//            Map.Entry pair = (Map.Entry)it.next();
-//            string += "[" + pair.getKey().toString() + ", " + pair.getValue().toString() + "]";
-//            if (it.hasNext()) {
-//                string += ", ";
-//            }
-//            it.remove(); // avoids a ConcurrentModificationException
-//        }
-//        string += "}";
-//        return string;
-//    }
+    @Override
+    public String toString() {
+        String string = "{";
+        Iterator it = weightedBeliefBase.entrySet().iterator();
+
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            string += "[" + pair.getKey().toString() + ", " + pair.getValue().toString() + "]";
+            if (it.hasNext()) {
+                string += ", ";
+            }
+            it.remove(); // avoids a ConcurrentModificationException
+        }
+        string += "}";
+        return string;
+    }
 }

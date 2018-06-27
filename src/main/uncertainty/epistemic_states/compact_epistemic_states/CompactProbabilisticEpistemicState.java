@@ -37,31 +37,36 @@ public class CompactProbabilisticEpistemicState extends CompactEpistemicState {
         if (!super.getDomain().contains(beliefAtom)) {
             throw new Exception("Belief atom is not in domain");
         }
-        if (!super.getDomain().contains(beliefAtom)) {
-            Weight w = this.getWeightedBeliefBase().get(beliefAtom);
-            if (beliefLiteral.isPositive()) {
-                w.setPositive(weight);
-                w.setNegative(this.getMaxWeight() - weight);
-            } else {
-                w.setNegative(weight);
-                w.setPositive(this.getMaxWeight() - weight);
-            }
-            if (w.equals(this.getWeightedBeliefBase().get(beliefAtom))) {
-                this.getWeightedBeliefBase().remove(beliefAtom);
-            } else {
-                this.getWeightedBeliefBase().put(beliefAtom, w);
-            }
+
+        /** If belief atom in domain revise it's corresponding weight, otherwise revise initial probabilistic weight
+         * **/
+        Weight w;
+        if (this.getWeightedBeliefBase().containsKey(beliefAtom)) {
+            w = this.getWeightedBeliefBase().get(beliefAtom);
         } else {
-            Weight w = this.getInitialWeight().copy();
-            if (beliefLiteral.isPositive()) {
-                w.setPositive(weight);
-                w.setNegative(this.getMaxWeight() - weight);
-            } else {
-                w.setPositive(this.getMaxWeight() - weight);
-                w.setNegative(weight);
-            }
+            w = this.getInitialWeight().copy();
+        }
+
+        /** Check if the belief literal is positive or negative and revise accordingly
+         * **/
+        if (beliefLiteral.isPositive()) {
+            w.setPositive(weight);
+            w.setNegative(this.getMaxWeight() - weight);
+        } else {
+            w.setNegative(weight);
+            w.setPositive(this.getMaxWeight() - weight);
+        }
+
+        /** If the atom is contained in the weighted belief base and it's revised weight is equal to the initial
+         * probabilistic weight then remove it from the weighted belief base, otherwise put the belief atom and
+         * its associated weight into the weighted belief base.
+         * **/
+        if (this.getWeightedBeliefBase().containsKey(beliefAtom) && w.equals(this.getWeightedBeliefBase().get(beliefAtom))) {
+            this.getWeightedBeliefBase().remove(beliefAtom);
+        } else {
             this.getWeightedBeliefBase().put(beliefAtom, w);
         }
+
     }
 
     public double getProbability(BeliefLiteral beliefLiteral) throws Exception {
@@ -80,16 +85,14 @@ public class CompactProbabilisticEpistemicState extends CompactEpistemicState {
     public String toString() {
         String string = "{ ";
         Iterator it = this.getWeightedBeliefBase().entrySet().iterator();
-//        System.out.println(this.getDomain().toString());
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
-            string += "P(" + pair.getKey().toString() + ")=" + pair.getValue().toString();
+            string += "\n\t\t\tProb( " + pair.getKey().toString() + ", " + pair.getValue().toString() + " )";
             if (it.hasNext()) {
                 string += ", ";
             }
-//            it.remove(); // avoids a ConcurrentModificationException
         }
-        string += " }";
+        string += " \n\t\t}";
         return string;
     }
 }
