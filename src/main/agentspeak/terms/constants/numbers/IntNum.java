@@ -2,16 +2,20 @@ package main.agentspeak.terms.constants.numbers;
 
 import main.agentspeak.terms.constants.Number;
 
-public class Int extends Number {
+public class IntNum extends Number {
 
     private int value;
 
-    public Int(int val){
+    public IntNum(int val){
         this.value = val;
     }
 
-    public int getValue() {
+    public int getIntVal() {
         return value;
+    }
+
+    public double getDoubleVal() {
+        return (double) value;
     }
 
     @Override
@@ -36,7 +40,7 @@ public class Int extends Number {
         } else if (getClass() != obj.getClass()) {
             return false;
         }
-        Int other = (Int) obj;
+        IntNum other = (IntNum) obj;
         if (value != other.value) {
             return false;
         }

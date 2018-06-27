@@ -4,16 +4,20 @@ import main.agentspeak.terms.constants.Number;
 
 import static java.lang.Double.doubleToLongBits;
 
-public class Double extends Number {
+public class DoubleNum extends Number {
 
     private double value;
 
-    public Double(double val){
+    public DoubleNum(double val){
         this.value = val;
     }
 
-    public double getValue() {
+    public double getDoubleVal() {
         return value;
+    }
+
+    public int getIntVal() {
+        return (int) value;
     }
 
     @Override
@@ -39,7 +43,7 @@ public class Double extends Number {
         } else if (getClass() != obj.getClass()) {
             return false;
         }
-        Double other = (Double) obj;
+        DoubleNum other = (DoubleNum) obj;
         if (value != other.value) {
             return false;
         }
