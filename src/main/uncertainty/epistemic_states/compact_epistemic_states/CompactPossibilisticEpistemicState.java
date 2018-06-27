@@ -11,6 +11,8 @@ import main.uncertainty.epistemic_states.Weight;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.lang.*;
+import java.util.Iterator;
+import java.util.Map;
 
 public class CompactPossibilisticEpistemicState extends CompactEpistemicState {
 
@@ -43,7 +45,7 @@ public class CompactPossibilisticEpistemicState extends CompactEpistemicState {
 
         for (BeliefAtom beliefAtomDomain : this.getDomain()) {
             Weight w;
-            if (!this.getDomain().contains(beliefAtom)) {
+            if (this.getWeightedBeliefBase().containsKey(beliefAtomDomain)) {
                 w = this.getWeightedBeliefBase().get(beliefAtomDomain);
             } else {
                 w = this.getInitialWeight().copy();
@@ -61,6 +63,11 @@ public class CompactPossibilisticEpistemicState extends CompactEpistemicState {
                 }
                 w.setPositive(Math.min(w.getPositive(),alpha));
                 w.setNegative(Math.min(w.getNegative(),alpha));
+            }
+            if (w.equals(this.getInitialWeight())) {
+                this.getWeightedBeliefBase().remove(beliefAtomDomain);
+            } else {
+                this.getWeightedBeliefBase().put(beliefAtomDomain, w);
             }
         }
     }
@@ -94,5 +101,20 @@ public class CompactPossibilisticEpistemicState extends CompactEpistemicState {
         return Math.min(this.getLambda(disjunction.getLeft()), this.getLambda(disjunction.getRight()));
     }
 
+    @Override
+    public String toString() {
+        String string = "{ ";
+        Iterator it = this.getWeightedBeliefBase().entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            string += "Pi(" + pair.getKey().toString() + ")=" + pair.getValue().toString();
+            if (it.hasNext()) {
+                string += ", ";
+            }
+//            it.remove(); // avoids a ConcurrentModificationException
+        }
+        string += " }";
+        return string;
+    }
 
 }
