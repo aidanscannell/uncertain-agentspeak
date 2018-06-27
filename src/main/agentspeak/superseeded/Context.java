@@ -1,4 +1,4 @@
-package main.agentspeak;
+package main.agentspeak.superseeded;
 
 import java.util.LinkedList;
 

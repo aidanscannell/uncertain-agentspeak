@@ -1,4 +1,6 @@
-package main.agentspeak;
+package main.agentspeak.superseeded;
+
+import main.agentspeak.Belief;
 
 public class ContextBelief {
 
