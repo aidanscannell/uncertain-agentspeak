@@ -1,23 +1,17 @@
 package main.agentspeak;
 
-public abstract class Goal extends BeliefGoal {
+public abstract class Goal {
 
-    private Belief belief;
+    private Term term;
 
-    public void setBelief(Belief belief) {
-        this.belief = belief;
-    }
-
-    @Override
-    public Belief getBelief() {
-        return belief;
+    public Goal(Term term) {
+        this.term = term;
     }
 
     public Term getTerm() {
-        return this.belief.getTerm();
+        return term;
     }
 
-    @Override
     public abstract Goal substitute(Unifier unifier);
 
 }
