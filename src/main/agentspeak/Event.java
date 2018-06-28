@@ -21,9 +21,9 @@ public abstract class Event {
         this.intention = intention;
     }
 
-    public Term getTerm(){
-        return eventTrigger.getBeliefGoal().getTerm();
-    }
+//    public Term getTerm(){
+//        return eventTrigger.getBeliefGoal().getTerm();
+//    }
 
     @Override
     public String toString() {

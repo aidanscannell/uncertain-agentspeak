@@ -1,17 +1,21 @@
 package main.agentspeak.actions;
 
 import main.agentspeak.Action;
-import main.agentspeak.Belief;
+import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 
 public abstract class BeliefAction extends Action {
 
-    private Belief belief;
+    private BeliefLiteral beliefLiteral;
 
-    public Belief getBelief() {
-        return belief;
+    public BeliefAction(BeliefLiteral beliefLiteral) {
+        this.beliefLiteral = beliefLiteral;
     }
 
-    public void setBelief(Belief belief) {
-        this.belief = belief;
+    public BeliefLiteral getBeliefLiteral() {
+        return beliefLiteral;
+    }
+
+    public void setBeliefLiteral(BeliefLiteral beliefLiteral) {
+        this.beliefLiteral = beliefLiteral;
     }
 }

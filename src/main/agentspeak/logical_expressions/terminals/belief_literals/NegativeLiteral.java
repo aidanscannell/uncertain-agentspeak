@@ -1,5 +1,6 @@
 package main.agentspeak.logical_expressions.terminals.belief_literals;
 
+import main.agentspeak.Unifier;
 import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 
@@ -17,6 +18,10 @@ public class NegativeLiteral extends BeliefLiteral {
 
     public PositiveLiteral negation() {
         return new PositiveLiteral(this.getBeliefAtom());
+    }
+
+    public NegativeLiteral substitute(Unifier unifier) {
+        return new NegativeLiteral(super.getBeliefAtom().substitute(unifier));
     }
 
 }

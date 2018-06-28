@@ -1,8 +1,8 @@
 package main.agentspeak.logical_expressions;
 
-import main.agentspeak.Belief;
 import main.agentspeak.LogicalExpression;
 import main.agentspeak.Term;
+import main.agentspeak.Unifier;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 
 import java.util.HashSet;
@@ -25,6 +25,10 @@ public class BeliefAtom extends LogicalExpression {
             return true;
         }
         return false;
+    }
+
+    public BeliefAtom substitute(Unifier unifier) {
+        return new BeliefAtom(this.getTerm().substitute(unifier));
     }
 
     @Override

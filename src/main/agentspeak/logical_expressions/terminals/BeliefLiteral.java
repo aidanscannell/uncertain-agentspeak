@@ -1,6 +1,6 @@
 package main.agentspeak.logical_expressions.terminals;
 
-import main.agentspeak.Belief;
+import main.agentspeak.Unifier;
 import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.logical_expressions.Terminal;
 
@@ -40,6 +40,8 @@ public abstract class BeliefLiteral extends Terminal {
         beliefLiterals.add(this);
         return beliefLiterals;
     }
+
+    public abstract BeliefLiteral substitute(Unifier unifier);
 
     @Override
     public String toString() {

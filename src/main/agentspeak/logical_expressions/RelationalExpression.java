@@ -1,7 +1,5 @@
 package main.agentspeak.logical_expressions;
 
-import com.oracle.tools.packager.Log;
-import main.agentspeak.Belief;
 import main.agentspeak.LogicalExpression;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 

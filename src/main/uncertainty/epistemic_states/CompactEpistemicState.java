@@ -1,7 +1,5 @@
 package main.uncertainty.epistemic_states;
 
-import com.oracle.tools.packager.Log;
-import main.agentspeak.Belief;
 import main.agentspeak.LogicalExpression;
 import main.agentspeak.logical_expressions.operators.*;
 import main.agentspeak.logical_expressions.operators.negations.NegationAsFailure;
@@ -17,7 +15,6 @@ import main.agentspeak.logical_expressions.terminals.primitives.Tautology;
 import main.exceptions.NotGroundException;
 import main.agentspeak.logical_expressions.BeliefAtom;
 import main.uncertainty.EpistemicState;
-import main.uncertainty.epistemic_states.Weight;
 
 import java.util.HashMap;
 import java.util.HashSet;
