@@ -1,4 +1,4 @@
-package main.agentspeak.event_triggers;
+package main.agentspeak.superseeded;
 
 import main.agentspeak.BeliefGoal;
 import main.agentspeak.EventTrigger;
