@@ -16,4 +16,9 @@ public class NegationAsFailure extends Negation {
     public HashSet<BeliefLiteral> getBeliefLiterals() throws Exception {
         return this.getTerm().getBeliefLiterals();
     }
+
+    @Override
+    public String toString() {
+        return "not" + super.getTerm().toString();
+    }
 }

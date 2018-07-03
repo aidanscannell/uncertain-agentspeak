@@ -8,4 +8,9 @@ public class Equal extends RelationalExpression {
     public Equal(LogicalExpression left, LogicalExpression right) {
         super(left, right);
     }
+
+    @Override
+    public String toString() {
+        return super.getLeft().toString() + " == " + super.getRight().toString();
+    }
 }

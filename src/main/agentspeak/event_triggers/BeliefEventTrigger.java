@@ -15,4 +15,7 @@ public class BeliefEventTrigger extends EventTrigger {
         this.beliefLiteral = beliefLiteral;
     }
 
+    public BeliefLiteral getBeliefLiteral() {
+        return beliefLiteral;
+    }
 }

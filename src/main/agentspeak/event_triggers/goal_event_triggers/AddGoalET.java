@@ -9,4 +9,8 @@ public class AddGoalET extends GoalEventTrigger {
         super(goal);
     }
 
+    @Override
+    public String toString() {
+        return "+" + super.getGoal().toString();
+    }
 }

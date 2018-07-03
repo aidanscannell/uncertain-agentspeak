@@ -20,4 +20,9 @@ public class ReviseBeliefET extends BeliefEventTrigger {
     public Term getWeight() {
         return weight;
     }
+
+    @Override
+    public String toString() {
+        return "*(" + super.getBeliefLiteral().toString() + ", " + weight.toString() + ")";
+    }
 }

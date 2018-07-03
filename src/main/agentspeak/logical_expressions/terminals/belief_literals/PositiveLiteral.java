@@ -21,4 +21,9 @@ public class PositiveLiteral extends BeliefLiteral {
     public PositiveLiteral substitute(Unifier unifier) {
         return new PositiveLiteral(super.getBeliefAtom().substitute(unifier));
     }
+
+    @Override
+    public String toString() {
+        return super.getBeliefAtom().toString();
+    }
 }

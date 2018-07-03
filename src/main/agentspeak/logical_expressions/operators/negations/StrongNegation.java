@@ -16,4 +16,9 @@ public class StrongNegation extends Negation {
     public HashSet<BeliefLiteral> getBeliefLiterals() throws Exception {
         throw new Exception("Unsupported operation");
     }
+
+    @Override
+    public String toString() {
+        return "~" + super.getTerm().toString();
+    }
 }

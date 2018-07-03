@@ -37,4 +37,5 @@ public abstract class Negation extends Operator {
     public HashSet<BeliefAtom> getBeliefAtoms() {
         return term.getBeliefAtoms();
     }
+
 }

@@ -26,24 +26,15 @@ public class Plan {
         return actions;
     }
 
-    public Term getTerm(){
-        return event.getEventTrigger().getBeliefGoal().getTerm();
-    }
+//    public Term getTerm(){
+//        return event.getEventTrigger().getBeliefGoal().getTerm();
+//    }
 
     @Override
     public String toString() {
         String eventTriggerString = event.toString();
         StringBuilder contextString = new StringBuilder();
-//        if (!context.isEmpty()) {
-//            for (ContextBelief contextBelief : context) {
-//                contextString.append(contextBelief.getBelief().getTerm().toString());
-//                if (contextBelief != context.getLast()) {
-//                    contextString.append(" & ");
-//                }
-//            }
-//        } else {
-//            contextString.append("true");
-//        }
+        contextString.append(context.toString());
         StringBuilder actionsString = new StringBuilder(" <- ");
         if (!actions.isEmpty()) {
             for (Action action : actions) {

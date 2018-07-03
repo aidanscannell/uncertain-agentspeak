@@ -9,4 +9,9 @@ public class DeleteGoalET extends GoalEventTrigger {
         super(goal);
     }
 
+    @Override
+    public String toString() {
+        return "-" + super.getGoal().toString();
+    }
+
 }

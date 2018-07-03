@@ -15,4 +15,7 @@ public class GoalEventTrigger extends EventTrigger {
         this.goal = goal;
     }
 
+    public Goal getGoal() {
+        return goal;
+    }
 }

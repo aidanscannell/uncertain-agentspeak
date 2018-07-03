@@ -9,4 +9,8 @@ public class NotEqual extends RelationalExpression {
         super(left, right);
     }
 
+    @Override
+    public String toString() {
+        return super.getLeft().toString() + " \\= " + super.getRight().toString();
+    }
 }

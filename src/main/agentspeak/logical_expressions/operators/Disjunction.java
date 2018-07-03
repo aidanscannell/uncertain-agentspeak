@@ -52,4 +52,9 @@ public class Disjunction extends Operator {
         beliefLiterals.add((BeliefLiteral) right.getBeliefLiterals().clone());
         return beliefLiterals;
     }
+
+    @Override
+    public String toString() {
+        return left.toString() + " || " + right.toString();
+    }
 }
