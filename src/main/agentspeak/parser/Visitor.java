@@ -279,11 +279,11 @@ public class Visitor extends UncertainAgentspeakBaseVisitor<Object> {
 
 
     @Override
-    public Event visitEvent(UncertainAgentspeakParser.EventContext ctx) {
+    public EventTrigger visitEvent(UncertainAgentspeakParser.EventContext ctx) {
         if (ctx.belief_event_trigger() != null) {
-            return new ExternalEvent(visitBelief_event_trigger(ctx.belief_event_trigger()));
+            return visitBelief_event_trigger(ctx.belief_event_trigger());
         } else if (ctx.goal_event_trigger() != null) {
-            return new ExternalEvent(visitGoal_event_trigger(ctx.goal_event_trigger()));
+            return visitGoal_event_trigger(ctx.goal_event_trigger());
         } else {
             return null; // TODO: add case when event is "true"
         }

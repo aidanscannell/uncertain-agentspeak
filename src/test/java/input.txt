@@ -1,0 +1,84 @@
+Pos(
+( water_or_ice( location(1) ), 0.9 ),
+( water_or_ice( location(2) ), 0.8 ),
+( water_or_ice( location(3) ), 0.7 ),
+( water_or_ice( location(4) ), 0.6 )
+).
+Pos(
+( fossil( location(1) ), 0.9 ),
+( fossil( location(2) ), 0.8 ),
+( fossil( location(3) ), 0.7 ),
+( fossil( location(4) ), 0.6 )
+).
+Pos(
+( living_organisms( location(1) ), 0.9 ),
+( living_organisms( location(2) ), 0.8 ),
+( living_organisms( location(3) ), 0.7 ),
+( living_organisms( location(4) ), 0.6 )
+).
+
+Prob(
+( at(location(1)), 0.9),
+( at(location(2)), 0.02),
+( at(location(3)), 0.04),
+( at(location(4)), 0.04),
+).
+
+Prob(
+( path( location(1), location(2), 1 ), 0.9),
+( path( location(1), location(2), 2 ), 0.1)
+).
+Prob(
+( path( location(1), location(3), 1 ), 0.9),
+( path( location(1), location(3), 2 ), 0.1)
+).
+Prob(
+( path( location(1), location(4), 1 ), 0.9),
+( path( location(1), location(4), 2 ), 0.1)
+).
+Prob(
+( path( location(2), location(1), 1 ), 0.9),
+( path( location(2), location(1), 2 ), 0.1)
+).
+Prob(
+( path( location(2), location(3), 1 ), 0.9),
+( path( location(2), location(3), 2 ), 0.1)
+).
+Prob(
+( path( location(2), location(4), 1 ), 0.9),
+( path( location(2), location(4), 2 ), 0.1)
+).
+Prob(
+( path( location(3), location(1), 1 ), 0.9),
+( path( location(3), location(1), 2 ), 0.1)
+).
+Prob(
+( path( location(3), location(2), 1 ), 0.9),
+( path( location(3), location(2), 2 ), 0.1)
+).
+Prob(
+( path( location(3), location(4), 1 ), 0.9),
+( path( location(3), location(4), 2 ), 0.1)
+).
+Prob(
+( path( location(4), location(1), 1 ), 0.9),
+( path( location(4), location(1), 2 ), 0.1)
+).
+Prob(
+( path( location(4), location(2), 1 ), 0.9),
+( path( location(4), location(2), 2 ), 0.1)
+).
+Prob(
+( path( location(4), location(3), 1 ), 0.9),
+( path( location(4), location(4), 2 ), 0.1)
+).
+
+
+!exploreMars.
+
++!exploreMars : water_or_ice(location(X)) >= water_or_ice(location(Y1)) && water_or_ice(location(X)) >= water_or_ice( location(Y2)) && water_or_ice(location(X)) >= water_or_ice( location(Y3)) && ~at(location(X)) && at(location(Z)) <- !proceed(location(Z),location(X)).
+
++!proceed(location(X),location(Y)) : path(location(X),location(Y),Index) >= 0.9 && at(location(X)) <- !travel(location(X),location(Y),Index); !exploreMars.
+
++!travel(location(X),location(Y)) : true <- *(at(location(X)),0.01); *(at(location(Y)) ,0.99).
+
