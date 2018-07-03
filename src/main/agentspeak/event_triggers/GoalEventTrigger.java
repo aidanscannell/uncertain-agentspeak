@@ -3,7 +3,7 @@ package main.agentspeak.event_triggers;
 import main.agentspeak.EventTrigger;
 import main.agentspeak.Goal;
 
-public class GoalEventTrigger extends EventTrigger {
+public abstract class GoalEventTrigger extends EventTrigger {
 
     private Goal goal;
 

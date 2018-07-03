@@ -3,7 +3,7 @@ package main.agentspeak.event_triggers;
 import main.agentspeak.EventTrigger;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 
-public class BeliefEventTrigger extends EventTrigger {
+public abstract class BeliefEventTrigger extends EventTrigger {
 
     private BeliefLiteral beliefLiteral;
 
