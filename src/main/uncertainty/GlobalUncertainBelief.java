@@ -34,7 +34,7 @@ public class GlobalUncertainBelief {
         System.out.println("\nSuccessfully added epistemic state.");
     }
 
-    HashMap<HashSet<BeliefAtom>, CompactEpistemicState> getGUB() {
+    public HashMap<HashSet<BeliefAtom>, CompactEpistemicState> getGUB() {
         return epistemicStates;
     }
 
