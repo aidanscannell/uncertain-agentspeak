@@ -1,68 +1,62 @@
 package main.agentspeak;
 
-import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.parser.Visitor;
-import main.resources.antlr.AgentspeakLexer;
-import main.resources.antlr.AgentspeakParser;
-import main.resources.antlr.AgentspeakVisitor;
+import main.resources.antlr.*;
 import org.antlr.v4.runtime.*;
+
+import java.io.FileInputStream;
 
 
 public class Parser {
 
+    public Interpreter parseUncertainAgentSpeak(FileInputStream input) throws Exception {
+        ANTLRInputStream inputStream = new ANTLRInputStream(input);
+        UncertainAgentspeakLexer agentspeakLexer = new UncertainAgentspeakLexer(inputStream);
+        CommonTokenStream commonTokenStream = new CommonTokenStream(agentspeakLexer);
+        UncertainAgentspeakParser agentspeakParser= new UncertainAgentspeakParser(commonTokenStream);
+
+        UncertainAgentspeakVisitor visitor = new Visitor();
+
+        UncertainAgentspeakParser.UncertainAgentspeakContext agentspeakContext = agentspeakParser.uncertainAgentspeak();
+
+        return (Interpreter) visitor.visitUncertainAgentspeak(agentspeakContext);
+    }
+
     public Plan parsePlan(String input) {
         ANTLRInputStream inputStream = new ANTLRInputStream(input);
-        AgentspeakLexer agentspeakLexer = new AgentspeakLexer(inputStream);
+        UncertainAgentspeakLexer agentspeakLexer = new UncertainAgentspeakLexer(inputStream);
         CommonTokenStream commonTokenStream = new CommonTokenStream(agentspeakLexer);
-        AgentspeakParser agentspeakParser= new AgentspeakParser(commonTokenStream);
+        UncertainAgentspeakParser agentspeakParser= new UncertainAgentspeakParser(commonTokenStream);
 
-        AgentspeakVisitor visitor = new Visitor();
+        UncertainAgentspeakVisitor visitor = new Visitor();
 
-        AgentspeakParser.PlanContext planContext = agentspeakParser.plan();
-        //        System.out.println(planContext);
-//        System.out.println(plan.getEventTrigger().getBeliefGoal().getTerm().toString());
-//        System.out.println(plan.getContext().get(0).getBelief().getTerm().toString());
-//        System.out.println(plan.getActions().toString());
+        UncertainAgentspeakParser.PlanContext planContext = agentspeakParser.plan();
 
         return (Plan) visitor.visitPlan(planContext);
     }
 
-    public BeliefAtom parseBelief(String input) {
+    public LogicalExpression parseContext(String input) {
         ANTLRInputStream inputStream = new ANTLRInputStream(input);
-        AgentspeakLexer agentspeakLexer = new AgentspeakLexer(inputStream);
+        UncertainAgentspeakLexer agentspeakLexer = new UncertainAgentspeakLexer(inputStream);
         CommonTokenStream commonTokenStream = new CommonTokenStream(agentspeakLexer);
-        AgentspeakParser agentspeakParser= new AgentspeakParser(commonTokenStream);
+        UncertainAgentspeakParser agentspeakParser= new UncertainAgentspeakParser(commonTokenStream);
 
-        AgentspeakVisitor visitor = new Visitor();
+        UncertainAgentspeakVisitor visitor = new Visitor();
 
-        AgentspeakParser.BeliefContext beliefContext = agentspeakParser.belief();
-        //        System.out.println(belief.getTerm().toString());
-        return (BeliefAtom) visitor.visitBelief(beliefContext);
-    }
+        UncertainAgentspeakParser.ContextContext contextContext = agentspeakParser.context();
 
-    public Goal parseGoal(String input) {
-        ANTLRInputStream inputStream = new ANTLRInputStream(input);
-        AgentspeakLexer agentspeakLexer = new AgentspeakLexer(inputStream);
-        CommonTokenStream commonTokenStream = new CommonTokenStream(agentspeakLexer);
-        AgentspeakParser agentspeakParser= new AgentspeakParser(commonTokenStream);
-
-        AgentspeakVisitor visitor = new Visitor();
-
-        AgentspeakParser.GoalContext goalContext = agentspeakParser.goal();
-        //        System.out.println(goal.getTerm().toString());
-
-        return (Goal) visitor.visitGoal(goalContext);
+        return (LogicalExpression) visitor.visitContext(contextContext);
     }
 
     public Term parseTerm(String input) {
         ANTLRInputStream inputStream = new ANTLRInputStream(input);
-        AgentspeakLexer agentspeakLexer = new AgentspeakLexer(inputStream);
+        UncertainAgentspeakLexer agentspeakLexer = new UncertainAgentspeakLexer(inputStream);
         CommonTokenStream commonTokenStream = new CommonTokenStream(agentspeakLexer);
-        AgentspeakParser agentspeakParser= new AgentspeakParser(commonTokenStream);
+        UncertainAgentspeakParser agentspeakParser= new UncertainAgentspeakParser(commonTokenStream);
 
-        AgentspeakVisitor visitor = new Visitor();
+        UncertainAgentspeakVisitor visitor = new Visitor();
 
-        AgentspeakParser.TermContext termContext = agentspeakParser.term();
+        UncertainAgentspeakParser.TermContext termContext = agentspeakParser.term();
         return (Term) visitor.visitTerm(termContext);
     }
 
