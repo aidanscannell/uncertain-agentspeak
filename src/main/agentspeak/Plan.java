@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class Plan {
 
-    private Event event;
+    private EventTrigger eventTrigger;
     private LogicalExpression context;
     private ArrayList<Action> actions;
 
-    public Plan(Event event, LogicalExpression context, ArrayList<Action> actions){
-        this.event = event;
+    public Plan(EventTrigger eventTrigger, LogicalExpression context, ArrayList<Action> actions){
+        this.eventTrigger = eventTrigger;
         this.context = context;
         this.actions = actions;
     }
 
-    public Event getEventTrigger() {
-        return event;
+    public EventTrigger getEventTrigger() {
+        return eventTrigger;
     }
 
     public LogicalExpression getContext() {
@@ -32,7 +32,7 @@ public class Plan {
 
     @Override
     public String toString() {
-        String eventTriggerString = event.toString();
+        String eventTriggerString = eventTrigger.toString();
         StringBuilder contextString = new StringBuilder();
         contextString.append(context.toString());
         StringBuilder actionsString = new StringBuilder(" <- ");
