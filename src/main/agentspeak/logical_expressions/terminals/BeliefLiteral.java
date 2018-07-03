@@ -3,6 +3,8 @@ package main.agentspeak.logical_expressions.terminals;
 import main.agentspeak.Unifier;
 import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.logical_expressions.Terminal;
+import main.agentspeak.logical_expressions.terminals.belief_literals.NegativeLiteral;
+import main.agentspeak.logical_expressions.terminals.belief_literals.PositiveLiteral;
 
 import java.util.HashSet;
 
@@ -42,6 +44,16 @@ public abstract class BeliefLiteral extends Terminal {
     }
 
     public abstract BeliefLiteral substitute(Unifier unifier);
+
+    public Unifier unify(BeliefLiteral beliefLiteral) {
+        if (beliefLiteral instanceof PositiveLiteral) {
+            return this.unify((PositiveLiteral) beliefLiteral);
+        } else if (beliefLiteral instanceof NegativeLiteral) {
+            return this.unify((NegativeLiteral) beliefLiteral);
+        } else {
+            return null;
+        }
+    }
 
     @Override
     public String toString() {

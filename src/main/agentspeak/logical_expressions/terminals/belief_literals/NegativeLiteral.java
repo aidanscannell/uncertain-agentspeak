@@ -24,6 +24,14 @@ public class NegativeLiteral extends BeliefLiteral {
         return new NegativeLiteral(super.getBeliefAtom().substitute(unifier));
     }
 
+    public Unifier unify(PositiveLiteral positiveLiteral) {
+        return null;
+    }
+
+    public Unifier unify(NegativeLiteral negativeLiteral) {
+        return super.getBeliefAtom().getTerm().unify(negativeLiteral.getBeliefAtom().getTerm());
+    }
+
     @Override
     public String toString() {
         return "~" + super.getBeliefAtom().toString();
