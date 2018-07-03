@@ -5,6 +5,7 @@ import main.agentspeak.actions.BeliefAction;
 import main.agentspeak.event_triggers.belief_event_triggers.ReviseBeliefET;
 import main.agentspeak.events.ExternalEvent;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
+import main.agentspeak.terms.constants.numbers.DoubleNum;
 
 public class ReviseBeliefAction extends BeliefAction {
 
@@ -19,8 +20,8 @@ public class ReviseBeliefAction extends BeliefAction {
     @Override
     public boolean executeAction(Intention intention, Unifier unifier, BeliefBase beliefBase, EventSet eventSet) throws Exception {
         BeliefLiteral beliefLiteral = this.getBeliefLiteral().substitute(unifier);
-        Number weight = (Number) this.weight.substitute(unifier);
-        beliefBase.revise(beliefLiteral, weight.doubleValue());
+        DoubleNum weight = (DoubleNum) this.weight.substitute(unifier);
+        beliefBase.revise(beliefLiteral, weight.getDoubleVal());
         System.out.println("Belief revised: " + this.toString());
         eventSet.add(new ExternalEvent(new ReviseBeliefET(beliefLiteral,this.weight)));
         return false;
