@@ -19,7 +19,7 @@ public class Intention {
         this.plansUnified.push(intendedMeans);
     }
 
-    public void executeIntention(IntentionSet intentionSet, BeliefBase beliefBase, EventSet eventSet){
+    public void executeIntention(IntentionSet intentionSet, BeliefBase beliefBase, EventSet eventSet) throws Exception{
         IntendedMeans intendedMeans = this.plansUnified.peek();
         boolean propagateFlag = false;
         boolean subGoalFlag = intendedMeans.executeAction(this, beliefBase, eventSet);

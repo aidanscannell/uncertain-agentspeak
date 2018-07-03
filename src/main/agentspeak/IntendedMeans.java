@@ -41,7 +41,7 @@ public class IntendedMeans {
     /** Executes the next action
      *  Returns - true, if subgoal is created, otherwise
      *          - false */
-    public boolean executeAction(Intention intention, BeliefBase beliefBase, EventSet eventSet) {
+    public boolean executeAction(Intention intention, BeliefBase beliefBase, EventSet eventSet) throws Exception {
         boolean subGoalFlag = false;
         ArrayList<Action> actions = this.plan.getActions();
         if (actionsRemaining()) {
