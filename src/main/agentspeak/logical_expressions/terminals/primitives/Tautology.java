@@ -1,10 +1,15 @@
 package main.agentspeak.logical_expressions.terminals.primitives;
 
+import main.agentspeak.Unifier;
 import main.agentspeak.logical_expressions.terminals.Primitive;
 
 public class Tautology extends Primitive {
 
     private final boolean value = true;
+
+    public Tautology substitute(Unifier unifier) {
+        return this;
+    }
 
     @Override
     public String toString() {

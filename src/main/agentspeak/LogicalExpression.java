@@ -17,5 +17,6 @@ public abstract class LogicalExpression {
 
     public abstract HashSet<BeliefLiteral> getBeliefLiterals() throws Exception;
 
+    public abstract LogicalExpression substitute(Unifier unifier);
 
 }

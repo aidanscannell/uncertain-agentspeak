@@ -1,6 +1,7 @@
 package main.agentspeak.logical_expressions.operators;
 
 import main.agentspeak.LogicalExpression;
+import main.agentspeak.Unifier;
 import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.logical_expressions.Operator;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
@@ -23,6 +24,10 @@ public class GreaterThanPlausibility extends Operator {
 
     public LogicalExpression getRight() {
         return right;
+    }
+
+    public GreaterThanPlausibility substitute(Unifier unifier) {
+        return new GreaterThanPlausibility(this.getLeft().substitute(unifier), this.getRight().substitute(unifier));
     }
 
     public boolean isConjunctive() {
