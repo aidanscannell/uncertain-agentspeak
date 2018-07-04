@@ -1,6 +1,7 @@
 package main.agentspeak.actions;
 
 import main.agentspeak.*;
+import main.uncertainty.GlobalUncertainBelief;
 
 public class EnvironmentAction extends Action {
 
@@ -14,7 +15,7 @@ public class EnvironmentAction extends Action {
         return new EnvironmentAction(this.term.substitute(unifier));
     }
 
-    public boolean executeAction(Intention intention, Unifier unifier, BeliefBase beliefBase, EventSet eventSet) {
+    public boolean executeAction(Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet) {
         System.out.println("Environment action executed: " + this.substitute(unifier));
         return false;
     }

@@ -6,6 +6,7 @@ import main.agentspeak.event_triggers.GoalEventTrigger;
 import main.agentspeak.event_triggers.goal_event_triggers.AddGoalET;
 import main.agentspeak.events.InternalEvent;
 import main.agentspeak.goals.AchievementGoal;
+import main.uncertainty.GlobalUncertainBelief;
 
 public class AchievementGoalAction extends GoalAction {
 
@@ -21,7 +22,7 @@ public class AchievementGoalAction extends GoalAction {
     }
 
     @Override
-    public boolean executeAction(Intention intention, Unifier unifier, BeliefBase beliefBase, EventSet eventSet) {
+    public boolean executeAction(Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet) {
         AchievementGoal achievementGoalSub = this.achievementGoal.substitute(unifier);
         eventSet.add(new InternalEvent(new AddGoalET(achievementGoalSub),intention));
         System.out.println("Subgoal added: " + achievementGoalSub);

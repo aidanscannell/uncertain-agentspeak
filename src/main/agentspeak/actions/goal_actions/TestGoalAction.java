@@ -3,6 +3,7 @@ package main.agentspeak.actions.goal_actions;
 import main.agentspeak.*;
 import main.agentspeak.actions.GoalAction;
 import main.agentspeak.goals.TestGoal;
+import main.uncertainty.GlobalUncertainBelief;
 
 public class TestGoalAction extends GoalAction {
 
@@ -18,7 +19,7 @@ public class TestGoalAction extends GoalAction {
     }
 
     @Override
-    public boolean executeAction(Intention intention, Unifier unifier, BeliefBase beliefBase, EventSet eventSet) {
+    public boolean executeAction(Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet) {
         // TODO: add GUB entails method and evaluate here
 //        boolean flag = false;
 //        for (Belief belief : beliefBase) {

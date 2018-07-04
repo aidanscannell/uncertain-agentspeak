@@ -1,5 +1,7 @@
 package main.agentspeak;
 
+import main.uncertainty.GlobalUncertainBelief;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 
@@ -19,7 +21,7 @@ public class Intention {
         this.plansUnified.push(intendedMeans);
     }
 
-    public void executeIntention(IntentionSet intentionSet, BeliefBase beliefBase, EventSet eventSet) throws Exception{
+    public void executeIntention(IntentionSet intentionSet, GlobalUncertainBelief beliefBase, EventSet eventSet) throws Exception{
         IntendedMeans intendedMeans = this.plansUnified.peek();
         boolean propagateFlag = false;
         boolean subGoalFlag = intendedMeans.executeAction(this, beliefBase, eventSet);

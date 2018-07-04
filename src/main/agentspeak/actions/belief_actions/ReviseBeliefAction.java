@@ -6,6 +6,7 @@ import main.agentspeak.event_triggers.belief_event_triggers.ReviseBeliefET;
 import main.agentspeak.events.ExternalEvent;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 import main.agentspeak.terms.constants.numbers.DoubleNum;
+import main.uncertainty.GlobalUncertainBelief;
 
 public class ReviseBeliefAction extends BeliefAction {
 
@@ -18,7 +19,7 @@ public class ReviseBeliefAction extends BeliefAction {
 
 
     @Override
-    public boolean executeAction(Intention intention, Unifier unifier, BeliefBase beliefBase, EventSet eventSet) throws Exception {
+    public boolean executeAction(Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet) throws Exception {
         BeliefLiteral beliefLiteral = this.getBeliefLiteral().substitute(unifier);
         DoubleNum weight = (DoubleNum) this.weight.substitute(unifier);
         beliefBase.revise(beliefLiteral, weight.getDoubleVal());
