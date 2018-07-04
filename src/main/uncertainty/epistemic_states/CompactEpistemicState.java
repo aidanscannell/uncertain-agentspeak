@@ -23,7 +23,6 @@ import java.util.Map;
 
 public class CompactEpistemicState extends EpistemicState {
 
-    private HashSet<BeliefAtom> domain;
     private HashMap<BeliefAtom, Weight> weightedBeliefBase;
     private double totalWeight;
 
@@ -35,13 +34,9 @@ public class CompactEpistemicState extends EpistemicState {
                 throw new NotGroundException("The belief atoms in the domain must be ground");
             }
         }
-        this.domain = domain;
+        super.setDomain(domain);
         this.weightedBeliefBase = new HashMap<BeliefAtom, Weight>();
         this.totalWeight = 0;
-    }
-
-    public HashSet<BeliefAtom> getDomain() {
-        return domain;
     }
 
     public HashMap<BeliefAtom, Weight> getWeightedBeliefBase() {
@@ -94,7 +89,7 @@ public class CompactEpistemicState extends EpistemicState {
     };
 
     public Weight getWeight(BeliefAtom beliefAtom) throws Exception {
-        if (this.domain.contains(beliefAtom)) {
+        if (super.getDomain().contains(beliefAtom)) {
             if (this.weightedBeliefBase.containsKey(beliefAtom)) {
                 return this.weightedBeliefBase.get(beliefAtom);
             } else {
@@ -115,7 +110,7 @@ public class CompactEpistemicState extends EpistemicState {
 
     public double getWeight(PositiveLiteral positiveLiteral) throws Exception {
         BeliefAtom beliefAtom = positiveLiteral.getBeliefAtom();
-        if (this.domain.contains(beliefAtom)) {
+        if (super.getDomain().contains(beliefAtom)) {
             if (this.weightedBeliefBase.containsKey(beliefAtom)) {
                 return this.weightedBeliefBase.get(positiveLiteral.getBeliefAtom()).getPositive();
             } else {
@@ -128,7 +123,7 @@ public class CompactEpistemicState extends EpistemicState {
 
     public double getWeight(NegativeLiteral negativeLiteral) throws Exception {
         BeliefAtom beliefAtom = negativeLiteral.getBeliefAtom();
-        if (this.domain.contains(beliefAtom)) {
+        if (super.getDomain().contains(beliefAtom)) {
             if (this.weightedBeliefBase.containsKey(beliefAtom)) {
                 return this.weightedBeliefBase.get(negativeLiteral.getBeliefAtom()).getNegative();
             } else {
@@ -139,108 +134,6 @@ public class CompactEpistemicState extends EpistemicState {
         }
     }
 
-    public LogicalExpression pare(LogicalExpression logicalExpression) throws Exception {
-        if (logicalExpression instanceof Conjunction) {
-            return this.pare((Conjunction) logicalExpression);
-        } else if (logicalExpression instanceof Disjunction) {
-            return this.pare((Disjunction) logicalExpression);
-        } else if (logicalExpression instanceof GreaterEqualsPlausibility) {
-            return this.pare((GreaterEqualsPlausibility) logicalExpression);
-        } else if (logicalExpression instanceof GreaterThanPlausibility) {
-            return this.pare((GreaterThanPlausibility) logicalExpression);
-        } else if (logicalExpression instanceof StrongNegation) {
-            return this.pare((StrongNegation) logicalExpression);
-        } else if (logicalExpression instanceof  NegationAsFailure) {
-            return this.pare((NegationAsFailure) logicalExpression);
-        } else if (logicalExpression instanceof Equal) {
-            return this.pare((Equal) logicalExpression);
-        } else if (logicalExpression instanceof NotEqual) {
-            return this.pare((NotEqual) logicalExpression);
-        } else if (logicalExpression instanceof BeliefAtom) {
-            return this.pare((BeliefAtom) logicalExpression);
-        } else if (logicalExpression instanceof BeliefLiteral) {
-            return this.pare((BeliefLiteral) logicalExpression);
-        } else if (logicalExpression instanceof Contradiction) {
-            return this.pare((Contradiction) logicalExpression);
-        } else if (logicalExpression instanceof Tautology) {
-            return this.pare((Tautology) logicalExpression);
-        } else {
-            throw new Exception("Formula not normalised");
-        }
-    }
-
-    public Conjunction pare(Conjunction conjunction) throws Exception {
-        return new Conjunction(this.pare(conjunction.getLeft()), this.pare(conjunction.getRight()));
-    }
-
-    public Disjunction pare(Disjunction disjunction) throws Exception {
-        return new Disjunction(this.pare(disjunction.getLeft()), this.pare(disjunction.getRight()));
-    }
-
-    // TODO: Some formulas must have each operand as a classical formula
-    public Primitive pare(GreaterEqualsPlausibility greaterEqualsPlausibility) throws Exception {
-        double left = this.getLambda(new StrongNegation(greaterEqualsPlausibility.getLeft()));
-        double right = this.getLambda(new StrongNegation(greaterEqualsPlausibility.getRight()));
-        if (left <= right) {
-            return new Tautology();
-        } else {
-            return new Contradiction();
-        }
-    }
-
-    public Primitive pare(GreaterThanPlausibility greaterThanPlausibility) throws Exception {
-        double left = this.getLambda(new StrongNegation(greaterThanPlausibility.getLeft()));
-        double right = this.getLambda(new StrongNegation(greaterThanPlausibility.getRight()));
-        if (left < right) {
-            return new Tautology();
-        } else {
-            return new Contradiction();
-        }
-    }
-
-    public StrongNegation pare(StrongNegation strongNegation) throws Exception {
-        return new StrongNegation(this.pare(strongNegation.getTerm()));
-    }
-
-    public Primitive pare(NegationAsFailure negationAsFailure) throws Exception {
-        if (this.getLambda(new StrongNegation(negationAsFailure.getTerm())) >= this.getLambda(negationAsFailure.getTerm())) {
-            return new Tautology();
-        } else {
-            return new Contradiction();
-        }
-    }
-
-    public Primitive pare(Equal equal) throws Exception {
-        if (equal.getLeft() == equal.getRight()) {
-            return new Tautology();
-        } else {
-            return new Contradiction();
-        }
-    }
-
-    public Primitive pare(NotEqual notEqual) throws Exception {
-        if (notEqual.getLeft() != notEqual.getRight()) {
-            return new Tautology();
-        } else {
-            return new Contradiction();
-        }
-    }
-
-    public BeliefAtom pare(BeliefAtom beliefAtom) throws Exception {
-        return beliefAtom;
-    }
-
-    public BeliefLiteral pare(BeliefLiteral beliefLiteral) throws Exception {
-        return beliefLiteral;
-    }
-
-    public Contradiction pare(Contradiction contradiction) throws Exception {
-        return contradiction;
-    }
-
-    public Tautology pare(Tautology tautology) throws Exception {
-        return tautology;
-    }
 
     public double getLambda(LogicalExpression logicalExpression) throws Exception {
         if (!logicalExpression.isGround()) {
