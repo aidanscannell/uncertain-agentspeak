@@ -15,6 +15,15 @@ public class NotEqual extends RelationalExpression {
     }
 
     @Override
+    public RelationalExpression convertToNNF(boolean propogateStrongNegation) {
+        if (propogateStrongNegation) {
+            return new Equal(this.getLeft(),this.getRight());
+        } else {
+            return this;
+        }
+    }
+
+    @Override
     public String toString() {
         return super.getLeft().toString() + " \\= " + super.getRight().toString();
     }

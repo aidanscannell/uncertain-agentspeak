@@ -11,6 +11,10 @@ public class Tautology extends Primitive {
         return this;
     }
 
+    public Contradiction negation() {
+        return new Contradiction();
+    }
+
     @Override
     public String toString() {
         return "true";

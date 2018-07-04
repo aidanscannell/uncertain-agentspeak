@@ -15,4 +15,9 @@ public abstract class Terminal extends LogicalExpression {
     public boolean isConjunctive() {
         return true;
     }
+
+    @Override
+    public boolean inNNF() {
+        return true;
+    }
 }

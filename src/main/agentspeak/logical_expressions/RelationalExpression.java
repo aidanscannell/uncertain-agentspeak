@@ -47,4 +47,9 @@ public abstract class RelationalExpression extends LogicalExpression {
     public HashSet<BeliefLiteral> getBeliefLiterals() {
         return new HashSet<BeliefLiteral>();
     }
+
+    @Override
+    public boolean inNNF() {
+        return true;
+    }
 }

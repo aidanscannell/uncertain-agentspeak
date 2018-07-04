@@ -4,6 +4,8 @@ import main.agentspeak.LogicalExpression;
 import main.agentspeak.Term;
 import main.agentspeak.Unifier;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
+import main.agentspeak.logical_expressions.terminals.belief_literals.NegativeLiteral;
+import main.agentspeak.logical_expressions.terminals.belief_literals.PositiveLiteral;
 
 import java.util.HashSet;
 
@@ -56,6 +58,20 @@ public class BeliefAtom extends LogicalExpression {
     @Override
     public HashSet<BeliefLiteral> getBeliefLiterals() throws Exception {
         throw new Exception("Belief atoms do contain belief literals");
+    }
+
+    @Override
+    public BeliefLiteral convertToNNF(boolean propogateStrongNegation) {
+        if (propogateStrongNegation) {
+            return new NegativeLiteral(this);
+        } else {
+            return new PositiveLiteral(this);
+        }
+    }
+
+    @Override
+    public boolean inNNF() {
+        return false;
     }
 
     @Override

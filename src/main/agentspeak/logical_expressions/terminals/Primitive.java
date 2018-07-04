@@ -5,7 +5,9 @@ import main.agentspeak.logical_expressions.Terminal;
 
 import java.util.HashSet;
 
-public class Primitive extends Terminal {
+public abstract class Primitive extends Terminal {
+
+    public abstract Primitive negation();
 
     @Override
     public boolean isGround() {
@@ -20,5 +22,14 @@ public class Primitive extends Terminal {
     @Override
     public HashSet<BeliefLiteral> getBeliefLiterals() {
         return new HashSet<BeliefLiteral>();
+    }
+
+    @Override
+    public Primitive convertToNNF(boolean propagateStrongNegation) {
+        if (propagateStrongNegation) {
+            return this.negation();
+        } else {
+            return this;
+        }
     }
 }

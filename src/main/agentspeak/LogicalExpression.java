@@ -19,4 +19,8 @@ public abstract class LogicalExpression {
 
     public abstract LogicalExpression substitute(Unifier unifier);
 
+    public abstract LogicalExpression convertToNNF(boolean propogateStrongNegation);
+
+    public abstract boolean inNNF();
+
 }

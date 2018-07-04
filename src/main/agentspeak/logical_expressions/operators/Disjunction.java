@@ -44,9 +44,11 @@ public class Disjunction extends Operator {
 
     @Override
     public HashSet<BeliefAtom> getBeliefAtoms() {
-        HashSet<BeliefAtom> beliefAtoms = new HashSet<BeliefAtom>();
-        beliefAtoms.add((BeliefAtom) left.getBeliefAtoms().clone());
-        beliefAtoms.add((BeliefAtom) right.getBeliefAtoms().clone());
+        HashSet<BeliefAtom> beliefAtoms = (HashSet<BeliefAtom>) left.getBeliefAtoms().clone();
+        beliefAtoms.addAll((HashSet<BeliefAtom>) right.getBeliefAtoms().clone());
+//        HashSet<BeliefAtom> beliefAtoms = new HashSet<BeliefAtom>();
+//        beliefAtoms.add((BeliefAtom) left.getBeliefAtoms().clone());
+//        beliefAtoms.add((BeliefAtom) right.getBeliefAtoms().clone());
         return beliefAtoms;
     }
 
@@ -56,6 +58,20 @@ public class Disjunction extends Operator {
         beliefLiterals.add((BeliefLiteral) left.getBeliefLiterals().clone());
         beliefLiterals.add((BeliefLiteral) right.getBeliefLiterals().clone());
         return beliefLiterals;
+    }
+
+    @Override
+    public Operator convertToNNF(boolean propogateStrongNegation) {
+        if (propogateStrongNegation) {
+            return new Conjunction(this.getLeft().convertToNNF(propogateStrongNegation),this.getRight().convertToNNF(propogateStrongNegation));
+        } else {
+            return new Disjunction(this.getLeft().convertToNNF(false), this.getRight().convertToNNF(false));
+        }
+    }
+
+    @Override
+    public boolean inNNF() {
+        return this.getLeft().inNNF() && this.getRight().inNNF();
     }
 
     @Override

@@ -23,6 +23,20 @@ public class StrongNegation extends Negation {
     }
 
     @Override
+    public LogicalExpression convertToNNF(boolean propogateStrongNegation) {
+        if (propogateStrongNegation) {
+            return this.getTerm().convertToNNF(false);
+        } else {
+            return this.getTerm().convertToNNF(true);
+        }
+    }
+
+    @Override
+    public boolean inNNF() {
+        return false;
+    }
+
+    @Override
     public String toString() {
         return "~" + super.getTerm().toString();
     }

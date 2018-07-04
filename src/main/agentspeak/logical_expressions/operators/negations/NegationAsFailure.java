@@ -23,6 +23,22 @@ public class NegationAsFailure extends Negation {
     }
 
     @Override
+    public LogicalExpression convertToNNF(boolean propogateStrongNegation) {
+        if (propogateStrongNegation) {
+            System.out.println("Negation as failure does not support strong negation");
+            return null;
+            //TODO: throw exception
+        } else {
+            return new NegationAsFailure(this.getTerm().convertToNNF(false));
+        }
+    }
+
+    @Override
+    public boolean inNNF() {
+        return this.getTerm().inNNF();
+    }
+
+    @Override
     public String toString() {
         return "not" + super.getTerm().toString();
     }

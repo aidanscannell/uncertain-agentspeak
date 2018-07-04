@@ -56,6 +56,15 @@ public abstract class BeliefLiteral extends Terminal {
     }
 
     @Override
+    public BeliefLiteral convertToNNF(boolean propagateStrongNegation) {
+        if (propagateStrongNegation) {
+            return this.negation();
+        } else {
+            return this;
+        }
+    }
+
+    @Override
     public String toString() {
         return beliefAtom.getTerm().toString();
     }
