@@ -1,11 +1,13 @@
 package main.agentspeak;
 
+import main.uncertainty.GlobalUncertainBelief;
+
 import java.util.Deque;
 import java.util.LinkedList;
 
 public class Interpreter {
 
-    private BeliefBase beliefBase;
+    private GlobalUncertainBelief beliefBase;
     private EventSet eventSet;
     private PlanLibrary planLibrary;
     private IntentionSet intentionSet;
@@ -17,7 +19,7 @@ public class Interpreter {
         this.intentionSet = new IntentionSet();
     }
 
-    public void setBeliefBase(BeliefBase beliefBase) {
+    public void setBeliefBase(GlobalUncertainBelief beliefBase) {
         this.beliefBase = beliefBase;
     }
 
@@ -33,7 +35,7 @@ public class Interpreter {
         this.intentionSet = intentionSet;
     }
 
-    public BeliefBase getBeliefBase() {
+    public GlobalUncertainBelief getBeliefBase() {
         return beliefBase;
     }
 
@@ -49,7 +51,7 @@ public class Interpreter {
         return planLibrary;
     }
 
-    public void run() {
+    public void run() throws Exception {
 
 
         while (!eventSet.isEmpty() || !intentionSet.isEmpty()) {
@@ -57,12 +59,13 @@ public class Interpreter {
             if (!eventSet.isEmpty()) {
 
                 Event event = eventSet.selectEvent();
-                System.out.println("Event selected:\n\t" + event.toString());
+                System.out.println("\nEvent selected:\n\t" + event.toString());
 
                 if (event != null) {
                     IntendedMeans intendedMeans = selectPlan(event);
                     if (intendedMeans != null) {
                         System.out.println("\nPlan selected:\n\t" + intendedMeans.getPlan().toString());
+                        System.out.println("\t" + intendedMeans.getUnifier().toString());
                         intentionSet.addIntention(event, intendedMeans);
                         System.out.println("\nIntention added\n\t" + intentionSet.toString());
                     }
@@ -82,9 +85,11 @@ public class Interpreter {
         }
     }
 
-    private IntendedMeans selectPlan(Event event) {
+    private IntendedMeans selectPlan(Event event) throws Exception {
         Deque<IntendedMeans> relevantPlans = selectRelevantPlans(event);
         if (!relevantPlans.isEmpty()) {
+            System.out.println("\nFirst Relevant Plan:");
+            System.out.println(relevantPlans.getFirst().getPlan().toString());
             Deque<IntendedMeans> applicablePlans = selectApplicablePlans(relevantPlans);
             if (!applicablePlans.isEmpty()) {
                 return selectPlan(applicablePlans);
@@ -100,73 +105,34 @@ public class Interpreter {
     private Deque<IntendedMeans> selectRelevantPlans(Event event) {
         Deque<IntendedMeans> relevantPlans = new LinkedList<>();
         for (Plan plan : planLibrary) {
-            if (event.getEventTrigger().getBeliefGoal().getBelief() != null) {
-                if (event.getEventTrigger().getBeliefGoal().getBelief().isPositive() == plan.getEventTrigger().getEventTrigger().getBeliefGoal().getBelief().isPositive()) {
-                    Unifier unifier = event.getTerm().unify(plan.getTerm());
+//            if (event.getEventTrigger().getBeliefGoal().getBelief() != null) {
+//                if (event.getEventTrigger().getBeliefGoal().getBelief().isPositive() == plan.getEventTrigger().getEventTrigger().getBeliefGoal().getBelief().isPositive()) {
+                    Unifier unifier = event.getEventTrigger().unify(plan.getEventTrigger());
                     if (unifier != null) {
                         relevantPlans.add(new IntendedMeans(plan, unifier));
                     }
-                }
-            }
+//                }
+//            }
         }
         return relevantPlans;
     }
 
-    private Deque<IntendedMeans> selectApplicablePlans(Deque<IntendedMeans> relevantPlans) {
+    private Deque<IntendedMeans> selectApplicablePlans(Deque<IntendedMeans> relevantPlans) throws Exception {
         Deque<IntendedMeans> applicablePlans = new LinkedList<>();
         Deque<IntendedMeans> relevantPlansCopy = new LinkedList<>(relevantPlans); // copy relevant plans
         while(!relevantPlansCopy.isEmpty()) {
             IntendedMeans relevantPlan = relevantPlansCopy.pop();
-            Context context = relevantPlan.getPlan().getContext(); // get context of current plan
-            if (!context.isEmpty()) {
-                Unifier applicableUnifier = unifyPlanContext(context, context, relevantPlan.getUnifier());
+            LogicalExpression context = relevantPlan.getPlan().getContext(); // get context of current plan
+            if (context != null) {
+                Unifier applicableUnifier = this.getBeliefBase().entails(context, relevantPlan.getUnifier());
                 if (applicableUnifier != null) {
                     applicablePlans.add(new IntendedMeans(relevantPlan.getPlan(),applicableUnifier));
+//                    System.out.println("Applicable plan");
+//                    System.out.println(applicablePlans.getFirst().getPlan().toString());
                 }
-            } else {
-                applicablePlans.add(relevantPlan); // add relevant plans with context "true"
             }
         }
         return applicablePlans;
     }
 
-    private Unifier unifyPlanContext(Context contextOriginal, Context contextRemaining, Unifier unifier) {
-
-        // make a copy of the unifier
-        Unifier unifierOriginal = unifier.copy();
-
-        // make a copy of the remaining context beliefs
-        Context remaining = contextRemaining.copy();
-
-        if (remaining.isEmpty()){
-            return unifierOriginal;
-        } else {
-
-            ContextBelief contextBelief = remaining.pop();
-
-//            // loop through beliefs in belief base
-//            for (Belief belief : beliefBase) {
-//
-//                // check that context belief and belief from belief base are either both positive or negative
-//                if (contextBelief.getBelief().isPositive() == belief.isPositive()) {
-//
-//                    // unify context belief and belief from belief base given the relevant unifier
-//                    Unifier unifierPossible = contextBelief.getBelief().getTerm().unify(belief.getTerm(), unifierOriginal);
-//
-//                    // if the context belief unifies with the belief from belief base
-//                    if (unifierPossible != null) {
-//
-//                        // attempt to unify the rest of the context with this unifier
-//                        unifierPossible = unifyPlanContext(contextOriginal, remaining, unifierPossible);
-//
-//                        // if it unifies then return it
-//                        if (unifierPossible != null) {
-//                            return unifierPossible;
-//                        }
-//                    }
-//                }
-//            }
-        }
-        return null;
-    }
 }
