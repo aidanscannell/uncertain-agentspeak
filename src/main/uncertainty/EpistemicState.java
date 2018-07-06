@@ -154,6 +154,10 @@ public abstract class EpistemicState {
         return tautology;
     }
 
+    public Unifier entails(LogicalExpression logicalExpression) throws Exception {
+        return entails(logicalExpression, new Unifier());
+    }
+
     //TODO: check for NNF
     public Unifier entails(LogicalExpression logicalExpression, Unifier unifier) throws Exception {
         LogicalExpression groundLogicalExpression = logicalExpression.substitute(unifier);
