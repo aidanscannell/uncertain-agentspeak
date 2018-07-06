@@ -42,6 +42,10 @@ public class Disjunction extends Operator {
         }
     }
 
+    public boolean isGround() {
+        return this.left.isGround() && this.right.isGround();
+    }
+
     @Override
     public HashSet<BeliefAtom> getBeliefAtoms() {
         HashSet<BeliefAtom> beliefAtoms = (HashSet<BeliefAtom>) left.getBeliefAtoms().clone();
@@ -54,9 +58,11 @@ public class Disjunction extends Operator {
 
     @Override
     public HashSet<BeliefLiteral> getBeliefLiterals() throws Exception {
-        HashSet<BeliefLiteral> beliefLiterals = new HashSet<BeliefLiteral>();
-        beliefLiterals.add((BeliefLiteral) left.getBeliefLiterals().clone());
-        beliefLiterals.add((BeliefLiteral) right.getBeliefLiterals().clone());
+        HashSet<BeliefLiteral> beliefLiterals = (HashSet<BeliefLiteral>) left.getBeliefLiterals().clone();
+        beliefLiterals.addAll((HashSet<BeliefLiteral>) right.getBeliefLiterals().clone());
+//        HashSet<BeliefLiteral> beliefLiterals = new HashSet<BeliefLiteral>();
+//        beliefLiterals.add((BeliefLiteral) left.getBeliefLiterals().clone());
+//        beliefLiterals.add((BeliefLiteral) right.getBeliefLiterals().clone());
         return beliefLiterals;
     }
 

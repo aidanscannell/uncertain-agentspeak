@@ -7,8 +7,4 @@ import java.util.HashSet;
 
 public abstract class Operator extends LogicalExpression {
 
-    public boolean isGround() {
-        return false;
-    }
-
 }
