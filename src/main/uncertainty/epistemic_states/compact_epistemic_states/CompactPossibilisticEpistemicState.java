@@ -36,6 +36,7 @@ public class CompactPossibilisticEpistemicState extends CompactEpistemicState {
     }
 
     @Override
+    /** Revise as N(beliefLiteral) >= weight **/
     public void revise(BeliefLiteral beliefLiteral, double weight) throws Exception {
         BeliefAtom beliefAtom = beliefLiteral.getBeliefAtom();
 
@@ -66,9 +67,9 @@ public class CompactPossibilisticEpistemicState extends CompactEpistemicState {
             } else {
                 double alpha;
                 if (beliefLiteral.isPositive()) {
-                    alpha = Math.max(1 - weight, w.getNegative());
-                } else {
                     alpha = Math.max(w.getPositive(), 1 - weight);
+                } else {
+                    alpha = Math.max(1 - weight, w.getNegative());
                 }
                 w.setPositive(Math.min(w.getPositive(),alpha));
                 w.setNegative(Math.min(w.getNegative(),alpha));
@@ -98,7 +99,8 @@ public class CompactPossibilisticEpistemicState extends CompactEpistemicState {
         return this.getWeightedBeliefBase().get(beliefAtom).getPositive();
     }
 
-    public double getLambda(BeliefLiteral beliefLiteral) throws Exception {
+    @Override
+    public double getLambda(BeliefLiteral beliefLiteral, HashSet<BeliefLiteral> beliefLiterals) throws Exception {
         BeliefAtom beliefAtom = beliefLiteral.getBeliefAtom();
         if (beliefLiteral.isPositive()) {
             return this.getWeightedBeliefBase().get(beliefAtom).getPositive();
