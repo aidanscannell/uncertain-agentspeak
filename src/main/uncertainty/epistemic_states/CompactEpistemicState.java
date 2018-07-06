@@ -59,7 +59,7 @@ public class CompactEpistemicState extends EpistemicState {
         BeliefAtom beliefAtom = beliefLiteral.getBeliefAtom();
 
         if (!this.getDomain().contains(beliefAtom)) {
-            throw new Exception("Belief atom no in domain");
+            throw new Exception("Belief atom not in domain");
         }
 
         if (weightedBeliefBase.containsKey(beliefAtom)) {
@@ -86,7 +86,7 @@ public class CompactEpistemicState extends EpistemicState {
             weightedBeliefBase.put(beliefAtom, newWeight);
             totalWeight += newWeight.max();
         }
-    };
+    }
 
     public Weight getWeight(BeliefAtom beliefAtom) throws Exception {
         if (super.getDomain().contains(beliefAtom)) {
@@ -137,13 +137,19 @@ public class CompactEpistemicState extends EpistemicState {
 
     public double getLambda(LogicalExpression logicalExpression) throws Exception {
         if (!logicalExpression.isGround()) {
-            throw new Exception("Formula is not ground");
+            System.out.println(logicalExpression.getClass());
+            throw new Exception("Formula is not ground: " + logicalExpression);
         }
         LogicalExpression formula = this.pare(logicalExpression);
+        if (!formula.inNNF()) {
+            formula = formula.convertToNNF(false);
+        }
         return this.getLambda(formula, new HashSet<BeliefLiteral>());
     }
 
     public double getLambda(LogicalExpression logicalExpression, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+//        System.out.println(logicalExpression.toString());
+//        System.out.println(logicalExpression.getClass());
         if (logicalExpression instanceof BeliefLiteral){
             return this.getLambda((BeliefLiteral) logicalExpression, boundedLiterals);
         } else if (logicalExpression instanceof Conjunction) {
