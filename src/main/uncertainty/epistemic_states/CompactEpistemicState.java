@@ -144,6 +144,7 @@ public class CompactEpistemicState extends EpistemicState {
         if (!formula.inNNF()) {
             formula = formula.convertToNNF(false);
         }
+//        System.out.println(formula.toString() + " = " + this.getLambda(formula, new HashSet<BeliefLiteral>()));
         return this.getLambda(formula, new HashSet<BeliefLiteral>());
     }
 

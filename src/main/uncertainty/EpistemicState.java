@@ -15,6 +15,7 @@ import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 import main.agentspeak.logical_expressions.terminals.Primitive;
 import main.agentspeak.logical_expressions.terminals.primitives.Contradiction;
 import main.agentspeak.logical_expressions.terminals.primitives.Tautology;
+import main.sat_solver.SATsolver;
 
 import java.util.HashSet;
 
@@ -164,10 +165,13 @@ public abstract class EpistemicState {
         if (!domain.containsAll(groundLogicalExpression.getBeliefAtoms())) {
             return null;
         }
-        LogicalExpression pare = pare(groundLogicalExpression);
-        LogicalExpression pareNegation = pare(new StrongNegation(groundLogicalExpression));
+        LogicalExpression pare = pare(groundLogicalExpression).convertToNNF(false);
+        LogicalExpression pareNegation = pare(new StrongNegation(groundLogicalExpression)).convertToNNF(false);
         double pareLambda = getLambda(pare);
         double pareLambdaNegation = getLambda(pareNegation);
+//        for (BeliefAtom beliefAtom : logicalExpression.getBeliefAtoms()) {
+//            System.out.println(beliefAtom.getTerm(). + " = " + pareLambda);
+//        }
         if (pareLambda > pareLambdaNegation) {
             return unifier;
         } else {

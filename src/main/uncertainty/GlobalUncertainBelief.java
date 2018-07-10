@@ -16,6 +16,7 @@ import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 import main.agentspeak.logical_expressions.terminals.Primitive;
 import main.agentspeak.logical_expressions.terminals.primitives.Contradiction;
 import main.agentspeak.logical_expressions.terminals.primitives.Tautology;
+import main.agentspeak.terms.constants.numbers.DoubleNum;
 import main.exceptions.NotGroundException;
 import main.uncertainty.epistemic_states.CompactEpistemicState;
 
@@ -136,7 +137,11 @@ public class GlobalUncertainBelief {
 
 //        System.out.println(logicalExpression.);
         System.out.println(unifier);
+        System.out.println(logicalExpression.toString());
         System.out.println(unifiers);
+
+
+
         for (Unifier u : unifiers) {
             Unifier unifierValid = null;
             if (logicalExpression instanceof Conjunction) {
@@ -164,6 +169,7 @@ public class GlobalUncertainBelief {
             } else if (logicalExpression instanceof Tautology) {
                 unifierValid = entails((Tautology) logicalExpression, u);
             }
+            System.out.println("Valid unifier: " + unifierValid);
             if (unifierValid != null) {
                 return  unifierValid;
             }
@@ -348,7 +354,28 @@ public class GlobalUncertainBelief {
     }
 
     public HashSet<Unifier> getUnifiers(LogicalExpression logicalExpression, Unifier unifier) {
+        System.out.println(logicalExpression);
         if (logicalExpression instanceof Conjunction) {
+//            System.out.println(((Conjunction) logicalExpression).getLeft().toString());
+//            System.out.println(((Conjunction) logicalExpression).getRight());
+//            Conjunction term = (Conjunction) ((Conjunction) logicalExpression).getRight();
+            Conjunction conjunction = (Conjunction) logicalExpression;
+            LogicalExpression logicalExpression1 = conjunction.getRight();
+//            GreaterThanPlausibility greaterThanPlausibility = (GreaterThanPlausibility) conjunction.getRight();
+//            System.out.println(greaterThanPlausibility.getRight().toString());
+            if (conjunction.getRight() instanceof GreaterThanPlausibility) {
+                GreaterThanPlausibility greaterThanPlausibility = (GreaterThanPlausibility) logicalExpression1;
+                if (greaterThanPlausibility.getRight() instanceof BeliefAtom) {
+                    BeliefAtom beliefAtom = (BeliefAtom) greaterThanPlausibility.getRight();
+                    if (beliefAtom.getTerm() instanceof DoubleNum) {
+                        System.out.println(beliefAtom.getTerm().getClass());
+                    }
+//                    System.out.println(beliefAtom.getTerm());
+                }
+//                System.out.println(((GreaterThanPlausibility) logicalExpression1).getRight().);
+            }
+            HashSet<Unifier> unifier1 = getUnifiers((Conjunction) logicalExpression, unifier);
+//            System.out.println("here1");
             return getUnifiers((Conjunction) logicalExpression, unifier);
         } else if (logicalExpression instanceof Disjunction) {
             return getUnifiers((Disjunction) logicalExpression, unifier);
@@ -357,12 +384,16 @@ public class GlobalUncertainBelief {
         } else if (logicalExpression instanceof GreaterEqualsPlausibility) {
             return getUnifiers((GreaterEqualsPlausibility) logicalExpression, unifier);
         } else if (logicalExpression instanceof GreaterThanPlausibility) {
+//            System.out.println("here2");
+//            System.out.println(((GreaterThanPlausibility) logicalExpression).getRight());
             return getUnifiers((GreaterThanPlausibility) logicalExpression, unifier);
         } else if (logicalExpression instanceof StrongNegation) {
             return getUnifiers((StrongNegation) logicalExpression, unifier);
         } else if (logicalExpression instanceof NegationAsFailure) {
             return getUnifiers((NegationAsFailure) logicalExpression, unifier);
         } else if (logicalExpression instanceof BeliefAtom) {
+//            HashSet<Unifier> unifiers = getUnifiers((BeliefAtom) logicalExpression, unifier);
+//            System.out.println(unifiers);
             return getUnifiers((BeliefAtom) logicalExpression, unifier);
         } else if (logicalExpression instanceof BeliefLiteral) {
             return getUnifiers((BeliefLiteral) logicalExpression, unifier);
@@ -428,6 +459,8 @@ public class GlobalUncertainBelief {
         HashSet<Unifier> unifiers = new HashSet<>();
         for (BeliefAtom beliefAtomDomain : domain) {
             Unifier u = beliefAtom.substitute(unifier).getTerm().unify(beliefAtomDomain.getTerm());
+//            System.out.println("Belief atom domain: " + beliefAtomDomain);
+//            System.out.println("Belief atom: " + beliefAtom);
             if (u != null) {
                 u.putAll(unifier);
                 unifiers.add(u);

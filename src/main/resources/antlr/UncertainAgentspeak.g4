@@ -36,6 +36,9 @@ GREATER_THAN        : '>' ;
 GREATER_EQUALS      : '>=' ;
 STRONG_NEGATION     : '~' ;
 NEGATION_AS_FAILURE : 'not' ;
+EQUALS              : '==' ;
+NOT_EQUALS          : '\==' ;
+
 /*
  * Parser Rules
  */
@@ -76,6 +79,8 @@ less_than_expr          : less_equals_expr (LESS_THAN less_equals_expr)* ;
 less_equals_expr        : greater_than_expr (LESS_EQUALS greater_than_expr)* ;
 greater_than_expr       : greater_equals_expr (GREATER_THAN greater_equals_expr)* ;
 greater_equals_expr     : negation_expr (GREATER_EQUALS negation_expr)* ;
+equals_expr             : greater_equals_expr (EQUALS greater_equals_expr)* ;
+not_equals_expr         : equals_expr (NOT_EQUALS equals_expr)* ;
 negation_expr           : NEGATION_AS_FAILURE belief_atom_expr | STRONG_NEGATION belief_atom_expr | belief_atom_expr ;
 //finally, we found either name, or a sub-expression
 belief_atom_expr        : belief_atom | LPAREN and_expr RPAREN;

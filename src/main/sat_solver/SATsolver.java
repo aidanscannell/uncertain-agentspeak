@@ -26,7 +26,7 @@ public class SATsolver {
         solver.setTimeout(10); // 10 second timeout
     }
 
-    public boolean solve(LogicalExpression logicalExpression) throws ContradictionException {
+    public boolean solve(LogicalExpression logicalExpression) throws Exception {
         try {
             HashSet<HashSet<Terminal>> clauses = logicalExpression.convertToNNF(false).convertToCNF().getSetClauses();
 

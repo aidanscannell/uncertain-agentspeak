@@ -9,11 +9,14 @@ import java.util.LinkedList;
 
 import main.agentspeak.*;
 import main.agentspeak.logical_expressions.BeliefAtom;
+import main.agentspeak.logical_expressions.terminals.belief_literals.NegativeLiteral;
+import main.agentspeak.logical_expressions.terminals.belief_literals.PositiveLiteral;
 import main.agentspeak.parser.Visitor;
 import main.agentspeak.terms.constants.Atom;
 import main.resources.antlr.UncertainAgentspeakLexer;
 import main.resources.antlr.UncertainAgentspeakParser;
 import main.resources.antlr.UncertainAgentspeakVisitor;
+import main.uncertainty.epistemic_states.CompactEpistemicState;
 import main.uncertainty.epistemic_states.compact_epistemic_states.CompactProbabilisticEpistemicState;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -22,8 +25,9 @@ public class Test {
 
     public static void main(String args[]) throws Exception {
 
-//        example();
-//        parseBeliefs();
+//        parseBeliefAtoms();
+//        parseLogicalExpression();
+//        compactEpistemicState();
 //        parsePlan();
 //        parseLogicalExpression();
 //        parsePlanLibrary();
@@ -37,85 +41,239 @@ public class Test {
 //        gub();
     }
 
+    public static void parseBeliefAtoms() {
+
+        try {
+            Parser parser = new Parser();
+
+            HashSet<BeliefAtom> beliefAtoms = new HashSet<>();
+
+            beliefAtoms.add(parser.parseBeliefAtom("atom."));
+            beliefAtoms.add(parser.parseBeliefAtom("atom(a)."));
+            beliefAtoms.add(parser.parseBeliefAtom("atom(a,b)."));
+            beliefAtoms.add(parser.parseBeliefAtom("atom(a,b,c)."));
+            beliefAtoms.add(parser.parseBeliefAtom("atom(Var)."));
+            beliefAtoms.add(parser.parseBeliefAtom("atom(Var1,Var2)."));
+            beliefAtoms.add(parser.parseBeliefAtom("atom(a,Var)."));
+            beliefAtoms.add(parser.parseBeliefAtom("atom(Var,a)."));
+            beliefAtoms.add(parser.parseBeliefAtom("atom(struct(a))."));
+            beliefAtoms.add(parser.parseBeliefAtom("atom(struct(Var))."));
+            beliefAtoms.add(parser.parseBeliefAtom("atom(struct(a,b),c)."));
+            beliefAtoms.add(parser.parseBeliefAtom("atom(struct(Var1,Var2),Var3)."));
+
+            for (BeliefAtom beliefAtom : beliefAtoms) {
+                System.out.println("Belief Atom: " + beliefAtom.toString());
+//                System.out.println("Class: " + beliefAtom.getTerm().getClass());
+            }
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public static void parseLogicalExpression() {
+
+        try {
+            Parser parser = new Parser();
+
+            LinkedList<String> formulas = new LinkedList<>();
+
+            formulas.add("belief(c)");
+            formulas.add("belief(d)");
+            formulas.add("10");
+            formulas.add("0.001");
+            formulas.add("~belief(c)");
+            formulas.add("~belief(d)");
+            //TODO: parse negation as failure
+            formulas.add("not belief(c)");
+            formulas.add("not belief(d)");
+            formulas.add("belief(c) && belief(d)");
+            formulas.add("belief(c) && ~belief(d)");
+            formulas.add("~belief(c) && belief(d)");
+            formulas.add("~belief(c) && ~belief(d)");
+            formulas.add("belief(c) || belief(d)");
+            formulas.add("belief(c) || ~belief(d)");
+            formulas.add("~belief(c) || belief(d)");
+            formulas.add("~belief(c) || ~belief(d)");
+            formulas.add("belief(c) > belief(d)");
+            formulas.add("belief(c) > ~belief(d)");
+            formulas.add("~belief(c) > belief(d)");
+            formulas.add("~belief(c) > ~belief(d)");
+            formulas.add("belief(c) >= belief(d)");
+            formulas.add("belief(c) >= ~belief(d)");
+            formulas.add("~belief(c) >= belief(d)");
+            formulas.add("~belief(c) >= ~belief(d)");
+
+            for (String formula : formulas) {
+                LogicalExpression logicalExpression = parser.parseLogicalExpression(formula);
+                System.out.println(logicalExpression.toString());
+                System.out.println(logicalExpression.getClass());
+            }
+
+//            System.out.println(parser.parseContext("true").getClass());
+//            System.out.println(parser.parseContext("atom1 && atom2").getClass());
+//            System.out.println(parser.parseContext("atom1 || atom2").getClass());
+//            System.out.println(parser.parseContext("atom1 > atom2").getClass());
+//            System.out.println(parser.parseContext("atom1 >= atom2").getClass());
+//            System.out.println(parser.parseContext("atom1 < atom2").getClass());
+//            System.out.println(parser.parseContext("atom1 =< atom2").getClass());
+//
+//            System.out.println(parser.parseContext("true"));
+//            System.out.println(parser.parseContext("atom1 && atom2"));
+//            System.out.println(parser.parseContext("atom1 || atom2"));
+//            System.out.println(parser.parseContext("atom1 > atom2"));
+//            System.out.println(parser.parseContext("atom1 >= atom2"));
+//            System.out.println(parser.parseContext("atom1 < atom2"));
+//            System.out.println(parser.parseContext("atom1 =< atom2"));
+//            System.out.println(parser.parseContext("atom1 && atom2 > atom3 && atom4"));
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
 
     public static void compactEpistemicState() {
 
         try {
 
-//            // initialise parser
-//            Parser parser = new Parser();
-//
-//            BeliefAtom beliefAtom1 = parser.parseBelief("belief1(a).");
-//            BeliefAtom beliefAtom2 = parser.parseBelief("belief2(a).");
-//            BeliefAtom beliefAtom3 = parser.parseBelief("belief3(a).");
-//
-//            HashSet<BeliefAtom> domain = new HashSet<BeliefAtom>();
-//            domain.add(beliefAtom1);
-//            domain.add(beliefAtom2);
-//            domain.add(beliefAtom3);
-//
-//            System.out.println("Domain: ");
-//            for (BeliefAtom beliefAtom : domain) {
-//                System.out.println("\tBelief Atom: " + beliefAtom.toString());
-//            }
-//
-//            CompactEpistemicState compactEpistemicState = new CompactEpistemicState(domain);
-//
-//            PositiveLiteral positiveLiteral = new PositiveLiteral(beliefAtom1);
-//            NegativeLiteral negativeLiteral = new NegativeLiteral(beliefAtom1);
-//            compactEpistemicState.revise(positiveLiteral, 10);
-//            compactEpistemicState.revise(negativeLiteral, 20);
-//
-//            System.out.println(compactEpistemicState);
+            // initialise parser
+            Parser parser = new Parser();
+
+            BeliefAtom beliefAtom1 = parser.parseBeliefAtom("belief(a).");
+            BeliefAtom beliefAtom2 = parser.parseBeliefAtom("belief(b).");
+            BeliefAtom beliefAtom3 = parser.parseBeliefAtom("belief(c).");
+
+            HashSet<BeliefAtom> domain = new HashSet<BeliefAtom>();
+            domain.add(beliefAtom1);
+            domain.add(beliefAtom2);
+            domain.add(beliefAtom3);
+
+            CompactEpistemicState compactEpistemicState = new CompactEpistemicState(domain);
+
+            PositiveLiteral positiveLiteral = new PositiveLiteral(beliefAtom1);
+            NegativeLiteral negativeLiteral = new NegativeLiteral(beliefAtom1);
+            compactEpistemicState.revise(positiveLiteral, -1);
+            compactEpistemicState.revise(negativeLiteral, 2);
+
+            PositiveLiteral positiveLiteral2 = new PositiveLiteral(beliefAtom2);
+            NegativeLiteral negativeLiteral2 = new NegativeLiteral(beliefAtom2);
+            compactEpistemicState.revise(positiveLiteral2, 5);
+            compactEpistemicState.revise(negativeLiteral2, 2);
+
+            PositiveLiteral positiveLiteral3 = new PositiveLiteral(beliefAtom3);
+            NegativeLiteral negativeLiteral3 = new NegativeLiteral(beliefAtom3);
+            compactEpistemicState.revise(positiveLiteral3, 10);
+            compactEpistemicState.revise(negativeLiteral3, 5);
+
+
+            System.out.println("Domain: " + compactEpistemicState.getDomain().toString());
+            System.out.println(compactEpistemicState.toString());
+
+            LinkedList<String> formulas = new LinkedList<>();
+
+            formulas.add("belief(a)");
+            formulas.add("belief(b)");
+            formulas.add("~belief(a)");
+            formulas.add("~belief(b)");
+            formulas.add("belief(a) && belief(b)");
+            formulas.add("belief(a) && ~belief(b)");
+            formulas.add("~belief(a) && belief(b)");
+            formulas.add("~belief(a) && ~belief(b)");
+            formulas.add("belief(a) || belief(b)");
+            formulas.add("belief(a) || ~belief(b)");
+            formulas.add("~belief(a) || belief(b)");
+            formulas.add("~belief(a) || ~belief(b)");
+            formulas.add("belief(a) > belief(b)");
+            formulas.add("belief(a) > ~belief(b)");
+            formulas.add("~belief(a) > belief(b)");
+            formulas.add("~belief(a) > ~belief(b)");
+            formulas.add("belief(a) >= belief(b)");
+            formulas.add("belief(a) >= ~belief(b)");
+            formulas.add("~belief(a) >= belief(b)");
+            formulas.add("~belief(a) >= ~belief(b)");
+
+            for(String formula : formulas) {
+                LogicalExpression f = parser.parseLogicalExpression(formula);
+                System.out.print("val(" + f.toString() + ") = " + compactEpistemicState.entails(f));
+                System.out.println();
+            }
 
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
 
-    public static void gub() {
+    public static void probabalisticCompactEpistemicState() {
 
         try {
 
-//            // initialise parser
-//            Parser parser = new Parser();
-//
-//            // initialise interpreter
-//            Interpreter interpreter = new Interpreter();
-//            System.out.println("Successfully initialised interpreter and parser.");
-//
-//            // populate belief base
-//            HashSet<BeliefAtom> atoms1 = new HashSet<BeliefAtom>();
-//            atoms1.add(parser.parseBelief("atom1(a)."));
-//            atoms1.add(parser.parseBelief("atom1(b)."));
-//            interpreter.getBeliefBase().addEpistemicState(new CompactProbabilisticEpistemicState(atoms1));
-//
-//            HashSet<BeliefAtom> atoms2 = new HashSet<BeliefAtom>();
-//            atoms2.add(parser.parseBelief("atom2(a)."));
-//            atoms2.add(parser.parseBelief("atom3(b)."));
-//            interpreter.getBeliefBase().addEpistemicState(new CompactProbabilisticEpistemicState(atoms2));
-//
-//            BeliefLiteral reviseAtom2 = new PositiveLiteral(parser.parseBelief("atom2(a)."));
-//            System.out.println("\nRevise belief");
-//            interpreter.getBeliefBase().revise(reviseAtom2, 0.6);
-//            System.out.println("\nRevised belief base:\n\t" + interpreter.getBeliefBase().toString());
-//
-//            BeliefLiteral reviseAtom3 = new PositiveLiteral(parser.parseBelief("atom3(b)."));
-//            System.out.println("\nRevise belief");
-//            interpreter.getBeliefBase().revise(reviseAtom3, 0.7);
-//            System.out.println("\nRevised belief base:\n\t" + interpreter.getBeliefBase().toString());
-//
-//            BeliefLiteral reviseAtom = new PositiveLiteral(parser.parseBelief("atom1(a)."));
-//            System.out.println("\nRevise belief");
-//            interpreter.getBeliefBase().revise(reviseAtom, 0.8);
-//            System.out.println("\nRevised belief base:\n\t" + interpreter.getBeliefBase().toString());
-//
-//            System.out.println("\nSuccessfully created belief base:\n\t" + interpreter.getBeliefBase().toString());
+            // initialise parser
+            Parser parser = new Parser();
+
+            BeliefAtom beliefAtom1 = parser.parseBeliefAtom("belief(a).");
+            BeliefAtom beliefAtom2 = parser.parseBeliefAtom("belief(b).");
+            BeliefAtom beliefAtom3 = parser.parseBeliefAtom("belief(c).");
+
+            HashSet<BeliefAtom> domain = new HashSet<BeliefAtom>();
+            domain.add(beliefAtom1);
+            domain.add(beliefAtom2);
+            domain.add(beliefAtom3);
+
+            CompactEpistemicState compactEpistemicState = new CompactEpistemicState(domain);
+
+            PositiveLiteral positiveLiteral = new PositiveLiteral(beliefAtom1);
+            NegativeLiteral negativeLiteral = new NegativeLiteral(beliefAtom1);
+            compactEpistemicState.revise(positiveLiteral, -1);
+            compactEpistemicState.revise(negativeLiteral, 2);
+
+            PositiveLiteral positiveLiteral2 = new PositiveLiteral(beliefAtom2);
+            NegativeLiteral negativeLiteral2 = new NegativeLiteral(beliefAtom2);
+            compactEpistemicState.revise(positiveLiteral2, 5);
+            compactEpistemicState.revise(negativeLiteral2, 2);
+
+            PositiveLiteral positiveLiteral3 = new PositiveLiteral(beliefAtom3);
+            NegativeLiteral negativeLiteral3 = new NegativeLiteral(beliefAtom3);
+            compactEpistemicState.revise(positiveLiteral3, 10);
+            compactEpistemicState.revise(negativeLiteral3, 5);
+
+
+            System.out.println("Domain: " + compactEpistemicState.getDomain().toString());
+            System.out.println(compactEpistemicState.toString());
+
+            LinkedList<String> formulas = new LinkedList<>();
+
+            formulas.add("belief(a)");
+            formulas.add("belief(b)");
+            formulas.add("~belief(a)");
+            formulas.add("~belief(b)");
+            formulas.add("belief(a) && belief(b)");
+            formulas.add("belief(a) && ~belief(b)");
+            formulas.add("~belief(a) && belief(b)");
+            formulas.add("~belief(a) && ~belief(b)");
+            formulas.add("belief(a) || belief(b)");
+            formulas.add("belief(a) || ~belief(b)");
+            formulas.add("~belief(a) || belief(b)");
+            formulas.add("~belief(a) || ~belief(b)");
+            formulas.add("belief(a) > belief(b)");
+            formulas.add("belief(a) > ~belief(b)");
+            formulas.add("~belief(a) > belief(b)");
+            formulas.add("~belief(a) > ~belief(b)");
+            formulas.add("belief(a) >= belief(b)");
+            formulas.add("belief(a) >= ~belief(b)");
+            formulas.add("~belief(a) >= belief(b)");
+            formulas.add("~belief(a) >= ~belief(b)");
+
+            for(String formula : formulas) {
+                LogicalExpression f = parser.parseLogicalExpression(formula);
+                System.out.print("val(" + f.toString() + ") = " + compactEpistemicState.entails(f));
+                System.out.println();
+            }
 
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
+
 
     public static void example() {
 
@@ -299,29 +457,6 @@ public class Test {
         System.out.println("unify(" + term1 + ", " + term2 + ") = "  + term1.unify(term2));
     }
 
-    public static void parseBeliefs() {
-
-        try {
-            Parser parser = new Parser();
-
-//            System.out.println(parser.parseBelief("atom."));
-//            System.out.println(parser.parseBelief("atom(a)."));
-//            System.out.println(parser.parseBelief("atom(a,b)."));
-//            System.out.println(parser.parseBelief("atom(a,b,c)."));
-//            System.out.println(parser.parseBelief("atom(Var)."));
-//            System.out.println(parser.parseBelief("atom(Var1,Var2)."));
-//            System.out.println(parser.parseBelief("atom(a,Var)."));
-//            System.out.println(parser.parseBelief("atom(Var,a)."));
-//            System.out.println(parser.parseBelief("atom(struct(a))."));
-//            System.out.println(parser.parseBelief("atom(struct(Var))."));
-//            System.out.println(parser.parseBelief("atom(struct(a,b),c)."));
-//            System.out.println(parser.parseBelief("atom(struct(Var1,Var2),Var3)."));
-
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-    }
-
     public static void parsePlan() {
 
         try {
@@ -339,32 +474,7 @@ public class Test {
         }
     }
 
-    public static void parseLogicalExpression() {
 
-        try {
-            Parser parser = new Parser();
-
-            System.out.println(parser.parseContext("true").getClass());
-            System.out.println(parser.parseContext("atom1 && atom2").getClass());
-            System.out.println(parser.parseContext("atom1 || atom2").getClass());
-            System.out.println(parser.parseContext("atom1 > atom2").getClass());
-            System.out.println(parser.parseContext("atom1 >= atom2").getClass());
-            System.out.println(parser.parseContext("atom1 < atom2").getClass());
-            System.out.println(parser.parseContext("atom1 =< atom2").getClass());
-
-            System.out.println(parser.parseContext("true"));
-            System.out.println(parser.parseContext("atom1 && atom2"));
-            System.out.println(parser.parseContext("atom1 || atom2"));
-            System.out.println(parser.parseContext("atom1 > atom2"));
-            System.out.println(parser.parseContext("atom1 >= atom2"));
-            System.out.println(parser.parseContext("atom1 < atom2"));
-            System.out.println(parser.parseContext("atom1 =< atom2"));
-            System.out.println(parser.parseContext("atom1 && atom2 > atom3 && atom4"));
-
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-    }
 
     public static void parsePlanLibrary() {
 

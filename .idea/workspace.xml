@@ -1,44 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03052817-61e0-4dd6-9ee5-a5ac623db670" name="Default" comment="Changed project name to uncertain-agentspeak">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+    <list default="true" id="03052817-61e0-4dd6-9ee5-a5ac623db670" name="Default" comment="Implemented parser for uncertain agentSpeak.&#10;Enabled txt file input.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/agentspeak.iml" afterPath="$PROJECT_DIR$/uncertain-agentspeak.iml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Action.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Action.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Belief.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Belief.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BeliefBase.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/BeliefBase.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BeliefGoal.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/BeliefGoal.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Context.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Context.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ContextBelief.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/ContextBelief.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Event.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EventSet.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/EventSet.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EventTrigger.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/EventTrigger.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Goal.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Goal.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IntendedMeans.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/IntendedMeans.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Intention.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Intention.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IntentionSet.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/IntentionSet.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interpreter.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Interpreter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Parser.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Parser.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Plan.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Plan.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PlanLibrary.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/PlanLibrary.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Term.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Term.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Unifier.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Unifier.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/actions/BeliefAction.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/actions/BeliefAction.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/actions/EnvironmentAction.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/actions/EnvironmentAction.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/actions/GoalAction.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/actions/GoalAction.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/actions/belief_actions/AddBeliefAction.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/actions/belief_actions/AddBeliefAction.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/actions/belief_actions/DeleteBeliefAction.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/actions/belief_actions/DeleteBeliefAction.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/actions/goal_actions/AchievementGoalAction.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/actions/goal_actions/AchievementGoalAction.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/actions/goal_actions/TestGoalAction.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/actions/goal_actions/TestGoalAction.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/event_triggers/AddEvent.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/event_triggers/AddEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/event_triggers/DeleteEvent.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/event_triggers/DeleteEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/events/ExternalEvent.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/events/ExternalEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/events/InternalEvent.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/events/InternalEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/goals/AchievementGoal.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/goals/AchievementGoal.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/goals/TestGoal.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/goals/TestGoal.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parser/Visitor.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/agentspeak/Parser.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Parser.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4" afterPath="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4" />
+      <change beforePath="$PROJECT_DIR$/src/main/sat_solver/SATsolver.java" afterPath="$PROJECT_DIR$/src/main/sat_solver/SATsolver.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java" afterPath="$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/uncertainty/GlobalUncertainBelief.java" afterPath="$PROJECT_DIR$/src/main/uncertainty/GlobalUncertainBelief.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/CompactEpistemicState.java" afterPath="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/CompactEpistemicState.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/World.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java" afterPath="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Test.java" afterPath="$PROJECT_DIR$/src/test/java/Test.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/input.txt" afterPath="$PROJECT_DIR$/src/test/java/input.txt" />
+      <change beforePath="$PROJECT_DIR$/uncertain-agentspeak.iml" afterPath="$PROJECT_DIR$/uncertain-agentspeak.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,111 +31,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Constant.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/agentspeak/terms/Constant.java">
+      <file leaf-file-name="GlobalUncertainBelief.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/uncertainty/GlobalUncertainBelief.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Term.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Term.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="157">
+              <caret line="461" column="28" lean-forward="false" selection-start-line="461" selection-start-column="28" selection-end-line="462" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PossibilisticEpistemicState.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/PossibilisticEpistemicState.java">
+      <file leaf-file-name="input.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/input.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IntendedMeans.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/agentspeak/IntendedMeans.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+            <state relative-caret-position="396">
+              <caret line="87" column="43" lean-forward="false" selection-start-line="87" selection-start-column="43" selection-end-line="87" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventTrigger.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/agentspeak/EventTrigger.java">
+      <file leaf-file-name="UncertainAgentspeak.g4" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-              <folding>
-                <element signature="e#229#230#0" expanded="true" />
-                <element signature="e#275#276#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Event.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Event.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-              <folding>
-                <element signature="e#340#341#0" expanded="true" />
-                <element signature="e#388#389#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="56" column="43" lean-forward="false" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Interpreter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Interpreter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="76" column="20" lean-forward="false" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProbabilisticEpistemicState.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/ProbabilisticEpistemicState.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="64" />
+            <state relative-caret-position="413">
+              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -180,6 +76,13 @@
       <find>compound term</find>
       <find>Context</find>
       <find>co</find>
+      <find>belief</find>
+      <find>weight</find>
+      <find>Sys</find>
+      <find>SyS</find>
+      <find>event</find>
+      <find>eVENT</find>
+      <find>Belief atom</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -198,57 +101,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/actions/BeliefAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/actions/goal_actions/AchievementGoalAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/event_triggers/AddEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/goals/AchievementGoal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/goals/TestGoal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/event_triggers/DeleteEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Belief.java" />
-        <option value="$PROJECT_DIR$/src/main/java/terms/Constant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Term.java" />
-        <option value="$PROJECT_DIR$/src/main/java/terms/Variable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PlanLibrary.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BeliefBase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event.java" />
-        <option value="$PROJECT_DIR$/src/main/java/EventSet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/IntentionSet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/terms/Structure.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Plan.java" />
-        <option value="$PROJECT_DIR$/src/main/java/parser/Visitor.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/Agentspeak.g4" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/jason.g4" />
-        <option value="$PROJECT_DIR$/src/main/java/IntendedMeans.java" />
-        <option value="$PROJECT_DIR$/src/main/java/actions/goal_actions/TestGoalAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Interpreter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Intention.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/actions/EnvironmentAction.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/uncertainty/GlobalUncertainBelief.java" />
-        <option value="$PROJECT_DIR$/src/main/uncertainty/GlobalUncertainBelief.java" />
-        <option value="$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/Conjunction.java" />
-        <option value="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/ProbabilisticEpistemicState.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/BeliefAtom.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/LogicalExpression.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/BeliefLiteral.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/actions/BeliefAction.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/Negation.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/event_triggers/goal_event_triggers/AddGoalET.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/event_triggers/goal_event_triggers/DeleteGoalET.java" />
         <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/belief_literals/PositiveLiteral.java" />
         <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/belief_literals/NegativeLiteral.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/event_triggers/belief_event_triggers/ReviseBeliefET.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/EventTrigger.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/Plan.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/event_triggers/GoalEventTrigger.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/event_triggers/BeliefEventTrigger.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/BeliefBase.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/BeliefLiteral.java" />
         <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/primitives/Contradiction.java" />
         <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/primitives/Tautology.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/Terminal.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/terms/Structure.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/terms/Variable.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/terms/constants/Atom.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/terms/Constant.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/terms/constants/Number.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/terms/constants/Text.java" />
         <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/Primitive.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/Disjunction.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/Intention.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/IntendedMeans.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/Action.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/actions/goal_actions/TestGoalAction.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/actions/EnvironmentAction.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/actions/goal_actions/AchievementGoalAction.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/actions/belief_actions/ReviseBeliefAction.java" />
         <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/Operator.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/Term.java" />
-        <option value="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/PossibilisticEpistemicState.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/Interpreter.java" />
+        <option value="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/compact_epistemic_states/CompactPossibilisticEpistemicState.java" />
+        <option value="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java" />
         <option value="$PROJECT_DIR$/src/test/java/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/CompactEpistemicState.java" />
+        <option value="$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/LogicalExpression.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/Terminal.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/BeliefAtom.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/GreaterEqualsPlausibility.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/GreaterThanPlausibility.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/negations/NegationAsFailure.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/negations/StrongNegation.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/Conjunction.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/relational_expressions/Equal.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/RelationalExpression.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/Disjunction.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/relational_expressions/NotEqual.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/Parser.java" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakBaseVisitor.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakVisitor.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakParser.java" />
+        <option value="$PROJECT_DIR$/src/main/sat_solver/SATsolver.java" />
+        <option value="$PROJECT_DIR$/src/main/uncertainty/GlobalUncertainBelief.java" />
+        <option value="$PROJECT_DIR$/src/test/java/input.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4" />
       </list>
     </option>
   </component>
@@ -259,10 +162,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="53" />
-    <option name="y" value="23" />
-    <option name="width" value="1387" />
-    <option name="height" value="877" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -302,6 +203,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -334,7 +236,51 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="terms" type="462c0819:PsiDirectoryNode" />
+              <item name="logical_expressions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
+              <item name="logical_expressions" type="462c0819:PsiDirectoryNode" />
+              <item name="operators" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
+              <item name="logical_expressions" type="462c0819:PsiDirectoryNode" />
+              <item name="operators" type="462c0819:PsiDirectoryNode" />
+              <item name="negations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
+              <item name="logical_expressions" type="462c0819:PsiDirectoryNode" />
+              <item name="relational_expressions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
+              <item name="logical_expressions" type="462c0819:PsiDirectoryNode" />
+              <item name="terminals" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="antlr" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
@@ -357,11 +303,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -370,7 +319,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="$PROJECT_DIR$/src/main/resources/antlr/Agentspeak.g4::/auto-gen" value="true" />
     <property name="$PROJECT_DIR$/src/main/resources/antlr/Agentspeak.g4::/language" value="Java" />
     <property name="$PROJECT_DIR$/src/main/resources/antlr/Agentspeak.g4::/gen-listener" value="true" />
@@ -379,6 +328,11 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4::/auto-gen" value="false" />
+    <property name="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4::/output-dir" value="$PROJECT_DIR$/src" />
+    <property name="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4::/gen-listener" value="true" />
+    <property name="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4::/gen-visitor" value="true" />
+    <property name="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4::/language" value="Java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -390,6 +344,8 @@
       <recent name="main.exceptions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/main/sat_solver" />
       <recent name="$PROJECT_DIR$/src/main/resources/antlr/main/resources/antlr" />
       <recent name="$PROJECT_DIR$/src/main/resources/antlr" />
       <recent name="$PROJECT_DIR$/src/main/resources/grammar" />
@@ -543,7 +499,7 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="StructureViewFactory">
-    <option name="ACTIVE_ACTIONS" value=",SHOW_INHERITED" />
+    <option name="ACTIVE_ACTIONS" value=",SHOW_INHERITED,VISIBILITY_SORTER,ALPHA_COMPARATOR" />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -553,146 +509,6 @@
       <option name="presentableId" value="Default" />
       <updated>1517868555388</updated>
     </task>
-    <task id="LOCAL-00001" summary="Added atom constructor which sets functor (name) and a isValid function which checks that the first letter is lowercase and returns true/false.">
-      <created>1517925121019</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1517925121019</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Added copy() function in Unifier class.&#10;Added unification for Constant class.&#10;Added unification for Variable class.">
-      <created>1517929570544</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1517929570544</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Implemented terms:&#10;Atom - labels, getLabel&#10;Number - value, constructor, getValue&#10;Created Text class - value, constructor, getValue&#10;Structure - functor, arguments, arity, constructor, getFunctor, getArguments, getArity&#10;Variable - label, constructor, getLabel">
-      <created>1517931614350</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1517931614350</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Structure class: &#10;-&gt;Added getArgument(int i)&#10;-&gt;Added unification for constants, variables and structures&#10;&#10;Variable class:&#10;-&gt;Corrected constant unifier&#10;-&gt;Corrected structure unifier&#10;&#10;Term class:&#10;-&gt;Added unifier method that calls different term unifiers dependent on term type&#10;-&gt;Added class comment&#10;&#10;Unifier class:&#10;-&gt; Removed copy method&#10;&#10;Constant class:&#10;-&gt;Added class comments&#10;&#10;Variable class:&#10;-&gt;Added unification for variable.unify(variable)">
-      <created>1518044618989</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1518044618989</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Added/updated class comments for atom, number, text and structure">
-      <created>1518045012009</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1518045012009</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added BeliefBase (ArrayList(BeliefLiteral)), EventSet (LinkedList(Event), Event(EventTrigger, Intention)), IntentionSet (LinkedList(Intention), Intention (Deque&lt;IntendedMeans&gt;), IntendedMeans), PlanLibrary (ArrayList(Plans), Plans(EventTrigger, Context, Action))">
-      <created>1518528482252</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1518528482252</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Started implementing interpreter.&#10;&#10;Implemented selection of relevant plans&#10;&#10;Implementing applicable plans. About to add substitutions to terms">
-      <created>1518645694610</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1518645694610</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Added substitutions for applicable plans to term, var, struct and const">
-      <created>1518647503187</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1518647503187</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Finsihed implementing interpreter.&#10;&#10;Need to add executeIntention method to Intention class">
-      <created>1519321232712</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1519321232712</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Commit before implementing parser.&#10;Added AddEvent/DeleteEvent and made class BeliefGoal">
-      <created>1520855637887</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1520855637887</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Changed constant unify function. It now converts to strings to compare">
-      <created>1521394617921</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1521394617921</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Implemented parser and added toString() methods to data types">
-      <created>1521405935694</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1521405935694</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Interpreter working for travel example.&#10;&#10;Added output for each executeAction method.">
-      <created>1522076113906</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1522076113906</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Added tests for parseBeliefs, parsePlans and uification. &#10;Added parseTerm to parser">
-      <created>1522078647164</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1522078647164</updated>
-    </task>
-    <task id="LOCAL-00015" summary="AgentSpeak(L) successfully implemented">
-      <created>1522672724349</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1522672724349</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Commit before importing to new repository to extend with uncertainty modelling and reasoning.">
-      <created>1528369231759</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1528369231759</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Added classes for implementing uncertianty (GUB, epistemic state, Wieght, World, ProbabalisticES, PossibilisticES)">
-      <created>1529409049323</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1529409049323</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Added folder for custom exceptions and added a NonGroundException">
-      <created>1529409121984</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1529409121984</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Added isGround method">
-      <created>1529409191102</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1529409191102</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Created folder for logical expressions within AgentSpeak.&#10;This includes BeliefAtom, Operators and Terminals">
-      <created>1529409282522</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1529409282523</updated>
-    </task>
     <task id="LOCAL-00021" summary="Created abstract class for implementing/evaluating logical expressions in plan contexts">
       <created>1529409349199</created>
       <option name="number" value="00021" />
@@ -700,7 +516,343 @@
       <option name="project" value="LOCAL" />
       <updated>1529409349199</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Changed project name to uncertain-agentspeak">
+      <created>1529409422809</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1529409422809</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Overrode methods for hashCode and equals in terms">
+      <created>1529488696737</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1529488696737</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Overrode equals and hashCode methods for logical expressions">
+      <created>1529489583058</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1529489583058</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Implemented probabilistic epistemic and GUB. Test method gub() created to test probabilistic epistemic state">
+      <created>1529504020739</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1529504020740</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Separated epistemic state and compact epistemic state. Added getWeight methods to CompactEpistemicState for belief atoms, belief literals, positive literals and negative literals">
+      <created>1529580620935</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1529580620936</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Implemented lambda methods for compact epistemic states">
+      <created>1529679391072</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1529679391072</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Added getBeliefAtoms and getBeliefLiterals methods">
+      <created>1529682877052</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1529682877052</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added classes for Negations (StrongNegation and NegationAsFailure).&#10;Added Plausibility operators (greater than and greater/equals than).">
+      <created>1529683069057</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1529683069057</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Methods removed and made an extension of GUB">
+      <created>1529926561316</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1529926561316</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Implemented pare and lambda methods for compact epistemic state">
+      <created>1529926673945</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1529926673945</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Implemented getBeliefAtoms and getBeliefLiterals methods">
+      <created>1529939515622</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1529939515622</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Commented out belief base so that test could run">
+      <created>1529939588542</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1529939588542</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Commit before implementing uncertainAgentspeak parser/visitor">
+      <created>1530093777331</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1530093777331</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Implemented seperate double and integer numbers so that parser/visitor can work">
+      <created>1530110308575</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1530110308575</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Implemented getIntVal and getDoubleVal methods for Number class">
+      <created>1530112387695</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1530112387695</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Corrected if statement for setting initial weight">
+      <created>1530114535300</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1530114535300</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Corrected revise method&#10;Added toString method">
+      <created>1530117332491</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1530117332491</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Changed toString method to neatly format GUB">
+      <created>1530120765211</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1530120765211</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Changed context to LogicalExpression class and moved Context and ContextBelief classes to superseeded folder">
+      <created>1530121512235</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1530121512235</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Changed eventTrigger's to accomodate for belief revision instead of belief addition/deletion">
+      <created>1530175528882</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1530175528882</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Made goals base term type Term instead of Belief as in AgentSpeak(L) paper">
+      <created>1530185484269</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1530185484269</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Updated action methods.&#10;Removed add/delete belief actions.&#10;Removed add/delete belief events.&#10;Deleted BeliefGoal class&#10;Added ReviseBeliefAction.&#10;Deleted Belief class.">
+      <created>1530201902348</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1530201902348</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Added toString methods">
+      <created>1530630618180</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1530630618180</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Implemented full parser that reads *.txt files and instantiates an interpreter.">
+      <created>1530630710705</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1530630710705</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Changed to double number">
+      <created>1530633858143</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1530633858143</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Changed internal event to AddGoalET">
+      <created>1530633895226</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1530633895226</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Added unify() methods">
+      <created>1530633948765</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1530633948765</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Made abstract">
+      <created>1530633972868</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1530633972868</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Implemented unification">
+      <created>1530634001094</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1530634001095</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Changed plan eventTrigger to type eventTrigger instead of event">
+      <created>1530634046036</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1530634046036</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Implemented unification">
+      <created>1530634078932</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1530634078932</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Made getGUB() method public">
+      <created>1530634153584</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1530634153584</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Implemented World class">
+      <created>1530634192723</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1530634192723</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Implemented parser for uncertain agentSpeak.&#10;Enabled txt file input.">
+      <created>1530634287213</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1530634287213</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Deleted superseeded and unnecessary files">
+      <created>1530634332386</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1530634332387</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Added exception to executeAction() method">
+      <created>1530634383293</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1530634383293</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Implemented substitute methods for all logical expressions">
+      <created>1530702433864</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1530702433865</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Moved pare methods from CompactEpistemicState to EpistemicState.&#10;Implemented entails method for EpistemicState.&#10;Implemented languageContains method which returns true if a logical expression is contained within the domain">
+      <created>1530702744520</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1530702744520</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Changed BeliefBase to GlobalUncertainBelief">
+      <created>1530727075148</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1530727075148</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Implemented convertToNNF() and inNNF() methods for all LogicalExpressions">
+      <created>1530727150753</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1530727150753</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Added isGround() methods">
+      <created>1530880847439</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1530880847443</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Corrected revise method and getLambda">
+      <created>1530880907469</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1530880907469</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Implemented entailment. Added langaugeCotains function and getRelevantES() method">
+      <created>1530880982107</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1530880982108</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Added entials() method for just LogicalExpression input">
+      <created>1530881035995</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1530881035995</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Added toNNF check in getLambda() method">
+      <created>1530881081319</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1530881081319</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Changed bleief base to global uncertain belief">
+      <created>1530881118977</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1530881118977</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Implemented sat4J SATsolver">
+      <created>1530889318779</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1530889318779</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Implemented isClassical() method for Plausibility/Negation as failure">
+      <created>1531225978894</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1531225978894</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TodoView">
@@ -717,69 +869,98 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24131082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2623942" sideWeight="0.49361023" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2382104" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30108827" sideWeight="0.50858366" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286991" sideWeight="0.5079872" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30108827" sideWeight="0.4914163" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3470375" sideWeight="0.48569384" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33857316" sideWeight="0.4914163" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20028612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.49427754" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21244635" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286991" sideWeight="0.49201277" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296653" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39903265" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39903265" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30108827" sideWeight="0.50858366" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.49427754" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39903265" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26964933" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3470375" sideWeight="0.48569384" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30108827" sideWeight="0.4914163" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22603719" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added atom constructor which sets functor (name) and a isValid function which checks that the first letter is lowercase and returns true/false." />
-    <MESSAGE value="Added unification for Constant class.&#10;Added copy() function in Unifier class." />
-    <MESSAGE value="Added unification for Variable class." />
-    <MESSAGE value="Added copy() function in Unifier class.&#10;Added unification for Constant class.&#10;Added unification for Variable class." />
-    <MESSAGE value="Implemented terms:&#10;Atom - labels, getLabel&#10;Number - value, constructor, getValue&#10;Created Text class - value, constructor, getValue&#10;Structure - functor, arguments, arity, constructor, getFunctor, getArguments, getArity&#10;Variable - label, constructor, getLabel" />
-    <MESSAGE value="Structure class: &#10;-&gt;Added getArgument(int i)&#10;-&gt;Added unification for constants, variables and structures&#10;&#10;Variable class:&#10;-&gt;Corrected constant unifier&#10;-&gt;Corrected structure unifier&#10;&#10;Term class:&#10;-&gt;Added unifier method that calls different term unifiers dependent on term type&#10;-&gt;Added class comment&#10;&#10;Unifier class:&#10;-&gt; Removed copy method&#10;&#10;Constant class:&#10;-&gt;Added class comments&#10;&#10;Variable class:&#10;-&gt;Added unification for variable.unify(variable)" />
-    <MESSAGE value="Added/updated class comments for atom, number, text and structure" />
-    <MESSAGE value="Added BeliefBase (ArrayList(BeliefLiteral)), EventSet (LinkedList(Event), Event(EventTrigger, Intention)), IntentionSet (LinkedList(Intention), Intention (Deque&lt;IntendedMeans&gt;), IntendedMeans), PlanLibrary (ArrayList(Plans), Plans(EventTrigger, Context, Action))" />
-    <MESSAGE value="Started implementing interpreter.&#10;&#10;Implemented selection of relevant plans&#10;&#10;Implementing applicable plans. About to add substitutions to terms" />
-    <MESSAGE value="Added substitutions for applicable plans to term, var, struct and const" />
-    <MESSAGE value="Finsihed implementing interpreter.&#10;&#10;Need to add executeIntention method to Intention class" />
-    <MESSAGE value="Commit before implementing parser.&#10;Added AddEvent/DeleteEvent and made class BeliefGoal" />
-    <MESSAGE value="Changed constant unify function. It now converts to strings to compare" />
-    <MESSAGE value="Implemented parser and added toString() methods to data types" />
-    <MESSAGE value="Interpreter working for travel example.&#10;&#10;Added output for each executeAction method." />
-    <MESSAGE value="Added tests for parseBeliefs, parsePlans and uification. &#10;Added parseTerm to parser" />
-    <MESSAGE value="AgentSpeak(L) successfully implemented" />
-    <MESSAGE value="Commit before importing to new repository to extend with uncertainty modelling and reasoning." />
-    <MESSAGE value="Added classes for implementing uncertianty (GUB, epistemic state, Wieght, World, ProbabalisticES, PossibilisticES)" />
-    <MESSAGE value="Added folder for custom exceptions and added a NonGroundException" />
-    <MESSAGE value="Added isGround method" />
-    <MESSAGE value="Created folder for logical expressions within AgentSpeak.&#10;This includes BeliefAtom, Operators and Terminals" />
-    <MESSAGE value="Created abstract class for implementing/evaluating logical expressions in plan contexts" />
-    <MESSAGE value="Changed project name to uncertain-agentspeak" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed project name to uncertain-agentspeak" />
+    <MESSAGE value="Added toString methods" />
+    <MESSAGE value="Implemented full parser that reads *.txt files and instantiates an interpreter." />
+    <MESSAGE value="Changed to double number" />
+    <MESSAGE value="Changed internal event to AddGoalET" />
+    <MESSAGE value="Added unify() methods" />
+    <MESSAGE value="Made abstract" />
+    <MESSAGE value="Changed plan eventTrigger to type eventTrigger instead of event" />
+    <MESSAGE value="Implemented unification" />
+    <MESSAGE value="Made getGUB() method public" />
+    <MESSAGE value="Implemented World class" />
+    <MESSAGE value="Implemented parser for uncertain agentSpeak.&#10;Enabled txt file input." />
+    <MESSAGE value="Deleted superseeded and unnecessary files" />
+    <MESSAGE value="Added exception to executeAction() method" />
+    <MESSAGE value="Implemented substitute methods for all logical expressions" />
+    <MESSAGE value="Moved pare methods from CompactEpistemicState to EpistemicState.&#10;Implemented entails method for EpistemicState.&#10;Implemented languageContains method which returns true if a logical expression is contained within the domain" />
+    <MESSAGE value="Changed BeliefBase to GlobalUncertainBelief" />
+    <MESSAGE value="Implemented convertToNNF() and inNNF() methods for all LogicalExpressions" />
+    <MESSAGE value="Added isGround() methods" />
+    <MESSAGE value="Corrected revise method and getLambda" />
+    <MESSAGE value="Implemented entailment. Added langaugeCotains function and getRelevantES() method" />
+    <MESSAGE value="Added entials() method for just LogicalExpression input" />
+    <MESSAGE value="Added toNNF check in getLambda() method" />
+    <MESSAGE value="Changed bleief base to global uncertain belief" />
+    <MESSAGE value="Implemented sat4J SATsolver" />
+    <MESSAGE value="Implemented isClassical() method for Plausibility/Negation as failure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented isClassical() method for Plausibility/Negation as failure" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -788,49 +969,53 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/actions/belief_actions/DeleteBeliefAction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/event_triggers/BeliefEventTrigger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        <state relative-caret-position="60">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding>
+            <element signature="e#525#526#0" expanded="false" />
+            <element signature="e#561#562#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/event_triggers/AddEvent.java">
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/event_triggers/belief_event_triggers/ReviseBeliefET.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="451">
+          <caret line="43" column="20" lean-forward="false" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
+          <folding>
+            <element signature="e#797#798#0" expanded="false" />
+            <element signature="e#824#825#0" expanded="false" />
+            <element signature="e#879#880#0" expanded="false" />
+            <element signature="e#906#907#0" expanded="false" />
+            <element signature="e#1466#1467#0" expanded="false" />
+            <element signature="e#1564#1565#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/actions/GoalAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/actions/goal_actions/AchievementGoalAction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/EventSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="31" column="21" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+        <state relative-caret-position="60">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/actions/goal_actions/TestGoalAction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="37" column="70" lean-forward="false" selection-start-line="37" selection-start-column="70" selection-end-line="37" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Intention.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="33" column="20" lean-forward="false" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding>
-            <marker date="1529407641060" expanded="true" signature="9393:9398" ph="//..." />
-          </folding>
+        <state relative-caret-position="165">
+          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -842,26 +1027,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Goal.java">
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/BeliefBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/goals/TestGoal.java">
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Plan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        <state relative-caret-position="420">
+          <caret line="34" column="48" lean-forward="false" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/goals/AchievementGoal.java">
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/belief_literals/PositiveLiteral.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="375">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/BeliefLiteral.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="62" column="24" lean-forward="false" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
+          <folding>
+            <element signature="e#1953#1954#0" expanded="false" />
+            <element signature="e#2007#2008#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/belief_literals/NegativeLiteral.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="7" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/primitives/Contradiction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <folding>
+            <element signature="e#369#370#0" expanded="false" />
+            <element signature="e#407#408#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/primitives/Tautology.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding>
+            <element signature="e#364#365#0" expanded="false" />
+            <element signature="e#406#407#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/Primitive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+          <folding>
+            <element signature="e#331#332#0" expanded="false" />
+            <element signature="e#358#359#0" expanded="false" />
+            <element signature="e#423#424#0" expanded="false" />
+            <element signature="e#471#472#0" expanded="false" />
+            <element signature="e#542#543#0" expanded="false" />
+            <element signature="e#593#594#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Intention.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="23" column="81" lean-forward="false" selection-start-line="23" selection-start-column="81" selection-end-line="23" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/IntendedMeans.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="45" column="75" lean-forward="false" selection-start-line="45" selection-start-column="75" selection-end-line="45" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="101" lean-forward="false" selection-start-line="5" selection-start-column="101" selection-end-line="5" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/actions/goal_actions/TestGoalAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="21" column="92" lean-forward="false" selection-start-line="21" selection-start-column="92" selection-end-line="21" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/actions/goal_actions/AchievementGoalAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="24" column="92" lean-forward="false" selection-start-line="24" selection-start-column="92" selection-end-line="24" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/actions/belief_actions/ReviseBeliefAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="21" column="92" lean-forward="false" selection-start-line="21" selection-start-column="92" selection-end-line="21" selection-end-column="92" />
           <folding />
         </state>
       </provider>
@@ -869,301 +1162,280 @@
     <entry file="file://$PROJECT_DIR$/src/main/agentspeak/actions/EnvironmentAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="17" column="66" lean-forward="false" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/uncertainty/epistemic_states/World.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/uncertainty/epistemic_states/PossibilisticEpistemicState.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/uncertainty/EpistemicState.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/uncertainty/epistemic_states/ProbabilisticEpistemicState.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/uncertainty/epistemic_states/Weight.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/uncertainty/GlobalUncertainBelief.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/Weight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/GlobalUncertainBelief.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/exceptions/NotGroundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/Conjunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/BeliefLiteral.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/belief_literals/PositiveLiteral.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/belief_literals/NegativeLiteral.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#294#295#0" expanded="false" />
-            <element signature="e#321#322#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/primitives/Contradiction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/primitives/Tautology.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="39" />
+          <caret line="17" column="92" lean-forward="false" selection-start-line="17" selection-start-column="92" selection-end-line="17" selection-end-column="92" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/Terminal.java">
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Interpreter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/terms/constants/numbers/DoubleNumber.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/terms/constants/numbers/IntegerNumber.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/terms/constants/Atom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/terms/constants/Number.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="40" lean-forward="false" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/terms/constants/Text.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/terminals/Primitive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        <state relative-caret-position="460">
+          <caret line="91" column="78" lean-forward="false" selection-start-line="91" selection-start-column="78" selection-end-line="91" selection-end-column="78" />
           <folding>
-            <element signature="e#197#198#0" expanded="true" />
-            <element signature="e#224#225#0" expanded="true" />
+            <element signature="e#3185#3186#0" expanded="false" />
+            <element signature="e#3235#3236#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/Disjunction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/compact_epistemic_states/CompactPossibilisticEpistemicState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        <state relative-caret-position="-168">
+          <caret line="71" column="66" lean-forward="false" selection-start-line="71" selection-start-column="66" selection-end-line="71" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/Negation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/Operator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding>
-            <element signature="e#179#180#0" expanded="true" />
-            <element signature="e#207#208#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/BeliefAtom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" column="21" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#373#374#0" expanded="true" />
-            <element signature="e#413#414#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/terms/Variable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/terms/Structure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="45" column="19" lean-forward="false" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/terms/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Term.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="60">
+          <caret line="7" column="58" lean-forward="false" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/ProbabilisticEpistemicState.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Override.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/LogicalExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/PossibilisticEpistemicState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/IntendedMeans.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/EventTrigger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding>
-            <element signature="e#229#230#0" expanded="true" />
-            <element signature="e#275#276#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding>
-            <element signature="e#340#341#0" expanded="true" />
-            <element signature="e#388#389#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="56" column="43" lean-forward="false" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
+        <state relative-caret-position="435">
+          <caret line="52" column="18" lean-forward="false" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+        <state relative-caret-position="-6683">
+          <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Interpreter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/CompactEpistemicState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="76" column="20" lean-forward="false" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
+        <state relative-caret-position="-101">
+          <caret line="139" column="36" lean-forward="true" selection-start-line="139" selection-start-column="36" selection-end-line="139" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="74" column="42" lean-forward="false" selection-start-line="74" selection-start-column="42" selection-end-line="74" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/LogicalExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="18" column="42" lean-forward="false" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/BeliefAtom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <element signature="e#1178#1179#0" expanded="false" />
+            <element signature="e#1205#1206#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/Terminal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding>
+            <element signature="e#451#452#0" expanded="false" />
+            <element signature="e#478#479#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1314">
+          <caret line="176" column="16" lean-forward="false" selection-start-line="176" selection-start-column="16" selection-end-line="176" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/GreaterThanPlausibility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1378#1379#0" expanded="false" />
+            <element signature="e#1406#1407#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/negations/NegationAsFailure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="61" column="25" lean-forward="false" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
+          <folding>
+            <element signature="e#923#924#0" expanded="false" />
+            <element signature="e#951#952#0" expanded="false" />
+            <element signature="e#1548#1549#0" expanded="false" />
+            <element signature="e#1593#1594#0" expanded="false" />
+            <element signature="e#2134#2135#0" expanded="false" />
+            <element signature="e#2191#2192#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/negations/StrongNegation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="19" column="55" lean-forward="false" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+          <folding>
+            <element signature="e#836#837#0" expanded="false" />
+            <element signature="e#887#888#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/Conjunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="108" column="51" lean-forward="false" selection-start-line="108" selection-start-column="51" selection-end-line="108" selection-end-column="51" />
+          <folding>
+            <element signature="e#1359#1360#0" expanded="false" />
+            <element signature="e#1443#1444#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/Disjunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="116" column="66" lean-forward="false" selection-start-line="116" selection-start-column="66" selection-end-line="116" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/relational_expressions/NotEqual.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="27" column="49" lean-forward="false" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakBaseVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="187" column="110" lean-forward="false" selection-start-line="187" selection-start-column="110" selection-end-line="187" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="167" column="99" lean-forward="false" selection-start-line="167" selection-start-column="99" selection-end-line="167" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="215" column="21" lean-forward="false" selection-start-line="215" selection-start-column="21" selection-end-line="215" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/sat_solver/SATsolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="30" column="79" lean-forward="false" selection-start-line="30" selection-start-column="79" selection-end-line="30" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/relational_expressions/Equal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/GreaterEqualsPlausibility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1215">
+          <caret line="102" column="24" lean-forward="true" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="1868" column="32" lean-forward="false" selection-start-line="1868" selection-start-column="32" selection-end-line="1868" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/RelationalExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="43" column="20" lean-forward="false" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
+          <folding>
+            <element signature="e#996#997#0" expanded="false" />
+            <element signature="e#1023#1024#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/GlobalUncertainBelief.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="461" column="28" lean-forward="false" selection-start-line="461" selection-start-column="28" selection-end-line="462" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/input.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="87" column="43" lean-forward="false" selection-start-line="87" selection-start-column="43" selection-end-line="87" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1245,6 +1517,17 @@
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
           <last-edited>org.antlr:antlr4-runtime:4.5.2-1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
