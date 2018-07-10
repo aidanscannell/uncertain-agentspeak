@@ -101,10 +101,10 @@ belief_atom_expr        : belief_atom | LPAREN and_expr RPAREN;
 //equals                  : '=' ;
 //rel_term                : (belief_literal|arithm_expr) ;
 //
-//arithm_expr             : arithm_term ( ( '+' | '-' ) arithm_expr ) ;
-//arithm_term             : arithm_factor ( ( '*' | '/' | 'div' | 'mod' ) arithm_term ) ;
-//arithm_factor           : arithm_simple ( '**' arithm_factor ) ;
-//arithm_simple           : NUMBER | VARIABLE | '-' arithm_simple | '(' arithm_expr ')' ;
+arithm_expr             : arithm_term ( ( '+' | '-' ) arithm_expr ) ;
+arithm_term             : arithm_factor ( ( '*' | '/' | 'div' | 'mod' ) arithm_term ) ;
+arithm_factor           : arithm_simple ( '**' arithm_factor ) ;
+arithm_simple           : NUMBER | VARIABLE | '-' arithm_simple | '(' arithm_expr ')' ;
 
 // Plan body
 body                    : body_statement (';' body_statement)* | tautology ;

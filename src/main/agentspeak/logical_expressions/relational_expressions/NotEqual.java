@@ -10,7 +10,7 @@ public class NotEqual extends RelationalExpression {
         super(left, right);
     }
 
-    public NotEqual substitute(Unifier unifier) {
+    public NotEqual substitute(Unifier unifier) throws Exception {
         return new NotEqual(super.getLeft().substitute(unifier), super.getRight().substitute(unifier));
     }
 
@@ -21,6 +21,11 @@ public class NotEqual extends RelationalExpression {
         } else {
             return this;
         }
+    }
+
+    @Override
+    public NotEqual convertToCNF() throws Exception {
+        return new NotEqual(this.getLeft().convertToCNF(), this.getRight().convertToCNF());
     }
 
     @Override

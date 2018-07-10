@@ -7,6 +7,7 @@ import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 import main.agentspeak.logical_expressions.terminals.belief_literals.NegativeLiteral;
 import main.agentspeak.logical_expressions.terminals.belief_literals.PositiveLiteral;
 
+import javax.naming.OperationNotSupportedException;
 import java.util.HashSet;
 
 public class BeliefAtom extends LogicalExpression {
@@ -44,6 +45,11 @@ public class BeliefAtom extends LogicalExpression {
     }
 
     @Override
+    public boolean isClassical() {
+        return true;
+    }
+
+    @Override
     public boolean isGround() {
         return belief.isGround();
     }
@@ -72,6 +78,21 @@ public class BeliefAtom extends LogicalExpression {
     @Override
     public boolean inNNF() {
         return false;
+    }
+
+    @Override
+    public HashSet<HashSet<Terminal>> getSetClauses() throws UnsupportedOperationException{
+        throw new UnsupportedOperationException("Formula must be in NNF");
+    }
+
+    @Override
+    public HashSet<Terminal> getTerminals() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Formula must be in NNF");
+    }
+
+    @Override
+    public BeliefAtom convertToCNF() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Formula must be in NNF");
     }
 
     @Override

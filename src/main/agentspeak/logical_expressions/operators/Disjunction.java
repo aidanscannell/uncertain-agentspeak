@@ -4,8 +4,10 @@ import main.agentspeak.LogicalExpression;
 import main.agentspeak.Unifier;
 import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.logical_expressions.Operator;
+import main.agentspeak.logical_expressions.Terminal;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 
+import javax.naming.OperationNotSupportedException;
 import java.util.HashSet;
 
 public class Disjunction extends Operator {
@@ -26,20 +28,27 @@ public class Disjunction extends Operator {
         return right;
     }
 
-    public Disjunction substitute(Unifier unifier) {
+    public Disjunction substitute(Unifier unifier) throws Exception {
         return new Disjunction(this.getLeft().substitute(unifier), this.getRight().substitute(unifier));
     }
 
+    @Override
     public boolean isConjunctive() {
         return false;
     }
 
+    @Override
     public boolean isDisjunctive() {
         if (this.getLeft().isDisjunctive() && this.getRight().isDisjunctive()) {
             return true;
         } else {
             return false;
         }
+    }
+
+    @Override
+    public boolean isClassical() {
+        return this.getLeft().isClassical() && this.getRight().isClassical();
     }
 
     public boolean isGround() {
@@ -67,7 +76,7 @@ public class Disjunction extends Operator {
     }
 
     @Override
-    public Operator convertToNNF(boolean propogateStrongNegation) {
+    public Operator convertToNNF(boolean propogateStrongNegation) throws Exception {
         if (propogateStrongNegation) {
             return new Conjunction(this.getLeft().convertToNNF(propogateStrongNegation),this.getRight().convertToNNF(propogateStrongNegation));
         } else {
@@ -78,6 +87,56 @@ public class Disjunction extends Operator {
     @Override
     public boolean inNNF() {
         return this.getLeft().inNNF() && this.getRight().inNNF();
+    }
+
+    @Override
+    public HashSet<HashSet<Terminal>> getSetClauses() throws UnsupportedOperationException{
+        HashSet<HashSet<Terminal>> clauses = new HashSet<HashSet<Terminal>>();
+        HashSet<Terminal> clause = new HashSet<Terminal>();
+        clause.addAll(this.getLeft().getTerminals());
+        clauses.addAll(this.getLeft().getSetClauses());
+        clauses.addAll(this.getRight().getSetClauses());
+        return clauses;
+    }
+
+    @Override
+    public HashSet<Terminal> getTerminals() throws UnsupportedOperationException {
+        HashSet<Terminal> terminals = new HashSet<>();
+        terminals.addAll(this.getLeft().getTerminals());
+        terminals.addAll(this.getRight().getTerminals());
+        return terminals;
+    }
+
+    @Override
+    public LogicalExpression convertToCNF() throws Exception {
+        if (this.getLeft() instanceof Conjunction && this.getRight() instanceof  Conjunction) {
+            Conjunction left = (Conjunction) this.getLeft();
+            Conjunction right = (Conjunction) this.getRight();
+            return new Conjunction(
+                    new Conjunction(
+                            new Disjunction(left.getLeft().convertToCNF(), right.getLeft().convertToCNF()),
+                            new Disjunction(left.getLeft().convertToCNF(), right.getRight().convertToCNF())
+                    ),
+                    new Conjunction(
+                            new Disjunction(left.getRight().convertToCNF(), right.getLeft().convertToCNF()),
+                            new Disjunction(left.getRight().convertToCNF(), right.getRight().convertToCNF())
+                    )
+            ).convertToCNF();
+        } else if (this.getLeft() instanceof Conjunction && !(this.getRight() instanceof Conjunction)) {
+            Conjunction left = (Conjunction) this.getLeft();
+            return new Conjunction(
+                    new Disjunction(left.getLeft().convertToCNF(), this.getRight().convertToCNF()),
+                    new Disjunction(left.getRight().convertToCNF(), this.getRight().convertToCNF())
+            ).convertToCNF();
+        } else if (!(this.getLeft() instanceof Conjunction) && this.getRight() instanceof Conjunction) {
+            Conjunction right = (Conjunction) this.getRight();
+            return new Conjunction(
+                    new Disjunction(this.getLeft().convertToCNF(), right.getLeft().convertToCNF()),
+                    new Disjunction(this.getLeft().convertToCNF(), right.getRight().convertToCNF())
+            ).convertToCNF();
+        } else {
+            return new Disjunction(this.getLeft().convertToCNF(), this.getRight().convertToCNF());
+        }
     }
 
     @Override

@@ -10,7 +10,7 @@ public class Equal extends RelationalExpression {
         super(left, right);
     }
 
-    public Equal substitute(Unifier unifier) {
+    public Equal substitute(Unifier unifier) throws Exception {
         return new Equal(super.getLeft().substitute(unifier), super.getRight().substitute(unifier));
     }
 
@@ -21,6 +21,11 @@ public class Equal extends RelationalExpression {
         } else {
             return this;
         }
+    }
+
+    @Override
+    public Equal convertToCNF() throws Exception {
+        return new Equal(this.getLeft().convertToCNF(), this.getRight().convertToCNF());
     }
 
     @Override

@@ -3,6 +3,7 @@ package main.agentspeak.logical_expressions;
 import main.agentspeak.LogicalExpression;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 
+import javax.naming.OperationNotSupportedException;
 import java.util.HashSet;
 
 public abstract class RelationalExpression extends LogicalExpression {
@@ -39,6 +40,11 @@ public abstract class RelationalExpression extends LogicalExpression {
     }
 
     @Override
+    public boolean isClassical() {
+        return true;
+    }
+
+    @Override
     public HashSet<BeliefAtom> getBeliefAtoms() {
         return new HashSet<BeliefAtom>();
     }
@@ -52,4 +58,15 @@ public abstract class RelationalExpression extends LogicalExpression {
     public boolean inNNF() {
         return true;
     }
+
+    @Override
+    public HashSet<HashSet<Terminal>> getSetClauses() throws UnsupportedOperationException{
+        throw new UnsupportedOperationException("Formula needs to be pared");
+    }
+
+    @Override
+    public HashSet<Terminal> getTerminals() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Formula needs to be pared");
+    }
+
 }

@@ -4,6 +4,7 @@ import main.agentspeak.LogicalExpression;
 import main.agentspeak.Unifier;
 import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.logical_expressions.Operator;
+import main.agentspeak.logical_expressions.Terminal;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 
 import java.util.HashSet;
@@ -13,9 +14,13 @@ public class GreaterThanPlausibility extends Operator {
     private LogicalExpression left;
     private LogicalExpression right;
 
-    public GreaterThanPlausibility(LogicalExpression left, LogicalExpression right) {
+    public GreaterThanPlausibility(LogicalExpression left, LogicalExpression right) throws Exception {
         this.left = left;
         this.right = right;
+
+        if (!this.getLeft().isClassical() || !this.getRight().isClassical()) {
+            throw new Exception("Formula must be classical to use this operator");
+        }
     }
 
     public LogicalExpression getLeft() {
@@ -26,7 +31,7 @@ public class GreaterThanPlausibility extends Operator {
         return right;
     }
 
-    public GreaterThanPlausibility substitute(Unifier unifier) {
+    public GreaterThanPlausibility substitute(Unifier unifier) throws Exception {
         return new GreaterThanPlausibility(this.getLeft().substitute(unifier), this.getRight().substitute(unifier));
     }
 
@@ -36,6 +41,11 @@ public class GreaterThanPlausibility extends Operator {
 
     public boolean isDisjunctive() {
         return true;
+    }
+
+    @Override
+    public boolean isClassical() {
+        return false;
     }
 
     public boolean isGround() {
@@ -63,7 +73,7 @@ public class GreaterThanPlausibility extends Operator {
     }
 
     @Override
-    public Operator convertToNNF(boolean propogateStrongNegation) {
+    public Operator convertToNNF(boolean propogateStrongNegation) throws Exception {
         if (propogateStrongNegation) {
             return new GreaterEqualsPlausibility(this.getLeft().convertToNNF(propogateStrongNegation),this.getRight().convertToNNF(propogateStrongNegation));
         } else {
@@ -74,6 +84,24 @@ public class GreaterThanPlausibility extends Operator {
     @Override
     public boolean inNNF() {
         return this.getLeft().inNNF() && this.getRight().inNNF();
+    }
+
+    @Override
+    public HashSet<HashSet<Terminal>> getSetClauses() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Formula not in NNF");
+    }
+
+    @Override
+    public HashSet<Terminal> getTerminals() throws UnsupportedOperationException {
+        HashSet<Terminal> terminals = new HashSet<>();
+        terminals.addAll(this.getLeft().getTerminals());
+        terminals.addAll(this.getRight().getTerminals());
+        return terminals;
+    }
+
+    @Override
+    public GreaterThanPlausibility convertToCNF() throws Exception {
+        return new GreaterThanPlausibility(this.getLeft().convertToCNF(), this.getRight().convertToCNF());
     }
 
     @Override

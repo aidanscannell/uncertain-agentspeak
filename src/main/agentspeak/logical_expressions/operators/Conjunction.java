@@ -4,8 +4,10 @@ import main.agentspeak.LogicalExpression;
 import main.agentspeak.Unifier;
 import main.agentspeak.logical_expressions.BeliefAtom;
 import main.agentspeak.logical_expressions.Operator;
+import main.agentspeak.logical_expressions.Terminal;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 
+import javax.naming.OperationNotSupportedException;
 import java.util.HashSet;
 
 public class Conjunction extends Operator {
@@ -26,10 +28,11 @@ public class Conjunction extends Operator {
         return right;
     }
 
-    public Conjunction substitute(Unifier unifier) {
+    public Conjunction substitute(Unifier unifier) throws Exception {
         return new Conjunction(this.getLeft().substitute(unifier), this.getRight().substitute(unifier));
     }
 
+    @Override
     public boolean isConjunctive() {
         if (this.getLeft().isConjunctive() && this.getRight().isConjunctive()) {
             return true;
@@ -38,8 +41,14 @@ public class Conjunction extends Operator {
         }
     }
 
+    @Override
     public boolean isDisjunctive() {
         return false;
+    }
+
+    @Override
+    public boolean isClassical() {
+        return this.getLeft().isClassical() && this.getRight().isClassical();
     }
 
     public boolean isGround() {
@@ -66,7 +75,7 @@ public class Conjunction extends Operator {
     }
 
     @Override
-    public Operator convertToNNF(boolean propogateStrongNegation) {
+    public Operator convertToNNF(boolean propogateStrongNegation) throws Exception {
         if (propogateStrongNegation) {
             return new Disjunction(this.getLeft().convertToNNF(propogateStrongNegation),this.getRight().convertToNNF(propogateStrongNegation));
         } else {
@@ -77,6 +86,27 @@ public class Conjunction extends Operator {
     @Override
     public boolean inNNF() {
         return this.getLeft().inNNF() && this.getRight().inNNF();
+    }
+
+    @Override
+    public HashSet<HashSet<Terminal>> getSetClauses() throws UnsupportedOperationException {
+        HashSet<HashSet<Terminal>> clauses = new HashSet<HashSet<Terminal>>();
+        clauses.addAll(this.getLeft().getSetClauses());
+        clauses.addAll(this.getRight().getSetClauses());
+        return clauses;
+    }
+
+    @Override
+    public HashSet<Terminal> getTerminals() throws UnsupportedOperationException {
+        HashSet<Terminal> terminals = new HashSet<>();
+        terminals.addAll(this.getLeft().getTerminals());
+        terminals.addAll(this.getRight().getTerminals());
+        return terminals;
+    }
+
+    @Override
+    public Conjunction convertToCNF() throws Exception {
+        return new Conjunction(this.getLeft().convertToCNF(), this.getRight().convertToCNF());
     }
 
     @Override

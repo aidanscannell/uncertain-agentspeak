@@ -2,9 +2,12 @@ package main.agentspeak.logical_expressions.operators.negations;
 
 import main.agentspeak.LogicalExpression;
 import main.agentspeak.Unifier;
+import main.agentspeak.logical_expressions.Terminal;
+import main.agentspeak.logical_expressions.operators.GreaterEqualsPlausibility;
 import main.agentspeak.logical_expressions.operators.Negation;
 import main.agentspeak.logical_expressions.terminals.BeliefLiteral;
 
+import javax.naming.OperationNotSupportedException;
 import java.util.HashSet;
 
 public class StrongNegation extends Negation {
@@ -13,8 +16,13 @@ public class StrongNegation extends Negation {
         super(logicalExpression);
     }
 
-    public StrongNegation substitute(Unifier unifier) {
+    public StrongNegation substitute(Unifier unifier) throws Exception {
         return new StrongNegation(this.getTerm().substitute(unifier));
+    }
+
+    @Override
+    public boolean isClassical() {
+        return this.getTerm().isClassical();
     }
 
     @Override
@@ -23,7 +31,7 @@ public class StrongNegation extends Negation {
     }
 
     @Override
-    public LogicalExpression convertToNNF(boolean propogateStrongNegation) {
+    public LogicalExpression convertToNNF(boolean propogateStrongNegation) throws Exception {
         if (propogateStrongNegation) {
             return this.getTerm().convertToNNF(false);
         } else {
@@ -34,6 +42,21 @@ public class StrongNegation extends Negation {
     @Override
     public boolean inNNF() {
         return false;
+    }
+
+    @Override
+    public HashSet<HashSet<Terminal>> getSetClauses() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Formula not in NNF");
+    }
+
+    @Override
+    public HashSet<Terminal> getTerminals() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Formula not in NNF");
+    }
+
+    @Override
+    public GreaterEqualsPlausibility convertToCNF() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Formula must be in NNF");
     }
 
     @Override
