@@ -124,7 +124,7 @@ public abstract class EpistemicState {
     }
 
     public Primitive pare(Equal equal) throws Exception {
-        if (equal.getLeft() == equal.getRight()) {
+        if (equal.getLeft().equals(equal.getRight())) {
             return new Tautology();
         } else {
             return new Contradiction();
@@ -169,9 +169,6 @@ public abstract class EpistemicState {
         LogicalExpression pareNegation = pare(new StrongNegation(groundLogicalExpression)).convertToNNF(false);
         double pareLambda = getLambda(pare);
         double pareLambdaNegation = getLambda(pareNegation);
-//        for (BeliefAtom beliefAtom : logicalExpression.getBeliefAtoms()) {
-//            System.out.println(beliefAtom.getTerm(). + " = " + pareLambda);
-//        }
         if (pareLambda > pareLambdaNegation) {
             return unifier;
         } else {
