@@ -62,7 +62,7 @@ public class CompactProbabilisticEpistemicState extends CompactEpistemicState {
          * probabilistic weight then remove it from the weighted belief base, otherwise put the belief atom and
          * its associated weight into the weighted belief base.
          * **/
-        if (this.getWeightedBeliefBase().containsKey(beliefAtom) && w.equals(this.getWeightedBeliefBase().get(beliefAtom))) {
+        if (this.getWeightedBeliefBase().containsKey(beliefAtom) && w.equals(this.getInitialWeight())) {
             this.getWeightedBeliefBase().remove(beliefAtom);
         } else {
             this.getWeightedBeliefBase().put(beliefAtom, w);

@@ -75,6 +75,7 @@ public class GlobalUncertainBelief {
                 CompactEpistemicState epistemicState = epistemicStateEntry.getValue();
                 epistemicState.revise(beliefLiteral, weight);
                 epistemicStates.put(domain, epistemicState);
+                System.out.println("Revised Epistemic State: " + epistemicState.toString());
                 return;
             }
         }
