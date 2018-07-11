@@ -1,0 +1,12 @@
+MAS {
+
+Environment: env.MarsEnvironment()
+
+Agents:
+    sampleAgent
+
+    analysisAgent
+
+    excavationAgent
+
+}
