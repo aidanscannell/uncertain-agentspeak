@@ -1,5 +1,5 @@
 // Generated from /Users/aidanscannell/Google Drive/Bristol PG/Academic/Research Project/uncertain-agentspeak/src/main/resources/antlr/UncertainAgentspeak.g4 by ANTLR 4.7
-package main.resources.antlr;
+package main.resources.antlr.uncertain_agentspeak;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**

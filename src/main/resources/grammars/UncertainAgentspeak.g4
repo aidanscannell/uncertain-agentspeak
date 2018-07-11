@@ -44,7 +44,7 @@ Comment             :  '#' ~( '\r' | '\n' )* ;
 /*
  * Parser Rules
  */
-uncertainAgentspeak     : init_bels init_goals plans EOF;
+uncertainAgentspeak     : (init_bels | init_goals) plans EOF;
 
 // Initial beliefs
 init_bels               : (probabilistic_bel '.' | possibilistic_bel '.' | belief_atom '.')*;
