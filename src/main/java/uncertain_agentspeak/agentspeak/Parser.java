@@ -3,7 +3,9 @@ package main.java.uncertain_agentspeak.agentspeak;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.BeliefAtom;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.BeliefLiteral;
 import main.java.uncertain_agentspeak.agentspeak.parser.Visitor;
-import main.resources.antlr.*;
+import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakLexer;
+import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakParser;
+import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakVisitor;
 import org.antlr.v4.runtime.*;
 
 import java.io.FileInputStream;
