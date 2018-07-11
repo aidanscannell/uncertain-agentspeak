@@ -18,6 +18,8 @@ import main.agentspeak.logical_expressions.operators.GreaterEqualsPlausibility;
 import main.agentspeak.logical_expressions.operators.GreaterThanPlausibility;
 import main.agentspeak.logical_expressions.operators.negations.NegationAsFailure;
 import main.agentspeak.logical_expressions.operators.negations.StrongNegation;
+import main.agentspeak.logical_expressions.relational_expressions.Equal;
+import main.agentspeak.logical_expressions.relational_expressions.NotEqual;
 import main.agentspeak.logical_expressions.terminals.primitives.Tautology;
 import main.agentspeak.events.ExternalEvent;
 import main.agentspeak.goals.AchievementGoal;
@@ -51,7 +53,7 @@ import static java.lang.Double.parseDouble;
 public class Visitor extends UncertainAgentspeakBaseVisitor<Object> {
 
     @Override
-    public Interpreter visitUncertainAgentspeak(UncertainAgentspeakParser.UncertainAgentspeakContext ctx) throws Exception {
+    public Interpreter visitUncertainAgentspeak(UncertainAgentspeakParser.UncertainAgentspeakContext ctx) {
         Interpreter interpreter = new Interpreter();
 
         // Global uncertain belief (belief base)
@@ -76,7 +78,7 @@ public class Visitor extends UncertainAgentspeakBaseVisitor<Object> {
     }
 
     @Override
-    public PlanLibrary visitPlans(UncertainAgentspeakParser.PlansContext ctx) throws Exception {
+    public PlanLibrary visitPlans(UncertainAgentspeakParser.PlansContext ctx) {
         PlanLibrary planLibrary = new PlanLibrary();
         for (UncertainAgentspeakParser.PlanContext planContext : ctx.plan()) {
             planLibrary.add(visitPlan(planContext));
@@ -85,7 +87,7 @@ public class Visitor extends UncertainAgentspeakBaseVisitor<Object> {
     }
 
     @Override
-    public Plan visitPlan(UncertainAgentspeakParser.PlanContext ctx) throws Exception {
+    public Plan visitPlan(UncertainAgentspeakParser.PlanContext ctx) {
         if (ctx.context() != null && ctx.body() != null && ctx.event() != null) {
 //            Event event = visitEvent(ctx.event());
 //            LogicalExpression context = visitContext(ctx.context());
@@ -98,7 +100,7 @@ public class Visitor extends UncertainAgentspeakBaseVisitor<Object> {
     }
 
     @Override
-    public LogicalExpression visitContext(UncertainAgentspeakParser.ContextContext ctx) throws Exception {
+    public LogicalExpression visitContext(UncertainAgentspeakParser.ContextContext ctx) {
         if (ctx.and_expr() != null) {
             return visitAnd_expr(ctx.and_expr());
         } else if (ctx.tautology() != null) {
@@ -110,13 +112,18 @@ public class Visitor extends UncertainAgentspeakBaseVisitor<Object> {
     }
 
     @Override
-    public LogicalExpression visitAnd_expr(UncertainAgentspeakParser.And_exprContext ctx) throws Exception {
+    public LogicalExpression visitAnd_expr(UncertainAgentspeakParser.And_exprContext ctx) {
         ArrayList<UncertainAgentspeakParser.Or_exprContext> copy = new ArrayList<>(ctx.or_expr());
         if (ctx.or_expr().size() < 2) {
             return visitOr_expr(ctx.or_expr(0));
         } else {
             ArrayList<UncertainAgentspeakParser.Or_exprContext> subList = new ArrayList<>(copy.subList(1,copy.size()));
-            return new Conjunction(visitOr_expr(ctx.or_expr(0)), visitAnd_expr(subList));
+            try {
+                return new Conjunction(visitOr_expr(ctx.or_expr(0)), visitAnd_expr(subList));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
     }
 
@@ -131,13 +138,18 @@ public class Visitor extends UncertainAgentspeakBaseVisitor<Object> {
     }
 
     @Override
-    public LogicalExpression visitOr_expr(UncertainAgentspeakParser.Or_exprContext ctx) throws Exception {
+    public LogicalExpression visitOr_expr(UncertainAgentspeakParser.Or_exprContext ctx) {
         ArrayList<UncertainAgentspeakParser.Less_than_exprContext> copy = new ArrayList<>(ctx.less_than_expr());
         if (ctx.less_than_expr().size() < 2) {
             return visitLess_than_expr(ctx.less_than_expr(0));
         } else {
             ArrayList<UncertainAgentspeakParser.Less_than_exprContext> subList = new ArrayList<>(copy.subList(1,copy.size()));
-            return new Disjunction(visitLess_than_expr(ctx.less_than_expr(0)), visitOr_expr(subList));
+            try {
+                return new Disjunction(visitLess_than_expr(ctx.less_than_expr(0)), visitOr_expr(subList));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
     }
 
@@ -164,56 +176,113 @@ public class Visitor extends UncertainAgentspeakBaseVisitor<Object> {
 
 
     @Override
-    public LogicalExpression visitLess_than_expr(UncertainAgentspeakParser.Less_than_exprContext ctx) throws Exception {
+    public LogicalExpression visitLess_than_expr(UncertainAgentspeakParser.Less_than_exprContext ctx) {
         if (ctx.less_equals_expr().size() > 1) {
-            return new GreaterEqualsPlausibility(visitLess_equals_expr(ctx.less_equals_expr(1)),visitLess_equals_expr(ctx.less_equals_expr(0)));
+            try {
+                return new GreaterEqualsPlausibility(visitLess_equals_expr(ctx.less_equals_expr(1)),visitLess_equals_expr(ctx.less_equals_expr(0)));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         } else {
             return visitLess_equals_expr(ctx.less_equals_expr(0));
         }
     }
 
     @Override
-    public LogicalExpression visitLess_equals_expr(UncertainAgentspeakParser.Less_equals_exprContext ctx) throws Exception {
+    public LogicalExpression visitLess_equals_expr(UncertainAgentspeakParser.Less_equals_exprContext ctx) {
         if (ctx.greater_than_expr().size() > 1) {
-            return new GreaterThanPlausibility(visitGreater_than_expr(ctx.greater_than_expr(1)),visitGreater_than_expr(ctx.greater_than_expr(0)));
+            try {
+                return new GreaterThanPlausibility(visitGreater_than_expr(ctx.greater_than_expr(1)),visitGreater_than_expr(ctx.greater_than_expr(0)));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         } else {
             return visitGreater_than_expr(ctx.greater_than_expr(0));
         }
     }
 
     @Override
-    public LogicalExpression visitGreater_than_expr(UncertainAgentspeakParser.Greater_than_exprContext ctx) throws Exception {
+    public LogicalExpression visitGreater_than_expr(UncertainAgentspeakParser.Greater_than_exprContext ctx) {
         if (ctx.greater_equals_expr().size() > 1) {
-            return new GreaterThanPlausibility(visitGreater_equals_expr(ctx.greater_equals_expr(0)),visitGreater_equals_expr(ctx.greater_equals_expr(1)));
+            try {
+                return new GreaterThanPlausibility(visitGreater_equals_expr(ctx.greater_equals_expr(0)),visitGreater_equals_expr(ctx.greater_equals_expr(1)));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         } else {
             return visitGreater_equals_expr(ctx.greater_equals_expr(0));
         }
     }
 
+//    @Override
+//    public LogicalExpression visitGreater_equals_expr(UncertainAgentspeakParser.Greater_equals_exprContext ctx) throws Exception {
+////        if (ctx.negation_expr().size() > 1) {
+//        if (ctx.equals_expr().size() > 1) {
+//            return new GreaterEqualsPlausibility(visitNegation_expr(ctx.negation_expr(0)),visitNegation_expr(ctx.negation_expr(1)));
+//        } else {
+//            return visitNegation_expr(ctx.negation_expr(0));
+//        }
+//    }
     @Override
-    public LogicalExpression visitGreater_equals_expr(UncertainAgentspeakParser.Greater_equals_exprContext ctx) throws Exception {
+    public LogicalExpression visitGreater_equals_expr(UncertainAgentspeakParser.Greater_equals_exprContext ctx) {
+        if (ctx.equals_expr().size() > 1) {
+            try {
+                return new GreaterEqualsPlausibility(visitEquals_expr(ctx.equals_expr(0)),visitEquals_expr(ctx.equals_expr(1)));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        } else {
+            return visitEquals_expr(ctx.equals_expr(0));
+        }
+    }
+
+    @Override
+    public LogicalExpression visitEquals_expr(UncertainAgentspeakParser.Equals_exprContext ctx) {
+        if (ctx.not_equals_expr().size() > 1) {
+            return new Equal(visitNot_equals_expr(ctx.not_equals_expr(0)),visitNot_equals_expr(ctx.not_equals_expr(1)));
+        } else {
+            return visitNot_equals_expr(ctx.not_equals_expr(0));
+        }
+    }
+
+    @Override
+    public LogicalExpression visitNot_equals_expr(UncertainAgentspeakParser.Not_equals_exprContext ctx) {
         if (ctx.negation_expr().size() > 1) {
-            return new GreaterEqualsPlausibility(visitNegation_expr(ctx.negation_expr(0)),visitNegation_expr(ctx.negation_expr(1)));
+            return new NotEqual(visitNegation_expr(ctx.negation_expr(0)),visitNegation_expr(ctx.negation_expr(1)));
         } else {
             return visitNegation_expr(ctx.negation_expr(0));
         }
     }
 
     @Override
-    public LogicalExpression visitNegation_expr(UncertainAgentspeakParser.Negation_exprContext ctx) throws Exception {
+    public LogicalExpression visitNegation_expr(UncertainAgentspeakParser.Negation_exprContext ctx) {
         if (ctx.STRONG_NEGATION() != null) {
             return new StrongNegation(visitBelief_atom_expr(ctx.belief_atom_expr()));
         } else if (ctx.NEGATION_AS_FAILURE() != null) {
-            return new NegationAsFailure(visitBelief_atom_expr(ctx.belief_atom_expr()));
+            try {
+                return new NegationAsFailure(visitBelief_atom_expr(ctx.belief_atom_expr()));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         } else {
             return visitBelief_atom_expr(ctx.belief_atom_expr());
         }
     }
 
     @Override
-    public LogicalExpression visitBelief_atom_expr(UncertainAgentspeakParser.Belief_atom_exprContext ctx) throws Exception {
+    public LogicalExpression visitBelief_atom_expr(UncertainAgentspeakParser.Belief_atom_exprContext ctx) {
         if (ctx.and_expr() != null) {
-            return visitAnd_expr(ctx.and_expr());
+            try {
+                return visitAnd_expr(ctx.and_expr());
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         } else {
             return visitBelief_atom(ctx.belief_atom());
         }

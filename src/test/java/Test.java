@@ -496,7 +496,7 @@ public class Test {
     public static void parse() throws Exception {
         Parser parser = new Parser();
 
-        File file = new File("/Users/aidanscannell/Google Drive/Bristol PG/Academic/Research Project/uncertain-agentspeak/src/test/java/input.txt");
+        File file = new File("/Users/aidanscannell/Google Drive/Bristol PG/Academic/Research Project/uncertain-agentspeak/src/test/java/agent.asl");
         FileInputStream fis = null;
         fis = new FileInputStream(file);
 

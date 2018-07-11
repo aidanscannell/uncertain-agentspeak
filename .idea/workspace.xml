@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03052817-61e0-4dd6-9ee5-a5ac623db670" name="Default" comment="Implemented parser for uncertain agentSpeak.&#10;Enabled txt file input.">
+    <list default="true" id="03052817-61e0-4dd6-9ee5-a5ac623db670" name="Default" comment="Corrected pare() method for Equal input by using x.equals(x) instead of x == x">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/agentspeak/Parser.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/Parser.java" />
       <change beforePath="$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java" afterPath="$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4" afterPath="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4" />
-      <change beforePath="$PROJECT_DIR$/src/main/sat_solver/SATsolver.java" afterPath="$PROJECT_DIR$/src/main/sat_solver/SATsolver.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java" afterPath="$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java" />
       <change beforePath="$PROJECT_DIR$/src/main/uncertainty/GlobalUncertainBelief.java" afterPath="$PROJECT_DIR$/src/main/uncertainty/GlobalUncertainBelief.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/CompactEpistemicState.java" afterPath="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/CompactEpistemicState.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/World.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java" afterPath="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Test.java" afterPath="$PROJECT_DIR$/src/test/java/Test.java" />
       <change beforePath="$PROJECT_DIR$/src/test/java/input.txt" afterPath="$PROJECT_DIR$/src/test/java/input.txt" />
-      <change beforePath="$PROJECT_DIR$/uncertain-agentspeak.iml" afterPath="$PROJECT_DIR$/uncertain-agentspeak.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +27,38 @@
       <file leaf-file-name="GlobalUncertainBelief.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/uncertainty/GlobalUncertainBelief.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="461" column="28" lean-forward="false" selection-start-line="461" selection-start-column="28" selection-end-line="462" selection-end-column="29" />
+            <state relative-caret-position="217">
+              <caret line="138" column="30" lean-forward="false" selection-start-line="138" selection-start-column="30" selection-end-line="140" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EpistemicState.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2235">
+              <caret line="170" column="60" lean-forward="false" selection-start-line="170" selection-start-column="60" selection-end-line="170" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompactEpistemicState.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/CompactEpistemicState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1680">
+              <caret line="139" column="36" lean-forward="false" selection-start-line="139" selection-start-column="36" selection-end-line="139" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UncertainAgentspeak.g4" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -44,18 +67,31 @@
       <file leaf-file-name="input.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/input.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="87" column="43" lean-forward="false" selection-start-line="87" selection-start-column="43" selection-end-line="87" selection-end-column="43" />
+            <state relative-caret-position="642">
+              <caret line="96" column="167" lean-forward="false" selection-start-line="96" selection-start-column="167" selection-end-line="96" selection-end-column="167" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UncertainAgentspeak.g4" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4">
+      <file leaf-file-name="Visitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state relative-caret-position="368">
+              <caret line="84" column="9" lean-forward="false" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
+              <folding>
+                <element signature="e#27659#27660#0" expanded="true" />
+                <element signature="e#27713#27714#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="455">
+              <caret line="508" column="54" lean-forward="true" selection-start-line="508" selection-start-column="54" selection-end-line="508" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -83,6 +119,8 @@
       <find>event</find>
       <find>eVENT</find>
       <find>Belief atom</find>
+      <find>valid u</find>
+      <find>System</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -128,9 +166,7 @@
         <option value="$PROJECT_DIR$/src/main/agentspeak/Interpreter.java" />
         <option value="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/compact_epistemic_states/CompactPossibilisticEpistemicState.java" />
         <option value="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java" />
-        <option value="$PROJECT_DIR$/src/test/java/Test.java" />
         <option value="$PROJECT_DIR$/src/main/uncertainty/epistemic_states/CompactEpistemicState.java" />
-        <option value="$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java" />
         <option value="$PROJECT_DIR$/src/main/agentspeak/LogicalExpression.java" />
         <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/Terminal.java" />
         <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/BeliefAtom.java" />
@@ -144,14 +180,16 @@
         <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/operators/Disjunction.java" />
         <option value="$PROJECT_DIR$/src/main/agentspeak/logical_expressions/relational_expressions/NotEqual.java" />
         <option value="$PROJECT_DIR$/src/main/agentspeak/Parser.java" />
-        <option value="$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java" />
         <option value="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakBaseVisitor.java" />
         <option value="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakVisitor.java" />
         <option value="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakParser.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4" />
+        <option value="$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java" />
+        <option value="$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java" />
         <option value="$PROJECT_DIR$/src/main/sat_solver/SATsolver.java" />
         <option value="$PROJECT_DIR$/src/main/uncertainty/GlobalUncertainBelief.java" />
         <option value="$PROJECT_DIR$/src/test/java/input.txt" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4" />
+        <option value="$PROJECT_DIR$/src/test/java/Test.java" />
       </list>
     </option>
   </component>
@@ -162,8 +200,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="-1920" />
+    <option name="y" value="69" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -225,86 +265,6 @@
             </path>
             <path>
               <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="logical_expressions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="logical_expressions" type="462c0819:PsiDirectoryNode" />
-              <item name="operators" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="logical_expressions" type="462c0819:PsiDirectoryNode" />
-              <item name="operators" type="462c0819:PsiDirectoryNode" />
-              <item name="negations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="logical_expressions" type="462c0819:PsiDirectoryNode" />
-              <item name="relational_expressions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="logical_expressions" type="462c0819:PsiDirectoryNode" />
-              <item name="terminals" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="antlr" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="uncertainty" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="uncertainty" type="462c0819:PsiDirectoryNode" />
-              <item name="epistemic_states" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -336,6 +296,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java" />
       <recent name="$PROJECT_DIR$/src/main/agentspeak" />
       <recent name="$PROJECT_DIR$/src/main" />
     </key>
@@ -508,20 +469,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1517868555388</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Created abstract class for implementing/evaluating logical expressions in plan contexts">
-      <created>1529409349199</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1529409349199</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Changed project name to uncertain-agentspeak">
-      <created>1529409422809</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1529409422809</updated>
     </task>
     <task id="LOCAL-00023" summary="Overrode methods for hashCode and equals in terms">
       <created>1529488696737</created>
@@ -852,7 +799,21 @@
       <option name="project" value="LOCAL" />
       <updated>1531225978894</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Commit before implementing equals/not equals">
+      <created>1531226244413</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1531226244414</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Corrected pare() method for Equal input by using x.equals(x) instead of x == x">
+      <created>1531317751489</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1531317751490</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TodoView">
@@ -865,21 +826,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="-1920" y="69" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24131082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2623942" sideWeight="0.49361023" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2382104" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26216486" sideWeight="0.49361023" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23733863" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286991" sideWeight="0.5079872" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3470375" sideWeight="0.48569384" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33857316" sideWeight="0.4914163" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2780536" sideWeight="0.4914163" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21244635" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15814696" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286991" sideWeight="0.49201277" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296653" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -887,7 +848,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39903265" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39821252" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -928,8 +889,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added toString methods" />
-    <MESSAGE value="Implemented full parser that reads *.txt files and instantiates an interpreter." />
     <MESSAGE value="Changed to double number" />
     <MESSAGE value="Changed internal event to AddGoalET" />
     <MESSAGE value="Added unify() methods" />
@@ -953,7 +912,9 @@
     <MESSAGE value="Changed bleief base to global uncertain belief" />
     <MESSAGE value="Implemented sat4J SATsolver" />
     <MESSAGE value="Implemented isClassical() method for Plausibility/Negation as failure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented isClassical() method for Plausibility/Negation as failure" />
+    <MESSAGE value="Commit before implementing equals/not equals" />
+    <MESSAGE value="Corrected pare() method for Equal input by using x.equals(x) instead of x == x" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrected pare() method for Equal input by using x.equals(x) instead of x == x" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1212,30 +1173,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6683">
-          <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/CompactEpistemicState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="139" column="36" lean-forward="true" selection-start-line="139" selection-start-column="36" selection-end-line="139" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="74" column="42" lean-forward="false" selection-start-line="74" selection-start-column="42" selection-end-line="74" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/agentspeak/LogicalExpression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1263,14 +1200,6 @@
             <element signature="e#451#452#0" expanded="false" />
             <element signature="e#478#479#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1314">
-          <caret line="176" column="16" lean-forward="false" selection-start-line="176" selection-start-column="16" selection-end-line="176" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1347,40 +1276,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakBaseVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="187" column="110" lean-forward="false" selection-start-line="187" selection-start-column="110" selection-end-line="187" selection-end-column="110" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="167" column="99" lean-forward="false" selection-start-line="167" selection-start-column="99" selection-end-line="167" selection-end-column="99" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="215" column="21" lean-forward="false" selection-start-line="215" selection-start-column="21" selection-end-line="215" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/sat_solver/SATsolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-135">
-          <caret line="30" column="79" lean-forward="false" selection-start-line="30" selection-start-column="79" selection-end-line="30" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/relational_expressions/Equal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1397,14 +1292,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="1868" column="32" lean-forward="false" selection-start-line="1868" selection-start-column="32" selection-end-line="1868" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/agentspeak/logical_expressions/RelationalExpression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
@@ -1416,26 +1303,105 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakBaseVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="61" column="87" lean-forward="false" selection-start-line="61" selection-start-column="87" selection-end-line="61" selection-end-column="87" />
+          <folding>
+            <marker date="1531302277611" expanded="true" signature="8332:8362" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2022">
+          <caret line="656" column="32" lean-forward="false" selection-start-line="656" selection-start-column="32" selection-end-line="656" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="167" column="81" lean-forward="false" selection-start-line="167" selection-start-column="81" selection-end-line="167" selection-end-column="81" />
+          <folding>
+            <marker date="1531302277610" expanded="true" signature="7000:7072" ph="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agentspeak/parser/Visitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="84" column="9" lean-forward="false" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
+          <folding>
+            <element signature="e#27659#27660#0" expanded="true" />
+            <element signature="e#27713#27714#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/CompactEpistemicState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="139" column="36" lean-forward="false" selection-start-line="139" selection-start-column="36" selection-end-line="139" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="100" column="29" lean-forward="true" selection-start-line="100" selection-start-column="29" selection-end-line="100" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/sat_solver/SATsolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="63" column="38" lean-forward="false" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/uncertainty/EpistemicState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2235">
+          <caret line="170" column="60" lean-forward="false" selection-start-line="170" selection-start-column="60" selection-end-line="170" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/uncertainty/GlobalUncertainBelief.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="461" column="28" lean-forward="false" selection-start-line="461" selection-start-column="28" selection-end-line="462" selection-end-column="29" />
+        <state relative-caret-position="217">
+          <caret line="138" column="30" lean-forward="false" selection-start-line="138" selection-start-column="30" selection-end-line="140" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/input.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="87" column="43" lean-forward="false" selection-start-line="87" selection-start-column="43" selection-end-line="87" selection-end-column="43" />
+        <state relative-caret-position="642">
+          <caret line="96" column="167" lean-forward="false" selection-start-line="96" selection-start-column="167" selection-end-line="96" selection-end-column="167" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state relative-caret-position="317">
+          <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="508" column="54" lean-forward="true" selection-start-line="508" selection-start-column="54" selection-end-line="508" selection-end-column="54" />
           <folding />
         </state>
       </provider>

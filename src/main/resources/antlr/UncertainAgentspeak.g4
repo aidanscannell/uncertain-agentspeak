@@ -20,7 +20,7 @@ VARIABLE                 : UPPERCASE | UPPERCASE ( LOWERCASE | UPPERCASE | NUMBE
 
 NUMBER              : [0-9]+ ;
 
-WHITESPACE          : (' ' | '\t' | '\n' | '\r')+ -> skip;
+WHITESPACE          : (' ' | '\t' | '\n' | '\r' | Comment)+ -> skip;
 
 NEWLINE             : ('.') ;
 
@@ -37,7 +37,9 @@ GREATER_EQUALS      : '>=' ;
 STRONG_NEGATION     : '~' ;
 NEGATION_AS_FAILURE : 'not' ;
 EQUALS              : '==' ;
-NOT_EQUALS          : '\==' ;
+NOT_EQUALS          : '\\==' ;
+
+Comment             :  '#' ~( '\r' | '\n' )* ;
 
 /*
  * Parser Rules
@@ -55,7 +57,7 @@ init_goals              : ( achievement_goal '.' )* ;
 
 // Plans
 plans                   : ( plan )* ;
-plan                    : event (CONTEXT context ACTIONS body) '.' ;
+plan                    : event CONTEXT context ACTIONS body '.' ;
 
 // Event
 //event                       : ( '+' | '-' ) ( '!' | '?' ) belief_literal ;
@@ -78,9 +80,9 @@ or_expr                 : less_than_expr (OR less_than_expr)* ;
 less_than_expr          : less_equals_expr (LESS_THAN less_equals_expr)* ;
 less_equals_expr        : greater_than_expr (LESS_EQUALS greater_than_expr)* ;
 greater_than_expr       : greater_equals_expr (GREATER_THAN greater_equals_expr)* ;
-greater_equals_expr     : negation_expr (GREATER_EQUALS negation_expr)* ;
-equals_expr             : greater_equals_expr (EQUALS greater_equals_expr)* ;
-not_equals_expr         : equals_expr (NOT_EQUALS equals_expr)* ;
+greater_equals_expr     : equals_expr (GREATER_EQUALS equals_expr)* ;
+equals_expr             : not_equals_expr (EQUALS not_equals_expr)* ;
+not_equals_expr         : negation_expr (NOT_EQUALS negation_expr)* ;
 negation_expr           : NEGATION_AS_FAILURE belief_atom_expr | STRONG_NEGATION belief_atom_expr | belief_atom_expr ;
 //finally, we found either name, or a sub-expression
 belief_atom_expr        : belief_atom | LPAREN and_expr RPAREN;
@@ -106,10 +108,10 @@ belief_atom_expr        : belief_atom | LPAREN and_expr RPAREN;
 //equals                  : '=' ;
 //rel_term                : (belief_literal|arithm_expr) ;
 //
-arithm_expr             : arithm_term ( ( '+' | '-' ) arithm_expr ) ;
-arithm_term             : arithm_factor ( ( '*' | '/' | 'div' | 'mod' ) arithm_term ) ;
-arithm_factor           : arithm_simple ( '**' arithm_factor ) ;
-arithm_simple           : NUMBER | VARIABLE | '-' arithm_simple | '(' arithm_expr ')' ;
+//arithm_expr             : arithm_term ( ( '+' | '-' ) arithm_expr ) ;
+//arithm_term             : arithm_factor ( ( '*' | '/' | 'div' | 'mod' ) arithm_term ) ;
+//arithm_factor           : arithm_simple ( '**' arithm_factor ) ;
+//arithm_simple           : NUMBER | VARIABLE | '-' arithm_simple | '(' arithm_expr ')' ;
 
 // Plan body
 body                    : body_statement (';' body_statement)* | tautology ;

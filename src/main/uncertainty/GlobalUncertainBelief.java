@@ -136,9 +136,9 @@ public class GlobalUncertainBelief {
         HashSet<Unifier> unifiers = this.getUnifiers(logicalExpression, unifier);
 
 //        System.out.println(logicalExpression.);
-        System.out.println(unifier);
-        System.out.println(logicalExpression.toString());
-        System.out.println(unifiers);
+//        System.out.println(unifier);
+//        System.out.println(logicalExpression.toString());
+//        System.out.println(unifiers);
 
 
 
@@ -170,6 +170,7 @@ public class GlobalUncertainBelief {
                 unifierValid = entails((Tautology) logicalExpression, u);
             }
             System.out.println("Valid unifier: " + unifierValid);
+//            System.out.println(logicalExpression.getClass());
             if (unifierValid != null) {
                 return  unifierValid;
             }
@@ -354,7 +355,7 @@ public class GlobalUncertainBelief {
     }
 
     public HashSet<Unifier> getUnifiers(LogicalExpression logicalExpression, Unifier unifier) {
-        System.out.println(logicalExpression);
+//        System.out.println(logicalExpression);
         if (logicalExpression instanceof Conjunction) {
 //            System.out.println(((Conjunction) logicalExpression).getLeft().toString());
 //            System.out.println(((Conjunction) logicalExpression).getRight());
