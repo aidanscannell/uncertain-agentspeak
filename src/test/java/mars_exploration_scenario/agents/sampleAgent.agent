@@ -1,0 +1,97 @@
+Pos(
+( water_or_ice( location(1) ), 0.1 ),
+( water_or_ice( location(2) ), 0.8 ),
+( water_or_ice( location(3) ), 0.7 )
+).
+Pos(
+( fossil( location(1) ), 0.9 ),
+( fossil( location(2) ), 0.8 ),
+( fossil( location(3) ), 0.7 ),
+( fossil( location(4) ), 0.6 )
+).
+Pos(
+( living_organisms( location(1) ), 0.9 ),
+( living_organisms( location(2) ), 0.8 ),
+( living_organisms( location(3) ), 0.7 ),
+( living_organisms( location(4) ), 0.6 )
+).
+
+Prob(
+( at(location(1)), 0.02),
+( at(location(2)), 0.9),
+( at(location(3)), 0.04),
+( at(location(4)), 0.04),
+).
+
+Prob(
+( path( location(1), location(2), 1 ), 0.9),
+( path( location(1), location(2), 2 ), 0.1)
+).
+Prob(
+( path( location(1), location(3), 1 ), 0.9),
+( path( location(1), location(3), 2 ), 0.1)
+).
+Prob(
+( path( location(1), location(4), 1 ), 0.9),
+( path( location(1), location(4), 2 ), 0.1)
+).
+Prob(
+( path( location(2), location(1), 1 ), 0.9),
+( path( location(2), location(1), 2 ), 0.1)
+).
+Prob(
+( path( location(2), location(3), 1 ), 0.9),
+( path( location(2), location(3), 2 ), 0.1)
+).
+Prob(
+( path( location(2), location(4), 1 ), 0.9),
+( path( location(2), location(4), 2 ), 0.1)
+).
+Prob(
+( path( location(3), location(1), 1 ), 0.9),
+( path( location(3), location(1), 2 ), 0.1)
+).
+Prob(
+( path( location(3), location(2), 1 ), 0.9),
+( path( location(3), location(2), 2 ), 0.1)
+).
+Prob(
+( path( location(3), location(4), 1 ), 0.9),
+( path( location(3), location(4), 2 ), 0.1)
+).
+Prob(
+( path( location(4), location(1), 1 ), 0.9),
+( path( location(4), location(1), 2 ), 0.1)
+).
+Prob(
+( path( location(4), location(2), 1 ), 0.9),
+( path( location(4), location(2), 2 ), 0.1)
+).
+Prob(
+( path( location(4), location(3), 1 ), 0.9),
+( path( location(4), location(3), 2 ), 0.1)
+).
+
+
+!exploreMars.
+
+# +!exploreMars222 : true <- !proceed(location(X), location(Y)).
+
+# +!exploreMars222 : true <- print(hello).
+
++!exploreMars : water_or_ice(location(X)) >= water_or_ice(location(Y1)) && water_or_ice(location(X)) >= water_or_ice( location(Y2)) && water_or_ice(location(X)) >= water_or_ice( location(Y3)) && at(location(Z)) >= at(location(X)) && X \== Z <- !proceed(location(Z),location(X)).
+
+# +!proceed1(location(X),location(Y)) : path(location(X),location(Y),Index) > path(location(X),location(Y),Index2) && at(location(X)) >= at(location(Y)) <- !travel(location(X),location(Y),Index); !exploreMars.
+
+#+!proceed(location(X),location(Y)) : path(location(X),location(Y),Index2) < path(location(X),location(Y),Index) && at(location(X)) > 0.8 <- !travel(location(X),location(Y),Index); !exploreMars.
+
+# +!proceed3(location(X),location(Y)) : X \== Y <- !travel(location(X),location(Y),Index); !exploreMars.
+
++!proceed(location(X),location(Y)) : path(location(X),location(Y),Index) > path(location(X),location(Y),Index2) && X \== Y <- !travel(location(X),location(Y),Index); !collectSample(location(Y)); !exploreMars.
+# +!proceed(location(X),location(Y)) : X == 2 <- !travel(location(X),location(Y),1); !exploreMars.
+
++!travel(location(X),location(Y),Index) : true <- *(at(location(X)),0.01); *(at(location(Y)) ,0.99).
+
++!collectSample(location(X)) : water_or_ice(location(X)) > fossil(location(X)) && water_or_ice(location(X)) > living_organisms(location(X)) <- sampleWaterIce.
++!collectSample(location(X)) : fossil(location(X)) > water_or_ice(location(X)) && fossil(location(X)) > living_organisms(location(X)) <- sampleFossil.
++!collectSample(location(X)) : living_organisms(location(X)) > fossil(location(X)) && living_organisms(location(X)) > water_or_ice(location(X)) <- sampleLivingOrganism.

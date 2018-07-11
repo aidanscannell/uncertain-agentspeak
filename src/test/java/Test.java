@@ -2,24 +2,16 @@ package test.java;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-import main.agentspeak.*;
-import main.agentspeak.logical_expressions.BeliefAtom;
-import main.agentspeak.logical_expressions.terminals.belief_literals.NegativeLiteral;
-import main.agentspeak.logical_expressions.terminals.belief_literals.PositiveLiteral;
-import main.agentspeak.parser.Visitor;
-import main.agentspeak.terms.constants.Atom;
-import main.resources.antlr.UncertainAgentspeakLexer;
-import main.resources.antlr.UncertainAgentspeakParser;
-import main.resources.antlr.UncertainAgentspeakVisitor;
-import main.uncertainty.epistemic_states.CompactEpistemicState;
-import main.uncertainty.epistemic_states.compact_epistemic_states.CompactProbabilisticEpistemicState;
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonTokenStream;
+import main.java.uncertain_agentspeak.agentspeak.*;
+import main.java.uncertain_agentspeak.agentspeak.logical_expressions.BeliefAtom;
+import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.belief_literals.NegativeLiteral;
+import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.belief_literals.PositiveLiteral;
+import main.java.uncertain_agentspeak.agentspeak.terms.constants.Atom;
+import main.java.uncertain_agentspeak.uncertainty.epistemic_states.CompactEpistemicState;
+import main.java.uncertain_agentspeak.uncertainty.epistemic_states.compact_epistemic_states.CompactProbabilisticEpistemicState;
 
 public class Test {
 
@@ -32,13 +24,36 @@ public class Test {
 //        parseLogicalExpression();
 //        parsePlanLibrary();
 
-        parse();
+//        parse();
+        marsExplorationScenario();
 //        unification();
 //        example();
 //        parse();
 
 //        compactEpistemicState();
 //        gub();
+    }
+
+    public static void marsExplorationScenario() throws Exception {
+        Parser parser = new Parser();
+
+        File file = new File("/Users/aidanscannell/Google Drive/Bristol PG/Academic/Research Project/uncertain-agentspeak/src/test/java/mars_exploration_scenario/agents/sampleAgent.agent");
+        FileInputStream fis = null;
+        fis = new FileInputStream(file);
+
+        Agent agent = parser.parseUncertainAgentSpeak(fis);
+
+
+        System.out.println(agent.getBeliefBase());
+
+        System.out.println("\nInitial Goals");
+        System.out.println(agent.getEventSet());
+
+        System.out.println("\nPlan Library");
+        System.out.println(agent.getPlanLibrary());
+
+
+        agent.run();
     }
 
     public static void parseBeliefAtoms() {
@@ -282,9 +297,9 @@ public class Test {
             // initialise parser
             Parser parser = new Parser();
 
-            // initialise interpreter
-            Interpreter interpreter = new Interpreter();
-            System.out.println("Successfully initialised interpreter and parser.");
+            // initialise agent
+            Agent agent = new Agent();
+            System.out.println("Successfully initialised agent and parser.");
 
             // create plans
             LinkedList<Plan> plans = new LinkedList<>();
@@ -296,43 +311,43 @@ public class Test {
                 Plan plan = plans.pop();
 //            System.out.println("\nAdding to plan library: \n" + plan.toString());
                 if (plan != null) {
-                    interpreter.getPlanLibrary().add(plan);
+                    agent.getPlanLibrary().add(plan);
                 }
             }
-            System.out.println("\nSuccessfully created plan library:\n" + interpreter.getPlanLibrary().toString());
+            System.out.println("\nSuccessfully created plan library:\n" + agent.getPlanLibrary().toString());
 
             // populate belief base
             HashSet<BeliefAtom> atoms = new HashSet<>();
             atoms.add((new BeliefAtom(new Atom("find_water"))));
             atoms.add((new BeliefAtom(new Atom("find_life"))));
-            interpreter.getBeliefBase().addEpistemicState(new CompactProbabilisticEpistemicState(atoms));
-//            interpreter.getBeliefBase().revise(new PositiveLiteral(new BeliefAtom(new Atom("find_water"))), 0.8);
+            agent.getBeliefBase().addEpistemicState(new CompactProbabilisticEpistemicState(atoms));
+//            agent.getBeliefBase().revise(new PositiveLiteral(new BeliefAtom(new Atom("find_water"))), 0.8);
 
             HashSet<BeliefAtom> atoms2 = new HashSet<BeliefAtom>();
             atoms2.add((new BeliefAtom(new Atom("find_water2"))));
             atoms2.add((new BeliefAtom(new Atom("find_life2"))));
-            interpreter.getBeliefBase().addEpistemicState(new CompactProbabilisticEpistemicState(atoms2));
+            agent.getBeliefBase().addEpistemicState(new CompactProbabilisticEpistemicState(atoms2));
 
             HashSet<BeliefAtom> atoms3 = new HashSet<>();
             atoms3.add((new BeliefAtom(new Atom("find_water"))));
             atoms3.add((new BeliefAtom(new Atom("find_life"))));
-            interpreter.getBeliefBase().addEpistemicState(new CompactProbabilisticEpistemicState(atoms3));
+            agent.getBeliefBase().addEpistemicState(new CompactProbabilisticEpistemicState(atoms3));
 
-            System.out.println("\nSuccessfully created belief base:\n" + interpreter.getBeliefBase().toString());
+            System.out.println("\nSuccessfully created belief base:\n" + agent.getBeliefBase().toString());
 
-//            interpreter.getBeliefBase().add(parser.parseBelief("water(location(2))."));
-//            interpreter.getBeliefBase().add(parser.parseBelief("at(location(1))."));
-//            interpreter.getBeliefBase().add(parser.parseBelief("safe(location(1),location(2))."));
-//            interpreter.getBeliefBase().add(parser.parseBelief("location(c)."));
-//            System.out.println("\nSuccessfully created belief base:\n" + interpreter.getBeliefBase().toString());
+//            agent.getBeliefBase().add(parser.parseBelief("water(location(2))."));
+//            agent.getBeliefBase().add(parser.parseBelief("at(location(1))."));
+//            agent.getBeliefBase().add(parser.parseBelief("safe(location(1),location(2))."));
+//            agent.getBeliefBase().add(parser.parseBelief("location(c)."));
+//            System.out.println("\nSuccessfully created belief base:\n" + agent.getBeliefBase().toString());
 
             // add event set
-//            interpreter.getEventSet().add(new ExternalEvent(new AddEvent(parser.parseGoal("!find_water."))));
+//            agent.getEventSet().add(new ExternalEvent(new AddEvent(parser.parseGoal("!find_water."))));
 //            System.out.println("\nSuccessfully created event set:");
-//            System.out.println(interpreter.getEventSet().toString() + "\n");
+//            System.out.println(agent.getEventSet().toString() + "\n");
 
-            // run interpreter
-//            interpreter.run();
+            // run agent
+//            agent.run();
 
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -347,7 +362,7 @@ public class Test {
 //            Parser parser = new Parser();
 //
 //            // initialise interpreter
-//            Interpreter interpreter = new Interpreter();
+//            Agent interpreter = new Agent();
 //            System.out.println("Successfully initialised interpreter and parser.");
 //
 //            // create plans
@@ -496,23 +511,23 @@ public class Test {
     public static void parse() throws Exception {
         Parser parser = new Parser();
 
-        File file = new File("/Users/aidanscannell/Google Drive/Bristol PG/Academic/Research Project/uncertain-agentspeak/src/test/java/agent.asl");
+        File file = new File("/Users/aidanscannell/Google Drive/Bristol PG/Academic/Research Project/uncertain-agentspeak/src/test/java/test.agent");
         FileInputStream fis = null;
         fis = new FileInputStream(file);
 
-        Interpreter interpreter = parser.parseUncertainAgentSpeak(fis);
+        Agent agent = parser.parseUncertainAgentSpeak(fis);
 
 
-        System.out.println(interpreter.getBeliefBase());
+        System.out.println(agent.getBeliefBase());
 
         System.out.println("\nInitial Goals");
-        System.out.println(interpreter.getEventSet());
+        System.out.println(agent.getEventSet());
 
         System.out.println("\nPlan Library");
-        System.out.println(interpreter.getPlanLibrary());
+        System.out.println(agent.getPlanLibrary());
 
 
-        interpreter.run();
+        agent.run();
     }
 
 }
