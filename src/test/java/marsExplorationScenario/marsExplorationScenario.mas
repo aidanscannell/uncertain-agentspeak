@@ -1,0 +1,14 @@
+MAS marsExplorationScenario {
+
+    infrastructure: centralised
+
+    environment: env.MarsEnvironment(20)
+
+    agents:
+        sampleAgent;
+
+        analysisAgent;
+
+        excavationAgent;
+
+}

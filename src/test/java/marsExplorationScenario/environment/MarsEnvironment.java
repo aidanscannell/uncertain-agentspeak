@@ -1,4 +1,4 @@
-package test.java.mars_exploration_scenario.environment;
+package test.java.marsExplorationScenario.environment;
 
 import main.java.uncertain_agentspeak.environment.Environment;
 

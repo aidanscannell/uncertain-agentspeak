@@ -28,7 +28,7 @@ NEWLINE             : ('.') ;
 
 
 /*
- * Parser Rules
+ * AgentParser Rules
  */
 
 agentspeak          : ( plan | belief )* EOF ;
