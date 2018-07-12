@@ -1,4 +1,4 @@
-package main.java.uncertain_agentspeak.agentspeak.parser;
+package main.resources.antlr.as_parser;
 
 import main.java.uncertain_agentspeak.agentspeak.*;
 import main.java.uncertain_agentspeak.agentspeak.actions.BeliefAction;
@@ -34,11 +34,18 @@ import main.java.uncertain_agentspeak.agentspeak.terms.constants.Atom;
 import main.java.uncertain_agentspeak.agentspeak.terms.constants.Number;
 import main.java.uncertain_agentspeak.agentspeak.terms.constants.numbers.DoubleNum;
 import main.java.uncertain_agentspeak.agentspeak.terms.constants.numbers.IntNum;
-import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakBaseVisitor;
-import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakParser;
 import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.compact_epistemic_states.CompactPossibilisticEpistemicState;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.compact_epistemic_states.CompactProbabilisticEpistemicState;
+import main.resources.antlr.UncertainAgentspeakBaseVisitor;
+import main.resources.antlr.UncertainAgentspeakParser;
+//import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakBaseVisitor;
+//import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakParser;
+////import uncertain_agentspeak.UncertainAgentspeakParser;
+////import uncertain_agentspeak.UncertainAgentspeakBaseVisitor;
+//import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakBaseVisitor;
+////import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakParser;
+////import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakParser.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,7 +54,7 @@ import java.util.List;
 
 import static java.lang.Double.parseDouble;
 
-public class Visitor extends UncertainAgentspeakBaseVisitor<Object> {
+public class UncertainAgentspeakVisitor extends UncertainAgentspeakBaseVisitor<Object> {
 
     @Override
     public Agent visitUncertainAgentspeak(UncertainAgentspeakParser.UncertainAgentspeakContext ctx) {
@@ -423,7 +430,7 @@ public class Visitor extends UncertainAgentspeakBaseVisitor<Object> {
                 return new TestGoalAction(visitTest_goal(ctx.goal().test_goal()));
             }
         } else {
-            // TODO: Add exceptions for invalid input in parser/visitor
+            // TODO: Add exceptions for invalid input in as_parser/visitor
             System.out.println("Invalid action in plan body");
         }
         return null;
