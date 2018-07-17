@@ -2,7 +2,11 @@ MAS marsExplorationScenario {
 
     infrastructure: centralised
 
-    environment: env.MarsEnvironment(20)
+    environment: env.MarsEnvironment(20, 20, 10, 800)
+#                                    1. Grid width (int)
+#                                    2. Grid height (int)
+#                                    3. Number of obstacles (int)
+#                                    4. Window width (int)
 
     agents:
         sampleAgent;
