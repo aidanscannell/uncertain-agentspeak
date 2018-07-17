@@ -1,13 +1,18 @@
-//package main.java.uncertain_agentspeak.runtime;
-//
-//import main.java.uncertain_agentspeak.infrastructure.MASLauncher;
-//import main.java.uncertain_agentspeak.infrastructure.centralised.CentralisedMASLauncher;
-//import main.java.uncertain_agentspeak.mas.MASProject;
-//
-//import java.io.File;
-//
-//public class RunUncertainAgentspeak {
-//
+package main.java.uncertain_agentspeak.runtime;
+
+import main.java.uncertain_agentspeak.infrastructure.MASLauncher;
+import main.java.uncertain_agentspeak.infrastructure.centralised.CentralisedMASLauncher;
+import main.java.uncertain_agentspeak.mas.MASProject;
+
+import java.io.File;
+
+public class RunUncertainAgentspeak {
+
+    public static void main(String[] args) {
+        UncertainAgentspeakGUI main = new UncertainAgentspeakGUI();
+        main.launchGUI(args);
+    }
+
 //    public static void main (String args[]) {
 //
 //        String name;
@@ -34,5 +39,5 @@
 //            System.err.println("parsing errors found... \n" + e);
 //        }
 //    }
-//
-//}
+
+}

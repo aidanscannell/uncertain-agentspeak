@@ -3,6 +3,7 @@ package test.java;
 import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -44,11 +45,18 @@ public class Test {
         File file = new File("/Users/aidanscannell/Google Drive/Bristol PG/Academic/Research Project/uncertain-agentspeak/src/test/java/marsExplorationScenario/marsExplorationScenario.mas");
         FileInputStream fis = null;
         fis = new FileInputStream(file);
+        try {
+            MASProject project = projectParser.parseMASProject(fis);
+            System.out.println("Successfully opened and parsed file");
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found");
+        } catch (Exception e) {
+            System.err.println("Error parsing file");
+        }
 
-        MASProject project = projectParser.parseMASProject(fis);
 
 
-        System.out.println("success");
+
     }
 
     public static void marsExplorationScenarioAgent() throws Exception {
