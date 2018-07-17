@@ -6,13 +6,13 @@ public class GridWorldModel {
     public static int AGENT = 2;
     public static int OBSTACLE = 4;
 
-    private int width;
-    private int height;
-    private int[][] grid;
-    private Location[] agentPositions;
+    protected int width;
+    protected int height;
+    protected int[][] grid;
+    protected Location[] agentPositions;
     private GridWorldView gridWorldView;
 
-    public GridWorldModel(int width, int height, int numAgents) {
+    public GridWorldModel(int width, int height) {
         this.width = width;
         this.height = height;
 
@@ -23,10 +23,10 @@ public class GridWorldModel {
             }
         }
 
-        agentPositions = new Location[numAgents];
-        for (int i=0; i<numAgents; i++) {
-            agentPositions[i] = new Location(-1,-1);
-        }
+//        agentPositions = new Location[numAgents];
+//        for (int i=0; i<numAgents; i++) {
+//            agentPositions[i] = new Location(-1,-1);
+//        }
     }
 
     public void setGridWorldView(GridWorldView gridWorldView) {
@@ -49,12 +49,58 @@ public class GridWorldModel {
         return agentPositions.length;
     }
 
-    public int getAgentAtPos(Location location) {
+    public int getAgentAtPos(int x, int y) {
         for (int i=0; i<agentPositions.length; i++) {
-            if (agentPositions[i].x == location.x && agentPositions[i].y == location.y) {
+            if (agentPositions[i].x == x && agentPositions[i].y == y) {
                 return i;
             }
         }
         return -1;
+    }
+
+    public int getAgentAtPos(Location location) {
+        return getAgentAtPos(location.x, location.y);
+    }
+
+    public Location getAgentPos(int ag) {
+        try {
+            if (agentPositions[ag].x == -1)
+                return null;
+            else
+                return (Location) agentPositions[ag].clone();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public void setAgPos(int ag, Location l) {
+        Location oldLoc = getAgentPos(ag);
+        if (oldLoc != null) {
+            remove(AGENT, oldLoc.x, oldLoc.y);
+        }
+        agentPositions[ag] = l;
+        add(AGENT, l.x, l.y);
+    }
+
+    public void setAgPos(int ag, int x, int y) {
+        setAgPos(ag, new Location(x, y));
+    }
+
+    public void add(int value, Location l) {
+        add(value, l.x, l.y);
+    }
+
+    public void add(int value, int x, int y) {
+        grid[x][y] |= value;
+        if (gridWorldView != null) gridWorldView.update(x,y);
+    }
+
+    public void remove(int value, Location l) {
+        remove(value, l.x, l.y);
+    }
+
+    public void remove(int value, int x, int y) {
+        grid[x][y] &= ~value;
+        if (gridWorldView != null) gridWorldView.update(x,y);
     }
 }
