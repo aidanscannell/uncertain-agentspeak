@@ -40,5 +40,5 @@ agent           : agent_name NEWLINE ;
 agent_name      : ATOM ;
 
 
-arguments_list  : arg | ( arg ',' arg )+ ;
+arguments_list  : arg | arg ( ',' arg )+ ;
 arg             : NUMBER | STRING | 'true' | 'false' ;

@@ -10,20 +10,39 @@ import main.resources.antlr.MASProjectParser;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MASProjectVisitor extends MASProjectBaseVisitor<Object> {
 
     public MASProject visitMas_project(MASProjectParser.Mas_projectContext ctx) {
         String name = null;
-        List<Agent> agentList = null;
-        Environment environment = null;
+        List<Agent> agentList = new ArrayList<Agent>();
+        Environment environment = new Environment();
         if (ctx.name() != null) {
             name = ctx.name().ATOM().toString();
         }
         if (ctx.content() != null) {
             if (ctx.content().environment() != null) {
-//                Environment environment = new Environment(ctx.content().environment().)
+                List args = new ArrayList();
+                Object arg = null;
+                for (int i=0; i<ctx.content().environment().arguments_list().arg().size(); i++) {
+                    if (ctx.content().environment().arguments_list().arg(i).NUMBER() != null) {
+                        arg = Integer.parseInt(ctx.content().environment().arguments_list().arg(i).NUMBER().toString());
+                    } else if (ctx.content().environment().arguments_list().arg(i).STRING() != null) {
+                        arg = ctx.content().environment().arguments_list().arg(i).STRING().toString();
+                    }
+                    args.add(arg);
+                }
+                String envName = "test.java.marsExplorationScenario.environment." + ctx.content().environment().env_class_name().CLASS_NAME().toString();
+                try {
+                    Class cl = Class.forName(envName);
+                    java.lang.reflect.Constructor constructor = cl.getConstructor(List.class);
+                    environment = (Environment) constructor.newInstance(args);
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
             if (ctx.content().agents() != null) {
                 AgentParser agentAgentParser = new AgentParser();
@@ -37,7 +56,7 @@ public class MASProjectVisitor extends MASProjectBaseVisitor<Object> {
                         fis = new FileInputStream(file);
                         Agent agent = agentAgentParser.parseUncertainAgentSpeak(fis);
                         agentList.add(agent);
-                        System.out.println("Successfully instantiated agent: " + agent.toString());
+                        System.out.println("Successfully instantiated agent");
                     } catch (FileNotFoundException e) {
                         System.err.println("File not found: " + agentName);
                     } catch (Exception e) {
