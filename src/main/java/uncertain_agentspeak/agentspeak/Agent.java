@@ -51,6 +51,36 @@ public class Agent {
         return planLibrary;
     }
 
+    public void iterate() throws Exception {
+
+        if (!eventSet.isEmpty()) {
+
+            Event event = eventSet.selectEvent();
+            System.out.println("\nEvent selected:\n\t" + event.toString());
+
+            if (event != null) {
+                IntendedMeans intendedMeans = selectPlan(event);
+                if (intendedMeans != null) {
+                    System.out.println("\nPlan selected:\n\t" + intendedMeans.getPlan().toString());
+                    System.out.println("\t" + intendedMeans.getUnifier().toString());
+                    intentionSet.addIntention(event, intendedMeans);
+                    System.out.println("\nIntention added\n\t" + intentionSet.toString());
+                }
+            }
+        }
+
+        if (!intentionSet.isEmpty()) {
+
+            Intention intention = intentionSet.selectIntention();
+            System.out.println("\nIntention selected:\n\t" + intention.toString() + "\n");
+
+            if (intention != null) {
+                intention.executeIntention(intentionSet, beliefBase, eventSet);
+                System.out.println("\nIntention executed");
+            }
+        }
+    }
+
     public void run() throws Exception {
 
 
