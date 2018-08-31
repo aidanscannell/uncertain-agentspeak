@@ -33,7 +33,7 @@ public class CompactEpistemicState extends EpistemicState {
             }
         }
         super.setDomain(domain);
-        this.weightedBeliefBase = new HashMap<BeliefAtom, Weight>();
+        this.weightedBeliefBase = new HashMap<>();
         this.totalWeight = 0;
     }
 
@@ -61,7 +61,7 @@ public class CompactEpistemicState extends EpistemicState {
         }
 
         if (weightedBeliefBase.containsKey(beliefAtom)) {
-            Weight oldWeight = this.getWeightedBeliefBase().get(beliefAtom);
+            Weight oldWeight = weightedBeliefBase.get(beliefAtom);
             totalWeight -= oldWeight.max();
             if (beliefLiteral.isPositive()) {
                 oldWeight.addPositive(weight);
@@ -86,7 +86,7 @@ public class CompactEpistemicState extends EpistemicState {
         }
     }
 
-    public Weight getWeight(BeliefAtom beliefAtom) throws Exception {
+    protected Weight getWeight(BeliefAtom beliefAtom) throws Exception {
         if (super.getDomain().contains(beliefAtom)) {
             if (this.weightedBeliefBase.containsKey(beliefAtom)) {
                 return this.weightedBeliefBase.get(beliefAtom);
@@ -98,7 +98,7 @@ public class CompactEpistemicState extends EpistemicState {
         }
     }
 
-    public double getWeight(BeliefLiteral beliefLiteral) throws Exception {
+    protected double getWeight(BeliefLiteral beliefLiteral) throws Exception {
         if (beliefLiteral.isPositive()) {
             return getWeight((PositiveLiteral) beliefLiteral);
         } else {
@@ -106,7 +106,7 @@ public class CompactEpistemicState extends EpistemicState {
         }
     }
 
-    public double getWeight(PositiveLiteral positiveLiteral) throws Exception {
+    protected double getWeight(PositiveLiteral positiveLiteral) throws Exception {
         BeliefAtom beliefAtom = positiveLiteral.getBeliefAtom();
         if (super.getDomain().contains(beliefAtom)) {
             if (this.weightedBeliefBase.containsKey(beliefAtom)) {
@@ -119,7 +119,7 @@ public class CompactEpistemicState extends EpistemicState {
         }
     }
 
-    public double getWeight(NegativeLiteral negativeLiteral) throws Exception {
+    protected double getWeight(NegativeLiteral negativeLiteral) throws Exception {
         BeliefAtom beliefAtom = negativeLiteral.getBeliefAtom();
         if (super.getDomain().contains(beliefAtom)) {
             if (this.weightedBeliefBase.containsKey(beliefAtom)) {
@@ -135,20 +135,16 @@ public class CompactEpistemicState extends EpistemicState {
 
     public double getLambda(LogicalExpression logicalExpression) throws Exception {
         if (!logicalExpression.isGround()) {
-            System.out.println(logicalExpression.getClass());
             throw new Exception("Formula is not ground: " + logicalExpression);
         }
         LogicalExpression formula = this.pare(logicalExpression);
         if (!formula.inNNF()) {
             formula = formula.convertToNNF(false);
         }
-//        System.out.println(formula.toString() + " = " + this.getLambda(formula, new HashSet<BeliefLiteral>()));
-        return this.getLambda(formula, new HashSet<BeliefLiteral>());
+        return this.getLambda(formula, new HashSet<>());
     }
 
-    public double getLambda(LogicalExpression logicalExpression, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
-//        System.out.println(logicalExpression.toString());
-//        System.out.println(logicalExpression.getClass());
+    private double getLambda(LogicalExpression logicalExpression, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
         if (logicalExpression instanceof BeliefLiteral){
             return this.getLambda((BeliefLiteral) logicalExpression, boundedLiterals);
         } else if (logicalExpression instanceof Conjunction) {
@@ -193,11 +189,11 @@ public class CompactEpistemicState extends EpistemicState {
         return this.getMaxWeight() - sum;
     }
 
-    public double getLambda(Contradiction contradiction, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+    private double getLambda(Contradiction contradiction, HashSet<BeliefLiteral> boundedLiterals) {
         return this.getMinWeight();
     }
 
-    public double getLambda(Tautology tautology, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+    private double getLambda(Tautology tautology, HashSet<BeliefLiteral> boundedLiterals) {
         return this.getMaxWeight();
     }
 
@@ -208,7 +204,7 @@ public class CompactEpistemicState extends EpistemicState {
             return this.getLambda(conjunction.getRight(), copyBoundedLiterals);
         } else if (conjunction.getLeft().isDisjunctive() && conjunction.getRight().isConjunctive()) {
             copyBoundedLiterals.addAll(conjunction.getRight().getBeliefLiterals());
-            return this.getLambda(conjunction.getRight(), copyBoundedLiterals);
+            return this.getLambda(conjunction.getLeft(), copyBoundedLiterals);
         } else {
             throw new Exception("Formula not in language " + this);
         }
@@ -224,23 +220,23 @@ public class CompactEpistemicState extends EpistemicState {
         }
     }
 
-    public double getLambda(NegationAsFailure negationAsFailure, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+    private double getLambda(NegationAsFailure negationAsFailure, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
         return this.getLambda(this.pare(negationAsFailure), boundedLiterals);
     }
 
-    public double getLambda(GreaterEqualsPlausibility greaterEqualsPlausibility, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+    private double getLambda(GreaterEqualsPlausibility greaterEqualsPlausibility, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
         return this.getLambda(this.pare(greaterEqualsPlausibility), boundedLiterals);
     }
 
-    public double getLambda(GreaterThanPlausibility greaterThanPlausibility, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+    private double getLambda(GreaterThanPlausibility greaterThanPlausibility, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
         return this.getLambda(this.pare(greaterThanPlausibility), boundedLiterals);
     }
 
-    public double getLambda(Equal equal, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+    private double getLambda(Equal equal, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
         return this.getLambda(this.pare(equal), boundedLiterals);
     }
 
-    public double getLambda(NotEqual notEqual, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+    private double getLambda(NotEqual notEqual, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
         return this.getLambda(this.pare(notEqual), boundedLiterals);
     }
 
