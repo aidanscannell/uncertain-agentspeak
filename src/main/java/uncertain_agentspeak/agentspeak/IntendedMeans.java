@@ -1,5 +1,6 @@
 package main.java.uncertain_agentspeak.agentspeak;
 
+import main.java.uncertain_agentspeak.environment.Environment;
 import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
 
 import java.util.ArrayList;
@@ -43,12 +44,12 @@ public class IntendedMeans {
     /** Executes the next action
      *  Returns - true, if subgoal is created, otherwise
      *          - false */
-    public boolean executeAction(Intention intention, GlobalUncertainBelief beliefBase, EventSet eventSet) throws Exception {
+    public boolean executeAction(String name, Intention intention, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) throws Exception {
         boolean subGoalFlag = false;
         ArrayList<Action> actions = this.plan.getActions();
         if (actionsRemaining()) {
             Action action = actions.get(this.index);
-            subGoalFlag = action.executeAction(intention, this.unifier, beliefBase, eventSet);
+            subGoalFlag = action.executeAction(name, intention, this.unifier, beliefBase, eventSet, environment);
             this.index++;
         }
         return subGoalFlag;

@@ -1,5 +1,6 @@
 package main.java.uncertain_agentspeak.agentspeak;
 
+import main.java.uncertain_agentspeak.environment.Environment;
 import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
 
 import java.util.Deque;
@@ -11,6 +12,9 @@ public class Agent {
     private EventSet eventSet;
     private PlanLibrary planLibrary;
     private IntentionSet intentionSet;
+    private Environment environment;
+    private String name;
+    private int id;
 
     public Agent(){
         this.beliefBase = new BeliefBase();
@@ -35,6 +39,18 @@ public class Agent {
         this.intentionSet = intentionSet;
     }
 
+    public void setEnvironment(Environment environment) {
+        this.environment = environment;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public GlobalUncertainBelief getBeliefBase() {
         return beliefBase;
     }
@@ -43,12 +59,20 @@ public class Agent {
         return eventSet;
     }
 
+    public PlanLibrary getPlanLibrary() {
+        return planLibrary;
+    }
+
     public IntentionSet getIntentionSet() {
         return intentionSet;
     }
 
-    public PlanLibrary getPlanLibrary() {
-        return planLibrary;
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void iterate() throws Exception {
@@ -75,7 +99,7 @@ public class Agent {
             System.out.println("\nIntention selected:\n\t" + intention.toString() + "\n");
 
             if (intention != null) {
-                intention.executeIntention(intentionSet, beliefBase, eventSet);
+                intention.executeIntention(name, intentionSet, beliefBase, eventSet, environment);
                 System.out.println("\nIntention executed");
             }
         }
@@ -85,6 +109,8 @@ public class Agent {
 
 
         while (!eventSet.isEmpty() || !intentionSet.isEmpty()) {
+
+            try { Thread.sleep(1000); } catch (Exception e) {}
 
             if (!eventSet.isEmpty()) {
 
@@ -108,7 +134,7 @@ public class Agent {
                 System.out.println("\nIntention selected:\n\t" + intention.toString() + "\n");
 
                 if (intention != null) {
-                    intention.executeIntention(intentionSet, beliefBase, eventSet);
+                    intention.executeIntention(name, intentionSet, beliefBase, eventSet, environment);
                     System.out.println("\nIntention executed");
                 }
             }

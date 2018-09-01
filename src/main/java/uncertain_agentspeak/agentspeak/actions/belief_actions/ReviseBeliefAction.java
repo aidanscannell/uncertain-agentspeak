@@ -6,6 +6,7 @@ import main.java.uncertain_agentspeak.agentspeak.event_triggers.belief_event_tri
 import main.java.uncertain_agentspeak.agentspeak.events.ExternalEvent;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.BeliefLiteral;
 import main.java.uncertain_agentspeak.agentspeak.terms.constants.numbers.DoubleNum;
+import main.java.uncertain_agentspeak.environment.Environment;
 import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
 
 public class ReviseBeliefAction extends BeliefAction {
@@ -19,7 +20,7 @@ public class ReviseBeliefAction extends BeliefAction {
 
 
     @Override
-    public boolean executeAction(Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet) throws Exception {
+    public boolean executeAction(String name, Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) throws Exception {
         BeliefLiteral beliefLiteral = this.getBeliefLiteral().substitute(unifier);
         DoubleNum weight = (DoubleNum) this.weight.substitute(unifier);
         beliefBase.revise(beliefLiteral, weight.getDoubleVal());
