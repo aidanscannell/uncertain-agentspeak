@@ -49,10 +49,10 @@ public class Intention {
     public String toString() {
         StringBuilder string = new StringBuilder();
         for (IntendedMeans intendedMean : plansUnified) {
-            string.append(intendedMean.getPlan().toString());
-            if (intendedMean != plansUnified.getLast()) {
-                string.append("\n");
+            if (intendedMean != plansUnified.getFirst()) {
+                string.append("\n\t");
             }
+            string.append("" + intendedMean.getPlan().toString());
         }
         return string.toString();
     }

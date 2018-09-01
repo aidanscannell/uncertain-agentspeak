@@ -18,10 +18,7 @@ public class IntentionSet extends LinkedList<Intention> {
     public String toString() {
         StringBuilder string = new StringBuilder();
         for (Intention intention : this) {
-            string.append(intention.toString());
-            if (intention != this.get(this.size()-1)) {
-                string.append("\n");
-            }
+            string.append("\n\t" + intention.toString());
         }
         return string.toString();
     }
