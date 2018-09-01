@@ -1,12 +1,17 @@
 package main.java.uncertain_agentspeak.agentspeak;
 
 import main.java.uncertain_agentspeak.environment.Environment;
+import main.java.uncertain_agentspeak.ui.main.Main;
 import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.util.Deque;
 import java.util.LinkedList;
 
 public class Agent {
+
+    private Logger LOGGER;
 
     private GlobalUncertainBelief beliefBase;
     private EventSet eventSet;
@@ -45,6 +50,7 @@ public class Agent {
 
     public void setName(String name) {
         this.name = name;
+        LOGGER = LogManager.getLogger(Agent.class.getName() + " - " + name);
     }
 
     public void setId(int id) {
@@ -75,38 +81,41 @@ public class Agent {
         return id;
     }
 
-    public void iterate() throws Exception {
-
-        if (!eventSet.isEmpty()) {
-
-            Event event = eventSet.selectEvent();
-            System.out.println("\nEvent selected:\n\t" + event.toString());
-
-            if (event != null) {
-                IntendedMeans intendedMeans = selectPlan(event);
-                if (intendedMeans != null) {
-                    System.out.println("\nPlan selected:\n\t" + intendedMeans.getPlan().toString());
-                    System.out.println("\t" + intendedMeans.getUnifier().toString());
-                    intentionSet.addIntention(event, intendedMeans);
-                    System.out.println("\nIntention added\n\t" + intentionSet.toString());
-                }
-            }
-        }
-
-        if (!intentionSet.isEmpty()) {
-
-            Intention intention = intentionSet.selectIntention();
-            System.out.println("\nIntention selected:\n\t" + intention.toString() + "\n");
-
-            if (intention != null) {
-                intention.executeIntention(name, intentionSet, beliefBase, eventSet, environment);
-                System.out.println("\nIntention executed");
-            }
-        }
-    }
+//    public void iterate() throws Exception {
+//
+//        if (!eventSet.isEmpty()) {
+//
+//            Event event = eventSet.selectEvent();
+//            LOGGER.info("\nEvent selected:\n\t" + event.toString());
+//
+//            if (event != null) {
+//                IntendedMeans intendedMeans = selectPlan(event);
+//                if (intendedMeans != null) {
+////                    System.out.println("\nPlan selected:\n\t" + intendedMeans.getPlan().toString());
+//                    LOGGER.info("Plan selected: " + intendedMeans.getPlan().toString() + "\t" + intendedMeans.getUnifier().toString());
+////                    System.out.println("\t" + intendedMeans.getUnifier().toString());
+//                    intentionSet.addIntention(event, intendedMeans);
+////                    System.out.println("\nIntention added\n\t" + intentionSet.toString());
+//                    LOGGER.info("Intention added: " + intentionSet.toString());
+//                }
+//            }
+//        }
+//
+//        if (!intentionSet.isEmpty()) {
+//
+//            Intention intention = intentionSet.selectIntention();
+////            System.out.println("\nIntention selected:\n\t" + intention.toString() + "\n");
+//            LOGGER.info("Intention selected: " + intention.toString());
+//
+//            if (intention != null) {
+//                intention.executeIntention(name, intentionSet, beliefBase, eventSet, environment);
+////                System.out.println("\nIntention executed");
+//                LOGGER.info("\nIntention executed");
+//            }
+//        }
+//    }
 
     public void run() throws Exception {
-
 
         while (!eventSet.isEmpty() || !intentionSet.isEmpty()) {
 
@@ -115,15 +124,18 @@ public class Agent {
             if (!eventSet.isEmpty()) {
 
                 Event event = eventSet.selectEvent();
-                System.out.println("\nEvent selected:\n\t" + event.toString());
+//                System.out.println("\nEvent selected:\n\t" + event.toString());
+                LOGGER.info("\nEvent selected:\n\t" + event.toString());
 
                 if (event != null) {
                     IntendedMeans intendedMeans = selectPlan(event);
                     if (intendedMeans != null) {
-                        System.out.println("\nPlan selected:\n\t" + intendedMeans.getPlan().toString());
-                        System.out.println("\t" + intendedMeans.getUnifier().toString());
+//                        System.out.println("\nPlan selected:\n\t" + intendedMeans.getPlan().toString());
+//                        System.out.println("\t" + intendedMeans.getUnifier().toString());
+                        LOGGER.info("Plan selected: " + intendedMeans.getPlan().toString() + "\t" + intendedMeans.getUnifier().toString());
                         intentionSet.addIntention(event, intendedMeans);
-                        System.out.println("\nIntention added\n\t" + intentionSet.toString());
+//                        System.out.println("\nIntention added\n\t" + intentionSet.toString());
+                        LOGGER.info("Intention added: " + intentionSet.toString());
                     }
                 }
             }
@@ -131,11 +143,13 @@ public class Agent {
             if (!intentionSet.isEmpty()) {
 
                 Intention intention = intentionSet.selectIntention();
-                System.out.println("\nIntention selected:\n\t" + intention.toString() + "\n");
+//                System.out.println("\nIntention selected:\n\t" + intention.toString() + "\n");
+                LOGGER.info("Intention selected: " + intention.toString());
 
                 if (intention != null) {
                     intention.executeIntention(name, intentionSet, beliefBase, eventSet, environment);
-                    System.out.println("\nIntention executed");
+//                    System.out.println("\nIntention executed");
+                    LOGGER.info("\nIntention executed");
                 }
             }
         }
@@ -144,8 +158,9 @@ public class Agent {
     private IntendedMeans selectPlan(Event event) throws Exception {
         Deque<IntendedMeans> relevantPlans = selectRelevantPlans(event);
         if (!relevantPlans.isEmpty()) {
-            System.out.println("\nFirst Relevant Plan:");
-            System.out.println(relevantPlans.getFirst().getPlan().toString());
+//            System.out.println("\nFirst Relevant Plan:");
+//            System.out.println(relevantPlans.getFirst().getPlan().toString());
+            LOGGER.info("First Relevant Plan: " + relevantPlans.getFirst().getPlan().toString());
             Deque<IntendedMeans> applicablePlans = selectApplicablePlans(relevantPlans);
             if (!applicablePlans.isEmpty()) {
                 return selectPlan(applicablePlans);
