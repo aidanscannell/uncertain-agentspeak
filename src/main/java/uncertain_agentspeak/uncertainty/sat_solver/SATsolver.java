@@ -63,16 +63,16 @@ public class SATsolver {
 
             IProblem problem = solver;
             if (problem.isSatisfiable()) {
-                System.out.println("Satisfiable !");
+//                System.out.println("Satisfiable !");
                 solver.reset();
                 return true;
             } else {
-                System.out.println("Unsatisfiable !");
+//                System.out.println("Unsatisfiable !");
                 solver.reset();
                 return false;
             }
         } catch (ContradictionException e) {
-            System.out.println("Unsatisfiable (trivial)!");
+//            System.out.println("Unsatisfiable (trivial)!");
             return false;
         } catch (TimeoutException e) {
             System.out.println("Timeout, sorry!");
