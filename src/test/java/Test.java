@@ -62,7 +62,7 @@ public class Test {
     public static void marsExplorationScenarioAgent() throws Exception {
         AgentParser agentParser = new AgentParser();
 
-        File file = new File("/Users/aidanscannell/Google Drive/Bristol PG/Academic/Research Project/uncertain-agentspeak/src/test/java/marsExplorationScenario/agents/sampleAgent.agent");
+        File file = new File("/Users/aidanscannell/Google Drive/Bristol PG/Academic/Research Project/uncertain-agentspeak/src/test/java/marsExplorationScenario/agents/sampleAgentA.agent");
         FileInputStream fis = null;
         fis = new FileInputStream(file);
 
