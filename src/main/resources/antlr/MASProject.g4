@@ -16,9 +16,11 @@ WHITESPACE          : (' ' | '\t' | '\n' | '\r' | COMMENT)+ -> skip;
 
 NEWLINE             : (';') ;
 
-COMMENT             :  '#' ~( '\r' | '\n' )* ;
+COMMENT             :  '//' ~( '\r' | '\n' )* ;
 
-STRING : '"' ~('\r' | '\n' | '"')* '"' ;
+STRING              : '"' ~('\r' | '\n' | '"')* '"' ;
+
+INTEGER             : [0-9]+ ;
 
 /*
  * AgentParser Rules
@@ -36,8 +38,9 @@ environment     : 'environment:' 'env.' env_class_name '(' arguments_list ')' ;
 env_class_name  : CLASS_NAME ;
 
 agents          : 'agents:' agent+ ;
-agent           : agent_name NEWLINE ;
+agent           : agent_name NEWLINE | agent_name '#' numAgents NEWLINE ;
 agent_name      : ATOM ;
+numAgents       : INTEGER ;
 
 
 arguments_list  : arg | arg ( ',' arg )+ ;
