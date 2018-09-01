@@ -117,7 +117,7 @@
       </BorderPane>
    </children>
    <stylesheets>
-      <URL value="@main.css" />
+      <URL value="@../../../../resources/main.css" />
       <URL value="@../../../../resources/dark-theme.css" />
    </stylesheets>
 </StackPane>

@@ -1,0 +1,233 @@
+/*
+    Created on : 19-Jul-2018, 16:01:22
+    Author     : aidanscannell
+*/
+* {
+    -fx-primary : #2A2E37;
+    -fx-secondary : #FFFF8D;
+    -fx-primarytext : white;
+    -fx-blue: #1976D2;
+    -fx-red: #FF0000;
+    -fx-green:#2E7D32;
+}
+
+.root{
+    -fx-background-color: -fx-primary;
+}
+
+.glyph-icon
+{
+    -fx-fill: -fx-primarytext;
+}
+
+.button{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 13pt;
+}
+
+.button:hover, .button:focused{
+    -fx-border-color: -fx-secondary;
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
+
+.text-field
+{
+    -fx-text-fill: -fx-primarytext;
+    -fx-font-size : 13pt;
+    -jfx-focus-color: -fx-secondary;
+    -fx-text-fill: derive(-fx-secondary, 20%);
+}
+
+/*Main Screen CSS Styling starts here*/
+
+/*TablPane styling*/
+.tab{
+    -fx-background-color: -fx-primary;
+    -fx-pref-width : 200;
+    -fx-pref-height : 40;
+}
+
+.tab-header-background{
+    -fx-background-color: -fx-primary;
+}
+
+/*Menu bar Styling*/
+.menu-bar{
+    -fx-base : -fx-primary;
+    -fx-background-color: -fx-primary;
+}
+
+.context-menu
+{
+    -fx-background-color:  derive(-fx-primary, 20%);
+}
+
+/*Text area styling*/
+.text-area {
+    -fx-background-color: -fx-primary;
+    -fx-font-family: Consolas;
+    -fx-font-size: 15;
+    -fx-text-fill: #ffffff;
+    -fx-display-caret:true;
+}
+
+.text-area .content {
+    -fx-background-color: -fx-primary;
+}
+
+/** Tree view styling */
+/*.tree-view {
+    -fx-background-color: -fx-primary;
+}
+.tree-cell {
+    -fx-padding: 0.75em 0em 0.75em 0em ;
+}
+.tree-cell:sub-tree-item {
+    -fx-padding: 0.25em ;
+}*/
+
+.tree-view, .tree-cell {
+    -fx-background-color: -fx-primary ;
+    -fx-text-fill: white ;
+}
+/*.tree-cell:expanded, .tree-cell:sub-tree-item {
+    -fx-background-color: -fx-primary ;
+}
+.tree-cell:selected {
+    -fx-font-weight: bold ;
+}
+.tree-cell {
+    -fx-padding: 0.75em 0em 0.75em 0em ;
+}
+.tree-cell:sub-tree-item {
+    -fx-padding: 0.25em ;
+}*/
+
+/*Hamburger Styling
+.jfx-hamburger-icon{
+    -fx-spacing: 7;
+}
+
+.jfx-hamburger-icon StackPane
+{
+    -fx-background-color: -fx-secondary;
+    -fx-background-radius: 5px;
+}*/
+
+
+
+
+/*Text styling*/
+.main-text
+{
+    -fx-fill: -fx-secondary;
+    -fx-font-size: 14pt;
+    -fx-text-alignment: center;
+}
+
+.submission-container{
+    -fx-background-color: derive(-fx-primary, 10%);
+}
+
+
+/*TableView Default*/
+.table-view{
+    -fx-background-color: derive(-fx-primary, 10%);
+    -fx-font-size: 16px;
+}
+.table-view:focused{
+    -fx-background-color: derive(-fx-primary, 20%);
+}
+.table-row-cell {
+    -fx-cell-size: 40px;
+}
+.table-view .column-header-background{
+    -fx-background-color: -fx-primary;
+}
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+.table-row-cell:focused, .table-cell:focused{
+    -fx-text-fill: -fx-primary;
+}
+.table-row-cell{
+    -fx-background-color: -fx-primary;
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: transparent;
+}
+.table-column{
+    -fx-alignment: CENTER;
+}
+.table-row-cell:even{
+    -fx-background-color: derive(-fx-primary, 10%);
+}
+.table-row-cell:selected {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+    -fx-background-insets: 0;
+}
+.table-row-cell:selected .table-cell{
+    -fx-text-fill: -fx-primary;
+}
+.placeholder .label{
+    -fx-text-fill: white;
+}
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+}
+.table-view > .virtual-flow > .scroll-bar > .increment-button,
+.table-view > .virtual-flow > .scroll-bar > .decrement-button {
+    -fx-text-fill: white;
+}
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb{
+    -fx-background-color: derive(-fx-primary, 60%);
+    -fx-border-color: transparent;
+    -fx-background-radius: 5em;
+}
+.table-view .filler{
+    -fx-fill: -fx-primary;
+    -fx-background-color: -fx-primary;
+}
+.table-context
+{
+    -fx-base: -fx-primary;
+}
+
+
+
+/*Dialog styling*/
+.dialog-button{
+    -fx-border-color: -fx-green;
+    -fx-text-fill: white;
+    -fx-border-radius: 1px;
+    -fx-background-radius: 3px;
+}
+
+.dialog-button:hover{
+    -fx-background-color: -fx-green;
+    -fx-border-color: derive(-fx-green, -20%);
+    -fx-text-fill: white;
+}
+
+.jfx-layout-actions
+{
+    -fx-hgap:8;
+}
