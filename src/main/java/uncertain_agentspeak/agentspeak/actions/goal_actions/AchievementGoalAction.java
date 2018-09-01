@@ -26,7 +26,7 @@ public class AchievementGoalAction extends GoalAction {
     public boolean executeAction(String name, Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) {
         AchievementGoal achievementGoalSub = this.achievementGoal.substitute(unifier);
         eventSet.add(new InternalEvent(new AddGoalET(achievementGoalSub),intention));
-        System.out.println("Subgoal added: " + achievementGoalSub);
+//        System.out.println("Subgoal added: " + achievementGoalSub);
         return true;
     }
 
