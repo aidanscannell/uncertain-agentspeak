@@ -5,6 +5,7 @@ import main.java.uncertain_agentspeak.ui.main.Main;
 import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -50,7 +51,9 @@ public class Agent {
 
     public void setName(String name) {
         this.name = name;
-        LOGGER = LogManager.getLogger(Agent.class.getName() + " - " + name);
+        LOGGER = LogManager.getLogger(name);
+        ThreadContext.put("logFilename",name);
+        Thread.currentThread().setName(name);
     }
 
     public void setId(int id) {
@@ -81,40 +84,6 @@ public class Agent {
         return id;
     }
 
-//    public void iterate() throws Exception {
-//
-//        if (!eventSet.isEmpty()) {
-//
-//            Event event = eventSet.selectEvent();
-//            LOGGER.info("\nEvent selected:\n\t" + event.toString());
-//
-//            if (event != null) {
-//                IntendedMeans intendedMeans = selectPlan(event);
-//                if (intendedMeans != null) {
-////                    System.out.println("\nPlan selected:\n\t" + intendedMeans.getPlan().toString());
-//                    LOGGER.info("Plan selected: " + intendedMeans.getPlan().toString() + "\t" + intendedMeans.getUnifier().toString());
-////                    System.out.println("\t" + intendedMeans.getUnifier().toString());
-//                    intentionSet.addIntention(event, intendedMeans);
-////                    System.out.println("\nIntention added\n\t" + intentionSet.toString());
-//                    LOGGER.info("Intention added: " + intentionSet.toString());
-//                }
-//            }
-//        }
-//
-//        if (!intentionSet.isEmpty()) {
-//
-//            Intention intention = intentionSet.selectIntention();
-////            System.out.println("\nIntention selected:\n\t" + intention.toString() + "\n");
-//            LOGGER.info("Intention selected: " + intention.toString());
-//
-//            if (intention != null) {
-//                intention.executeIntention(name, intentionSet, beliefBase, eventSet, environment);
-////                System.out.println("\nIntention executed");
-//                LOGGER.info("\nIntention executed");
-//            }
-//        }
-//    }
-
     public void run() throws Exception {
 
         while (!eventSet.isEmpty() || !intentionSet.isEmpty()) {
@@ -125,7 +94,7 @@ public class Agent {
 
                 Event event = eventSet.selectEvent();
 //                System.out.println("\nEvent selected:\n\t" + event.toString());
-                LOGGER.info("\nEvent selected:\n\t" + event.toString());
+                LOGGER.info("Event selected: " + event.toString());
 
                 if (event != null) {
                     IntendedMeans intendedMeans = selectPlan(event);
@@ -149,7 +118,7 @@ public class Agent {
                 if (intention != null) {
                     intention.executeIntention(name, intentionSet, beliefBase, eventSet, environment);
 //                    System.out.println("\nIntention executed");
-                    LOGGER.info("\nIntention executed");
+                    LOGGER.info("Intention executed");
                 }
             }
         }

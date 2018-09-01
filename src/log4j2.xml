@@ -4,22 +4,33 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
         </Console>
-        <RollingFile name="RollingFile" fileName="logs/logs_${date:dd-MM-yyyy}.log"
-            filePattern="logs/logs-%d{MM-dd-yyyy}-%i.log">
-            <PatternLayout>
-                <Pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
-            </PatternLayout>
-            <Policies>
-                <TimeBasedTriggeringPolicy />
-                <SizeBasedTriggeringPolicy size="5 MB"/>
-            </Policies>
-            <DefaultRolloverStrategy max="2000"/>
-        </RollingFile>
+
+        <Routing name="RoutingAppender">
+            <Routes pattern="$${ctx:logFilename}">
+                <Route>
+                    <RollingFile name="Rolling-${ctx:logFilename}" fileName="logs/${ctx:logFilename}/test.log"
+                        filePattern="logs/logs-%d{MM-dd-yyyy}-%i.log">
+                        <PatternLayout>
+                            <Pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+                        </PatternLayout>
+                        <Policies>
+                            <TimeBasedTriggeringPolicy />
+                            <SizeBasedTriggeringPolicy size="5 MB"/>
+                        </Policies>
+                        <DefaultRolloverStrategy max="2000"/>
+                    </RollingFile>
+                </Route>
+
+                <!-- By having this set to ${ctx:logFileName} it will match when filename
+                     is not set in the context -->
+                <Route ref="Console" key="${ctx:logFileName}"/>
+            </Routes>
+        </Routing>
     </Appenders>
     <Loggers>
         <Root level="INFO">
             <AppenderRef ref="Console" />
-            <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="RoutingAppender"/>
         </Root>
     </Loggers>l̥
 </Configuration>
