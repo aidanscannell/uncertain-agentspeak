@@ -85,8 +85,10 @@ equals_expr             : not_equals_expr (EQUALS not_equals_expr)* ;
 not_equals_expr         : negation_expr (NOT_EQUALS negation_expr)* ;
 negation_expr           : NEGATION_AS_FAILURE belief_atom_expr | STRONG_NEGATION belief_atom_expr | belief_atom_expr ;
 //finally, we found either name, or a sub-expression
-belief_atom_expr        : belief_atom | LPAREN and_expr RPAREN;
+//belief_atom_expr        : belief_atom | LPAREN and_expr RPAREN | max_expr ;
+belief_atom_expr        : belief_atom | LPAREN and_expr RPAREN ;
 
+//max_expr                : 'max(' belief_atom ')' ;
 
 //log_expr                : simple_log_expr
 //                          | negation_as_failure

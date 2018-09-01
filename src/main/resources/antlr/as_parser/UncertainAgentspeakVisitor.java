@@ -11,10 +11,7 @@ import main.java.uncertain_agentspeak.agentspeak.event_triggers.GoalEventTrigger
 import main.java.uncertain_agentspeak.agentspeak.event_triggers.belief_event_triggers.ReviseBeliefET;
 import main.java.uncertain_agentspeak.agentspeak.event_triggers.goal_event_triggers.AddGoalET;
 import main.java.uncertain_agentspeak.agentspeak.event_triggers.goal_event_triggers.DeleteGoalET;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.Conjunction;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.Disjunction;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.GreaterEqualsPlausibility;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.GreaterThanPlausibility;
+import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.*;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.negations.NegationAsFailure;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.negations.StrongNegation;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.relational_expressions.Equal;
@@ -291,6 +288,8 @@ public class UncertainAgentspeakVisitor extends UncertainAgentspeakBaseVisitor<O
             return visitBelief_atom(ctx.belief_atom());
         }
     }
+
+
 
 //    @Override
 //    public LogicalExpression visitLog_expr(UncertainAgentspeakParser.Log_exprContext ctx) {
