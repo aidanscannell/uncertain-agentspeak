@@ -16,10 +16,10 @@ public class EnvironmentAction extends Action {
         return new EnvironmentAction(this.term.substitute(unifier));
     }
 
-    public boolean executeAction(String name, Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) {
+    public Unifier executeAction(String name, Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) {
         environment.scheduleAction(name, this.substitute(unifier));
         System.out.println("Environment action executed: " + this.substitute(unifier));
-        return false;
+        return null;
     }
 
     public Term getTerm() {

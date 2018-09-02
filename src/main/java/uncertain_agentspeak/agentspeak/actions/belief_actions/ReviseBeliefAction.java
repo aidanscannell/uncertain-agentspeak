@@ -18,15 +18,14 @@ public class ReviseBeliefAction extends BeliefAction {
         this.weight = weight;
     }
 
-
     @Override
-    public boolean executeAction(String name, Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) throws Exception {
+    public Unifier executeAction(String name, Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) throws Exception {
         BeliefLiteral beliefLiteral = this.getBeliefLiteral().substitute(unifier);
         DoubleNum weight = (DoubleNum) this.weight.substitute(unifier);
         beliefBase.revise(beliefLiteral, weight.getDoubleVal());
 //        System.out.println("Belief revised: " + this.toString());
         eventSet.add(new ExternalEvent(new ReviseBeliefET(beliefLiteral,this.weight)));
-        return false;
+        return null;
     }
 
     @Override

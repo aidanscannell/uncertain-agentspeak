@@ -1,5 +1,6 @@
 package main.java.uncertain_agentspeak.agentspeak;
 
+import main.java.uncertain_agentspeak.agentspeak.actions.goal_actions.AchievementGoalAction;
 import main.java.uncertain_agentspeak.agentspeak.actions.goal_actions.TestGoalAction;
 import main.java.uncertain_agentspeak.environment.Environment;
 import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
@@ -52,10 +53,13 @@ public class IntendedMeans {
             Action action = actions.get(this.index);
             if (action instanceof TestGoalAction)  {
                 TestGoalAction testGoalAction = (TestGoalAction) action;
-                Unifier unifierNew = testGoalAction.executeTestGoalAction(name, intention, this.unifier, beliefBase, eventSet, environment);
+                Unifier unifierNew = testGoalAction.executeAction(name, intention, this.unifier, beliefBase, eventSet, environment);
                 setUnifier(unifierNew);
+            } else if (action instanceof AchievementGoalAction) {
+                action.executeAction(name, intention, this.unifier, beliefBase, eventSet, environment);
+                subGoalFlag = true;
             } else {
-                subGoalFlag = action.executeAction(name, intention, this.unifier, beliefBase, eventSet, environment);
+                action.executeAction(name, intention, this.unifier, beliefBase, eventSet, environment);
             }
             this.index++;
         }
