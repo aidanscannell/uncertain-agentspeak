@@ -5,7 +5,15 @@ import main.java.uncertain_agentspeak.agentspeak.Goal;
 
 public abstract class GoalAction extends Action {
 
-    public abstract Goal getGoal();
+    private Goal goal;
+
+    public GoalAction(Goal goal) {
+        this.goal = goal;
+    }
+
+    public Goal getGoal() {
+        return goal;
+    }
 
     @Override
     public String toString() {

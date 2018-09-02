@@ -10,15 +10,8 @@ import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
 
 public class TestGoalAction extends GoalAction {
 
-    private TestGoal testGoal;
-
     public TestGoalAction(TestGoal testGoal) {
-        this.testGoal = testGoal;
-    }
-
-    @Override
-    public TestGoal getGoal() {
-        return testGoal;
+        super(testGoal);
     }
 
     @Override
@@ -28,18 +21,12 @@ public class TestGoalAction extends GoalAction {
 
     public Unifier executeTestGoalAction(String name, Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) throws Exception {
         Unifier unifierBB;
-        if (testGoal.getFormula() != null) {
-            return beliefBase.entails(testGoal.getFormula(), unifier);
-        } else if (testGoal.getTerm() != null) {
-            unifierBB = beliefBase.entails(new PositiveLiteral(new BeliefAtom(testGoal.getTerm())), unifier);
+        if (getGoal().getFormula() != null) {
+            return beliefBase.entails(getGoal().getFormula(), unifier);
+        } else if (getGoal().getTerm() != null) {
+            unifierBB = beliefBase.entails(new PositiveLiteral(new BeliefAtom(getGoal().getTerm())), unifier);
             return unifierBB;
         }
         return null;
     }
-
-    @Override
-    public String toString() {
-        return testGoal.toString();
-    }
-
 }

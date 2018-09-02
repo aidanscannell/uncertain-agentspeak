@@ -11,27 +11,16 @@ import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
 
 public class AchievementGoalAction extends GoalAction {
 
-    private AchievementGoal achievementGoal;
-
     public AchievementGoalAction(AchievementGoal achievementGoal) {
-        this.achievementGoal = achievementGoal;
-    }
-
-    @Override
-    public AchievementGoal getGoal() {
-        return achievementGoal;
+        super(achievementGoal);
     }
 
     @Override
     public boolean executeAction(String name, Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) {
-        AchievementGoal achievementGoalSub = this.achievementGoal.substitute(unifier);
+        AchievementGoal achievementGoal = (AchievementGoal) getGoal();
+        AchievementGoal achievementGoalSub = achievementGoal.substitute(unifier);
         eventSet.add(new InternalEvent(new AddGoalET(achievementGoalSub),intention));
 //        System.out.println("Subgoal added: " + achievementGoalSub);
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "!" + achievementGoal.getTerm().toString();
     }
 }
