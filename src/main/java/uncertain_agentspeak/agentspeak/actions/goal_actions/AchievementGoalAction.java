@@ -21,6 +21,6 @@ public class AchievementGoalAction extends GoalAction {
         AchievementGoal achievementGoalSub = achievementGoal.substitute(unifier);
         eventSet.add(new InternalEvent(new AddGoalET(achievementGoalSub),intention));
 //        System.out.println("Subgoal added: " + achievementGoalSub);
-        return null;
+        return unifier;
     }
 }

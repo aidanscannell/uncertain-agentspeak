@@ -49,19 +49,15 @@ public class IntendedMeans {
     public boolean executeAction(String name, Intention intention, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) throws Exception {
         boolean subGoalFlag = false;
         ArrayList<Action> actions = this.plan.getActions();
+        System.out.println("Unifier: " + unifier);
         if (actionsRemaining()) {
             Action action = actions.get(this.index);
-            if (action instanceof TestGoalAction)  {
-                TestGoalAction testGoalAction = (TestGoalAction) action;
-                Unifier unifierNew = testGoalAction.executeAction(name, intention, this.unifier, beliefBase, eventSet, environment);
-                setUnifier(unifierNew);
-            } else if (action instanceof AchievementGoalAction) {
-                action.executeAction(name, intention, this.unifier, beliefBase, eventSet, environment);
+            if (action instanceof AchievementGoalAction) {
                 subGoalFlag = true;
-            } else {
-                action.executeAction(name, intention, this.unifier, beliefBase, eventSet, environment);
             }
+            setUnifier(action.executeAction(name, intention, this.unifier, beliefBase, eventSet, environment));
             this.index++;
+            System.out.println("UnifierNew: " + getUnifier());
         }
         return subGoalFlag;
     }

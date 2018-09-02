@@ -25,7 +25,7 @@ public class ReviseBeliefAction extends BeliefAction {
         beliefBase.revise(beliefLiteral, weight.getDoubleVal());
 //        System.out.println("Belief revised: " + this.toString());
         eventSet.add(new ExternalEvent(new ReviseBeliefET(beliefLiteral,this.weight)));
-        return null;
+        return unifier;
     }
 
     @Override

@@ -16,13 +16,11 @@ public class TestGoalAction extends GoalAction {
 
     @Override
     public Unifier executeAction(String name, Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) throws Exception {
-        Unifier unifierBB;
         if (getGoal().getFormula() != null) {
             return beliefBase.entails(getGoal().getFormula(), unifier);
         } else if (getGoal().getTerm() != null) {
-            unifierBB = beliefBase.entails(new PositiveLiteral(new BeliefAtom(getGoal().getTerm())), unifier);
-            return unifierBB;
+            return beliefBase.entails(new PositiveLiteral(new BeliefAtom(getGoal().getTerm())), unifier);
         }
-        return null;
+        return unifier;
     }
 }
