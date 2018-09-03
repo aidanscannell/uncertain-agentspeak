@@ -401,7 +401,7 @@ public class UncertainAgentspeakVisitor extends UncertainAgentspeakBaseVisitor<O
 
     @Override
     public TestGoal visitTest_goal(UncertainAgentspeakParser.Test_goalContext ctx) {
-        return new TestGoal(visitTerm(ctx.term()));
+        return new TestGoal(visitAnd_expr(ctx.and_expr()));
     }
 
     @Override

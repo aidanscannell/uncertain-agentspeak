@@ -185,12 +185,6 @@ public class UncertainAgentspeakParser extends Parser {
 		public Possibilistic_belContext possibilistic_bel(int i) {
 			return getRuleContext(Possibilistic_belContext.class,i);
 		}
-		public List<Belief_atomContext> belief_atom() {
-			return getRuleContexts(Belief_atomContext.class);
-		}
-		public Belief_atomContext belief_atom(int i) {
-			return getRuleContext(Belief_atomContext.class,i);
-		}
 		public Init_belsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -217,12 +211,12 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(106);
+			setState(103);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << ATOM) | (1L << VARIABLE) | (1L << NUMBER) | (1L << DECIMAL))) != 0)) {
+			while (_la==T__1 || _la==T__3) {
 				{
-				setState(104);
+				setState(101);
 				_errHandler.sync(this);
 				switch (_input.LA(1)) {
 				case T__1:
@@ -241,22 +235,11 @@ public class UncertainAgentspeakParser extends Parser {
 					match(T__0);
 					}
 					break;
-				case ATOM:
-				case VARIABLE:
-				case NUMBER:
-				case DECIMAL:
-					{
-					setState(101);
-					belief_atom();
-					setState(102);
-					match(T__0);
-					}
-					break;
 				default:
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(108);
+				setState(105);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -310,68 +293,68 @@ public class UncertainAgentspeakParser extends Parser {
 		enterRule(_localctx, 4, RULE_probabilistic_bel);
 		int _la;
 		try {
-			setState(137);
+			setState(134);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(109);
+				setState(106);
 				match(T__1);
-				setState(110);
+				setState(107);
 				match(LPAREN);
-				setState(111);
+				setState(108);
 				belief_literal();
-				setState(112);
+				setState(109);
 				match(T__2);
-				setState(113);
+				setState(110);
 				number();
-				setState(114);
+				setState(111);
 				match(RPAREN);
-				setState(115);
+				setState(112);
 				match(RPAREN);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(117);
+				setState(114);
 				match(T__1);
-				setState(118);
+				setState(115);
 				match(LPAREN);
-				setState(119);
+				setState(116);
 				belief_literal();
-				setState(120);
+				setState(117);
 				match(T__2);
-				setState(121);
+				setState(118);
 				number();
-				setState(122);
+				setState(119);
 				match(RPAREN);
-				setState(132);
+				setState(129);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==T__2) {
 					{
 					{
+					setState(120);
+					match(T__2);
+					setState(121);
+					match(LPAREN);
+					setState(122);
+					belief_literal();
 					setState(123);
 					match(T__2);
 					setState(124);
-					match(LPAREN);
-					setState(125);
-					belief_literal();
-					setState(126);
-					match(T__2);
-					setState(127);
 					number();
-					setState(128);
+					setState(125);
 					match(RPAREN);
 					}
 					}
-					setState(134);
+					setState(131);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(135);
+				setState(132);
 				match(RPAREN);
 				}
 				break;
@@ -425,68 +408,68 @@ public class UncertainAgentspeakParser extends Parser {
 		enterRule(_localctx, 6, RULE_possibilistic_bel);
 		int _la;
 		try {
-			setState(167);
+			setState(164);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(139);
+				setState(136);
 				match(T__3);
-				setState(140);
+				setState(137);
 				match(LPAREN);
-				setState(141);
+				setState(138);
 				belief_literal();
-				setState(142);
+				setState(139);
 				match(T__2);
-				setState(143);
+				setState(140);
 				number();
-				setState(144);
+				setState(141);
 				match(RPAREN);
-				setState(145);
+				setState(142);
 				match(RPAREN);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(147);
+				setState(144);
 				match(T__3);
-				setState(148);
+				setState(145);
 				match(LPAREN);
-				setState(149);
+				setState(146);
 				belief_literal();
-				setState(150);
+				setState(147);
 				match(T__2);
-				setState(151);
+				setState(148);
 				number();
-				setState(152);
+				setState(149);
 				match(RPAREN);
-				setState(162);
+				setState(159);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==T__2) {
 					{
 					{
+					setState(150);
+					match(T__2);
+					setState(151);
+					match(LPAREN);
+					setState(152);
+					belief_literal();
 					setState(153);
 					match(T__2);
 					setState(154);
-					match(LPAREN);
-					setState(155);
-					belief_literal();
-					setState(156);
-					match(T__2);
-					setState(157);
 					number();
-					setState(158);
+					setState(155);
 					match(RPAREN);
 					}
 					}
-					setState(164);
+					setState(161);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(165);
+				setState(162);
 				match(RPAREN);
 				}
 				break;
@@ -536,19 +519,19 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(174);
+			setState(171);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==ACHIEVEMENT_GOAL_OPERATOR) {
 				{
 				{
-				setState(169);
+				setState(166);
 				achievement_goal();
-				setState(170);
+				setState(167);
 				match(T__0);
 				}
 				}
-				setState(176);
+				setState(173);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -598,17 +581,17 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(180);
+			setState(177);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__4) | (1L << T__5) | (1L << ADD_EVENT_OPRTATOR) | (1L << DELETE_EVENT_OPRTATOR))) != 0)) {
 				{
 				{
-				setState(177);
+				setState(174);
 				plan();
 				}
 				}
-				setState(182);
+				setState(179);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -662,17 +645,17 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(183);
+			setState(180);
 			event();
-			setState(184);
+			setState(181);
 			match(CONTEXT);
-			setState(185);
+			setState(182);
 			context();
-			setState(186);
+			setState(183);
 			match(ACTIONS);
-			setState(187);
+			setState(184);
 			body();
-			setState(188);
+			setState(185);
 			match(T__0);
 			}
 		}
@@ -720,13 +703,13 @@ public class UncertainAgentspeakParser extends Parser {
 		EventContext _localctx = new EventContext(_ctx, getState());
 		enterRule(_localctx, 14, RULE_event);
 		try {
-			setState(193);
+			setState(190);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__4:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(190);
+				setState(187);
 				belief_event_trigger();
 				}
 				break;
@@ -734,14 +717,14 @@ public class UncertainAgentspeakParser extends Parser {
 			case DELETE_EVENT_OPRTATOR:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(191);
+				setState(188);
 				goal_event_trigger();
 				}
 				break;
 			case T__5:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(192);
+				setState(189);
 				tautology();
 				}
 				break;
@@ -792,15 +775,15 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(195);
+			setState(192);
 			match(T__4);
-			setState(196);
+			setState(193);
 			belief_literal();
-			setState(197);
+			setState(194);
 			match(T__2);
-			setState(198);
+			setState(195);
 			term();
-			setState(199);
+			setState(196);
 			match(RPAREN);
 			}
 		}
@@ -845,20 +828,20 @@ public class UncertainAgentspeakParser extends Parser {
 		Goal_event_triggerContext _localctx = new Goal_event_triggerContext(_ctx, getState());
 		enterRule(_localctx, 18, RULE_goal_event_trigger);
 		try {
-			setState(203);
+			setState(200);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ADD_EVENT_OPRTATOR:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(201);
+				setState(198);
 				add_goal_event_trigger();
 				}
 				break;
 			case DELETE_EVENT_OPRTATOR:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(202);
+				setState(199);
 				delete_goal_event_trigger();
 				}
 				break;
@@ -907,9 +890,9 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(205);
+			setState(202);
 			match(ADD_EVENT_OPRTATOR);
-			setState(206);
+			setState(203);
 			goal();
 			}
 		}
@@ -954,9 +937,9 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(208);
+			setState(205);
 			match(DELETE_EVENT_OPRTATOR);
-			setState(209);
+			setState(206);
 			goal();
 			}
 		}
@@ -1001,20 +984,20 @@ public class UncertainAgentspeakParser extends Parser {
 		GoalContext _localctx = new GoalContext(_ctx, getState());
 		enterRule(_localctx, 24, RULE_goal);
 		try {
-			setState(213);
+			setState(210);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ACHIEVEMENT_GOAL_OPERATOR:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(211);
+				setState(208);
 				achievement_goal();
 				}
 				break;
 			case TEST_GOAL_OPERATOR:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(212);
+				setState(209);
 				test_goal();
 				}
 				break;
@@ -1063,9 +1046,9 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(215);
+			setState(212);
 			match(ACHIEVEMENT_GOAL_OPERATOR);
-			setState(216);
+			setState(213);
 			term();
 			}
 		}
@@ -1082,8 +1065,8 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public static class Test_goalContext extends ParserRuleContext {
 		public TerminalNode TEST_GOAL_OPERATOR() { return getToken(UncertainAgentspeakParser.TEST_GOAL_OPERATOR, 0); }
-		public TermContext term() {
-			return getRuleContext(TermContext.class,0);
+		public And_exprContext and_expr() {
+			return getRuleContext(And_exprContext.class,0);
 		}
 		public Test_goalContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1110,10 +1093,10 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(218);
+			setState(215);
 			match(TEST_GOAL_OPERATOR);
-			setState(219);
-			term();
+			setState(216);
+			and_expr();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1153,7 +1136,7 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(221);
+			setState(218);
 			match(T__5);
 			}
 		}
@@ -1198,7 +1181,7 @@ public class UncertainAgentspeakParser extends Parser {
 		ContextContext _localctx = new ContextContext(_ctx, getState());
 		enterRule(_localctx, 32, RULE_context);
 		try {
-			setState(225);
+			setState(222);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ATOM:
@@ -1210,14 +1193,14 @@ public class UncertainAgentspeakParser extends Parser {
 			case NEGATION_AS_FAILURE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(223);
+				setState(220);
 				and_expr();
 				}
 				break;
 			case T__5:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(224);
+				setState(221);
 				tautology();
 				}
 				break;
@@ -1265,7 +1248,7 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(227);
+			setState(224);
 			and_expr();
 			}
 		}
@@ -1317,21 +1300,21 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(229);
+			setState(226);
 			or_expr();
-			setState(234);
+			setState(231);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==AND) {
 				{
 				{
-				setState(230);
+				setState(227);
 				match(AND);
-				setState(231);
+				setState(228);
 				or_expr();
 				}
 				}
-				setState(236);
+				setState(233);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1385,21 +1368,21 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(237);
+			setState(234);
 			less_than_expr();
-			setState(242);
+			setState(239);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==OR) {
 				{
 				{
-				setState(238);
+				setState(235);
 				match(OR);
-				setState(239);
+				setState(236);
 				less_than_expr();
 				}
 				}
-				setState(244);
+				setState(241);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1453,21 +1436,21 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(245);
+			setState(242);
 			less_equals_expr();
-			setState(250);
+			setState(247);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==LESS_THAN) {
 				{
 				{
-				setState(246);
+				setState(243);
 				match(LESS_THAN);
-				setState(247);
+				setState(244);
 				less_equals_expr();
 				}
 				}
-				setState(252);
+				setState(249);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1521,21 +1504,21 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(253);
+			setState(250);
 			greater_than_expr();
-			setState(258);
+			setState(255);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==LESS_EQUALS) {
 				{
 				{
-				setState(254);
+				setState(251);
 				match(LESS_EQUALS);
-				setState(255);
+				setState(252);
 				greater_than_expr();
 				}
 				}
-				setState(260);
+				setState(257);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1589,21 +1572,21 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(261);
+			setState(258);
 			greater_equals_expr();
-			setState(266);
+			setState(263);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==GREATER_THAN) {
 				{
 				{
-				setState(262);
+				setState(259);
 				match(GREATER_THAN);
-				setState(263);
+				setState(260);
 				greater_equals_expr();
 				}
 				}
-				setState(268);
+				setState(265);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1657,21 +1640,21 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(269);
+			setState(266);
 			equals_expr();
-			setState(274);
+			setState(271);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==GREATER_EQUALS) {
 				{
 				{
-				setState(270);
+				setState(267);
 				match(GREATER_EQUALS);
-				setState(271);
+				setState(268);
 				equals_expr();
 				}
 				}
-				setState(276);
+				setState(273);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1725,21 +1708,21 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(277);
+			setState(274);
 			not_equals_expr();
-			setState(282);
+			setState(279);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==EQUALS) {
 				{
 				{
-				setState(278);
+				setState(275);
 				match(EQUALS);
-				setState(279);
+				setState(276);
 				not_equals_expr();
 				}
 				}
-				setState(284);
+				setState(281);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1793,21 +1776,21 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(285);
+			setState(282);
 			negation_expr();
-			setState(290);
+			setState(287);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==NOT_EQUALS) {
 				{
 				{
-				setState(286);
+				setState(283);
 				match(NOT_EQUALS);
-				setState(287);
+				setState(284);
 				negation_expr();
 				}
 				}
-				setState(292);
+				setState(289);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1853,24 +1836,24 @@ public class UncertainAgentspeakParser extends Parser {
 		Negation_exprContext _localctx = new Negation_exprContext(_ctx, getState());
 		enterRule(_localctx, 52, RULE_negation_expr);
 		try {
-			setState(298);
+			setState(295);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case NEGATION_AS_FAILURE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(293);
+				setState(290);
 				match(NEGATION_AS_FAILURE);
-				setState(294);
+				setState(291);
 				belief_atom_expr();
 				}
 				break;
 			case STRONG_NEGATION:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(295);
+				setState(292);
 				match(STRONG_NEGATION);
-				setState(296);
+				setState(293);
 				belief_atom_expr();
 				}
 				break;
@@ -1881,7 +1864,7 @@ public class UncertainAgentspeakParser extends Parser {
 			case LPAREN:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(297);
+				setState(294);
 				belief_atom_expr();
 				}
 				break;
@@ -1932,7 +1915,7 @@ public class UncertainAgentspeakParser extends Parser {
 		Belief_atom_exprContext _localctx = new Belief_atom_exprContext(_ctx, getState());
 		enterRule(_localctx, 54, RULE_belief_atom_expr);
 		try {
-			setState(305);
+			setState(302);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ATOM:
@@ -1941,18 +1924,18 @@ public class UncertainAgentspeakParser extends Parser {
 			case DECIMAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(300);
+				setState(297);
 				belief_atom();
 				}
 				break;
 			case LPAREN:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(301);
+				setState(298);
 				match(LPAREN);
-				setState(302);
+				setState(299);
 				and_expr();
-				setState(303);
+				setState(300);
 				match(RPAREN);
 				}
 				break;
@@ -2005,7 +1988,7 @@ public class UncertainAgentspeakParser extends Parser {
 		enterRule(_localctx, 56, RULE_body);
 		int _la;
 		try {
-			setState(316);
+			setState(313);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__4:
@@ -2017,21 +2000,21 @@ public class UncertainAgentspeakParser extends Parser {
 			case DECIMAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(307);
+				setState(304);
 				body_statement();
-				setState(312);
+				setState(309);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==T__6) {
 					{
 					{
-					setState(308);
+					setState(305);
 					match(T__6);
-					setState(309);
+					setState(306);
 					body_statement();
 					}
 					}
-					setState(314);
+					setState(311);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -2040,7 +2023,7 @@ public class UncertainAgentspeakParser extends Parser {
 			case T__5:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(315);
+				setState(312);
 				tautology();
 				}
 				break;
@@ -2092,13 +2075,13 @@ public class UncertainAgentspeakParser extends Parser {
 		Body_statementContext _localctx = new Body_statementContext(_ctx, getState());
 		enterRule(_localctx, 58, RULE_body_statement);
 		try {
-			setState(321);
+			setState(318);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__4:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(318);
+				setState(315);
 				belief_action();
 				}
 				break;
@@ -2106,7 +2089,7 @@ public class UncertainAgentspeakParser extends Parser {
 			case TEST_GOAL_OPERATOR:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(319);
+				setState(316);
 				goal();
 				}
 				break;
@@ -2116,7 +2099,7 @@ public class UncertainAgentspeakParser extends Parser {
 			case DECIMAL:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(320);
+				setState(317);
 				environment_action();
 				}
 				break;
@@ -2167,15 +2150,15 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(323);
+			setState(320);
 			match(T__4);
-			setState(324);
+			setState(321);
 			belief_literal();
-			setState(325);
+			setState(322);
 			match(T__2);
-			setState(326);
+			setState(323);
 			term();
-			setState(327);
+			setState(324);
 			match(RPAREN);
 			}
 		}
@@ -2219,7 +2202,7 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(329);
+			setState(326);
 			term();
 			}
 		}
@@ -2264,7 +2247,7 @@ public class UncertainAgentspeakParser extends Parser {
 		Belief_literalContext _localctx = new Belief_literalContext(_ctx, getState());
 		enterRule(_localctx, 64, RULE_belief_literal);
 		try {
-			setState(333);
+			setState(330);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ATOM:
@@ -2273,14 +2256,14 @@ public class UncertainAgentspeakParser extends Parser {
 			case DECIMAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(331);
+				setState(328);
 				positive_literal();
 				}
 				break;
 			case STRONG_NEGATION:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(332);
+				setState(329);
 				negative_literal();
 				}
 				break;
@@ -2328,7 +2311,7 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(335);
+			setState(332);
 			belief_atom();
 			}
 		}
@@ -2373,9 +2356,9 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(337);
+			setState(334);
 			match(STRONG_NEGATION);
-			setState(338);
+			setState(335);
 			belief_atom();
 			}
 		}
@@ -2419,7 +2402,7 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(340);
+			setState(337);
 			term();
 			}
 		}
@@ -2467,27 +2450,27 @@ public class UncertainAgentspeakParser extends Parser {
 		TermContext _localctx = new TermContext(_ctx, getState());
 		enterRule(_localctx, 72, RULE_term);
 		try {
-			setState(345);
+			setState(342);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,26,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(342);
+				setState(339);
 				constant();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(343);
+				setState(340);
 				variable();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(344);
+				setState(341);
 				structure();
 				}
 				break;
@@ -2534,13 +2517,13 @@ public class UncertainAgentspeakParser extends Parser {
 		ConstantContext _localctx = new ConstantContext(_ctx, getState());
 		enterRule(_localctx, 74, RULE_constant);
 		try {
-			setState(349);
+			setState(346);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ATOM:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(347);
+				setState(344);
 				atom();
 				}
 				break;
@@ -2548,7 +2531,7 @@ public class UncertainAgentspeakParser extends Parser {
 			case DECIMAL:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(348);
+				setState(345);
 				number();
 				}
 				break;
@@ -2594,7 +2577,7 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(351);
+			setState(348);
 			match(ATOM);
 			}
 		}
@@ -2639,20 +2622,20 @@ public class UncertainAgentspeakParser extends Parser {
 		NumberContext _localctx = new NumberContext(_ctx, getState());
 		enterRule(_localctx, 78, RULE_number);
 		try {
-			setState(355);
+			setState(352);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case NUMBER:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(353);
+				setState(350);
 				intNum();
 				}
 				break;
 			case DECIMAL:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(354);
+				setState(351);
 				doubleNum();
 				}
 				break;
@@ -2698,7 +2681,7 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(357);
+			setState(354);
 			match(NUMBER);
 			}
 		}
@@ -2740,7 +2723,7 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(359);
+			setState(356);
 			match(DECIMAL);
 			}
 		}
@@ -2782,7 +2765,7 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(361);
+			setState(358);
 			match(VARIABLE);
 			}
 		}
@@ -2828,34 +2811,34 @@ public class UncertainAgentspeakParser extends Parser {
 		enterRule(_localctx, 86, RULE_arguments_list);
 		int _la;
 		try {
-			setState(371);
+			setState(368);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,30,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(363);
+				setState(360);
 				term();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(364);
+				setState(361);
 				term();
-				setState(367); 
+				setState(364); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(365);
+					setState(362);
 					match(T__2);
-					setState(366);
+					setState(363);
 					term();
 					}
 					}
-					setState(369); 
+					setState(366); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( _la==T__2 );
@@ -2904,13 +2887,13 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(373);
+			setState(370);
 			match(ATOM);
-			setState(374);
+			setState(371);
 			match(LPAREN);
-			setState(375);
+			setState(372);
 			arguments_list();
-			setState(376);
+			setState(373);
 			match(RPAREN);
 			}
 		}
@@ -2926,132 +2909,131 @@ public class UncertainAgentspeakParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#\u017d\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#\u017a\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
 		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \4!"+
 		"\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t&\4\'\t\'\4(\t(\4)\t)\4*\t*\4+\t+\4"+
-		",\t,\4-\t-\4.\t.\3\2\3\2\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
-		"\3\7\3k\n\3\f\3\16\3n\13\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
-		"\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4\u0085\n\4\f\4\16\4\u0088"+
-		"\13\4\3\4\3\4\5\4\u008c\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3"+
-		"\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\7\5\u00a3\n\5\f\5\16\5\u00a6"+
-		"\13\5\3\5\3\5\5\5\u00aa\n\5\3\6\3\6\3\6\7\6\u00af\n\6\f\6\16\6\u00b2\13"+
-		"\6\3\7\7\7\u00b5\n\7\f\7\16\7\u00b8\13\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3"+
-		"\t\3\t\3\t\5\t\u00c4\n\t\3\n\3\n\3\n\3\n\3\n\3\n\3\13\3\13\5\13\u00ce"+
-		"\n\13\3\f\3\f\3\f\3\r\3\r\3\r\3\16\3\16\5\16\u00d8\n\16\3\17\3\17\3\17"+
-		"\3\20\3\20\3\20\3\21\3\21\3\22\3\22\5\22\u00e4\n\22\3\23\3\23\3\24\3\24"+
-		"\3\24\7\24\u00eb\n\24\f\24\16\24\u00ee\13\24\3\25\3\25\3\25\7\25\u00f3"+
-		"\n\25\f\25\16\25\u00f6\13\25\3\26\3\26\3\26\7\26\u00fb\n\26\f\26\16\26"+
-		"\u00fe\13\26\3\27\3\27\3\27\7\27\u0103\n\27\f\27\16\27\u0106\13\27\3\30"+
-		"\3\30\3\30\7\30\u010b\n\30\f\30\16\30\u010e\13\30\3\31\3\31\3\31\7\31"+
-		"\u0113\n\31\f\31\16\31\u0116\13\31\3\32\3\32\3\32\7\32\u011b\n\32\f\32"+
-		"\16\32\u011e\13\32\3\33\3\33\3\33\7\33\u0123\n\33\f\33\16\33\u0126\13"+
-		"\33\3\34\3\34\3\34\3\34\3\34\5\34\u012d\n\34\3\35\3\35\3\35\3\35\3\35"+
-		"\5\35\u0134\n\35\3\36\3\36\3\36\7\36\u0139\n\36\f\36\16\36\u013c\13\36"+
-		"\3\36\5\36\u013f\n\36\3\37\3\37\3\37\5\37\u0144\n\37\3 \3 \3 \3 \3 \3"+
-		" \3!\3!\3\"\3\"\5\"\u0150\n\"\3#\3#\3$\3$\3$\3%\3%\3&\3&\3&\5&\u015c\n"+
-		"&\3\'\3\'\5\'\u0160\n\'\3(\3(\3)\3)\5)\u0166\n)\3*\3*\3+\3+\3,\3,\3-\3"+
-		"-\3-\3-\6-\u0172\n-\r-\16-\u0173\5-\u0176\n-\3.\3.\3.\3.\3.\3.\2\2/\2"+
-		"\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJL"+
-		"NPRTVXZ\2\2\2\u0173\2\\\3\2\2\2\4l\3\2\2\2\6\u008b\3\2\2\2\b\u00a9\3\2"+
-		"\2\2\n\u00b0\3\2\2\2\f\u00b6\3\2\2\2\16\u00b9\3\2\2\2\20\u00c3\3\2\2\2"+
-		"\22\u00c5\3\2\2\2\24\u00cd\3\2\2\2\26\u00cf\3\2\2\2\30\u00d2\3\2\2\2\32"+
-		"\u00d7\3\2\2\2\34\u00d9\3\2\2\2\36\u00dc\3\2\2\2 \u00df\3\2\2\2\"\u00e3"+
-		"\3\2\2\2$\u00e5\3\2\2\2&\u00e7\3\2\2\2(\u00ef\3\2\2\2*\u00f7\3\2\2\2,"+
-		"\u00ff\3\2\2\2.\u0107\3\2\2\2\60\u010f\3\2\2\2\62\u0117\3\2\2\2\64\u011f"+
-		"\3\2\2\2\66\u012c\3\2\2\28\u0133\3\2\2\2:\u013e\3\2\2\2<\u0143\3\2\2\2"+
-		">\u0145\3\2\2\2@\u014b\3\2\2\2B\u014f\3\2\2\2D\u0151\3\2\2\2F\u0153\3"+
-		"\2\2\2H\u0156\3\2\2\2J\u015b\3\2\2\2L\u015f\3\2\2\2N\u0161\3\2\2\2P\u0165"+
-		"\3\2\2\2R\u0167\3\2\2\2T\u0169\3\2\2\2V\u016b\3\2\2\2X\u0175\3\2\2\2Z"+
-		"\u0177\3\2\2\2\\]\5\4\3\2]^\5\n\6\2^_\5\f\7\2_`\7\2\2\3`\3\3\2\2\2ab\5"+
-		"\6\4\2bc\7\3\2\2ck\3\2\2\2de\5\b\5\2ef\7\3\2\2fk\3\2\2\2gh\5H%\2hi\7\3"+
-		"\2\2ik\3\2\2\2ja\3\2\2\2jd\3\2\2\2jg\3\2\2\2kn\3\2\2\2lj\3\2\2\2lm\3\2"+
-		"\2\2m\5\3\2\2\2nl\3\2\2\2op\7\4\2\2pq\7\27\2\2qr\5B\"\2rs\7\5\2\2st\5"+
-		"P)\2tu\7\30\2\2uv\7\30\2\2v\u008c\3\2\2\2wx\7\4\2\2xy\7\27\2\2yz\5B\""+
-		"\2z{\7\5\2\2{|\5P)\2|\u0086\7\30\2\2}~\7\5\2\2~\177\7\27\2\2\177\u0080"+
-		"\5B\"\2\u0080\u0081\7\5\2\2\u0081\u0082\5P)\2\u0082\u0083\7\30\2\2\u0083"+
-		"\u0085\3\2\2\2\u0084}\3\2\2\2\u0085\u0088\3\2\2\2\u0086\u0084\3\2\2\2"+
-		"\u0086\u0087\3\2\2\2\u0087\u0089\3\2\2\2\u0088\u0086\3\2\2\2\u0089\u008a"+
-		"\7\30\2\2\u008a\u008c\3\2\2\2\u008bo\3\2\2\2\u008bw\3\2\2\2\u008c\7\3"+
-		"\2\2\2\u008d\u008e\7\6\2\2\u008e\u008f\7\27\2\2\u008f\u0090\5B\"\2\u0090"+
-		"\u0091\7\5\2\2\u0091\u0092\5P)\2\u0092\u0093\7\30\2\2\u0093\u0094\7\30"+
-		"\2\2\u0094\u00aa\3\2\2\2\u0095\u0096\7\6\2\2\u0096\u0097\7\27\2\2\u0097"+
-		"\u0098\5B\"\2\u0098\u0099\7\5\2\2\u0099\u009a\5P)\2\u009a\u00a4\7\30\2"+
-		"\2\u009b\u009c\7\5\2\2\u009c\u009d\7\27\2\2\u009d\u009e\5B\"\2\u009e\u009f"+
-		"\7\5\2\2\u009f\u00a0\5P)\2\u00a0\u00a1\7\30\2\2\u00a1\u00a3\3\2\2\2\u00a2"+
-		"\u009b\3\2\2\2\u00a3\u00a6\3\2\2\2\u00a4\u00a2\3\2\2\2\u00a4\u00a5\3\2"+
-		"\2\2\u00a5\u00a7\3\2\2\2\u00a6\u00a4\3\2\2\2\u00a7\u00a8\7\30\2\2\u00a8"+
-		"\u00aa\3\2\2\2\u00a9\u008d\3\2\2\2\u00a9\u0095\3\2\2\2\u00aa\t\3\2\2\2"+
-		"\u00ab\u00ac\5\34\17\2\u00ac\u00ad\7\3\2\2\u00ad\u00af\3\2\2\2\u00ae\u00ab"+
-		"\3\2\2\2\u00af\u00b2\3\2\2\2\u00b0\u00ae\3\2\2\2\u00b0\u00b1\3\2\2\2\u00b1"+
-		"\13\3\2\2\2\u00b2\u00b0\3\2\2\2\u00b3\u00b5\5\16\b\2\u00b4\u00b3\3\2\2"+
-		"\2\u00b5\u00b8\3\2\2\2\u00b6\u00b4\3\2\2\2\u00b6\u00b7\3\2\2\2\u00b7\r"+
-		"\3\2\2\2\u00b8\u00b6\3\2\2\2\u00b9\u00ba\5\20\t\2\u00ba\u00bb\7\n\2\2"+
-		"\u00bb\u00bc\5\"\22\2\u00bc\u00bd\7\13\2\2\u00bd\u00be\5:\36\2\u00be\u00bf"+
-		"\7\3\2\2\u00bf\17\3\2\2\2\u00c0\u00c4\5\22\n\2\u00c1\u00c4\5\24\13\2\u00c2"+
-		"\u00c4\5 \21\2\u00c3\u00c0\3\2\2\2\u00c3\u00c1\3\2\2\2\u00c3\u00c2\3\2"+
-		"\2\2\u00c4\21\3\2\2\2\u00c5\u00c6\7\7\2\2\u00c6\u00c7\5B\"\2\u00c7\u00c8"+
-		"\7\5\2\2\u00c8\u00c9\5J&\2\u00c9\u00ca\7\30\2\2\u00ca\23\3\2\2\2\u00cb"+
-		"\u00ce\5\26\f\2\u00cc\u00ce\5\30\r\2\u00cd\u00cb\3\2\2\2\u00cd\u00cc\3"+
-		"\2\2\2\u00ce\25\3\2\2\2\u00cf\u00d0\7\r\2\2\u00d0\u00d1\5\32\16\2\u00d1"+
-		"\27\3\2\2\2\u00d2\u00d3\7\16\2\2\u00d3\u00d4\5\32\16\2\u00d4\31\3\2\2"+
-		"\2\u00d5\u00d8\5\34\17\2\u00d6\u00d8\5\36\20\2\u00d7\u00d5\3\2\2\2\u00d7"+
-		"\u00d6\3\2\2\2\u00d8\33\3\2\2\2\u00d9\u00da\7\17\2\2\u00da\u00db\5J&\2"+
-		"\u00db\35\3\2\2\2\u00dc\u00dd\7\20\2\2\u00dd\u00de\5J&\2\u00de\37\3\2"+
-		"\2\2\u00df\u00e0\7\b\2\2\u00e0!\3\2\2\2\u00e1\u00e4\5&\24\2\u00e2\u00e4"+
-		"\5 \21\2\u00e3\u00e1\3\2\2\2\u00e3\u00e2\3\2\2\2\u00e4#\3\2\2\2\u00e5"+
-		"\u00e6\5&\24\2\u00e6%\3\2\2\2\u00e7\u00ec\5(\25\2\u00e8\u00e9\7\31\2\2"+
-		"\u00e9\u00eb\5(\25\2\u00ea\u00e8\3\2\2\2\u00eb\u00ee\3\2\2\2\u00ec\u00ea"+
-		"\3\2\2\2\u00ec\u00ed\3\2\2\2\u00ed\'\3\2\2\2\u00ee\u00ec\3\2\2\2\u00ef"+
-		"\u00f4\5*\26\2\u00f0\u00f1\7\32\2\2\u00f1\u00f3\5*\26\2\u00f2\u00f0\3"+
-		"\2\2\2\u00f3\u00f6\3\2\2\2\u00f4\u00f2\3\2\2\2\u00f4\u00f5\3\2\2\2\u00f5"+
-		")\3\2\2\2\u00f6\u00f4\3\2\2\2\u00f7\u00fc\5,\27\2\u00f8\u00f9\7\33\2\2"+
-		"\u00f9\u00fb\5,\27\2\u00fa\u00f8\3\2\2\2\u00fb\u00fe\3\2\2\2\u00fc\u00fa"+
-		"\3\2\2\2\u00fc\u00fd\3\2\2\2\u00fd+\3\2\2\2\u00fe\u00fc\3\2\2\2\u00ff"+
-		"\u0104\5.\30\2\u0100\u0101\7\34\2\2\u0101\u0103\5.\30\2\u0102\u0100\3"+
-		"\2\2\2\u0103\u0106\3\2\2\2\u0104\u0102\3\2\2\2\u0104\u0105\3\2\2\2\u0105"+
-		"-\3\2\2\2\u0106\u0104\3\2\2\2\u0107\u010c\5\60\31\2\u0108\u0109\7\35\2"+
-		"\2\u0109\u010b\5\60\31\2\u010a\u0108\3\2\2\2\u010b\u010e\3\2\2\2\u010c"+
-		"\u010a\3\2\2\2\u010c\u010d\3\2\2\2\u010d/\3\2\2\2\u010e\u010c\3\2\2\2"+
-		"\u010f\u0114\5\62\32\2\u0110\u0111\7\36\2\2\u0111\u0113\5\62\32\2\u0112"+
-		"\u0110\3\2\2\2\u0113\u0116\3\2\2\2\u0114\u0112\3\2\2\2\u0114\u0115\3\2"+
-		"\2\2\u0115\61\3\2\2\2\u0116\u0114\3\2\2\2\u0117\u011c\5\64\33\2\u0118"+
-		"\u0119\7!\2\2\u0119\u011b\5\64\33\2\u011a\u0118\3\2\2\2\u011b\u011e\3"+
-		"\2\2\2\u011c\u011a\3\2\2\2\u011c\u011d\3\2\2\2\u011d\63\3\2\2\2\u011e"+
-		"\u011c\3\2\2\2\u011f\u0124\5\66\34\2\u0120\u0121\7\"\2\2\u0121\u0123\5"+
-		"\66\34\2\u0122\u0120\3\2\2\2\u0123\u0126\3\2\2\2\u0124\u0122\3\2\2\2\u0124"+
-		"\u0125\3\2\2\2\u0125\65\3\2\2\2\u0126\u0124\3\2\2\2\u0127\u0128\7 \2\2"+
-		"\u0128\u012d\58\35\2\u0129\u012a\7\37\2\2\u012a\u012d\58\35\2\u012b\u012d"+
-		"\58\35\2\u012c\u0127\3\2\2\2\u012c\u0129\3\2\2\2\u012c\u012b\3\2\2\2\u012d"+
-		"\67\3\2\2\2\u012e\u0134\5H%\2\u012f\u0130\7\27\2\2\u0130\u0131\5&\24\2"+
-		"\u0131\u0132\7\30\2\2\u0132\u0134\3\2\2\2\u0133\u012e\3\2\2\2\u0133\u012f"+
-		"\3\2\2\2\u01349\3\2\2\2\u0135\u013a\5<\37\2\u0136\u0137\7\t\2\2\u0137"+
-		"\u0139\5<\37\2\u0138\u0136\3\2\2\2\u0139\u013c\3\2\2\2\u013a\u0138\3\2"+
-		"\2\2\u013a\u013b\3\2\2\2\u013b\u013f\3\2\2\2\u013c\u013a\3\2\2\2\u013d"+
-		"\u013f\5 \21\2\u013e\u0135\3\2\2\2\u013e\u013d\3\2\2\2\u013f;\3\2\2\2"+
-		"\u0140\u0144\5> \2\u0141\u0144\5\32\16\2\u0142\u0144\5@!\2\u0143\u0140"+
-		"\3\2\2\2\u0143\u0141\3\2\2\2\u0143\u0142\3\2\2\2\u0144=\3\2\2\2\u0145"+
-		"\u0146\7\7\2\2\u0146\u0147\5B\"\2\u0147\u0148\7\5\2\2\u0148\u0149\5J&"+
-		"\2\u0149\u014a\7\30\2\2\u014a?\3\2\2\2\u014b\u014c\5J&\2\u014cA\3\2\2"+
-		"\2\u014d\u0150\5D#\2\u014e\u0150\5F$\2\u014f\u014d\3\2\2\2\u014f\u014e"+
-		"\3\2\2\2\u0150C\3\2\2\2\u0151\u0152\5H%\2\u0152E\3\2\2\2\u0153\u0154\7"+
-		"\37\2\2\u0154\u0155\5H%\2\u0155G\3\2\2\2\u0156\u0157\5J&\2\u0157I\3\2"+
-		"\2\2\u0158\u015c\5L\'\2\u0159\u015c\5V,\2\u015a\u015c\5Z.\2\u015b\u0158"+
-		"\3\2\2\2\u015b\u0159\3\2\2\2\u015b\u015a\3\2\2\2\u015cK\3\2\2\2\u015d"+
-		"\u0160\5N(\2\u015e\u0160\5P)\2\u015f\u015d\3\2\2\2\u015f\u015e\3\2\2\2"+
-		"\u0160M\3\2\2\2\u0161\u0162\7\21\2\2\u0162O\3\2\2\2\u0163\u0166\5R*\2"+
-		"\u0164\u0166\5T+\2\u0165\u0163\3\2\2\2\u0165\u0164\3\2\2\2\u0166Q\3\2"+
-		"\2\2\u0167\u0168\7\23\2\2\u0168S\3\2\2\2\u0169\u016a\7\26\2\2\u016aU\3"+
-		"\2\2\2\u016b\u016c\7\22\2\2\u016cW\3\2\2\2\u016d\u0176\5J&\2\u016e\u0171"+
-		"\5J&\2\u016f\u0170\7\5\2\2\u0170\u0172\5J&\2\u0171\u016f\3\2\2\2\u0172"+
-		"\u0173\3\2\2\2\u0173\u0171\3\2\2\2\u0173\u0174\3\2\2\2\u0174\u0176\3\2"+
-		"\2\2\u0175\u016d\3\2\2\2\u0175\u016e\3\2\2\2\u0176Y\3\2\2\2\u0177\u0178"+
-		"\7\21\2\2\u0178\u0179\7\27\2\2\u0179\u017a\5X-\2\u017a\u017b\7\30\2\2"+
-		"\u017b[\3\2\2\2!jl\u0086\u008b\u00a4\u00a9\u00b0\u00b6\u00c3\u00cd\u00d7"+
-		"\u00e3\u00ec\u00f4\u00fc\u0104\u010c\u0114\u011c\u0124\u012c\u0133\u013a"+
-		"\u013e\u0143\u014f\u015b\u015f\u0165\u0173\u0175";
+		",\t,\4-\t-\4.\t.\3\2\3\2\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\7\3h\n\3"+
+		"\f\3\16\3k\13\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3"+
+		"\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4\u0082\n\4\f\4\16\4\u0085\13\4\3\4\3"+
+		"\4\5\4\u0089\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3"+
+		"\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\7\5\u00a0\n\5\f\5\16\5\u00a3\13\5\3\5\3"+
+		"\5\5\5\u00a7\n\5\3\6\3\6\3\6\7\6\u00ac\n\6\f\6\16\6\u00af\13\6\3\7\7\7"+
+		"\u00b2\n\7\f\7\16\7\u00b5\13\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t"+
+		"\5\t\u00c1\n\t\3\n\3\n\3\n\3\n\3\n\3\n\3\13\3\13\5\13\u00cb\n\13\3\f\3"+
+		"\f\3\f\3\r\3\r\3\r\3\16\3\16\5\16\u00d5\n\16\3\17\3\17\3\17\3\20\3\20"+
+		"\3\20\3\21\3\21\3\22\3\22\5\22\u00e1\n\22\3\23\3\23\3\24\3\24\3\24\7\24"+
+		"\u00e8\n\24\f\24\16\24\u00eb\13\24\3\25\3\25\3\25\7\25\u00f0\n\25\f\25"+
+		"\16\25\u00f3\13\25\3\26\3\26\3\26\7\26\u00f8\n\26\f\26\16\26\u00fb\13"+
+		"\26\3\27\3\27\3\27\7\27\u0100\n\27\f\27\16\27\u0103\13\27\3\30\3\30\3"+
+		"\30\7\30\u0108\n\30\f\30\16\30\u010b\13\30\3\31\3\31\3\31\7\31\u0110\n"+
+		"\31\f\31\16\31\u0113\13\31\3\32\3\32\3\32\7\32\u0118\n\32\f\32\16\32\u011b"+
+		"\13\32\3\33\3\33\3\33\7\33\u0120\n\33\f\33\16\33\u0123\13\33\3\34\3\34"+
+		"\3\34\3\34\3\34\5\34\u012a\n\34\3\35\3\35\3\35\3\35\3\35\5\35\u0131\n"+
+		"\35\3\36\3\36\3\36\7\36\u0136\n\36\f\36\16\36\u0139\13\36\3\36\5\36\u013c"+
+		"\n\36\3\37\3\37\3\37\5\37\u0141\n\37\3 \3 \3 \3 \3 \3 \3!\3!\3\"\3\"\5"+
+		"\"\u014d\n\"\3#\3#\3$\3$\3$\3%\3%\3&\3&\3&\5&\u0159\n&\3\'\3\'\5\'\u015d"+
+		"\n\'\3(\3(\3)\3)\5)\u0163\n)\3*\3*\3+\3+\3,\3,\3-\3-\3-\3-\6-\u016f\n"+
+		"-\r-\16-\u0170\5-\u0173\n-\3.\3.\3.\3.\3.\3.\2\2/\2\4\6\b\n\f\16\20\22"+
+		"\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\2\2\2\u016f"+
+		"\2\\\3\2\2\2\4i\3\2\2\2\6\u0088\3\2\2\2\b\u00a6\3\2\2\2\n\u00ad\3\2\2"+
+		"\2\f\u00b3\3\2\2\2\16\u00b6\3\2\2\2\20\u00c0\3\2\2\2\22\u00c2\3\2\2\2"+
+		"\24\u00ca\3\2\2\2\26\u00cc\3\2\2\2\30\u00cf\3\2\2\2\32\u00d4\3\2\2\2\34"+
+		"\u00d6\3\2\2\2\36\u00d9\3\2\2\2 \u00dc\3\2\2\2\"\u00e0\3\2\2\2$\u00e2"+
+		"\3\2\2\2&\u00e4\3\2\2\2(\u00ec\3\2\2\2*\u00f4\3\2\2\2,\u00fc\3\2\2\2."+
+		"\u0104\3\2\2\2\60\u010c\3\2\2\2\62\u0114\3\2\2\2\64\u011c\3\2\2\2\66\u0129"+
+		"\3\2\2\28\u0130\3\2\2\2:\u013b\3\2\2\2<\u0140\3\2\2\2>\u0142\3\2\2\2@"+
+		"\u0148\3\2\2\2B\u014c\3\2\2\2D\u014e\3\2\2\2F\u0150\3\2\2\2H\u0153\3\2"+
+		"\2\2J\u0158\3\2\2\2L\u015c\3\2\2\2N\u015e\3\2\2\2P\u0162\3\2\2\2R\u0164"+
+		"\3\2\2\2T\u0166\3\2\2\2V\u0168\3\2\2\2X\u0172\3\2\2\2Z\u0174\3\2\2\2\\"+
+		"]\5\4\3\2]^\5\n\6\2^_\5\f\7\2_`\7\2\2\3`\3\3\2\2\2ab\5\6\4\2bc\7\3\2\2"+
+		"ch\3\2\2\2de\5\b\5\2ef\7\3\2\2fh\3\2\2\2ga\3\2\2\2gd\3\2\2\2hk\3\2\2\2"+
+		"ig\3\2\2\2ij\3\2\2\2j\5\3\2\2\2ki\3\2\2\2lm\7\4\2\2mn\7\27\2\2no\5B\""+
+		"\2op\7\5\2\2pq\5P)\2qr\7\30\2\2rs\7\30\2\2s\u0089\3\2\2\2tu\7\4\2\2uv"+
+		"\7\27\2\2vw\5B\"\2wx\7\5\2\2xy\5P)\2y\u0083\7\30\2\2z{\7\5\2\2{|\7\27"+
+		"\2\2|}\5B\"\2}~\7\5\2\2~\177\5P)\2\177\u0080\7\30\2\2\u0080\u0082\3\2"+
+		"\2\2\u0081z\3\2\2\2\u0082\u0085\3\2\2\2\u0083\u0081\3\2\2\2\u0083\u0084"+
+		"\3\2\2\2\u0084\u0086\3\2\2\2\u0085\u0083\3\2\2\2\u0086\u0087\7\30\2\2"+
+		"\u0087\u0089\3\2\2\2\u0088l\3\2\2\2\u0088t\3\2\2\2\u0089\7\3\2\2\2\u008a"+
+		"\u008b\7\6\2\2\u008b\u008c\7\27\2\2\u008c\u008d\5B\"\2\u008d\u008e\7\5"+
+		"\2\2\u008e\u008f\5P)\2\u008f\u0090\7\30\2\2\u0090\u0091\7\30\2\2\u0091"+
+		"\u00a7\3\2\2\2\u0092\u0093\7\6\2\2\u0093\u0094\7\27\2\2\u0094\u0095\5"+
+		"B\"\2\u0095\u0096\7\5\2\2\u0096\u0097\5P)\2\u0097\u00a1\7\30\2\2\u0098"+
+		"\u0099\7\5\2\2\u0099\u009a\7\27\2\2\u009a\u009b\5B\"\2\u009b\u009c\7\5"+
+		"\2\2\u009c\u009d\5P)\2\u009d\u009e\7\30\2\2\u009e\u00a0\3\2\2\2\u009f"+
+		"\u0098\3\2\2\2\u00a0\u00a3\3\2\2\2\u00a1\u009f\3\2\2\2\u00a1\u00a2\3\2"+
+		"\2\2\u00a2\u00a4\3\2\2\2\u00a3\u00a1\3\2\2\2\u00a4\u00a5\7\30\2\2\u00a5"+
+		"\u00a7\3\2\2\2\u00a6\u008a\3\2\2\2\u00a6\u0092\3\2\2\2\u00a7\t\3\2\2\2"+
+		"\u00a8\u00a9\5\34\17\2\u00a9\u00aa\7\3\2\2\u00aa\u00ac\3\2\2\2\u00ab\u00a8"+
+		"\3\2\2\2\u00ac\u00af\3\2\2\2\u00ad\u00ab\3\2\2\2\u00ad\u00ae\3\2\2\2\u00ae"+
+		"\13\3\2\2\2\u00af\u00ad\3\2\2\2\u00b0\u00b2\5\16\b\2\u00b1\u00b0\3\2\2"+
+		"\2\u00b2\u00b5\3\2\2\2\u00b3\u00b1\3\2\2\2\u00b3\u00b4\3\2\2\2\u00b4\r"+
+		"\3\2\2\2\u00b5\u00b3\3\2\2\2\u00b6\u00b7\5\20\t\2\u00b7\u00b8\7\n\2\2"+
+		"\u00b8\u00b9\5\"\22\2\u00b9\u00ba\7\13\2\2\u00ba\u00bb\5:\36\2\u00bb\u00bc"+
+		"\7\3\2\2\u00bc\17\3\2\2\2\u00bd\u00c1\5\22\n\2\u00be\u00c1\5\24\13\2\u00bf"+
+		"\u00c1\5 \21\2\u00c0\u00bd\3\2\2\2\u00c0\u00be\3\2\2\2\u00c0\u00bf\3\2"+
+		"\2\2\u00c1\21\3\2\2\2\u00c2\u00c3\7\7\2\2\u00c3\u00c4\5B\"\2\u00c4\u00c5"+
+		"\7\5\2\2\u00c5\u00c6\5J&\2\u00c6\u00c7\7\30\2\2\u00c7\23\3\2\2\2\u00c8"+
+		"\u00cb\5\26\f\2\u00c9\u00cb\5\30\r\2\u00ca\u00c8\3\2\2\2\u00ca\u00c9\3"+
+		"\2\2\2\u00cb\25\3\2\2\2\u00cc\u00cd\7\r\2\2\u00cd\u00ce\5\32\16\2\u00ce"+
+		"\27\3\2\2\2\u00cf\u00d0\7\16\2\2\u00d0\u00d1\5\32\16\2\u00d1\31\3\2\2"+
+		"\2\u00d2\u00d5\5\34\17\2\u00d3\u00d5\5\36\20\2\u00d4\u00d2\3\2\2\2\u00d4"+
+		"\u00d3\3\2\2\2\u00d5\33\3\2\2\2\u00d6\u00d7\7\17\2\2\u00d7\u00d8\5J&\2"+
+		"\u00d8\35\3\2\2\2\u00d9\u00da\7\20\2\2\u00da\u00db\5&\24\2\u00db\37\3"+
+		"\2\2\2\u00dc\u00dd\7\b\2\2\u00dd!\3\2\2\2\u00de\u00e1\5&\24\2\u00df\u00e1"+
+		"\5 \21\2\u00e0\u00de\3\2\2\2\u00e0\u00df\3\2\2\2\u00e1#\3\2\2\2\u00e2"+
+		"\u00e3\5&\24\2\u00e3%\3\2\2\2\u00e4\u00e9\5(\25\2\u00e5\u00e6\7\31\2\2"+
+		"\u00e6\u00e8\5(\25\2\u00e7\u00e5\3\2\2\2\u00e8\u00eb\3\2\2\2\u00e9\u00e7"+
+		"\3\2\2\2\u00e9\u00ea\3\2\2\2\u00ea\'\3\2\2\2\u00eb\u00e9\3\2\2\2\u00ec"+
+		"\u00f1\5*\26\2\u00ed\u00ee\7\32\2\2\u00ee\u00f0\5*\26\2\u00ef\u00ed\3"+
+		"\2\2\2\u00f0\u00f3\3\2\2\2\u00f1\u00ef\3\2\2\2\u00f1\u00f2\3\2\2\2\u00f2"+
+		")\3\2\2\2\u00f3\u00f1\3\2\2\2\u00f4\u00f9\5,\27\2\u00f5\u00f6\7\33\2\2"+
+		"\u00f6\u00f8\5,\27\2\u00f7\u00f5\3\2\2\2\u00f8\u00fb\3\2\2\2\u00f9\u00f7"+
+		"\3\2\2\2\u00f9\u00fa\3\2\2\2\u00fa+\3\2\2\2\u00fb\u00f9\3\2\2\2\u00fc"+
+		"\u0101\5.\30\2\u00fd\u00fe\7\34\2\2\u00fe\u0100\5.\30\2\u00ff\u00fd\3"+
+		"\2\2\2\u0100\u0103\3\2\2\2\u0101\u00ff\3\2\2\2\u0101\u0102\3\2\2\2\u0102"+
+		"-\3\2\2\2\u0103\u0101\3\2\2\2\u0104\u0109\5\60\31\2\u0105\u0106\7\35\2"+
+		"\2\u0106\u0108\5\60\31\2\u0107\u0105\3\2\2\2\u0108\u010b\3\2\2\2\u0109"+
+		"\u0107\3\2\2\2\u0109\u010a\3\2\2\2\u010a/\3\2\2\2\u010b\u0109\3\2\2\2"+
+		"\u010c\u0111\5\62\32\2\u010d\u010e\7\36\2\2\u010e\u0110\5\62\32\2\u010f"+
+		"\u010d\3\2\2\2\u0110\u0113\3\2\2\2\u0111\u010f\3\2\2\2\u0111\u0112\3\2"+
+		"\2\2\u0112\61\3\2\2\2\u0113\u0111\3\2\2\2\u0114\u0119\5\64\33\2\u0115"+
+		"\u0116\7!\2\2\u0116\u0118\5\64\33\2\u0117\u0115\3\2\2\2\u0118\u011b\3"+
+		"\2\2\2\u0119\u0117\3\2\2\2\u0119\u011a\3\2\2\2\u011a\63\3\2\2\2\u011b"+
+		"\u0119\3\2\2\2\u011c\u0121\5\66\34\2\u011d\u011e\7\"\2\2\u011e\u0120\5"+
+		"\66\34\2\u011f\u011d\3\2\2\2\u0120\u0123\3\2\2\2\u0121\u011f\3\2\2\2\u0121"+
+		"\u0122\3\2\2\2\u0122\65\3\2\2\2\u0123\u0121\3\2\2\2\u0124\u0125\7 \2\2"+
+		"\u0125\u012a\58\35\2\u0126\u0127\7\37\2\2\u0127\u012a\58\35\2\u0128\u012a"+
+		"\58\35\2\u0129\u0124\3\2\2\2\u0129\u0126\3\2\2\2\u0129\u0128\3\2\2\2\u012a"+
+		"\67\3\2\2\2\u012b\u0131\5H%\2\u012c\u012d\7\27\2\2\u012d\u012e\5&\24\2"+
+		"\u012e\u012f\7\30\2\2\u012f\u0131\3\2\2\2\u0130\u012b\3\2\2\2\u0130\u012c"+
+		"\3\2\2\2\u01319\3\2\2\2\u0132\u0137\5<\37\2\u0133\u0134\7\t\2\2\u0134"+
+		"\u0136\5<\37\2\u0135\u0133\3\2\2\2\u0136\u0139\3\2\2\2\u0137\u0135\3\2"+
+		"\2\2\u0137\u0138\3\2\2\2\u0138\u013c\3\2\2\2\u0139\u0137\3\2\2\2\u013a"+
+		"\u013c\5 \21\2\u013b\u0132\3\2\2\2\u013b\u013a\3\2\2\2\u013c;\3\2\2\2"+
+		"\u013d\u0141\5> \2\u013e\u0141\5\32\16\2\u013f\u0141\5@!\2\u0140\u013d"+
+		"\3\2\2\2\u0140\u013e\3\2\2\2\u0140\u013f\3\2\2\2\u0141=\3\2\2\2\u0142"+
+		"\u0143\7\7\2\2\u0143\u0144\5B\"\2\u0144\u0145\7\5\2\2\u0145\u0146\5J&"+
+		"\2\u0146\u0147\7\30\2\2\u0147?\3\2\2\2\u0148\u0149\5J&\2\u0149A\3\2\2"+
+		"\2\u014a\u014d\5D#\2\u014b\u014d\5F$\2\u014c\u014a\3\2\2\2\u014c\u014b"+
+		"\3\2\2\2\u014dC\3\2\2\2\u014e\u014f\5H%\2\u014fE\3\2\2\2\u0150\u0151\7"+
+		"\37\2\2\u0151\u0152\5H%\2\u0152G\3\2\2\2\u0153\u0154\5J&\2\u0154I\3\2"+
+		"\2\2\u0155\u0159\5L\'\2\u0156\u0159\5V,\2\u0157\u0159\5Z.\2\u0158\u0155"+
+		"\3\2\2\2\u0158\u0156\3\2\2\2\u0158\u0157\3\2\2\2\u0159K\3\2\2\2\u015a"+
+		"\u015d\5N(\2\u015b\u015d\5P)\2\u015c\u015a\3\2\2\2\u015c\u015b\3\2\2\2"+
+		"\u015dM\3\2\2\2\u015e\u015f\7\21\2\2\u015fO\3\2\2\2\u0160\u0163\5R*\2"+
+		"\u0161\u0163\5T+\2\u0162\u0160\3\2\2\2\u0162\u0161\3\2\2\2\u0163Q\3\2"+
+		"\2\2\u0164\u0165\7\23\2\2\u0165S\3\2\2\2\u0166\u0167\7\26\2\2\u0167U\3"+
+		"\2\2\2\u0168\u0169\7\22\2\2\u0169W\3\2\2\2\u016a\u0173\5J&\2\u016b\u016e"+
+		"\5J&\2\u016c\u016d\7\5\2\2\u016d\u016f\5J&\2\u016e\u016c\3\2\2\2\u016f"+
+		"\u0170\3\2\2\2\u0170\u016e\3\2\2\2\u0170\u0171\3\2\2\2\u0171\u0173\3\2"+
+		"\2\2\u0172\u016a\3\2\2\2\u0172\u016b\3\2\2\2\u0173Y\3\2\2\2\u0174\u0175"+
+		"\7\21\2\2\u0175\u0176\7\27\2\2\u0176\u0177\5X-\2\u0177\u0178\7\30\2\2"+
+		"\u0178[\3\2\2\2!gi\u0083\u0088\u00a1\u00a6\u00ad\u00b3\u00c0\u00ca\u00d4"+
+		"\u00e0\u00e9\u00f1\u00f9\u0101\u0109\u0111\u0119\u0121\u0129\u0130\u0137"+
+		"\u013b\u0140\u014c\u0158\u015c\u0162\u0170\u0172";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

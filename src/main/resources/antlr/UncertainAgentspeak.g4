@@ -47,7 +47,7 @@ Comment             :  '#' ~( '\r' | '\n' )* ;
 uncertainAgentspeak     : init_bels init_goals plans EOF;
 
 // Initial beliefs
-init_bels               : (probabilistic_bel '.' | possibilistic_bel '.' | belief_atom '.')*;
+init_bels               : (probabilistic_bel '.' | possibilistic_bel '.')*;
 probabilistic_bel       : 'Prob(' '(' belief_literal ',' number ')' ')' | 'Prob(' '(' belief_literal ',' number ')'( ',' '(' belief_literal ',' number ')' )* ')' ;
 possibilistic_bel       : 'Pos(' '(' belief_literal ',' number ')' ')' | 'Pos(' '(' belief_literal ',' number ')'( ',' '(' belief_literal ',' number ')' )* ')' ;
 
@@ -68,7 +68,8 @@ add_goal_event_trigger      : ADD_EVENT_OPRTATOR goal ;
 delete_goal_event_trigger   : DELETE_EVENT_OPRTATOR goal ;
 goal                        : achievement_goal | test_goal ;
 achievement_goal            : ACHIEVEMENT_GOAL_OPERATOR term ;
-test_goal                   : TEST_GOAL_OPERATOR term ;
+//test_goal                   : TEST_GOAL_OPERATOR term ;
+test_goal                   : TEST_GOAL_OPERATOR and_expr ;
 tautology                   : 'true' ;
 
 // Plan Context
