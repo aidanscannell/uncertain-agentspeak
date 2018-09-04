@@ -6,6 +6,7 @@ import main.java.uncertain_agentspeak.agentspeak.event_triggers.belief_event_tri
 import main.java.uncertain_agentspeak.agentspeak.events.ExternalEvent;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.BeliefLiteral;
 import main.java.uncertain_agentspeak.agentspeak.terms.constants.numbers.DoubleNum;
+import main.java.uncertain_agentspeak.agentspeak.terms.constants.numbers.IntNum;
 import main.java.uncertain_agentspeak.environment.Environment;
 import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
 
@@ -21,10 +22,16 @@ public class ReviseBeliefAction extends BeliefAction {
     @Override
     public Unifier executeAction(String name, Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) throws Exception {
         BeliefLiteral beliefLiteral = this.getBeliefLiteral().substitute(unifier);
-        DoubleNum weight = (DoubleNum) this.weight.substitute(unifier);
+        DoubleNum weight = null;
+        if (this.weight.substitute(unifier) instanceof IntNum) {
+            double doubleNum = ((IntNum) this.weight.substitute(unifier)).getIntVal();
+            weight = new DoubleNum(doubleNum);
+        } else if (this.weight.substitute(unifier) instanceof DoubleNum) {
+            weight = (DoubleNum) this.weight.substitute(unifier);
+        }
+//        System.out.println("Attempting to revise GUB with: (" + beliefLiteral.toString() + ", " + weight + ")");
         beliefBase.revise(beliefLiteral, weight.getDoubleVal());
-//        System.out.println("Belief revised: " + this.toString());
-        eventSet.add(new ExternalEvent(new ReviseBeliefET(beliefLiteral,this.weight)));
+        eventSet.add(new ExternalEvent(new ReviseBeliefET(beliefLiteral,this.weight.substitute(unifier))));
         return unifier;
     }
 
