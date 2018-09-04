@@ -18,7 +18,7 @@ public class EnvironmentAction extends Action {
 
     public Unifier executeAction(String name, Intention intention, Unifier unifier, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) {
         environment.scheduleAction(name, this.substitute(unifier));
-        System.out.println("Environment action executed: " + this.substitute(unifier));
+//        System.out.println("Environment action executed: " + this.substitute(unifier));
         return unifier;
     }
 

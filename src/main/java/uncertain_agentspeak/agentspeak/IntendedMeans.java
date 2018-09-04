@@ -39,25 +39,24 @@ public class IntendedMeans {
         this.unifier = unifier;
     }
 
-    public boolean actionsRemaining() {
+    boolean actionsRemaining() {
         return this.index < plan.getActions().size();
     }
 
     /** Executes the next action
      *  Returns - true, if subgoal is created, otherwise
      *          - false */
-    public boolean executeAction(String name, Intention intention, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) throws Exception {
+    boolean executeAction(String name, Intention intention, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) throws Exception {
         boolean subGoalFlag = false;
         ArrayList<Action> actions = this.plan.getActions();
-        System.out.println("Unifier: " + unifier);
         if (actionsRemaining()) {
             Action action = actions.get(this.index);
+            System.out.println("Action to execute: " + action.toString());
             if (action instanceof AchievementGoalAction) {
                 subGoalFlag = true;
             }
             setUnifier(action.executeAction(name, intention, this.unifier, beliefBase, eventSet, environment));
             this.index++;
-            System.out.println("UnifierNew: " + getUnifier());
         }
         return subGoalFlag;
     }

@@ -4,7 +4,6 @@ import main.java.uncertain_agentspeak.agentspeak.Goal;
 import main.java.uncertain_agentspeak.agentspeak.LogicalExpression;
 import main.java.uncertain_agentspeak.agentspeak.Term;
 import main.java.uncertain_agentspeak.agentspeak.Unifier;
-import org.apache.commons.logging.Log;
 
 public class TestGoal extends Goal {
 
