@@ -8,8 +8,8 @@ public class AStar {
     private int[][] grid;
     private int rows;
     private int cols;
-    Node start;
-    Node target;
+    private Node start;
+    private Node target;
 
     public AStar(int[][] grid, int rows, int cols) {
         this.grid = grid;
@@ -39,7 +39,7 @@ public class AStar {
             openList.remove(current);
 
             if (isInList(target, closedList)) {
-                System.out.println("total nodes A: " + nodes);
+//                System.out.println("total nodes A: " + nodes);
                 return getPath(current);
             }
 
@@ -127,7 +127,7 @@ public class AStar {
         return null;
     }
 
-    public Node lowestScore(ArrayList<Node> list) {
+    private Node lowestScore(ArrayList<Node> list) {
         double minF = list.get(0).getF();
         Node node = list.get(0);
         for (Node n : list) {
@@ -139,7 +139,7 @@ public class AStar {
         return node;
     }
 
-    public Node nextLowestScore(ArrayList<Node> list, Node excludedNode) {
+    private Node nextLowestScore(ArrayList<Node> list, Node excludedNode) {
         double minF = list.get(0).getF();
         Node node = list.get(0);
         for (Node n : list) {
@@ -151,7 +151,7 @@ public class AStar {
         return node;
     }
 
-    public boolean isInList(Node node, ArrayList<Node> list) {
+    private boolean isInList(Node node, ArrayList<Node> list) {
         for (Node n : list) {
             if (n.equals(node)) {
                 return true;
@@ -160,26 +160,21 @@ public class AStar {
         return false;
     }
 
-    public int manhattanDistance(Node n1, Node n2) {
-        int dis = Math.abs(n1.getPosition().getRow() - n2.getPosition().getRow())
+    private int manhattanDistance(Node n1, Node n2) {
+        return Math.abs(n1.getPosition().getRow() - n2.getPosition().getRow())
                 + Math.abs(n1.getPosition().getCol() - n2.getPosition().getCol());
-
-        return dis;
     }
 
-    public boolean isInsideBounds(Point point, int rows, int columns){
+    private boolean isInsideBounds(Point point, int rows, int columns){
         int row = point.getRow();
         int col = point.getCol();
         return (row >= 1) && (row <= rows) && (col >= 1) && (col <= columns);
     }
 
-    public boolean isObstacle(Node node) {
+    private boolean isObstacle(Node node) {
 //        if (grid[node.getPosition().getRow()][node.getPosition().getCol()] != 0) {
-        if (grid[node.getPosition().getCol()][node.getPosition().getRow()] != 0) {
-            return true;
-        }
-        return false;
-//        RoomScanner roomScanner = new RoomScanner();
+        return grid[node.getPosition().getCol()][node.getPosition().getRow()] != 0;
+        //        RoomScanner roomScanner = new RoomScanner();
 //        ArrayList<Node> obstacles = roomScanner.getObstacles();
 //        for (Node n : obstacles) {
 //            if (node.equals(n)) {
@@ -188,7 +183,7 @@ public class AStar {
 //        }
     }
 
-    public ArrayList<Node> getNeighbours(Node node) {
+    private ArrayList<Node> getNeighbours(Node node) {
 
         Point pos = node.getPosition();
         int row = pos.getRow();
@@ -227,7 +222,7 @@ public class AStar {
         return neighbours;
     }
 
-    public ArrayList<Node> getPath(Node target) {
+    private ArrayList<Node> getPath(Node target) {
         ArrayList<Node> path = new ArrayList<>();
         Node node = target.getParent();
         while (node != null) {
@@ -238,7 +233,7 @@ public class AStar {
         return path;
     }
 
-    public int getPathPosition(Node node) {
+    private int getPathPosition(Node node) {
         Node n = node;
         int i = 0;
         while (n != null) {

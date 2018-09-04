@@ -9,8 +9,8 @@ public class MarsView extends GridWorldView {
 
     protected static GridWorldModel model;
 
-    public MarsView(GridWorldModel model, String title, int windowSize) {
-        super(model, title, windowSize);
+    public MarsView(GridWorldModel model, String title) {
+        super(model, title, 800);
         this.model = model;
     }
 

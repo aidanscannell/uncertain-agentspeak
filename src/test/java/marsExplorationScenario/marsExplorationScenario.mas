@@ -7,12 +7,12 @@ MAS marsExplorationScenario {
 //                                    2. Window width (int)
 
     agents:
-        sampleAgentA #2;
+        sampleAgentA ;
 
-        sampleAgentB #2;
+        // sampleAgentB ;
 
-        analysisAgent ;
+        // analysisAgent ;
 
-        excavationAgent ;
+        // excavationAgent ;
 
 }

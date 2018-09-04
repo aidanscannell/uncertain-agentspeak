@@ -176,30 +176,25 @@ public class MarsWorldFactory {
     }
 
     /** world with SAMPLE_A and obstacles */
-    public static MarsModel world2(List<Agent> agents) throws Exception {
-        MarsModel model = new MarsModel(30, 30, agents.size());
-        model.add(MarsModel.WATER_OR_ICE, 5, 3);
-//        model.add(MarsModel.WATER_OR_ICE, 5, 4);
+    public static MarsModel world2(List<Agent> agents) {
+        MarsModel model = new MarsModel(15, 15, agents.size());
+        model.add(MarsModel.WATER_OR_ICE, 4, 3);
 
-        model.add(MarsModel.FOSSILS, 1, 1);
-//        model.add(MarsModel.FOSSILS, 1, 2);
+//        model.add(MarsModel.FOSSILS, 8, 4);
 
-        model.add(MarsModel.LIVING_ORGANISMS, 3, 3);
+        model.add(MarsModel.LIVING_ORGANISMS, 14, 3);
 
-        model.add(MarsModel.OBSTACLE, 3,4);
-        model.add(MarsModel.OBSTACLE, 2, 2);
-//        model.add(MarsModel.OBSTACLE, 4, 1);
-//        model.add(MarsModel.OBSTACLE, 5, 3);
-//        model.add(MarsModel.OBSTACLE, 18, 3);
-//        model.add(MarsModel.OBSTACLE, 19, 3);
-//        model.add(MarsModel.OBSTACLE, 20, 3);
-//        model.add(MarsModel.OBSTACLE, 14, 8);
-//        model.add(MarsModel.OBSTACLE, 15, 8);
-//        model.add(MarsModel.OBSTACLE, 16, 8);
-//        model.add(MarsModel.OBSTACLE, 17, 8);
-//        model.add(MarsModel.OBSTACLE, 19, 8);
-//        model.add(MarsModel.OBSTACLE, 20, 8);
+        model.add(MarsModel.WATER_OR_ICE, 1, 6);
 
+        model.add(MarsModel.FOSSILS, 8, 9);
+
+//        model.add(MarsModel.WATER_OR_ICE, 14, 6);
+
+        model.add(MarsModel.FOSSILS, 3, 14);
+
+//        model.add(MarsModel.WATER_OR_ICE, 9, 14);
+
+//        model.add(MarsModel.WATER_OR_ICE, 14, 12);
 
         model.initAgents(agents);
         return model;
