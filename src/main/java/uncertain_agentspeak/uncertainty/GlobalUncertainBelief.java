@@ -5,10 +5,7 @@ import main.java.uncertain_agentspeak.agentspeak.Unifier;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.BeliefAtom;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.RelationalExpression;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.*;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.negations.NegationAsFailure;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.negations.StrongNegation;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.relational_expressions.Equal;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.relational_expressions.NotEqual;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.BeliefLiteral;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.Primitive;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Contradiction;
@@ -17,6 +14,8 @@ import main.java.uncertain_agentspeak.exceptions.NotGroundException;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.CompactEpistemicState;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.compact_epistemic_states.CompactPossibilisticEpistemicState;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.compact_epistemic_states.CompactProbabilisticEpistemicState;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -25,12 +24,14 @@ import java.util.Map;
 
 public class GlobalUncertainBelief {
 
+    private final Logger LOGGER = LogManager.getLogger("Global Uncertain Belief");
+
     private HashSet<BeliefAtom> domain;
     private HashMap<HashSet<BeliefAtom>, CompactEpistemicState> epistemicStates;
 
     public GlobalUncertainBelief() {
         domain = new HashSet<>();
-        epistemicStates = new HashMap<HashSet<BeliefAtom>, CompactEpistemicState>();
+        epistemicStates = new HashMap<>();
     }
 
     public void addEpistemicState(CompactEpistemicState epistemicState) throws Exception {
@@ -43,7 +44,8 @@ public class GlobalUncertainBelief {
         }
         this.domain.addAll(epistemicState.getDomain());
         epistemicStates.put(epistemicState.getDomain(), epistemicState);
-        System.out.println("\nSuccessfully added epistemic state.");
+//        System.out.println("\nSuccessfully added epistemic state.");
+//        LOGGER.info("Successfully added epistemic state.");
     }
 
     public HashMap<HashSet<BeliefAtom>, CompactEpistemicState> getGUB() {
@@ -73,9 +75,11 @@ public class GlobalUncertainBelief {
                 epistemicState.revise(beliefLiteral, weight);
                 epistemicStates.put(domain, epistemicState);
 //                System.out.println("Revised Epistemic State: " + epistemicState.toString());
+//                LOGGER.info("Successfully revised epistemic state: ");
                 return;
             }
         }
+        LOGGER.error("No local epistemic state for: " + beliefLiteral);
         throw new Exception("No local epistemic state for: " + beliefLiteral);
     }
 
@@ -100,6 +104,8 @@ public class GlobalUncertainBelief {
 //        System.out.println(unifiers);
 
         for (Unifier u : unifiers) {
+//            System.out.println("NEW UNIFIER TEST: " + u);
+//            System.out.println(logicalExpression.getClass());
             Unifier unifierValid = null;
             if (logicalExpression instanceof Conjunction) {
                 unifierValid = entails((Conjunction) logicalExpression, u);
@@ -109,18 +115,14 @@ public class GlobalUncertainBelief {
                 unifierValid = entails((GreaterEqualsPlausibility) logicalExpression, u);
             } else if (logicalExpression instanceof GreaterThanPlausibility) {
                 unifierValid = entails((GreaterThanPlausibility) logicalExpression, u);
-            } else if (logicalExpression instanceof StrongNegation) {
-                unifierValid = entails((StrongNegation) logicalExpression, u);
-            } else if (logicalExpression instanceof NegationAsFailure) {
-                unifierValid = entails((NegationAsFailure) logicalExpression, u);
+            } else if (logicalExpression instanceof Negation) {
+                unifierValid = entails((Negation) logicalExpression, u);
             } else if (logicalExpression instanceof BeliefAtom) {
                 unifierValid = entails((BeliefAtom) logicalExpression, u);
             } else if (logicalExpression instanceof BeliefLiteral) {
                 unifierValid = entails((BeliefLiteral) logicalExpression, u);
-            } else if (logicalExpression instanceof Equal) {
-                unifierValid = entails((Equal) logicalExpression, u);
-            } else if (logicalExpression instanceof NotEqual) {
-                unifierValid = entails((NotEqual) logicalExpression, u);
+            } else if (logicalExpression instanceof RelationalExpression) {
+                unifierValid = entails((RelationalExpression) logicalExpression, u);
             } else if (logicalExpression instanceof Contradiction) {
                 unifierValid = entails((Contradiction) logicalExpression, u);
             } else if (logicalExpression instanceof Tautology) {
@@ -175,15 +177,19 @@ public class GlobalUncertainBelief {
     private Unifier entails(Conjunction conjunction, Unifier unifier) throws Exception {
         Conjunction groundConjunction = conjunction.substitute(unifier);
         if (this.languageContains(groundConjunction)) {
+//            System.out.println("CONJUNCTION FIRST: " + groundConjunction.toString());
             HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundConjunction);
+//            System.out.println("RELEVANT ES: " + relevantEpistemicStates.toString());
             for (CompactEpistemicState compactEpistemicState : relevantEpistemicStates) {
                 Unifier unifierValid = compactEpistemicState.entails(conjunction, unifier);
                 if (unifierValid != null) {
+//                    System.out.println("UNIFIER VALID: " + unifierValid);
                     return unifierValid;
                 }
             }
             return null;
         } else {
+//            System.out.println("CONJUNCTION SECOND: " + groundConjunction.toString());
             Unifier unifierLeft = this.entails(conjunction.getLeft(), unifier);
             Unifier unifierRight = null;
             if (unifierLeft != null) {
@@ -195,6 +201,7 @@ public class GlobalUncertainBelief {
 
     private Unifier entails(Disjunction disjunction, Unifier unifier) throws Exception {
         Disjunction groundDisjunction = disjunction.substitute(unifier);
+//        System.out.println("DISJUNCTION: " + groundDisjunction);
         if (this.languageContains(groundDisjunction)) {
             HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundDisjunction);
             for (CompactEpistemicState compactEpistemicState : relevantEpistemicStates) {
@@ -214,7 +221,9 @@ public class GlobalUncertainBelief {
 
     private Unifier entails(GreaterEqualsPlausibility greaterEqualsPlausibility, Unifier unifier) throws Exception {
         GreaterEqualsPlausibility groundGreaterEqualsPlausibility = greaterEqualsPlausibility.substitute(unifier);
+//        System.out.println("GREATER EQUALS: " + groundGreaterEqualsPlausibility.toString());
         if (this.languageContains(groundGreaterEqualsPlausibility)) {
+//            System.out.println("GREATER EQUAL IN LANGUAGE: " + groundGreaterEqualsPlausibility.toString());
             HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundGreaterEqualsPlausibility);
             for (CompactEpistemicState compactEpistemicState : relevantEpistemicStates) {
                 Unifier unifierValid = compactEpistemicState.entails(greaterEqualsPlausibility, unifier);
@@ -224,6 +233,7 @@ public class GlobalUncertainBelief {
             }
             return null;
         } else {
+//            System.out.println("GREATER EQUAL NOT IN LANGUAGE: " + groundGreaterEqualsPlausibility.toString());
             if (groundGreaterEqualsPlausibility.isGround() ) {
                 if (languageContains(groundGreaterEqualsPlausibility.getLeft()) && languageContains(groundGreaterEqualsPlausibility.getRight())) {
                     double lambdaLeft = 0;
@@ -244,24 +254,27 @@ public class GlobalUncertainBelief {
                         lambdaRight = compactEpistemicState.getLambda(negatedRight);
                     }
                     if (classLeft instanceof CompactProbabilisticEpistemicState && !(classRight instanceof CompactProbabilisticEpistemicState)) {
-                        throw new Exception("The operands of a qualitative operator must be of the same type");
+                        LOGGER.error("The operands of a qualitative operator must be of the same type");
+//                        throw new Exception("The operands of a qualitative operator must be of the same type");
                     } else if (classLeft instanceof CompactPossibilisticEpistemicState && !(classRight instanceof CompactPossibilisticEpistemicState)) {
-                        throw new Exception("The operands of a qualitative operator must be of the same type");
+                        LOGGER.error("The operands of a qualitative operator must be of the same type");
+//                        throw new Exception("The operands of a qualitative operator must be of the same type");
                     }
 
-                    System.out.println("GUB entailment with >= : left lambda = " + lambdaLeft + ", right lambda = " + lambdaRight);
+//                    System.out.println("GUB entailment with >= : left lambda = " + lambdaLeft + ", right lambda = " + lambdaRight);
                     if (lambdaLeft <= lambdaRight) {
-                        System.out.println("Lambda left <= lambda right");
+//                        System.out.println("Lambda left <= lambda right");
                         return unifier;
                     }
                     return null;
                 } else {
                     //TODO: Add exception
-                    System.out.println("The operands must be formulas in the language L_G");
+                    LOGGER.error("The operands must be formulas in the language L_G");
+//                    System.out.println("The operands must be formulas in the language L_G");
                     return null;
                 }
             } else {
-                System.out.println("Formula is not ground.");
+                LOGGER.error("Formula is not ground.");
                 return null;
             }
         }
@@ -269,6 +282,7 @@ public class GlobalUncertainBelief {
 
     private Unifier entails(GreaterThanPlausibility greaterThanPlausibility, Unifier unifier) throws Exception {
         GreaterThanPlausibility groundGreaterThanPlausibility = greaterThanPlausibility.substitute(unifier);
+//        System.out.println("GREATER THAN: " + groundGreaterThanPlausibility.toString());
         if (this.languageContains(groundGreaterThanPlausibility)) {
             HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundGreaterThanPlausibility);
             for (CompactEpistemicState compactEpistemicState : relevantEpistemicStates) {
@@ -299,40 +313,39 @@ public class GlobalUncertainBelief {
                         lambdaRight = compactEpistemicState.getLambda(negatedRight);
                     }
                     if (classLeft instanceof CompactProbabilisticEpistemicState && !(classRight instanceof CompactProbabilisticEpistemicState)) {
-                        throw new Exception("The operands of a qualitative operator must be of the same type");
+                        LOGGER.error("The operands of a qualitative operator must be of the same type");
+//                        throw new Exception("The operands of a qualitative operator must be of the same type");
                     } else if (classLeft instanceof CompactPossibilisticEpistemicState && !(classRight instanceof CompactPossibilisticEpistemicState)) {
-                        throw new Exception("The operands of a qualitative operator must be of the same type");
+                        LOGGER.error("The operands of a qualitative operator must be of the same type");
+//                        throw new Exception("The operands of a qualitative operator must be of the same type");
                     }
 
-                    System.out.println("GUB entailment with > : left lambda = " + lambdaLeft + ", right lambda = " + lambdaRight);
+//                    System.out.println("GUB entailment with > : left lambda = " + lambdaLeft + ", right lambda = " + lambdaRight);
                     if (lambdaLeft < lambdaRight) {
-                        System.out.println("Lambda left < lambda right");
+//                        System.out.println("Lambda left < lambda right");
                         return unifier;
                     }
                     return null;
                 } else {
                     //TODO: Add exception
-                    System.out.println("The operands must be formulas in the language L_G");
+                    LOGGER.error("The operands must be formulas in the language L_G");
+//                    System.out.println("The operands must be formulas in the language L_G");
                     return null;
                 }
             } else {
-                System.out.println("Formula is not ground.");
+                LOGGER.error("Formula is not ground.");
+//                System.out.println("Formula is not ground.");
                 return null;
             }
         }
     }
 
-//} else {
-//        throw new Exception("The operands of a qualitative operator must be of the same type " +
-//        "(e.g. both CompactProbabilisticEpistemicState's or both CompactPossibilisticEpistemicStates)");
-//        }
-
-    private Unifier entails(StrongNegation strongNegation, Unifier unifier) throws Exception {
-        StrongNegation groundStrongNegation = strongNegation.substitute(unifier);
-        if (this.languageContains(groundStrongNegation)) {
-            HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundStrongNegation);
+    private Unifier entails(Negation negation, Unifier unifier) throws Exception {
+        Negation groundNegation = (Negation) negation.substitute(unifier);
+        if (this.languageContains(groundNegation)) {
+            HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundNegation);
             for (CompactEpistemicState compactEpistemicState : relevantEpistemicStates) {
-                Unifier unifierValid = compactEpistemicState.entails(strongNegation, unifier);
+                Unifier unifierValid = compactEpistemicState.entails(negation, unifier);
                 if (unifierValid != null) {
                     return unifierValid;
                 }
@@ -341,40 +354,12 @@ public class GlobalUncertainBelief {
         return null;
     }
 
-    private Unifier entails(NegationAsFailure negationAsFailure, Unifier unifier) throws Exception {
-        NegationAsFailure groundNegationAsFailure = negationAsFailure.substitute(unifier);
-        if (this.languageContains(groundNegationAsFailure)) {
-            HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundNegationAsFailure);
+    private Unifier entails(RelationalExpression relationalExpression, Unifier unifier) throws Exception {
+        RelationalExpression groundRelationalExpression = (RelationalExpression) relationalExpression.substitute(unifier);
+        if (this.languageContains(groundRelationalExpression)) {
+            HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundRelationalExpression);
             for (CompactEpistemicState compactEpistemicState : relevantEpistemicStates) {
-                Unifier unifierValid = compactEpistemicState.entails(negationAsFailure, unifier);
-                if (unifierValid != null) {
-                    return unifierValid;
-                }
-            }
-        }
-        return null;
-    }
-
-    private Unifier entails(Equal equal, Unifier unifier) throws Exception {
-        Equal groundEqual = equal.substitute(unifier);
-        if (this.languageContains(groundEqual)) {
-            HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundEqual);
-            for (CompactEpistemicState compactEpistemicState : relevantEpistemicStates) {
-                Unifier unifierValid = compactEpistemicState.entails(equal, unifier);
-                if (unifierValid != null) {
-                    return unifierValid;
-                }
-            }
-        }
-        return null;
-    }
-
-    private Unifier entails(NotEqual notEqual, Unifier unifier) throws Exception {
-        NotEqual groundNotEqual = notEqual.substitute(unifier);
-        if (this.languageContains(groundNotEqual)) {
-            HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundNotEqual);
-            for (CompactEpistemicState compactEpistemicState : relevantEpistemicStates) {
-                Unifier unifierValid = compactEpistemicState.entails(notEqual, unifier);
+                Unifier unifierValid = compactEpistemicState.entails(relationalExpression, unifier);
                 if (unifierValid != null) {
                     return unifierValid;
                 }
@@ -385,27 +370,28 @@ public class GlobalUncertainBelief {
 
 
     private HashSet<Unifier> getUnifiers(LogicalExpression logicalExpression, Unifier unifier) throws Exception {
-        if (logicalExpression instanceof Conjunction) {
-            return getUnifiers((Conjunction) logicalExpression, unifier);
-        } else if (logicalExpression instanceof Disjunction) {
-            return getUnifiers((Disjunction) logicalExpression, unifier);
-        } else if (logicalExpression instanceof Primitive) {
-            return getUnifiers((Primitive) logicalExpression, unifier);
-        } else if (logicalExpression instanceof GreaterEqualsPlausibility) {
-            return getUnifiers((GreaterEqualsPlausibility) logicalExpression, unifier);
-        } else if (logicalExpression instanceof GreaterThanPlausibility) {
-            return getUnifiers((GreaterThanPlausibility) logicalExpression, unifier);
-        } else if (logicalExpression instanceof Negation) {
-            return getUnifiers((Negation) logicalExpression, unifier);
-        } else if (logicalExpression instanceof BeliefAtom) {
-            return getUnifiers((BeliefAtom) logicalExpression, unifier);
-        } else if (logicalExpression instanceof BeliefLiteral) {
-            return getUnifiers((BeliefLiteral) logicalExpression, unifier);
-        } else if (logicalExpression instanceof RelationalExpression) {
-            return getUnifiers((RelationalExpression) logicalExpression, unifier);
+
+        if(logicalExpression instanceof Primitive) {
+            return this.getUnifiers((Primitive)logicalExpression, unifier);
+        } else if(logicalExpression instanceof BeliefAtom) {
+            return this.getUnifiers((BeliefAtom)logicalExpression, unifier);
+        } else if(logicalExpression instanceof BeliefLiteral) {
+            return this.getUnifiers((BeliefLiteral)logicalExpression, unifier);
+        } else if(logicalExpression instanceof Conjunction) {
+            return this.getUnifiers((Conjunction)logicalExpression, unifier);
+        } else if(logicalExpression instanceof Disjunction) {
+            return this.getUnifiers((Disjunction)logicalExpression, unifier);
+        } else if(logicalExpression instanceof GreaterEqualsPlausibility) {
+            return this.getUnifiers((GreaterEqualsPlausibility)logicalExpression, unifier);
+        } else if(logicalExpression instanceof GreaterThanPlausibility) {
+            return this.getUnifiers((GreaterThanPlausibility)logicalExpression, unifier);
+        } else if(logicalExpression instanceof Negation) {
+            return this.getUnifiers((Negation)logicalExpression, unifier);
+        } else if(logicalExpression instanceof RelationalExpression) {
+            return this.getUnifiers((RelationalExpression)logicalExpression, unifier);
         } else {
             return null;
-            //TODO: throw exception
+//            //TODO: throw exception
         }
     }
 
@@ -471,7 +457,7 @@ public class GlobalUncertainBelief {
         return this.getUnifiers(beliefLiteral.getBeliefAtom(), unifier);
     }
 
-    private HashSet<Unifier> getUnifiers(RelationalExpression relationalExpression, Unifier unifier) {
+    private HashSet<Unifier> getUnifiers(RelationalExpression relationalExpression, Unifier unifier) throws Exception {
         HashSet<Unifier> unifiers = new HashSet<>();
         unifiers.add(unifier);
         return unifiers;
