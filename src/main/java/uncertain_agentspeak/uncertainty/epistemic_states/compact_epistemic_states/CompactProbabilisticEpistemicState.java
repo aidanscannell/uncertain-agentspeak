@@ -4,6 +4,8 @@ import main.java.uncertain_agentspeak.agentspeak.logical_expressions.BeliefAtom;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.Conjunction;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.Disjunction;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.BeliefLiteral;
+import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Contradiction;
+import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Tautology;
 import main.java.uncertain_agentspeak.uncertainty.sat_solver.SATsolver;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.CompactEpistemicState;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.Weight;
@@ -36,7 +38,7 @@ public class CompactProbabilisticEpistemicState extends CompactEpistemicState {
         BeliefAtom beliefAtom = beliefLiteral.getBeliefAtom();
 
         if (!super.getDomain().contains(beliefAtom)) {
-            throw new Exception("Belief atom is not in domain");
+            throw new Exception("Belief atom is not in domain: " + beliefAtom.toString());
         }
 
         /** If belief atom in domain revise it's corresponding weight, otherwise revise initial probabilistic weight
@@ -77,6 +79,16 @@ public class CompactProbabilisticEpistemicState extends CompactEpistemicState {
     @Override
     public double getLambda(BeliefLiteral beliefLiteral, HashSet<BeliefLiteral> beliefLiterals) throws Exception {
         return this.getProbability(beliefLiteral);
+    }
+
+    @Override
+    public double getLambda(Contradiction contradiction, HashSet<BeliefLiteral> boundedLiterals) {
+        return this.getMinWeight();
+    }
+
+    @Override
+    public double getLambda(Tautology tautology, HashSet<BeliefLiteral> boundedLiterals) {
+        return this.getMaxWeight();
     }
 
     @Override
