@@ -59,3 +59,15 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+
+# Logs
+logs/
+
+# .DS_Store
+.DS_Store
+
+# Libraries
+libs/
+
+# Log4j2 binaries
+apache_log4j/
