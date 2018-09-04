@@ -6,9 +6,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="9" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="org.antlr:antlr4:4.7" level="project" />
+    <orderEntry type="library" exported="" name="jfoenix-9.0.5" level="project" />
+    <orderEntry type="library" exported="" name="org.antlr:antlr4-runtime:4.5.2-1" level="project" />
     <orderEntry type="library" name="org.sat4j.core" level="project" />
+    <orderEntry type="library" name="libs" level="project" />
+    <orderEntry type="library" name="apache-log4j-2" level="project" />
   </component>
 </module>

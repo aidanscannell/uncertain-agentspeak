@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="uncertain-agentspeak:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="03052817-61e0-4dd6-9ee5-a5ac623db670" name="Default" comment="Added iterate method to perform one cycle of agent interpreter">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/runtime/UncertainAgentspeakGUI.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/util/ConfigGUI.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/mas/MASProject.java" afterPath="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/mas/MASProject.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/runtime/RunUncertainAgentspeak.java" afterPath="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/runtime/RunUncertainAgentspeak.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Test.java" afterPath="$PROJECT_DIR$/src/test/java/Test.java" />
+    <list default="true" id="03052817-61e0-4dd6-9ee5-a5ac623db670" name="Default" comment="Added logger which writes to separate files for each agent">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uncertain-agentspeak.iml" beforeDir="false" afterPath="$PROJECT_DIR$/uncertain-agentspeak.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,99 +25,163 @@
     <SUITE FILE_PATH="coverage/agentspeak$Test.coverage" NAME="Test Coverage Results" MODIFIED="1521386103805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.java.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/uncertain_agentspeak$Run_Uncertain_Agentspeak.coverage" NAME="Run Uncertain Agentspeak Coverage Results" MODIFIED="1531914631109" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/uncertain_agentspeak$MainGUI.coverage" NAME="MainGUI Coverage Results" MODIFIED="1534154347770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1599122262">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.13" value="3" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="Action" value="3" />
+          <entry key="Agent" value="1" />
+          <entry key="BeliefAtom" value="1" />
+          <entry key="CompactEpistemicState" value="1" />
+          <entry key="CompactPossibilisticEpistemicState" value="2" />
+          <entry key="CompactProbabilisticEpistemicState" value="1" />
+          <entry key="EpistemicState" value="1" />
+          <entry key="EventTrigger" value="1" />
+          <entry key="GlobalUncertainBelief" value="1" />
+          <entry key="Goal" value="1" />
+          <entry key="JavaScript-modules-diagram//Users/aidanscannell/Google Drive/Bristol PG/Academic/Research Project/uncertain-agentspeak/src/main/java/uncertain_agentspeak/agentspeak" value="1" />
+          <entry key="LogicalExpression" value="4" />
+          <entry key="MASProject" value="1" />
+          <entry key="Operator" value="1" />
+          <entry key="Plan" value="1" />
+          <entry key="PlanLibrary" value="1" />
+          <entry key="RelationalExpression" value="1" />
+          <entry key="Term" value="1" />
+          <entry key="Terminal" value="1" />
+          <entry key="Unifier" value="1" />
+          <entry key="Weight" value="1" />
+          <entry key="agent" value="9" />
+          <entry key="css" value="1" />
+          <entry key="fxml" value="3" />
+          <entry key="g4" value="12" />
+          <entry key="gitignore" value="4" />
+          <entry key="iml" value="1" />
+          <entry key="java" value="338" />
+          <entry key="mas" value="6" />
+          <entry key="md" value="1" />
+          <entry key="png" value="1" />
+          <entry key="uncertainty" value="1" />
+          <entry key="xml" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="ANTLR v4 grammar file" value="12" />
+          <entry key="CSS" value="1" />
+          <entry key="IDEA_MODULE" value="1" />
+          <entry key="Image" value="1" />
+          <entry key="JAVA" value="338" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="19" />
+          <entry key="UML" value="28" />
+          <entry key="XML" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="agent" value="694" />
+          <entry key="fxml" value="2" />
+          <entry key="g4" value="164" />
+          <entry key="gitignore" value="154" />
+          <entry key="java" value="10283" />
+          <entry key="mas" value="15" />
+          <entry key="txt" value="3492" />
+          <entry key="xml" value="37" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="ANTLR v4 grammar file" value="164" />
+          <entry key="JAVA" value="10283" />
+          <entry key="PLAIN_TEXT" value="4355" />
+          <entry key="XML" value="39" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.checkout.local" value="3" />
+          <entry key="git.branch.create.new" value="3" />
+          <entry key="git.branch.delete.local" value="3" />
+          <entry key="git.branch.merge" value="3" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MASProject.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/mas/MASProject.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/agents/sampleAgentA.agent">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="390">
+              <caret line="26" column="173" selection-start-line="26" selection-start-column="173" selection-end-line="26" selection-end-column="173" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/Agent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1005">
+              <caret line="97" column="20" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="20" />
               <folding>
-                <element signature="e#723#724#0" expanded="true" />
-                <element signature="e#757#758#0" expanded="true" />
-                <element signature="e#788#789#0" expanded="true" />
-                <element signature="e#815#816#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GridWorldModel.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/IntendedMeans.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="53" column="61" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/EpistemicState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="100" selection-start-line="13" selection-start-column="100" selection-end-line="13" selection-end-column="100" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/GridWorldModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Environment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/Environment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+            <state relative-caret-position="570">
+              <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#606#639#0" expanded="true" />
-                <element signature="e#873#874#0" expanded="true" />
-                <element signature="e#971#972#0" expanded="true" />
-                <element signature="e#999#1000#0" expanded="true" />
-                <element signature="e#1057#1058#0" expanded="true" />
-                <element signature="e#1082#1083#0" expanded="true" />
-                <element signature="e#1114#1115#0" expanded="true" />
-                <element signature="e#1234#1235#0" expanded="true" />
-                <element signature="e#1262#1263#0" expanded="true" />
-                <element signature="e#1881#1882#0" expanded="true" />
-                <element signature="e#1913#1914#0" expanded="true" />
-                <element signature="e#2343#2362#0" expanded="true" />
+                <element signature="e#1137#1138#0" expanded="true" />
+                <element signature="e#1187#1188#0" expanded="true" />
+                <element signature="e#3046#3047#0" expanded="true" />
+                <element signature="e#3105#3106#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MarsEnvironment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsEnvironment.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/GridWorldView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1073#1074#0" expanded="true" />
-                <element signature="e#1104#1105#0" expanded="true" />
-                <element signature="e#1306#1307#0" expanded="true" />
-                <element signature="e#1334#1335#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MASLauncher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/infrastructure/MASLauncher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CentralisedMASLauncher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/infrastructure/centralised/CentralisedMASLauncher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RunUncertainAgentspeak.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/runtime/RunUncertainAgentspeak.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="13" selection-end-column="5" />
+            <state relative-caret-position="1965">
+              <caret line="153" column="24" selection-start-line="153" selection-start-column="24" selection-end-line="153" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,28 +189,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MarsView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsView.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/ui/main/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="1170">
+              <caret line="102" column="50" selection-start-line="102" selection-start-column="50" selection-end-line="102" selection-end-column="50" />
               <folding>
-                <element signature="e#241#242#0" expanded="true" />
-                <element signature="e#288#289#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UncertainAgentspeakGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/runtime/UncertainAgentspeakGUI.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/mas_parser/MASProjectVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="55" column="80" lean-forward="false" selection-start-line="55" selection-start-column="80" selection-end-line="55" selection-end-column="80" />
+            <state relative-caret-position="241">
+              <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1106#1107#0" expanded="true" />
-                <element signature="e#1146#1147#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -155,104 +220,122 @@
       <list>
         <option value="Gradle Kotlin DSL Settings" />
         <option value="FxmlFile" />
+        <option value="UML Class" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>compound term</find>
-      <find>Context</find>
-      <find>co</find>
-      <find>belief</find>
-      <find>weight</find>
-      <find>SyS</find>
-      <find>event</find>
-      <find>eVENT</find>
-      <find>Belief atom</find>
-      <find>valid u</find>
-      <find>System</find>
-      <find>cellSizeW</find>
-      <find>cellSizeH</find>
-      <find>drawArea</find>
-      <find>data</find>
-      <find>AGENT</find>
-      <find>agName</find>
-      <find>model</find>
-      <find>Sys</find>
-      <find>§</find>
-      <find>here</find>
+      <find>projectThread</find>
+      <find>future</find>
+      <find>main.c</find>
+      <find>id</find>
+      <find>Log</find>
+      <find>Log_e</find>
+      <find>And_e</find>
+      <find>test</find>
+      <find>plan</find>
+      <find>executeI</find>
+      <find>init</find>
+      <find>LOGGER</find>
+      <find>MyLogger</find>
+      <find>getLogger</find>
+      <find>Dou</find>
+      <find>logger</find>
+      <find>viewMetrics</find>
+      <find>runAndWait</find>
+      <find>prob</find>
+      <find>&amp;</find>
+      <find>|</find>
+      <find>∼</find>
+      <find>possibleUnifiers</find>
+      <find>greater</find>
+      <find>EQUALS</find>
+      <find>not</find>
+      <find>log</find>
+      <find>visitAnd_expr</find>
+      <find>bel</find>
+      <find>getLam</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="detailed-grammar" />
+        <entry key="$PROJECT_DIR$" value="change-execute-action" />
       </map>
-    </option>
-  </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
     </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/Location.java" />
-        <option value="$PROJECT_DIR$/src/test/java/mars_exploration_scenario/MarsExplorationScenario.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/GlobalUncertainBelief.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/belief_actions/ReviseBeliefAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/infrastructure/centralised/CentralisedMASLauncher.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/grammars/MASProject.g4" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/MASProject/parser/MASProjectVisitor.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/parser/UncertainAgentspeakVisitor1.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/parser/UncertainAgentspeakVisitor.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakBaseVisitor.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakVisitor.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakParser.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakListener.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakLexer.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakBaseListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/parser/Visitor.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/grammars/UncertainAgentspeak.g4" />
-        <option value="$PROJECT_DIR$/src/test/java/mars_exploration_scenario/agents/sampleAgent.agent" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/parser/Visitor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/Parser.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/parser/Visitor.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/as_parser/Parser.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/as_parser/AgentParser.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/mas_parser/ProjectParser.java" />
-        <option value="$PROJECT_DIR$/src/test/java/mars_exploration_scenario/marsExplorationScenario.mas" />
-        <option value="$PROJECT_DIR$/src/test/java/mars_exploration_scenario/agents/analysisAgent.agent" />
-        <option value="$PROJECT_DIR$/src/test/java/mars_exploration_scenario/agents/excavationAgent.agent" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/as_parser/UncertainAgentspeakVisitor.java" />
-        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/agents/sampleAgent.agent" />
-        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/agents/excavationAgent.agent" />
-        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/agents/analysisAgent.agent" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/util/ConfigGUI.java" />
-        <option value="$PROJECT_DIR$/src/test/java/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/runtime/RunUncertainAgentspeak.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/control/MainGUIController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/TimeSteppedEnvironment.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/MASProject.g4" />
-        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsView.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/antlr/mas_parser/MASProjectVisitor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/GridWorldView.java" />
-        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/marsExplorationScenario.mas" />
-        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/GridWorldModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/EnvironmentAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/Agent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/mas/MASProject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/Environment.java" />
-        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsEnvironment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/infrastructure/MASLauncher.java" />
         <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/runtime/UncertainAgentspeakGUI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/ui/main/TextFileReader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/ui/main/main.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/ui/mas_console/MASConsole.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/event_triggers/goal_event_triggers/AddGoalET.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/Intention.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/IntentionSet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/Goal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/logger/MyLogger.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/event_triggers/GoalEventTrigger.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/EventTrigger.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/GoalAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/BeliefAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/Action.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/goal_actions/AchievementGoalAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/goal_actions/TestGoalAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/EnvironmentAction.java" />
+        <option value="$PROJECT_DIR$/src/log4j2.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/AStar/AStar.java" />
+        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsView.java" />
+        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/marsExplorationScenario.mas" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/goals/TestGoal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/GridWorldView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/GridWorldModel.java" />
+        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/Environment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/mas/MASProject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/ui/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/ui/main/MainController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsEnvironment.java" />
+        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsWorldFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/terms/Structure.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/operators/GreaterEqualsPlausibility.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/operators/GreaterThanPlausibility.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/operators/negations/StrongNegation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/LogicalExpression.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/operators/Conjunction.java" />
+        <option value="$PROJECT_DIR$/src/test/java/marsExplorationScenario/agents/sampleAgentA.agent" />
+        <option value="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/IntendedMeans.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/Agent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/belief_actions/ReviseBeliefAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/GlobalUncertainBelief.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/antlr/as_parser/UncertainAgentspeakVisitor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/epistemic_states/CompactEpistemicState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/EpistemicState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/epistemic_states/compact_epistemic_states/CompactPossibilisticEpistemicState.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/antlr/mas_parser/MASProjectVisitor.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
@@ -290,22 +373,11 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -315,123 +387,29 @@
             </path>
             <path>
               <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="uncertain_agentspeak" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="uncertain_agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="uncertain_agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="uncertain_agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
-              <item name="goal_actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="uncertain_agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="environment" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="uncertain_agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="environment" type="462c0819:PsiDirectoryNode" />
-              <item name="grid" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="uncertain_agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="uncertain_agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
-              <item name="centralised" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="uncertain_agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="mas" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="uncertain_agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="runtime" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="marsExplorationScenario" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uncertain-agentspeak" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="marsExplorationScenario" type="462c0819:PsiDirectoryNode" />
-              <item name="environment" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uncertain-agentspeak" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="uncertain-agentspeak" type="58d84e3e:PackageViewProjectNode" />
+              <item name="uncertain-agentspeak" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="uncertain-agentspeak" type="58d84e3e:PackageViewProjectNode" />
+              <item name="uncertain-agentspeak" type="616d4139:PackageViewModuleNode" />
+              <item name="main" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="uncertain-agentspeak" type="58d84e3e:PackageViewProjectNode" />
+              <item name="uncertain-agentspeak" type="616d4139:PackageViewModuleNode" />
+              <item name="main" type="1f31426a:PackageElementNode" />
+              <item name="java.uncertain_agentspeak" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -441,62 +419,68 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
     <property name="$PROJECT_DIR$/src/main/resources/antlr/Agentspeak.g4::/auto-gen" value="true" />
-    <property name="$PROJECT_DIR$/src/main/resources/antlr/Agentspeak.g4::/language" value="Java" />
     <property name="$PROJECT_DIR$/src/main/resources/antlr/Agentspeak.g4::/gen-listener" value="true" />
     <property name="$PROJECT_DIR$/src/main/resources/antlr/Agentspeak.g4::/gen-visitor" value="true" />
+    <property name="$PROJECT_DIR$/src/main/resources/antlr/Agentspeak.g4::/language" value="Java" />
     <property name="$PROJECT_DIR$/src/main/resources/antlr/Agentspeak.g4::/output-dir" value="$PROJECT_DIR$/src" />
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
+    <property name="$PROJECT_DIR$/src/main/resources/antlr/MASProject.g4::/auto-gen" value="false" />
+    <property name="$PROJECT_DIR$/src/main/resources/antlr/MASProject.g4::/gen-listener" value="true" />
+    <property name="$PROJECT_DIR$/src/main/resources/antlr/MASProject.g4::/gen-visitor" value="true" />
+    <property name="$PROJECT_DIR$/src/main/resources/antlr/MASProject.g4::/language" value="Java" />
+    <property name="$PROJECT_DIR$/src/main/resources/antlr/MASProject.g4::/output-dir" value="$PROJECT_DIR$/src" />
     <property name="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4::/auto-gen" value="false" />
-    <property name="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4::/output-dir" value="$PROJECT_DIR$/src" />
     <property name="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4::/gen-listener" value="true" />
     <property name="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4::/language" value="Java" />
+    <property name="$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4::/output-dir" value="$PROJECT_DIR$/src" />
     <property name="$PROJECT_DIR$/src/main/resources/grammars/MASProject.g4::/auto-gen" value="false" />
-    <property name="$PROJECT_DIR$/src/main/resources/grammars/MASProject.g4::/output-dir" value="src/main/resources/antlr/" />
-    <property name="$PROJECT_DIR$/src/main/resources/grammars/MASProject.g4::/language" value="Java" />
     <property name="$PROJECT_DIR$/src/main/resources/grammars/MASProject.g4::/gen-listener" value="true" />
     <property name="$PROJECT_DIR$/src/main/resources/grammars/MASProject.g4::/gen-visitor" value="true" />
+    <property name="$PROJECT_DIR$/src/main/resources/grammars/MASProject.g4::/language" value="Java" />
+    <property name="$PROJECT_DIR$/src/main/resources/grammars/MASProject.g4::/output-dir" value="src/main/resources/antlr/" />
+    <property name="$PROJECT_DIR$/src/main/resources/grammars/MASProject.g4::/package" value="MASProject" />
     <property name="$PROJECT_DIR$/src/main/resources/grammars/UncertainAgentspeak.g4::/auto-gen" value="false" />
-    <property name="$PROJECT_DIR$/src/main/resources/grammars/UncertainAgentspeak.g4::/output-dir" value="src/main/resources/antlr" />
     <property name="$PROJECT_DIR$/src/main/resources/grammars/UncertainAgentspeak.g4::/gen-listener" value="true" />
     <property name="$PROJECT_DIR$/src/main/resources/grammars/UncertainAgentspeak.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/main/resources/grammars/UncertainAgentspeak.g4::/language" value="Java" />
-    <property name="$PROJECT_DIR$/src/main/resources/grammars/MASProject.g4::/package" value="MASProject" />
-    <property name="$PROJECT_DIR$/src/main/resources/antlr/MASProject.g4::/auto-gen" value="false" />
-    <property name="$PROJECT_DIR$/src/main/resources/antlr/MASProject.g4::/language" value="Java" />
-    <property name="$PROJECT_DIR$/src/main/resources/antlr/MASProject.g4::/gen-listener" value="true" />
-    <property name="$PROJECT_DIR$/src/main/resources/antlr/MASProject.g4::/gen-visitor" value="true" />
+    <property name="$PROJECT_DIR$/src/main/resources/grammars/UncertainAgentspeak.g4::/output-dir" value="src/main/resources/antlr" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536076410859" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/resources/css" />
       <recent name="$PROJECT_DIR$/src/main/resources/antlr" />
       <recent name="$PROJECT_DIR$/src/main/resources/grammars" />
       <recent name="$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak" />
-      <recent name="$PROJECT_DIR$/src/main/resources/antlr/grammars" />
-      <recent name="$PROJECT_DIR$/src/main/resources/antlr/superseeded" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="main.resources.antlr" />
       <recent name="main.resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="main.java.uncertain_agentspeak.alert" />
+      <recent name="main.java.uncertain_agentspeak.util" />
       <recent name="main.agentspeak" />
       <recent name="main.exceptions" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid" />
-      <recent name="$PROJECT_DIR$/src/main/resources/antlr" />
-      <recent name="$PROJECT_DIR$/src/test/java" />
-      <recent name="$PROJECT_DIR$/src/main/agentspeak" />
-      <recent name="$PROJECT_DIR$/src/main" />
+      <recent name="$PROJECT_DIR$/src/test/java/marsExplorationScenario/agents" />
+      <recent name="$PROJECT_DIR$/src/main/java/uncertain_agentspeak/ui" />
+      <recent name="$PROJECT_DIR$/src/main/java/uncertain_agentspeak" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -511,173 +495,104 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Run Uncertain Agentspeak">
+  <component name="RunManager" selected="Application.MainGUI">
     <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
+      <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module />
+      <option name="WIDTH" value="0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="Run Uncertain Agentspeak" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="main.java.uncertain_agentspeak.runtime.RunUncertainAgentspeak" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
+    <configuration name="MainGUI" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="/Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <log_file alias="logs" path="$PROJECT_DIR$/logs" />
+      <option name="MAIN_CLASS_NAME" value="main.java.uncertain_agentspeak.ui.main.Main" />
       <module name="uncertain-agentspeak" />
-      <envs />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="Test" type="Application" factoryName="Application" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+      <option name="MAIN_CLASS_NAME" value="test.java.Test" />
+      <module name="uncertain-agentspeak" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="test.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="test.java.Test" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="uncertain-agentspeak" />
-      <envs />
-    </configuration>
-    <configuration name="Unnamed" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="main.java.uncertain_agentspeak.util.ConfigGUI" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="uncertain-agentspeak" />
-      <envs />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-    </configuration>
-    <configuration name="agentspeak" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="main.java.Main" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="agentspeak" />
-      <envs />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
+      <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="JarApplication" factoryName="JAR Application">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/uncertain_agentspeak_jar/uncertain-agentspeak.jar" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="uncertain-agentspeak:jar" />
+        </option>
+      </method>
     </configuration>
     <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
+      <module name="agentspeak" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="agentspeak" />
-      <envs />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
+      <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Application.agentspeak" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Test" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Run Uncertain Agentspeak" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Unnamed" />
+    <list>
+      <item itemvalue="Application.MainGUI" />
+      <item itemvalue="Application.Test" />
+      <item itemvalue="JAR Application.Unnamed" />
     </list>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="StructureViewFactory">
     <option name="ACTIVE_ACTIONS" value=",SHOW_INHERITED,VISIBILITY_SORTER,ALPHA_COMPARATOR" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -686,307 +601,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1517868555388</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Made goals base term type Term instead of Belief as in AgentSpeak(L) paper">
-      <created>1530185484269</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1530185484269</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Updated action methods.&#10;Removed add/delete belief actions.&#10;Removed add/delete belief events.&#10;Deleted BeliefGoal class&#10;Added ReviseBeliefAction.&#10;Deleted Belief class.">
-      <created>1530201902348</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1530201902348</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Added toString methods">
-      <created>1530630618180</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1530630618180</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Implemented full parser that reads *.txt files and instantiates an interpreter.">
-      <created>1530630710705</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1530630710705</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Changed to double number">
-      <created>1530633858143</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1530633858143</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Changed internal event to AddGoalET">
-      <created>1530633895226</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1530633895226</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Added unify() methods">
-      <created>1530633948765</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1530633948765</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Made abstract">
-      <created>1530633972868</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1530633972868</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Implemented unification">
-      <created>1530634001094</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1530634001095</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Changed plan eventTrigger to type eventTrigger instead of event">
-      <created>1530634046036</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1530634046036</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Implemented unification">
-      <created>1530634078932</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1530634078932</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Made getGUB() method public">
-      <created>1530634153584</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1530634153584</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Implemented World class">
-      <created>1530634192723</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1530634192723</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Implemented parser for uncertain agentSpeak.&#10;Enabled txt file input.">
-      <created>1530634287213</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1530634287213</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Deleted superseeded and unnecessary files">
-      <created>1530634332386</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1530634332387</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Added exception to executeAction() method">
-      <created>1530634383293</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1530634383293</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Implemented substitute methods for all logical expressions">
-      <created>1530702433864</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1530702433865</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Moved pare methods from CompactEpistemicState to EpistemicState.&#10;Implemented entails method for EpistemicState.&#10;Implemented languageContains method which returns true if a logical expression is contained within the domain">
-      <created>1530702744520</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1530702744520</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Changed BeliefBase to GlobalUncertainBelief">
-      <created>1530727075148</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1530727075148</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Implemented convertToNNF() and inNNF() methods for all LogicalExpressions">
-      <created>1530727150753</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1530727150753</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Added isGround() methods">
-      <created>1530880847439</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1530880847443</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Corrected revise method and getLambda">
-      <created>1530880907469</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1530880907469</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Implemented entailment. Added langaugeCotains function and getRelevantES() method">
-      <created>1530880982107</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1530880982108</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Added entials() method for just LogicalExpression input">
-      <created>1530881035995</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1530881035995</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Added toNNF check in getLambda() method">
-      <created>1530881081319</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1530881081319</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Changed bleief base to global uncertain belief">
-      <created>1530881118977</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1530881118977</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Implemented sat4J SATsolver">
-      <created>1530889318779</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1530889318779</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Implemented isClassical() method for Plausibility/Negation as failure">
-      <created>1531225978894</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1531225978894</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Commit before implementing equals/not equals">
-      <created>1531226244413</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1531226244414</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Corrected pare() method for Equal input by using x.equals(x) instead of x == x">
-      <created>1531317751489</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1531317751490</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Commit before implementing environment">
-      <created>1531318876729</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1531318876729</updated>
-    </task>
-    <task id="LOCAL-00073" summary="Added satSolver core to git">
-      <created>1531321960665</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1531321960665</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Re-organised project structure, changed Interpreter class to Agent and added a base Environment class">
-      <created>1531322086229</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1531322086229</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Created *.agent file extension and created folder structure for mars exploration scenario">
-      <created>1531322156255</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1531322156255</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Added UncertainAgentSpeak parser/lexer/visitor files to git.&#10;Created a folder for grammar files (*.g4)">
-      <created>1531326572327</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1531326572327</updated>
-    </task>
-    <task id="LOCAL-00077" summary="Created base framework class for implementing environments.&#10;Also created TimeSteppedEnvironment class and classes for implementing a grid world">
-      <created>1531326936169</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1531326936169</updated>
-    </task>
-    <task id="LOCAL-00078" summary="Restructured antlr files to allow for MASProject parser as well as agent parser">
-      <created>1531327001189</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1531327001189</updated>
-    </task>
-    <task id="LOCAL-00079" summary="Created base multi agent system project class for implementing MASs">
-      <created>1531327040629</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1531327040629</updated>
-    </task>
-    <task id="LOCAL-00080" summary="Changed project file structure">
-      <created>1531327125430</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1531327125430</updated>
-    </task>
-    <task id="LOCAL-00081" summary="Created project description file for mars exploration scenario">
-      <created>1531327159562</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1531327159562</updated>
-    </task>
-    <task id="LOCAL-00082" summary="Corrected probabilistic ES revision">
-      <created>1531332331893</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1531332331893</updated>
-    </task>
-    <task id="LOCAL-00083" summary="Created grammar for project (*.mas) files and parser/visitor.&#10;&#10;Added more agents and created a project file for marsScenario">
-      <created>1531417718361</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1531417718361</updated>
-    </task>
-    <task id="LOCAL-00084" summary="Created grammar for project (*.mas) files and parser/visitor.&#10;&#10;Added more agents and created a project file for marsScenario">
-      <created>1531417815648</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1531417815648</updated>
+      <workItem from="1534770475170" duration="249000" />
+      <workItem from="1535555394291" duration="2449000" />
+      <workItem from="1535557918274" duration="45000" />
+      <workItem from="1535558020716" duration="66837000" />
+      <workItem from="1535876306605" duration="33203000" />
+      <workItem from="1535981440034" duration="44787000" />
+      <workItem from="1536076458295" duration="612000" />
     </task>
     <task id="LOCAL-00085" summary="Started adding infrastructure for implementing MAS and environments">
       <created>1531417876231</created>
@@ -1030,8 +651,312 @@
       <option name="project" value="LOCAL" />
       <updated>1531834060014</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Commit before attempting to implement a launcher">
+      <created>1531837070472</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1531837070472</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Made entails(qualitativeOperators) check operands associated epistemic state class type.">
+      <created>1535741447653</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1535741447654</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Deleted commented lines (neatened class)">
+      <created>1535741808680</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1535741808680</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Added A* search for moving in grid world">
+      <created>1535804230782</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1535804230782</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Started added actions including move and travel">
+      <created>1535804337741</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1535804337741</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Deleted max expression">
+      <created>1535804396727</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1535804396727</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Created IDE in FXML and implemented (1) load mas project, (2) tree view for file structure, (3) run project button">
+      <created>1535809194893</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1535809194893</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Moved main.css to resources and added dark-theme.css">
+      <created>1535809379594</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1535809379594</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Commented printing to clean up text output">
+      <created>1535809441881</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1535809441881</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Can now specify number of agents">
+      <created>1535810794009</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1535810794009</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Created class for generating mars worlds">
+      <created>1535810862672</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1535810862672</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Updated agent file name">
+      <created>1535810928687</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1535810928687</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Added environment to executeAction(), executeIntention() methods.">
+      <created>1535811047313</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1535811047314</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Added classes for logging exceptions">
+      <created>1535811198625</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1535811198625</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Passed environment to executeAction() method.">
+      <created>1535811322759</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1535811322759</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Deleted unused files and folders">
+      <created>1535811370992</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1535811370992</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Add log4j2 configuration file">
+      <created>1535811612222</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1535811612222</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Added different agents and update method">
+      <created>1535811690892</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1535811690893</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Added classes for implementing MAS Console GUI">
+      <created>1535811836695</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1535811836695</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Corrected thread pool size and added stop method">
+      <created>1535812532371</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1535812532371</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Added personal logger for  each agent">
+      <created>1535813863554</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1535813863554</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Working on scenario">
+      <created>1535813890656</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1535813890656</updated>
+    </task>
+    <task id="LOCAL-00113" summary="Changed toString style">
+      <created>1535825088420</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1535825088421</updated>
+    </task>
+    <task id="LOCAL-00114" summary="Implemented execution of test goal action to return a unifier, then subsitute it into the intended means for subsequent actions.">
+      <created>1535830377954</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1535830377954</updated>
+    </task>
+    <task id="LOCAL-00115" summary="Moved goal variable from children to GoalAction class and deleted un-needed methods">
+      <created>1535903973407</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1535903973408</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Changed executeAction() to return unifier instead of boolean.&#10;It now returns the test goal unifier.&#10;The intended means executeAction() method now checks what type of action it is performing. If it is an achievement goal then it makes subgoalFlag=true">
+      <created>1535906665693</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1535906665693</updated>
+    </task>
+    <task id="LOCAL-00117" summary="All executeAction() methods return the unifier they are passed except for test goals.&#10;The intended means executeAction() method now sets the subgoal flag and then has one call to action.executeAction() that returns a unifier which is set to be the intended means unifier.">
+      <created>1535909395698</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1535909395698</updated>
+    </task>
+    <task id="LOCAL-00118" summary="Added folder icon to git">
+      <created>1535961000368</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1535961000369</updated>
+    </task>
+    <task id="LOCAL-00119" summary="Initial belief cant be atom anymore.&#10;Test goals are now formulas and not terms">
+      <created>1535962442753</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1535962442753</updated>
+    </task>
+    <task id="LOCAL-00120" summary="Added MASProject parser files to git">
+      <created>1535962474268</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1535962474268</updated>
+    </task>
+    <task id="LOCAL-00121" summary="Added check for number type (IntNum od DoubleNum) and convert to double as appropriate.">
+      <created>1536073915923</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1536073915924</updated>
+    </task>
+    <task id="LOCAL-00122" summary="Added extra convertToNNF() which doesn't require boolean input.&#10;Corrected convertToNNF for greater than/equals as left and right  operands where the wrong way around.">
+      <created>1536074128584</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1536074128584</updated>
+    </task>
+    <task id="LOCAL-00123" summary="Corrected unification for a structure with a structure">
+      <created>1536074170087</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1536074170087</updated>
+    </task>
+    <task id="LOCAL-00124" summary="Changed format of initial beliefs">
+      <created>1536074494689</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1536074494689</updated>
+    </task>
+    <task id="LOCAL-00125" summary="Reduced entails methods for negations into one.&#10;Reduced entails methods for relational expressions into one.">
+      <created>1536074686289</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1536074686289</updated>
+    </task>
+    <task id="LOCAL-00126" summary="Corrected return of getWeight(negativeLiteral).&#10;Simplified getLambda(Disjunction) to a Math.min">
+      <created>1536075021292</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1536075021292</updated>
+    </task>
+    <task id="LOCAL-00127" summary="Added getLamda() methods for contradiction and tautology methods.">
+      <created>1536075198248</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1536075198248</updated>
+    </task>
+    <task id="LOCAL-00128" summary="Added min and mac get weight functions.&#10;Corrected getLambda(BeliefLiteral) method. It didn't add the belief literal to the set of bounded literals.&#10;Deleted getLambda() methods for conjunction and disjunctions">
+      <created>1536075327835</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1536075327835</updated>
+    </task>
+    <task id="LOCAL-00129" summary="Added logger which writes to separate files for each agent">
+      <created>1536075871669</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1536075871669</updated>
+    </task>
+    <task id="LOCAL-00130" summary="Changed use of convertToNNF and use .equal instaed of != in pare for NotEqual">
+      <created>1536075950756</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1536075950757</updated>
+    </task>
+    <task id="LOCAL-00131" summary="Added logger which writes to separate files for each agent">
+      <created>1536075994427</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1536075994427</updated>
+    </task>
+    <task id="LOCAL-00132" summary="Added apache-log4j binaries">
+      <created>1536076362851</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1536076362851</updated>
+    </task>
+    <task id="LOCAL-00133" summary="Editing environment for 9 locations scenario">
+      <created>1536077071610</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1536077071611</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="172776000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1046,535 +971,497 @@
     <frame x="-1920" y="69" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24131082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26118502" sideWeight="0.49361023" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23733863" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286991" sideWeight="0.5079872" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.408143" sideWeight="0.4914163" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3470375" sideWeight="0.48569384" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1970181" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769045" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.326713" sideWeight="0.49201277" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39821252" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19861555" />
+      <window_info id="Structure" order="1" weight="0.24920128" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Learn" order="5" weight="0.32960597" />
+      <window_info id="Image Layers" order="6" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Tool Output" order="0" sideWeight="0.49361023" weight="0.25940594" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="1" sideWeight="0.49201277" weight="0.2980198" />
+      <window_info anchor="bottom" id="Messages" order="2" visible="true" weight="0.23663366" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.32574257" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4914163" weight="0.34257427" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.3980198" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5079872" side_tool="true" weight="0.3286991" />
+      <window_info anchor="bottom" id="TODO" order="10" weight="0.24131082" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.48569384" weight="0.3470375" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.32889965" />
+      <window_info anchor="bottom" id="Log4jMonitor" order="13" weight="0.32969216" />
+      <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24920128" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.3297568" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Coverage" order="6" side_tool="true" weight="0.32960597" />
+      <window_info anchor="right" id="PlantUML" order="7" weight="0.32960597" />
+      <window_info anchor="right" id="Capture Analysis" order="8" />
+      <window_info anchor="right" id="Database" order="9" />
+      <window_info anchor="right" id="Theme Preview" order="10" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26118502" sideWeight="0.49361023" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286991" sideWeight="0.5079872" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.326713" sideWeight="0.49201277" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39821252" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24131082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23733863" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.408143" sideWeight="0.4914163" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3470375" sideWeight="0.48569384" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1970181" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769045" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added entials() method for just LogicalExpression input" />
-    <MESSAGE value="Added toNNF check in getLambda() method" />
-    <MESSAGE value="Changed bleief base to global uncertain belief" />
-    <MESSAGE value="Implemented sat4J SATsolver" />
-    <MESSAGE value="Implemented isClassical() method for Plausibility/Negation as failure" />
-    <MESSAGE value="Commit before implementing equals/not equals" />
-    <MESSAGE value="Corrected pare() method for Equal input by using x.equals(x) instead of x == x" />
-    <MESSAGE value="Commit before implementing environment" />
-    <MESSAGE value="Added satSolver core to git" />
-    <MESSAGE value="Re-organised project structure, changed Interpreter class to Agent and added a base Environment class" />
-    <MESSAGE value="Created *.agent file extension and created folder structure for mars exploration scenario" />
-    <MESSAGE value="Added UncertainAgentSpeak parser/lexer/visitor files to git.&#10;Created a folder for grammar files (*.g4)" />
-    <MESSAGE value="Created base framework class for implementing environments.&#10;Also created TimeSteppedEnvironment class and classes for implementing a grid world" />
-    <MESSAGE value="Restructured antlr files to allow for MASProject parser as well as agent parser" />
-    <MESSAGE value="Created base multi agent system project class for implementing MASs" />
-    <MESSAGE value="Changed project file structure" />
-    <MESSAGE value="Created project description file for mars exploration scenario" />
-    <MESSAGE value="Corrected probabilistic ES revision" />
-    <MESSAGE value="Created grammar for project (*.mas) files and parser/visitor.&#10;&#10;Added more agents and created a project file for marsScenario" />
-    <MESSAGE value="Started adding infrastructure for implementing MAS and environments" />
-    <MESSAGE value="Commit before implementing JavaFX GUI application" />
-    <MESSAGE value="Implemented base environment class and base grid world model and view" />
-    <MESSAGE value="Created parser and visitor for MASProject files" />
-    <MESSAGE value="Created MarsModel and MarsView" />
-    <MESSAGE value="Added iterate method to perform one cycle of agent interpreter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added iterate method to perform one cycle of agent interpreter" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints-dialog>
-        <breakpoints-dialog />
-      </breakpoints-dialog>
-      <option name="time" value="6" />
-    </breakpoint-manager>
-    <watches-manager />
+    <MESSAGE value="Added personal logger for  each agent" />
+    <MESSAGE value="Working on scenario" />
+    <MESSAGE value="Changed toString style" />
+    <MESSAGE value="Implemented execution of test goal action to return a unifier, then subsitute it into the intended means for subsequent actions." />
+    <MESSAGE value="Move goal variable from children to GoalAction class and deleted un-needed methods" />
+    <MESSAGE value="Moved goal variable from children to GoalAction class and deleted un-needed methods" />
+    <MESSAGE value="Changed executeAction() to return unifier instead of boolean.&#10;It now returns the test goal unifier.&#10;The intended means executeAction() method now checks what type of action it is performing. If it is an achievement goal then it makes subgoalFlag=true" />
+    <MESSAGE value="All executeAction() methods return the unifier they are passed except for test goals.&#10;The intended means executeAction() method now sets the subgoal flag and then has one call to action.executeAction() that returns a unifier which is set to be the intended means unifier." />
+    <MESSAGE value="Added folder icon to git" />
+    <MESSAGE value="Initial belief cant be atom anymore.&#10;Test goals are now formulas and not terms" />
+    <MESSAGE value="Added MASProject parser files to git" />
+    <MESSAGE value="Implemented logging with separate folders for each agent and the main threads." />
+    <MESSAGE value="Added check for number type (IntNum od DoubleNum) and convert to double as appropriate." />
+    <MESSAGE value="Added extra convertToNNF() which doesn't require boolean input.&#10;Corrected convertToNNF for greater than/equals as left and right  operands where the wrong way around." />
+    <MESSAGE value="Corrected unification for a structure with a structure" />
+    <MESSAGE value="Changed format of initial beliefs" />
+    <MESSAGE value="Reduced entails methods for negations into one.&#10;Reduced entails methods for relational expressions into one." />
+    <MESSAGE value="Corrected return of getWeight(negativeLiteral).&#10;Simplified getLambda(Disjunction) to a Math.min" />
+    <MESSAGE value="Added contradiction and tautology methods." />
+    <MESSAGE value="Added getLamda() methods for contradiction and tautology methods." />
+    <MESSAGE value="Added min and mac get weight functions.&#10;Corrected getLambda(BeliefLiteral) method. It didn't add the belief literal to the set of bounded literals.&#10;Deleted getLambda() methods for conjunction and disjunctions" />
+    <MESSAGE value="Changed use of convertToNNF and use .equal instaed of != in pare for NotEqual" />
+    <MESSAGE value="Added logger which writes to separate files for each agent" />
+    <MESSAGE value="Added apache-log4j binaries" />
+    <MESSAGE value="Editing environment for 9 locations scenario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Editing environment for 9 locations scenario" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/grammars/UncertainAgentspeakBaseVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/grammars/UncertainAgentspeakLexer.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakVisitor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/AStar/AStar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="50" lean-forward="false" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="28" lean-forward="false" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="50" lean-forward="false" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakLexer.tokens">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakLexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="50" lean-forward="false" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="50" lean-forward="false" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeak.tokens">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/test.agent">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="84" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="96" selection-end-column="168" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/uncertain_agentspeak/UncertainAgentspeakBaseVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="4" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="116" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="48" column="18" lean-forward="false" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/main/resources/antlr/MASProjectVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="77" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeakParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-38821">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/as_parser/AgentParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="33" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/agents/sampleAgent.agent">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/agents/excavationAgent.agent">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/agents/analysisAgent.agent">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/jason.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/EventSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/util/ConfigGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="36" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/control/MainGUIController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/TimeSteppedEnvironment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="11" lean-forward="true" selection-start-line="2" selection-start-column="11" selection-end-line="3" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/belief_actions/ReviseBeliefAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/MASProject.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="37" column="36" lean-forward="true" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="61" column="56" lean-forward="false" selection-start-line="61" selection-start-column="55" selection-end-line="61" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/mas_parser/ProjectParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/as_parser/UncertainAgentspeakVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="76" column="44" lean-forward="false" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/EpistemicState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/GlobalUncertainBelief.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="379" column="38" lean-forward="false" selection-start-line="379" selection-start-column="34" selection-end-line="379" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/epistemic_states/CompactEpistemicState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/epistemic_states/compact_epistemic_states/CompactPossibilisticEpistemicState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="184">
+          <caret line="175" column="8" selection-start-line="175" selection-start-column="8" selection-end-line="175" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/marsExplorationScenario.mas">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="38" lean-forward="false" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/mas_parser/MASProjectVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="40" column="78" lean-forward="false" selection-start-line="40" selection-start-column="78" selection-end-line="40" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#734#741#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="165">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#241#242#0" expanded="true" />
-            <element signature="e#288#289#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/GridWorldView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="51" column="10" lean-forward="false" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
-          <folding>
-            <element signature="e#1288#1289#0" expanded="true" />
-            <element signature="e#1315#1316#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/goal_actions/AchievementGoalAction.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
+          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/goal_actions/TestGoalAction.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="21" column="33" lean-forward="true" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="122" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/EnvironmentAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="21" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/GridWorldModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/Agent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="53" column="14" lean-forward="false" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/Environment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+        <state relative-caret-position="2448">
+          <caret line="191" column="28" lean-forward="true" selection-start-line="191" selection-start-column="28" selection-end-line="191" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#606#639#0" expanded="true" />
-            <element signature="e#873#874#0" expanded="true" />
-            <element signature="e#971#972#0" expanded="true" />
-            <element signature="e#999#1000#0" expanded="true" />
-            <element signature="e#1057#1058#0" expanded="true" />
-            <element signature="e#1082#1083#0" expanded="true" />
-            <element signature="e#1114#1115#0" expanded="true" />
-            <element signature="e#1234#1235#0" expanded="true" />
-            <element signature="e#1262#1263#0" expanded="true" />
-            <element signature="e#1881#1882#0" expanded="true" />
-            <element signature="e#1913#1914#0" expanded="true" />
-            <element signature="e#2343#2362#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsEnvironment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1073#1074#0" expanded="true" />
-            <element signature="e#1104#1105#0" expanded="true" />
-            <element signature="e#1306#1307#0" expanded="true" />
-            <element signature="e#1334#1335#0" expanded="true" />
+            <element signature="e#1679#1680#0" expanded="true" />
+            <element signature="e#1726#1727#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/mas/MASProject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="e#723#724#0" expanded="true" />
-            <element signature="e#757#758#0" expanded="true" />
-            <element signature="e#788#789#0" expanded="true" />
-            <element signature="e#815#816#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/runtime/UncertainAgentspeakGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="55" column="80" lean-forward="false" selection-start-line="55" selection-start-column="80" selection-end-line="55" selection-end-column="80" />
+        <state relative-caret-position="1155">
+          <caret line="85" column="31" lean-forward="true" selection-start-line="85" selection-start-column="31" selection-end-line="85" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1106#1107#0" expanded="true" />
-            <element signature="e#1146#1147#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/infrastructure/MASLauncher.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/ui/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="435">
+          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/infrastructure/centralised/CentralisedMASLauncher.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/goals/TestGoal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding />
+        <state relative-caret-position="75">
+          <caret line="5" column="57" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/runtime/RunUncertainAgentspeak.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/as_parser/AgentParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="13" selection-end-column="5" />
+        <state relative-caret-position="120">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/Environment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsWorldFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="181" lean-forward="true" selection-start-line="181" selection-end-line="181" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/environment/MarsEnvironment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="53" column="27" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/terms/Structure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="139" column="5" selection-start-line="139" selection-start-column="5" selection-end-line="139" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/terminals/belief_literals/PositiveLiteral.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/terminals/belief_literals/NegativeLiteral.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/terminals/Primitive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/Terminal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/terminals/BeliefLiteral.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-275">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/RelationalExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/relational_expressions/Equal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/relational_expressions/NotEqual.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/operators/Disjunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-692">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/operators/GreaterThanPlausibility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/operators/GreaterEqualsPlausibility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="80" column="5" lean-forward="true" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/goal_actions/AchievementGoalAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/goal_actions/TestGoalAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/main.java.uncertain_agentspeak.agentspeak.PlanLibrary">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>main.java.uncertain_agentspeak.agentspeak.PlanLibrary</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">main.java.uncertain_agentspeak.agentspeak.PlanLibrary</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.5252784918594687" x="-607.0" y="447.0" />
+          <SelectedNodes>
+            <node>main.java.uncertain_agentspeak.agentspeak.PlanLibrary</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/main.java.uncertain_agentspeak.agentspeak.Plan">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>main.java.uncertain_agentspeak.agentspeak.Plan</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">main.java.uncertain_agentspeak.agentspeak.Plan</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-383.0" y="26.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/PlanLibrary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/Plan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="81" lean-forward="true" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/agents/sampleAgentB.agent">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="80" column="279" lean-forward="true" selection-start-line="80" selection-start-column="1" selection-end-line="80" selection-end-column="279" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/LogicalExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="28" column="45" lean-forward="true" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/operators/negations/StrongNegation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/operators/negations/NegationAsFailure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/logical_expressions/operators/Conjunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="79" column="102" selection-start-line="79" selection-start-column="102" selection-end-line="79" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/UncertainAgentspeak.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="121" column="55" selection-start-line="121" selection-start-column="55" selection-end-line="121" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/EnvironmentAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/as_parser/UncertainAgentspeakVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="434" column="88" selection-start-line="434" selection-start-column="88" selection-end-line="434" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/epistemic_states/CompactEpistemicState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3480">
+          <caret line="240" column="63" selection-start-line="240" selection-start-column="63" selection-end-line="240" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/epistemic_states/compact_epistemic_states/CompactProbabilisticEpistemicState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="84" column="98" selection-start-line="84" selection-start-column="98" selection-end-line="84" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/epistemic_states/compact_epistemic_states/CompactPossibilisticEpistemicState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="80" selection-start-line="2" selection-start-column="80" selection-end-line="2" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/actions/belief_actions/ReviseBeliefAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="114" lean-forward="true" selection-start-line="31" selection-start-column="114" selection-end-line="31" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/GlobalUncertainBelief.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="472" column="19" selection-start-line="472" selection-start-column="19" selection-end-line="472" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/marsExplorationScenario/agents/sampleAgentA.agent">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="173" selection-start-line="26" selection-start-column="173" selection-end-line="26" selection-end-column="173" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/Agent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="97" column="20" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/agentspeak/IntendedMeans.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="53" column="61" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/uncertainty/EpistemicState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="100" selection-start-line="13" selection-start-column="100" selection-end-line="13" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/GridWorldModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1137#1138#0" expanded="true" />
+            <element signature="e#1187#1188#0" expanded="true" />
+            <element signature="e#3046#3047#0" expanded="true" />
+            <element signature="e#3105#3106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/environment/grid/GridWorldView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1965">
+          <caret line="153" column="24" selection-start-line="153" selection-start-column="24" selection-end-line="153" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uncertain_agentspeak/ui/main/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="102" column="50" selection-start-line="102" selection-start-column="50" selection-end-line="102" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/antlr/mas_parser/MASProjectVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1587,10 +1474,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>uncertain-agentspeak:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1621,7 +1510,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>9.0</last-edited>
+          <last-edited>9</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1633,11 +1522,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>agentspeak</last-edited>
+          <last-edited>uncertain-agentspeak</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1657,7 +1547,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>org.antlr:antlr4-runtime:4.5.2-1</last-edited>
+          <last-edited>apache-log4j-2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
