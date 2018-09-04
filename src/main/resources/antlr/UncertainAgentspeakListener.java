@@ -28,6 +28,26 @@ public interface UncertainAgentspeakListener extends ParseTreeListener {
 	 */
 	void exitInit_bels(UncertainAgentspeakParser.Init_belsContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link UncertainAgentspeakParser#probabilistic_es}.
+	 * @param ctx the parse tree
+	 */
+	void enterProbabilistic_es(UncertainAgentspeakParser.Probabilistic_esContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UncertainAgentspeakParser#probabilistic_es}.
+	 * @param ctx the parse tree
+	 */
+	void exitProbabilistic_es(UncertainAgentspeakParser.Probabilistic_esContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UncertainAgentspeakParser#possibilistic_es}.
+	 * @param ctx the parse tree
+	 */
+	void enterPossibilistic_es(UncertainAgentspeakParser.Possibilistic_esContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UncertainAgentspeakParser#possibilistic_es}.
+	 * @param ctx the parse tree
+	 */
+	void exitPossibilistic_es(UncertainAgentspeakParser.Possibilistic_esContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link UncertainAgentspeakParser#probabilistic_bel}.
 	 * @param ctx the parse tree
 	 */

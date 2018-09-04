@@ -23,6 +23,18 @@ public interface UncertainAgentspeakVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInit_bels(UncertainAgentspeakParser.Init_belsContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link UncertainAgentspeakParser#probabilistic_es}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProbabilistic_es(UncertainAgentspeakParser.Probabilistic_esContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link UncertainAgentspeakParser#possibilistic_es}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPossibilistic_es(UncertainAgentspeakParser.Possibilistic_esContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link UncertainAgentspeakParser#probabilistic_bel}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

@@ -25,35 +25,35 @@ public class UncertainAgentspeakParser extends Parser {
 		STRONG_NEGATION=29, NEGATION_AS_FAILURE=30, EQUALS=31, NOT_EQUALS=32, 
 		Comment=33;
 	public static final int
-		RULE_uncertainAgentspeak = 0, RULE_init_bels = 1, RULE_probabilistic_bel = 2, 
-		RULE_possibilistic_bel = 3, RULE_init_goals = 4, RULE_plans = 5, RULE_plan = 6, 
-		RULE_event = 7, RULE_belief_event_trigger = 8, RULE_goal_event_trigger = 9, 
-		RULE_add_goal_event_trigger = 10, RULE_delete_goal_event_trigger = 11, 
-		RULE_goal = 12, RULE_achievement_goal = 13, RULE_test_goal = 14, RULE_tautology = 15, 
-		RULE_context = 16, RULE_log_expr = 17, RULE_and_expr = 18, RULE_or_expr = 19, 
-		RULE_less_than_expr = 20, RULE_less_equals_expr = 21, RULE_greater_than_expr = 22, 
-		RULE_greater_equals_expr = 23, RULE_equals_expr = 24, RULE_not_equals_expr = 25, 
-		RULE_negation_expr = 26, RULE_belief_atom_expr = 27, RULE_body = 28, RULE_body_statement = 29, 
-		RULE_belief_action = 30, RULE_environment_action = 31, RULE_belief_literal = 32, 
-		RULE_positive_literal = 33, RULE_negative_literal = 34, RULE_belief_atom = 35, 
-		RULE_term = 36, RULE_constant = 37, RULE_atom = 38, RULE_number = 39, 
-		RULE_intNum = 40, RULE_doubleNum = 41, RULE_variable = 42, RULE_arguments_list = 43, 
-		RULE_structure = 44;
+		RULE_uncertainAgentspeak = 0, RULE_init_bels = 1, RULE_probabilistic_es = 2, 
+		RULE_possibilistic_es = 3, RULE_probabilistic_bel = 4, RULE_possibilistic_bel = 5, 
+		RULE_init_goals = 6, RULE_plans = 7, RULE_plan = 8, RULE_event = 9, RULE_belief_event_trigger = 10, 
+		RULE_goal_event_trigger = 11, RULE_add_goal_event_trigger = 12, RULE_delete_goal_event_trigger = 13, 
+		RULE_goal = 14, RULE_achievement_goal = 15, RULE_test_goal = 16, RULE_tautology = 17, 
+		RULE_context = 18, RULE_log_expr = 19, RULE_and_expr = 20, RULE_or_expr = 21, 
+		RULE_less_than_expr = 22, RULE_less_equals_expr = 23, RULE_greater_than_expr = 24, 
+		RULE_greater_equals_expr = 25, RULE_equals_expr = 26, RULE_not_equals_expr = 27, 
+		RULE_negation_expr = 28, RULE_belief_atom_expr = 29, RULE_body = 30, RULE_body_statement = 31, 
+		RULE_belief_action = 32, RULE_environment_action = 33, RULE_belief_literal = 34, 
+		RULE_positive_literal = 35, RULE_negative_literal = 36, RULE_belief_atom = 37, 
+		RULE_term = 38, RULE_constant = 39, RULE_atom = 40, RULE_number = 41, 
+		RULE_intNum = 42, RULE_doubleNum = 43, RULE_variable = 44, RULE_arguments_list = 45, 
+		RULE_structure = 46;
 	public static final String[] ruleNames = {
-		"uncertainAgentspeak", "init_bels", "probabilistic_bel", "possibilistic_bel", 
-		"init_goals", "plans", "plan", "event", "belief_event_trigger", "goal_event_trigger", 
-		"add_goal_event_trigger", "delete_goal_event_trigger", "goal", "achievement_goal", 
-		"test_goal", "tautology", "context", "log_expr", "and_expr", "or_expr", 
-		"less_than_expr", "less_equals_expr", "greater_than_expr", "greater_equals_expr", 
-		"equals_expr", "not_equals_expr", "negation_expr", "belief_atom_expr", 
-		"body", "body_statement", "belief_action", "environment_action", "belief_literal", 
-		"positive_literal", "negative_literal", "belief_atom", "term", "constant", 
-		"atom", "number", "intNum", "doubleNum", "variable", "arguments_list", 
-		"structure"
+		"uncertainAgentspeak", "init_bels", "probabilistic_es", "possibilistic_es", 
+		"probabilistic_bel", "possibilistic_bel", "init_goals", "plans", "plan", 
+		"event", "belief_event_trigger", "goal_event_trigger", "add_goal_event_trigger", 
+		"delete_goal_event_trigger", "goal", "achievement_goal", "test_goal", 
+		"tautology", "context", "log_expr", "and_expr", "or_expr", "less_than_expr", 
+		"less_equals_expr", "greater_than_expr", "greater_equals_expr", "equals_expr", 
+		"not_equals_expr", "negation_expr", "belief_atom_expr", "body", "body_statement", 
+		"belief_action", "environment_action", "belief_literal", "positive_literal", 
+		"negative_literal", "belief_atom", "term", "constant", "atom", "number", 
+		"intNum", "doubleNum", "variable", "arguments_list", "structure"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'.'", "'Prob('", "','", "'Pos('", "'*('", "'true'", "';'", null, 
+		null, "'**('", "','", "'.'", "'***('", "'*('", "'true'", "';'", null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		"'('", "')'", "'&&'", "'||'", "'<'", "'=<'", "'>'", "'>='", "'~'", "'not'", 
 		"'=='", "'\\=='"
@@ -151,13 +151,13 @@ public class UncertainAgentspeakParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(90);
+			setState(94);
 			init_bels();
-			setState(91);
+			setState(95);
 			init_goals();
-			setState(92);
+			setState(96);
 			plans();
-			setState(93);
+			setState(97);
 			match(EOF);
 			}
 		}
@@ -173,17 +173,17 @@ public class UncertainAgentspeakParser extends Parser {
 	}
 
 	public static class Init_belsContext extends ParserRuleContext {
-		public List<Probabilistic_belContext> probabilistic_bel() {
-			return getRuleContexts(Probabilistic_belContext.class);
+		public List<Probabilistic_esContext> probabilistic_es() {
+			return getRuleContexts(Probabilistic_esContext.class);
 		}
-		public Probabilistic_belContext probabilistic_bel(int i) {
-			return getRuleContext(Probabilistic_belContext.class,i);
+		public Probabilistic_esContext probabilistic_es(int i) {
+			return getRuleContext(Probabilistic_esContext.class,i);
 		}
-		public List<Possibilistic_belContext> possibilistic_bel() {
-			return getRuleContexts(Possibilistic_belContext.class);
+		public List<Possibilistic_esContext> possibilistic_es() {
+			return getRuleContexts(Possibilistic_esContext.class);
 		}
-		public Possibilistic_belContext possibilistic_bel(int i) {
-			return getRuleContext(Possibilistic_belContext.class,i);
+		public Possibilistic_esContext possibilistic_es(int i) {
+			return getRuleContext(Possibilistic_esContext.class,i);
 		}
 		public Init_belsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -214,25 +214,21 @@ public class UncertainAgentspeakParser extends Parser {
 			setState(103);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__1 || _la==T__3) {
+			while (_la==T__0 || _la==T__3) {
 				{
 				setState(101);
 				_errHandler.sync(this);
 				switch (_input.LA(1)) {
-				case T__1:
+				case T__0:
 					{
-					setState(95);
-					probabilistic_bel();
-					setState(96);
-					match(T__0);
+					setState(99);
+					probabilistic_es();
 					}
 					break;
 				case T__3:
 					{
-					setState(98);
-					possibilistic_bel();
-					setState(99);
-					match(T__0);
+					setState(100);
+					possibilistic_es();
 					}
 					break;
 				default:
@@ -256,18 +252,144 @@ public class UncertainAgentspeakParser extends Parser {
 		return _localctx;
 	}
 
+	public static class Probabilistic_esContext extends ParserRuleContext {
+		public List<Probabilistic_belContext> probabilistic_bel() {
+			return getRuleContexts(Probabilistic_belContext.class);
+		}
+		public Probabilistic_belContext probabilistic_bel(int i) {
+			return getRuleContext(Probabilistic_belContext.class,i);
+		}
+		public Probabilistic_esContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_probabilistic_es; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof UncertainAgentspeakListener ) ((UncertainAgentspeakListener)listener).enterProbabilistic_es(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof UncertainAgentspeakListener ) ((UncertainAgentspeakListener)listener).exitProbabilistic_es(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof UncertainAgentspeakVisitor ) return ((UncertainAgentspeakVisitor<? extends T>)visitor).visitProbabilistic_es(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Probabilistic_esContext probabilistic_es() throws RecognitionException {
+		Probabilistic_esContext _localctx = new Probabilistic_esContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_probabilistic_es);
+		try {
+			int _alt;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(107); 
+			_errHandler.sync(this);
+			_alt = 1;
+			do {
+				switch (_alt) {
+				case 1:
+					{
+					{
+					setState(106);
+					probabilistic_bel();
+					}
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				setState(109); 
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
+			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Possibilistic_esContext extends ParserRuleContext {
+		public List<Possibilistic_belContext> possibilistic_bel() {
+			return getRuleContexts(Possibilistic_belContext.class);
+		}
+		public Possibilistic_belContext possibilistic_bel(int i) {
+			return getRuleContext(Possibilistic_belContext.class,i);
+		}
+		public Possibilistic_esContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_possibilistic_es; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof UncertainAgentspeakListener ) ((UncertainAgentspeakListener)listener).enterPossibilistic_es(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof UncertainAgentspeakListener ) ((UncertainAgentspeakListener)listener).exitPossibilistic_es(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof UncertainAgentspeakVisitor ) return ((UncertainAgentspeakVisitor<? extends T>)visitor).visitPossibilistic_es(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Possibilistic_esContext possibilistic_es() throws RecognitionException {
+		Possibilistic_esContext _localctx = new Possibilistic_esContext(_ctx, getState());
+		enterRule(_localctx, 6, RULE_possibilistic_es);
+		try {
+			int _alt;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(112); 
+			_errHandler.sync(this);
+			_alt = 1;
+			do {
+				switch (_alt) {
+				case 1:
+					{
+					{
+					setState(111);
+					possibilistic_bel();
+					}
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				setState(114); 
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
 	public static class Probabilistic_belContext extends ParserRuleContext {
-		public List<Belief_literalContext> belief_literal() {
-			return getRuleContexts(Belief_literalContext.class);
+		public Belief_literalContext belief_literal() {
+			return getRuleContext(Belief_literalContext.class,0);
 		}
-		public Belief_literalContext belief_literal(int i) {
-			return getRuleContext(Belief_literalContext.class,i);
-		}
-		public List<NumberContext> number() {
-			return getRuleContexts(NumberContext.class);
-		}
-		public NumberContext number(int i) {
-			return getRuleContext(NumberContext.class,i);
+		public NumberContext number() {
+			return getRuleContext(NumberContext.class,0);
 		}
 		public Probabilistic_belContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -290,74 +412,22 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Probabilistic_belContext probabilistic_bel() throws RecognitionException {
 		Probabilistic_belContext _localctx = new Probabilistic_belContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_probabilistic_bel);
-		int _la;
+		enterRule(_localctx, 8, RULE_probabilistic_bel);
 		try {
-			setState(134);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(106);
-				match(T__1);
-				setState(107);
-				match(LPAREN);
-				setState(108);
-				belief_literal();
-				setState(109);
-				match(T__2);
-				setState(110);
-				number();
-				setState(111);
-				match(RPAREN);
-				setState(112);
-				match(RPAREN);
-				}
-				break;
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(114);
-				match(T__1);
-				setState(115);
-				match(LPAREN);
-				setState(116);
-				belief_literal();
-				setState(117);
-				match(T__2);
-				setState(118);
-				number();
-				setState(119);
-				match(RPAREN);
-				setState(129);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==T__2) {
-					{
-					{
-					setState(120);
-					match(T__2);
-					setState(121);
-					match(LPAREN);
-					setState(122);
-					belief_literal();
-					setState(123);
-					match(T__2);
-					setState(124);
-					number();
-					setState(125);
-					match(RPAREN);
-					}
-					}
-					setState(131);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				setState(132);
-				match(RPAREN);
-				}
-				break;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(116);
+			match(T__0);
+			setState(117);
+			belief_literal();
+			setState(118);
+			match(T__1);
+			setState(119);
+			number();
+			setState(120);
+			match(RPAREN);
+			setState(121);
+			match(T__2);
 			}
 		}
 		catch (RecognitionException re) {
@@ -372,17 +442,11 @@ public class UncertainAgentspeakParser extends Parser {
 	}
 
 	public static class Possibilistic_belContext extends ParserRuleContext {
-		public List<Belief_literalContext> belief_literal() {
-			return getRuleContexts(Belief_literalContext.class);
+		public Belief_literalContext belief_literal() {
+			return getRuleContext(Belief_literalContext.class,0);
 		}
-		public Belief_literalContext belief_literal(int i) {
-			return getRuleContext(Belief_literalContext.class,i);
-		}
-		public List<NumberContext> number() {
-			return getRuleContexts(NumberContext.class);
-		}
-		public NumberContext number(int i) {
-			return getRuleContext(NumberContext.class,i);
+		public NumberContext number() {
+			return getRuleContext(NumberContext.class,0);
 		}
 		public Possibilistic_belContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -405,74 +469,22 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Possibilistic_belContext possibilistic_bel() throws RecognitionException {
 		Possibilistic_belContext _localctx = new Possibilistic_belContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_possibilistic_bel);
-		int _la;
+		enterRule(_localctx, 10, RULE_possibilistic_bel);
 		try {
-			setState(164);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(136);
-				match(T__3);
-				setState(137);
-				match(LPAREN);
-				setState(138);
-				belief_literal();
-				setState(139);
-				match(T__2);
-				setState(140);
-				number();
-				setState(141);
-				match(RPAREN);
-				setState(142);
-				match(RPAREN);
-				}
-				break;
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(144);
-				match(T__3);
-				setState(145);
-				match(LPAREN);
-				setState(146);
-				belief_literal();
-				setState(147);
-				match(T__2);
-				setState(148);
-				number();
-				setState(149);
-				match(RPAREN);
-				setState(159);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==T__2) {
-					{
-					{
-					setState(150);
-					match(T__2);
-					setState(151);
-					match(LPAREN);
-					setState(152);
-					belief_literal();
-					setState(153);
-					match(T__2);
-					setState(154);
-					number();
-					setState(155);
-					match(RPAREN);
-					}
-					}
-					setState(161);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				setState(162);
-				match(RPAREN);
-				}
-				break;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(123);
+			match(T__3);
+			setState(124);
+			belief_literal();
+			setState(125);
+			match(T__1);
+			setState(126);
+			number();
+			setState(127);
+			match(RPAREN);
+			setState(128);
+			match(T__2);
 			}
 		}
 		catch (RecognitionException re) {
@@ -514,24 +526,24 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Init_goalsContext init_goals() throws RecognitionException {
 		Init_goalsContext _localctx = new Init_goalsContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_init_goals);
+		enterRule(_localctx, 12, RULE_init_goals);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(171);
+			setState(135);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==ACHIEVEMENT_GOAL_OPERATOR) {
 				{
 				{
-				setState(166);
+				setState(130);
 				achievement_goal();
-				setState(167);
-				match(T__0);
+				setState(131);
+				match(T__2);
 				}
 				}
-				setState(173);
+				setState(137);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -576,22 +588,22 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final PlansContext plans() throws RecognitionException {
 		PlansContext _localctx = new PlansContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_plans);
+		enterRule(_localctx, 14, RULE_plans);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(177);
+			setState(141);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__4) | (1L << T__5) | (1L << ADD_EVENT_OPRTATOR) | (1L << DELETE_EVENT_OPRTATOR))) != 0)) {
 				{
 				{
-				setState(174);
+				setState(138);
 				plan();
 				}
 				}
-				setState(179);
+				setState(143);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -641,22 +653,22 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final PlanContext plan() throws RecognitionException {
 		PlanContext _localctx = new PlanContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_plan);
+		enterRule(_localctx, 16, RULE_plan);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(180);
+			setState(144);
 			event();
-			setState(181);
+			setState(145);
 			match(CONTEXT);
-			setState(182);
+			setState(146);
 			context();
-			setState(183);
+			setState(147);
 			match(ACTIONS);
-			setState(184);
+			setState(148);
 			body();
-			setState(185);
-			match(T__0);
+			setState(149);
+			match(T__2);
 			}
 		}
 		catch (RecognitionException re) {
@@ -701,15 +713,15 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final EventContext event() throws RecognitionException {
 		EventContext _localctx = new EventContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_event);
+		enterRule(_localctx, 18, RULE_event);
 		try {
-			setState(190);
+			setState(154);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__4:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(187);
+				setState(151);
 				belief_event_trigger();
 				}
 				break;
@@ -717,14 +729,14 @@ public class UncertainAgentspeakParser extends Parser {
 			case DELETE_EVENT_OPRTATOR:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(188);
+				setState(152);
 				goal_event_trigger();
 				}
 				break;
 			case T__5:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(189);
+				setState(153);
 				tautology();
 				}
 				break;
@@ -771,19 +783,19 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Belief_event_triggerContext belief_event_trigger() throws RecognitionException {
 		Belief_event_triggerContext _localctx = new Belief_event_triggerContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_belief_event_trigger);
+		enterRule(_localctx, 20, RULE_belief_event_trigger);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(192);
+			setState(156);
 			match(T__4);
-			setState(193);
+			setState(157);
 			belief_literal();
-			setState(194);
-			match(T__2);
-			setState(195);
+			setState(158);
+			match(T__1);
+			setState(159);
 			term();
-			setState(196);
+			setState(160);
 			match(RPAREN);
 			}
 		}
@@ -826,22 +838,22 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Goal_event_triggerContext goal_event_trigger() throws RecognitionException {
 		Goal_event_triggerContext _localctx = new Goal_event_triggerContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_goal_event_trigger);
+		enterRule(_localctx, 22, RULE_goal_event_trigger);
 		try {
-			setState(200);
+			setState(164);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ADD_EVENT_OPRTATOR:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(198);
+				setState(162);
 				add_goal_event_trigger();
 				}
 				break;
 			case DELETE_EVENT_OPRTATOR:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(199);
+				setState(163);
 				delete_goal_event_trigger();
 				}
 				break;
@@ -886,13 +898,13 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Add_goal_event_triggerContext add_goal_event_trigger() throws RecognitionException {
 		Add_goal_event_triggerContext _localctx = new Add_goal_event_triggerContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_add_goal_event_trigger);
+		enterRule(_localctx, 24, RULE_add_goal_event_trigger);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(202);
+			setState(166);
 			match(ADD_EVENT_OPRTATOR);
-			setState(203);
+			setState(167);
 			goal();
 			}
 		}
@@ -933,13 +945,13 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Delete_goal_event_triggerContext delete_goal_event_trigger() throws RecognitionException {
 		Delete_goal_event_triggerContext _localctx = new Delete_goal_event_triggerContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_delete_goal_event_trigger);
+		enterRule(_localctx, 26, RULE_delete_goal_event_trigger);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(205);
+			setState(169);
 			match(DELETE_EVENT_OPRTATOR);
-			setState(206);
+			setState(170);
 			goal();
 			}
 		}
@@ -982,22 +994,22 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final GoalContext goal() throws RecognitionException {
 		GoalContext _localctx = new GoalContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_goal);
+		enterRule(_localctx, 28, RULE_goal);
 		try {
-			setState(210);
+			setState(174);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ACHIEVEMENT_GOAL_OPERATOR:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(208);
+				setState(172);
 				achievement_goal();
 				}
 				break;
 			case TEST_GOAL_OPERATOR:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(209);
+				setState(173);
 				test_goal();
 				}
 				break;
@@ -1042,13 +1054,13 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Achievement_goalContext achievement_goal() throws RecognitionException {
 		Achievement_goalContext _localctx = new Achievement_goalContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_achievement_goal);
+		enterRule(_localctx, 30, RULE_achievement_goal);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(212);
+			setState(176);
 			match(ACHIEVEMENT_GOAL_OPERATOR);
-			setState(213);
+			setState(177);
 			term();
 			}
 		}
@@ -1089,13 +1101,13 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Test_goalContext test_goal() throws RecognitionException {
 		Test_goalContext _localctx = new Test_goalContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_test_goal);
+		enterRule(_localctx, 32, RULE_test_goal);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(215);
+			setState(179);
 			match(TEST_GOAL_OPERATOR);
-			setState(216);
+			setState(180);
 			and_expr();
 			}
 		}
@@ -1132,11 +1144,11 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final TautologyContext tautology() throws RecognitionException {
 		TautologyContext _localctx = new TautologyContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_tautology);
+		enterRule(_localctx, 34, RULE_tautology);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(218);
+			setState(182);
 			match(T__5);
 			}
 		}
@@ -1179,9 +1191,9 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final ContextContext context() throws RecognitionException {
 		ContextContext _localctx = new ContextContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_context);
+		enterRule(_localctx, 36, RULE_context);
 		try {
-			setState(222);
+			setState(186);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ATOM:
@@ -1193,14 +1205,14 @@ public class UncertainAgentspeakParser extends Parser {
 			case NEGATION_AS_FAILURE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(220);
+				setState(184);
 				and_expr();
 				}
 				break;
 			case T__5:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(221);
+				setState(185);
 				tautology();
 				}
 				break;
@@ -1244,11 +1256,11 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Log_exprContext log_expr() throws RecognitionException {
 		Log_exprContext _localctx = new Log_exprContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_log_expr);
+		enterRule(_localctx, 38, RULE_log_expr);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(224);
+			setState(188);
 			and_expr();
 			}
 		}
@@ -1295,26 +1307,26 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final And_exprContext and_expr() throws RecognitionException {
 		And_exprContext _localctx = new And_exprContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_and_expr);
+		enterRule(_localctx, 40, RULE_and_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(226);
+			setState(190);
 			or_expr();
-			setState(231);
+			setState(195);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==AND) {
 				{
 				{
-				setState(227);
+				setState(191);
 				match(AND);
-				setState(228);
+				setState(192);
 				or_expr();
 				}
 				}
-				setState(233);
+				setState(197);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1363,26 +1375,26 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Or_exprContext or_expr() throws RecognitionException {
 		Or_exprContext _localctx = new Or_exprContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_or_expr);
+		enterRule(_localctx, 42, RULE_or_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(234);
+			setState(198);
 			less_than_expr();
-			setState(239);
+			setState(203);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==OR) {
 				{
 				{
-				setState(235);
+				setState(199);
 				match(OR);
-				setState(236);
+				setState(200);
 				less_than_expr();
 				}
 				}
-				setState(241);
+				setState(205);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1431,26 +1443,26 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Less_than_exprContext less_than_expr() throws RecognitionException {
 		Less_than_exprContext _localctx = new Less_than_exprContext(_ctx, getState());
-		enterRule(_localctx, 40, RULE_less_than_expr);
+		enterRule(_localctx, 44, RULE_less_than_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(242);
+			setState(206);
 			less_equals_expr();
-			setState(247);
+			setState(211);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==LESS_THAN) {
 				{
 				{
-				setState(243);
+				setState(207);
 				match(LESS_THAN);
-				setState(244);
+				setState(208);
 				less_equals_expr();
 				}
 				}
-				setState(249);
+				setState(213);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1499,26 +1511,26 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Less_equals_exprContext less_equals_expr() throws RecognitionException {
 		Less_equals_exprContext _localctx = new Less_equals_exprContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_less_equals_expr);
+		enterRule(_localctx, 46, RULE_less_equals_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(250);
+			setState(214);
 			greater_than_expr();
-			setState(255);
+			setState(219);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==LESS_EQUALS) {
 				{
 				{
-				setState(251);
+				setState(215);
 				match(LESS_EQUALS);
-				setState(252);
+				setState(216);
 				greater_than_expr();
 				}
 				}
-				setState(257);
+				setState(221);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1567,26 +1579,26 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Greater_than_exprContext greater_than_expr() throws RecognitionException {
 		Greater_than_exprContext _localctx = new Greater_than_exprContext(_ctx, getState());
-		enterRule(_localctx, 44, RULE_greater_than_expr);
+		enterRule(_localctx, 48, RULE_greater_than_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(258);
+			setState(222);
 			greater_equals_expr();
-			setState(263);
+			setState(227);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==GREATER_THAN) {
 				{
 				{
-				setState(259);
+				setState(223);
 				match(GREATER_THAN);
-				setState(260);
+				setState(224);
 				greater_equals_expr();
 				}
 				}
-				setState(265);
+				setState(229);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1635,26 +1647,26 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Greater_equals_exprContext greater_equals_expr() throws RecognitionException {
 		Greater_equals_exprContext _localctx = new Greater_equals_exprContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_greater_equals_expr);
+		enterRule(_localctx, 50, RULE_greater_equals_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(266);
+			setState(230);
 			equals_expr();
-			setState(271);
+			setState(235);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==GREATER_EQUALS) {
 				{
 				{
-				setState(267);
+				setState(231);
 				match(GREATER_EQUALS);
-				setState(268);
+				setState(232);
 				equals_expr();
 				}
 				}
-				setState(273);
+				setState(237);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1703,26 +1715,26 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Equals_exprContext equals_expr() throws RecognitionException {
 		Equals_exprContext _localctx = new Equals_exprContext(_ctx, getState());
-		enterRule(_localctx, 48, RULE_equals_expr);
+		enterRule(_localctx, 52, RULE_equals_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(274);
+			setState(238);
 			not_equals_expr();
-			setState(279);
+			setState(243);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==EQUALS) {
 				{
 				{
-				setState(275);
+				setState(239);
 				match(EQUALS);
-				setState(276);
+				setState(240);
 				not_equals_expr();
 				}
 				}
-				setState(281);
+				setState(245);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1771,26 +1783,26 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Not_equals_exprContext not_equals_expr() throws RecognitionException {
 		Not_equals_exprContext _localctx = new Not_equals_exprContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_not_equals_expr);
+		enterRule(_localctx, 54, RULE_not_equals_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(282);
+			setState(246);
 			negation_expr();
-			setState(287);
+			setState(251);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==NOT_EQUALS) {
 				{
 				{
-				setState(283);
+				setState(247);
 				match(NOT_EQUALS);
-				setState(284);
+				setState(248);
 				negation_expr();
 				}
 				}
-				setState(289);
+				setState(253);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1834,26 +1846,26 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Negation_exprContext negation_expr() throws RecognitionException {
 		Negation_exprContext _localctx = new Negation_exprContext(_ctx, getState());
-		enterRule(_localctx, 52, RULE_negation_expr);
+		enterRule(_localctx, 56, RULE_negation_expr);
 		try {
-			setState(295);
+			setState(259);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case NEGATION_AS_FAILURE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(290);
+				setState(254);
 				match(NEGATION_AS_FAILURE);
-				setState(291);
+				setState(255);
 				belief_atom_expr();
 				}
 				break;
 			case STRONG_NEGATION:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(292);
+				setState(256);
 				match(STRONG_NEGATION);
-				setState(293);
+				setState(257);
 				belief_atom_expr();
 				}
 				break;
@@ -1864,7 +1876,7 @@ public class UncertainAgentspeakParser extends Parser {
 			case LPAREN:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(294);
+				setState(258);
 				belief_atom_expr();
 				}
 				break;
@@ -1913,9 +1925,9 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Belief_atom_exprContext belief_atom_expr() throws RecognitionException {
 		Belief_atom_exprContext _localctx = new Belief_atom_exprContext(_ctx, getState());
-		enterRule(_localctx, 54, RULE_belief_atom_expr);
+		enterRule(_localctx, 58, RULE_belief_atom_expr);
 		try {
-			setState(302);
+			setState(266);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ATOM:
@@ -1924,18 +1936,18 @@ public class UncertainAgentspeakParser extends Parser {
 			case DECIMAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(297);
+				setState(261);
 				belief_atom();
 				}
 				break;
 			case LPAREN:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(298);
+				setState(262);
 				match(LPAREN);
-				setState(299);
+				setState(263);
 				and_expr();
-				setState(300);
+				setState(264);
 				match(RPAREN);
 				}
 				break;
@@ -1985,10 +1997,10 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final BodyContext body() throws RecognitionException {
 		BodyContext _localctx = new BodyContext(_ctx, getState());
-		enterRule(_localctx, 56, RULE_body);
+		enterRule(_localctx, 60, RULE_body);
 		int _la;
 		try {
-			setState(313);
+			setState(277);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__4:
@@ -2000,21 +2012,21 @@ public class UncertainAgentspeakParser extends Parser {
 			case DECIMAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(304);
+				setState(268);
 				body_statement();
-				setState(309);
+				setState(273);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==T__6) {
 					{
 					{
-					setState(305);
+					setState(269);
 					match(T__6);
-					setState(306);
+					setState(270);
 					body_statement();
 					}
 					}
-					setState(311);
+					setState(275);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -2023,7 +2035,7 @@ public class UncertainAgentspeakParser extends Parser {
 			case T__5:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(312);
+				setState(276);
 				tautology();
 				}
 				break;
@@ -2073,15 +2085,15 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Body_statementContext body_statement() throws RecognitionException {
 		Body_statementContext _localctx = new Body_statementContext(_ctx, getState());
-		enterRule(_localctx, 58, RULE_body_statement);
+		enterRule(_localctx, 62, RULE_body_statement);
 		try {
-			setState(318);
+			setState(282);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__4:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(315);
+				setState(279);
 				belief_action();
 				}
 				break;
@@ -2089,7 +2101,7 @@ public class UncertainAgentspeakParser extends Parser {
 			case TEST_GOAL_OPERATOR:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(316);
+				setState(280);
 				goal();
 				}
 				break;
@@ -2099,7 +2111,7 @@ public class UncertainAgentspeakParser extends Parser {
 			case DECIMAL:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(317);
+				setState(281);
 				environment_action();
 				}
 				break;
@@ -2146,19 +2158,19 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Belief_actionContext belief_action() throws RecognitionException {
 		Belief_actionContext _localctx = new Belief_actionContext(_ctx, getState());
-		enterRule(_localctx, 60, RULE_belief_action);
+		enterRule(_localctx, 64, RULE_belief_action);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(320);
+			setState(284);
 			match(T__4);
-			setState(321);
+			setState(285);
 			belief_literal();
-			setState(322);
-			match(T__2);
-			setState(323);
+			setState(286);
+			match(T__1);
+			setState(287);
 			term();
-			setState(324);
+			setState(288);
 			match(RPAREN);
 			}
 		}
@@ -2198,11 +2210,11 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Environment_actionContext environment_action() throws RecognitionException {
 		Environment_actionContext _localctx = new Environment_actionContext(_ctx, getState());
-		enterRule(_localctx, 62, RULE_environment_action);
+		enterRule(_localctx, 66, RULE_environment_action);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(326);
+			setState(290);
 			term();
 			}
 		}
@@ -2245,9 +2257,9 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Belief_literalContext belief_literal() throws RecognitionException {
 		Belief_literalContext _localctx = new Belief_literalContext(_ctx, getState());
-		enterRule(_localctx, 64, RULE_belief_literal);
+		enterRule(_localctx, 68, RULE_belief_literal);
 		try {
-			setState(330);
+			setState(294);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ATOM:
@@ -2256,14 +2268,14 @@ public class UncertainAgentspeakParser extends Parser {
 			case DECIMAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(328);
+				setState(292);
 				positive_literal();
 				}
 				break;
 			case STRONG_NEGATION:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(329);
+				setState(293);
 				negative_literal();
 				}
 				break;
@@ -2307,11 +2319,11 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Positive_literalContext positive_literal() throws RecognitionException {
 		Positive_literalContext _localctx = new Positive_literalContext(_ctx, getState());
-		enterRule(_localctx, 66, RULE_positive_literal);
+		enterRule(_localctx, 70, RULE_positive_literal);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(332);
+			setState(296);
 			belief_atom();
 			}
 		}
@@ -2352,13 +2364,13 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Negative_literalContext negative_literal() throws RecognitionException {
 		Negative_literalContext _localctx = new Negative_literalContext(_ctx, getState());
-		enterRule(_localctx, 68, RULE_negative_literal);
+		enterRule(_localctx, 72, RULE_negative_literal);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(334);
+			setState(298);
 			match(STRONG_NEGATION);
-			setState(335);
+			setState(299);
 			belief_atom();
 			}
 		}
@@ -2398,11 +2410,11 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Belief_atomContext belief_atom() throws RecognitionException {
 		Belief_atomContext _localctx = new Belief_atomContext(_ctx, getState());
-		enterRule(_localctx, 70, RULE_belief_atom);
+		enterRule(_localctx, 74, RULE_belief_atom);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(337);
+			setState(301);
 			term();
 			}
 		}
@@ -2448,29 +2460,29 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final TermContext term() throws RecognitionException {
 		TermContext _localctx = new TermContext(_ctx, getState());
-		enterRule(_localctx, 72, RULE_term);
+		enterRule(_localctx, 76, RULE_term);
 		try {
-			setState(342);
+			setState(306);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,26,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,24,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(339);
+				setState(303);
 				constant();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(340);
+				setState(304);
 				variable();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(341);
+				setState(305);
 				structure();
 				}
 				break;
@@ -2515,15 +2527,15 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final ConstantContext constant() throws RecognitionException {
 		ConstantContext _localctx = new ConstantContext(_ctx, getState());
-		enterRule(_localctx, 74, RULE_constant);
+		enterRule(_localctx, 78, RULE_constant);
 		try {
-			setState(346);
+			setState(310);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ATOM:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(344);
+				setState(308);
 				atom();
 				}
 				break;
@@ -2531,7 +2543,7 @@ public class UncertainAgentspeakParser extends Parser {
 			case DECIMAL:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(345);
+				setState(309);
 				number();
 				}
 				break;
@@ -2573,11 +2585,11 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final AtomContext atom() throws RecognitionException {
 		AtomContext _localctx = new AtomContext(_ctx, getState());
-		enterRule(_localctx, 76, RULE_atom);
+		enterRule(_localctx, 80, RULE_atom);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(348);
+			setState(312);
 			match(ATOM);
 			}
 		}
@@ -2620,22 +2632,22 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final NumberContext number() throws RecognitionException {
 		NumberContext _localctx = new NumberContext(_ctx, getState());
-		enterRule(_localctx, 78, RULE_number);
+		enterRule(_localctx, 82, RULE_number);
 		try {
-			setState(352);
+			setState(316);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case NUMBER:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(350);
+				setState(314);
 				intNum();
 				}
 				break;
 			case DECIMAL:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(351);
+				setState(315);
 				doubleNum();
 				}
 				break;
@@ -2677,11 +2689,11 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final IntNumContext intNum() throws RecognitionException {
 		IntNumContext _localctx = new IntNumContext(_ctx, getState());
-		enterRule(_localctx, 80, RULE_intNum);
+		enterRule(_localctx, 84, RULE_intNum);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(354);
+			setState(318);
 			match(NUMBER);
 			}
 		}
@@ -2719,11 +2731,11 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final DoubleNumContext doubleNum() throws RecognitionException {
 		DoubleNumContext _localctx = new DoubleNumContext(_ctx, getState());
-		enterRule(_localctx, 82, RULE_doubleNum);
+		enterRule(_localctx, 86, RULE_doubleNum);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(356);
+			setState(320);
 			match(DECIMAL);
 			}
 		}
@@ -2761,11 +2773,11 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final VariableContext variable() throws RecognitionException {
 		VariableContext _localctx = new VariableContext(_ctx, getState());
-		enterRule(_localctx, 84, RULE_variable);
+		enterRule(_localctx, 88, RULE_variable);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(358);
+			setState(322);
 			match(VARIABLE);
 			}
 		}
@@ -2808,40 +2820,40 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final Arguments_listContext arguments_list() throws RecognitionException {
 		Arguments_listContext _localctx = new Arguments_listContext(_ctx, getState());
-		enterRule(_localctx, 86, RULE_arguments_list);
+		enterRule(_localctx, 90, RULE_arguments_list);
 		int _la;
 		try {
-			setState(368);
+			setState(332);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,30,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,28,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(360);
+				setState(324);
 				term();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(361);
+				setState(325);
 				term();
-				setState(364); 
+				setState(328); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(362);
-					match(T__2);
-					setState(363);
+					setState(326);
+					match(T__1);
+					setState(327);
 					term();
 					}
 					}
-					setState(366); 
+					setState(330); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( _la==T__2 );
+				} while ( _la==T__1 );
 				}
 				break;
 			}
@@ -2883,17 +2895,17 @@ public class UncertainAgentspeakParser extends Parser {
 
 	public final StructureContext structure() throws RecognitionException {
 		StructureContext _localctx = new StructureContext(_ctx, getState());
-		enterRule(_localctx, 88, RULE_structure);
+		enterRule(_localctx, 92, RULE_structure);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(370);
+			setState(334);
 			match(ATOM);
-			setState(371);
+			setState(335);
 			match(LPAREN);
-			setState(372);
+			setState(336);
 			arguments_list();
-			setState(373);
+			setState(337);
 			match(RPAREN);
 			}
 		}
@@ -2909,131 +2921,116 @@ public class UncertainAgentspeakParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#\u017a\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#\u0156\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
 		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \4!"+
 		"\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t&\4\'\t\'\4(\t(\4)\t)\4*\t*\4+\t+\4"+
-		",\t,\4-\t-\4.\t.\3\2\3\2\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\7\3h\n\3"+
-		"\f\3\16\3k\13\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3"+
-		"\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4\u0082\n\4\f\4\16\4\u0085\13\4\3\4\3"+
-		"\4\5\4\u0089\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3"+
-		"\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\7\5\u00a0\n\5\f\5\16\5\u00a3\13\5\3\5\3"+
-		"\5\5\5\u00a7\n\5\3\6\3\6\3\6\7\6\u00ac\n\6\f\6\16\6\u00af\13\6\3\7\7\7"+
-		"\u00b2\n\7\f\7\16\7\u00b5\13\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t"+
-		"\5\t\u00c1\n\t\3\n\3\n\3\n\3\n\3\n\3\n\3\13\3\13\5\13\u00cb\n\13\3\f\3"+
-		"\f\3\f\3\r\3\r\3\r\3\16\3\16\5\16\u00d5\n\16\3\17\3\17\3\17\3\20\3\20"+
-		"\3\20\3\21\3\21\3\22\3\22\5\22\u00e1\n\22\3\23\3\23\3\24\3\24\3\24\7\24"+
-		"\u00e8\n\24\f\24\16\24\u00eb\13\24\3\25\3\25\3\25\7\25\u00f0\n\25\f\25"+
-		"\16\25\u00f3\13\25\3\26\3\26\3\26\7\26\u00f8\n\26\f\26\16\26\u00fb\13"+
-		"\26\3\27\3\27\3\27\7\27\u0100\n\27\f\27\16\27\u0103\13\27\3\30\3\30\3"+
-		"\30\7\30\u0108\n\30\f\30\16\30\u010b\13\30\3\31\3\31\3\31\7\31\u0110\n"+
-		"\31\f\31\16\31\u0113\13\31\3\32\3\32\3\32\7\32\u0118\n\32\f\32\16\32\u011b"+
-		"\13\32\3\33\3\33\3\33\7\33\u0120\n\33\f\33\16\33\u0123\13\33\3\34\3\34"+
-		"\3\34\3\34\3\34\5\34\u012a\n\34\3\35\3\35\3\35\3\35\3\35\5\35\u0131\n"+
-		"\35\3\36\3\36\3\36\7\36\u0136\n\36\f\36\16\36\u0139\13\36\3\36\5\36\u013c"+
-		"\n\36\3\37\3\37\3\37\5\37\u0141\n\37\3 \3 \3 \3 \3 \3 \3!\3!\3\"\3\"\5"+
-		"\"\u014d\n\"\3#\3#\3$\3$\3$\3%\3%\3&\3&\3&\5&\u0159\n&\3\'\3\'\5\'\u015d"+
-		"\n\'\3(\3(\3)\3)\5)\u0163\n)\3*\3*\3+\3+\3,\3,\3-\3-\3-\3-\6-\u016f\n"+
-		"-\r-\16-\u0170\5-\u0173\n-\3.\3.\3.\3.\3.\3.\2\2/\2\4\6\b\n\f\16\20\22"+
-		"\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\2\2\2\u016f"+
-		"\2\\\3\2\2\2\4i\3\2\2\2\6\u0088\3\2\2\2\b\u00a6\3\2\2\2\n\u00ad\3\2\2"+
-		"\2\f\u00b3\3\2\2\2\16\u00b6\3\2\2\2\20\u00c0\3\2\2\2\22\u00c2\3\2\2\2"+
-		"\24\u00ca\3\2\2\2\26\u00cc\3\2\2\2\30\u00cf\3\2\2\2\32\u00d4\3\2\2\2\34"+
-		"\u00d6\3\2\2\2\36\u00d9\3\2\2\2 \u00dc\3\2\2\2\"\u00e0\3\2\2\2$\u00e2"+
-		"\3\2\2\2&\u00e4\3\2\2\2(\u00ec\3\2\2\2*\u00f4\3\2\2\2,\u00fc\3\2\2\2."+
-		"\u0104\3\2\2\2\60\u010c\3\2\2\2\62\u0114\3\2\2\2\64\u011c\3\2\2\2\66\u0129"+
-		"\3\2\2\28\u0130\3\2\2\2:\u013b\3\2\2\2<\u0140\3\2\2\2>\u0142\3\2\2\2@"+
-		"\u0148\3\2\2\2B\u014c\3\2\2\2D\u014e\3\2\2\2F\u0150\3\2\2\2H\u0153\3\2"+
-		"\2\2J\u0158\3\2\2\2L\u015c\3\2\2\2N\u015e\3\2\2\2P\u0162\3\2\2\2R\u0164"+
-		"\3\2\2\2T\u0166\3\2\2\2V\u0168\3\2\2\2X\u0172\3\2\2\2Z\u0174\3\2\2\2\\"+
-		"]\5\4\3\2]^\5\n\6\2^_\5\f\7\2_`\7\2\2\3`\3\3\2\2\2ab\5\6\4\2bc\7\3\2\2"+
-		"ch\3\2\2\2de\5\b\5\2ef\7\3\2\2fh\3\2\2\2ga\3\2\2\2gd\3\2\2\2hk\3\2\2\2"+
-		"ig\3\2\2\2ij\3\2\2\2j\5\3\2\2\2ki\3\2\2\2lm\7\4\2\2mn\7\27\2\2no\5B\""+
-		"\2op\7\5\2\2pq\5P)\2qr\7\30\2\2rs\7\30\2\2s\u0089\3\2\2\2tu\7\4\2\2uv"+
-		"\7\27\2\2vw\5B\"\2wx\7\5\2\2xy\5P)\2y\u0083\7\30\2\2z{\7\5\2\2{|\7\27"+
-		"\2\2|}\5B\"\2}~\7\5\2\2~\177\5P)\2\177\u0080\7\30\2\2\u0080\u0082\3\2"+
-		"\2\2\u0081z\3\2\2\2\u0082\u0085\3\2\2\2\u0083\u0081\3\2\2\2\u0083\u0084"+
-		"\3\2\2\2\u0084\u0086\3\2\2\2\u0085\u0083\3\2\2\2\u0086\u0087\7\30\2\2"+
-		"\u0087\u0089\3\2\2\2\u0088l\3\2\2\2\u0088t\3\2\2\2\u0089\7\3\2\2\2\u008a"+
-		"\u008b\7\6\2\2\u008b\u008c\7\27\2\2\u008c\u008d\5B\"\2\u008d\u008e\7\5"+
-		"\2\2\u008e\u008f\5P)\2\u008f\u0090\7\30\2\2\u0090\u0091\7\30\2\2\u0091"+
-		"\u00a7\3\2\2\2\u0092\u0093\7\6\2\2\u0093\u0094\7\27\2\2\u0094\u0095\5"+
-		"B\"\2\u0095\u0096\7\5\2\2\u0096\u0097\5P)\2\u0097\u00a1\7\30\2\2\u0098"+
-		"\u0099\7\5\2\2\u0099\u009a\7\27\2\2\u009a\u009b\5B\"\2\u009b\u009c\7\5"+
-		"\2\2\u009c\u009d\5P)\2\u009d\u009e\7\30\2\2\u009e\u00a0\3\2\2\2\u009f"+
-		"\u0098\3\2\2\2\u00a0\u00a3\3\2\2\2\u00a1\u009f\3\2\2\2\u00a1\u00a2\3\2"+
-		"\2\2\u00a2\u00a4\3\2\2\2\u00a3\u00a1\3\2\2\2\u00a4\u00a5\7\30\2\2\u00a5"+
-		"\u00a7\3\2\2\2\u00a6\u008a\3\2\2\2\u00a6\u0092\3\2\2\2\u00a7\t\3\2\2\2"+
-		"\u00a8\u00a9\5\34\17\2\u00a9\u00aa\7\3\2\2\u00aa\u00ac\3\2\2\2\u00ab\u00a8"+
-		"\3\2\2\2\u00ac\u00af\3\2\2\2\u00ad\u00ab\3\2\2\2\u00ad\u00ae\3\2\2\2\u00ae"+
-		"\13\3\2\2\2\u00af\u00ad\3\2\2\2\u00b0\u00b2\5\16\b\2\u00b1\u00b0\3\2\2"+
-		"\2\u00b2\u00b5\3\2\2\2\u00b3\u00b1\3\2\2\2\u00b3\u00b4\3\2\2\2\u00b4\r"+
-		"\3\2\2\2\u00b5\u00b3\3\2\2\2\u00b6\u00b7\5\20\t\2\u00b7\u00b8\7\n\2\2"+
-		"\u00b8\u00b9\5\"\22\2\u00b9\u00ba\7\13\2\2\u00ba\u00bb\5:\36\2\u00bb\u00bc"+
-		"\7\3\2\2\u00bc\17\3\2\2\2\u00bd\u00c1\5\22\n\2\u00be\u00c1\5\24\13\2\u00bf"+
-		"\u00c1\5 \21\2\u00c0\u00bd\3\2\2\2\u00c0\u00be\3\2\2\2\u00c0\u00bf\3\2"+
-		"\2\2\u00c1\21\3\2\2\2\u00c2\u00c3\7\7\2\2\u00c3\u00c4\5B\"\2\u00c4\u00c5"+
-		"\7\5\2\2\u00c5\u00c6\5J&\2\u00c6\u00c7\7\30\2\2\u00c7\23\3\2\2\2\u00c8"+
-		"\u00cb\5\26\f\2\u00c9\u00cb\5\30\r\2\u00ca\u00c8\3\2\2\2\u00ca\u00c9\3"+
-		"\2\2\2\u00cb\25\3\2\2\2\u00cc\u00cd\7\r\2\2\u00cd\u00ce\5\32\16\2\u00ce"+
-		"\27\3\2\2\2\u00cf\u00d0\7\16\2\2\u00d0\u00d1\5\32\16\2\u00d1\31\3\2\2"+
-		"\2\u00d2\u00d5\5\34\17\2\u00d3\u00d5\5\36\20\2\u00d4\u00d2\3\2\2\2\u00d4"+
-		"\u00d3\3\2\2\2\u00d5\33\3\2\2\2\u00d6\u00d7\7\17\2\2\u00d7\u00d8\5J&\2"+
-		"\u00d8\35\3\2\2\2\u00d9\u00da\7\20\2\2\u00da\u00db\5&\24\2\u00db\37\3"+
-		"\2\2\2\u00dc\u00dd\7\b\2\2\u00dd!\3\2\2\2\u00de\u00e1\5&\24\2\u00df\u00e1"+
-		"\5 \21\2\u00e0\u00de\3\2\2\2\u00e0\u00df\3\2\2\2\u00e1#\3\2\2\2\u00e2"+
-		"\u00e3\5&\24\2\u00e3%\3\2\2\2\u00e4\u00e9\5(\25\2\u00e5\u00e6\7\31\2\2"+
-		"\u00e6\u00e8\5(\25\2\u00e7\u00e5\3\2\2\2\u00e8\u00eb\3\2\2\2\u00e9\u00e7"+
-		"\3\2\2\2\u00e9\u00ea\3\2\2\2\u00ea\'\3\2\2\2\u00eb\u00e9\3\2\2\2\u00ec"+
-		"\u00f1\5*\26\2\u00ed\u00ee\7\32\2\2\u00ee\u00f0\5*\26\2\u00ef\u00ed\3"+
-		"\2\2\2\u00f0\u00f3\3\2\2\2\u00f1\u00ef\3\2\2\2\u00f1\u00f2\3\2\2\2\u00f2"+
-		")\3\2\2\2\u00f3\u00f1\3\2\2\2\u00f4\u00f9\5,\27\2\u00f5\u00f6\7\33\2\2"+
-		"\u00f6\u00f8\5,\27\2\u00f7\u00f5\3\2\2\2\u00f8\u00fb\3\2\2\2\u00f9\u00f7"+
-		"\3\2\2\2\u00f9\u00fa\3\2\2\2\u00fa+\3\2\2\2\u00fb\u00f9\3\2\2\2\u00fc"+
-		"\u0101\5.\30\2\u00fd\u00fe\7\34\2\2\u00fe\u0100\5.\30\2\u00ff\u00fd\3"+
-		"\2\2\2\u0100\u0103\3\2\2\2\u0101\u00ff\3\2\2\2\u0101\u0102\3\2\2\2\u0102"+
-		"-\3\2\2\2\u0103\u0101\3\2\2\2\u0104\u0109\5\60\31\2\u0105\u0106\7\35\2"+
-		"\2\u0106\u0108\5\60\31\2\u0107\u0105\3\2\2\2\u0108\u010b\3\2\2\2\u0109"+
-		"\u0107\3\2\2\2\u0109\u010a\3\2\2\2\u010a/\3\2\2\2\u010b\u0109\3\2\2\2"+
-		"\u010c\u0111\5\62\32\2\u010d\u010e\7\36\2\2\u010e\u0110\5\62\32\2\u010f"+
-		"\u010d\3\2\2\2\u0110\u0113\3\2\2\2\u0111\u010f\3\2\2\2\u0111\u0112\3\2"+
-		"\2\2\u0112\61\3\2\2\2\u0113\u0111\3\2\2\2\u0114\u0119\5\64\33\2\u0115"+
-		"\u0116\7!\2\2\u0116\u0118\5\64\33\2\u0117\u0115\3\2\2\2\u0118\u011b\3"+
-		"\2\2\2\u0119\u0117\3\2\2\2\u0119\u011a\3\2\2\2\u011a\63\3\2\2\2\u011b"+
-		"\u0119\3\2\2\2\u011c\u0121\5\66\34\2\u011d\u011e\7\"\2\2\u011e\u0120\5"+
-		"\66\34\2\u011f\u011d\3\2\2\2\u0120\u0123\3\2\2\2\u0121\u011f\3\2\2\2\u0121"+
-		"\u0122\3\2\2\2\u0122\65\3\2\2\2\u0123\u0121\3\2\2\2\u0124\u0125\7 \2\2"+
-		"\u0125\u012a\58\35\2\u0126\u0127\7\37\2\2\u0127\u012a\58\35\2\u0128\u012a"+
-		"\58\35\2\u0129\u0124\3\2\2\2\u0129\u0126\3\2\2\2\u0129\u0128\3\2\2\2\u012a"+
-		"\67\3\2\2\2\u012b\u0131\5H%\2\u012c\u012d\7\27\2\2\u012d\u012e\5&\24\2"+
-		"\u012e\u012f\7\30\2\2\u012f\u0131\3\2\2\2\u0130\u012b\3\2\2\2\u0130\u012c"+
-		"\3\2\2\2\u01319\3\2\2\2\u0132\u0137\5<\37\2\u0133\u0134\7\t\2\2\u0134"+
-		"\u0136\5<\37\2\u0135\u0133\3\2\2\2\u0136\u0139\3\2\2\2\u0137\u0135\3\2"+
-		"\2\2\u0137\u0138\3\2\2\2\u0138\u013c\3\2\2\2\u0139\u0137\3\2\2\2\u013a"+
-		"\u013c\5 \21\2\u013b\u0132\3\2\2\2\u013b\u013a\3\2\2\2\u013c;\3\2\2\2"+
-		"\u013d\u0141\5> \2\u013e\u0141\5\32\16\2\u013f\u0141\5@!\2\u0140\u013d"+
-		"\3\2\2\2\u0140\u013e\3\2\2\2\u0140\u013f\3\2\2\2\u0141=\3\2\2\2\u0142"+
-		"\u0143\7\7\2\2\u0143\u0144\5B\"\2\u0144\u0145\7\5\2\2\u0145\u0146\5J&"+
-		"\2\u0146\u0147\7\30\2\2\u0147?\3\2\2\2\u0148\u0149\5J&\2\u0149A\3\2\2"+
-		"\2\u014a\u014d\5D#\2\u014b\u014d\5F$\2\u014c\u014a\3\2\2\2\u014c\u014b"+
-		"\3\2\2\2\u014dC\3\2\2\2\u014e\u014f\5H%\2\u014fE\3\2\2\2\u0150\u0151\7"+
-		"\37\2\2\u0151\u0152\5H%\2\u0152G\3\2\2\2\u0153\u0154\5J&\2\u0154I\3\2"+
-		"\2\2\u0155\u0159\5L\'\2\u0156\u0159\5V,\2\u0157\u0159\5Z.\2\u0158\u0155"+
-		"\3\2\2\2\u0158\u0156\3\2\2\2\u0158\u0157\3\2\2\2\u0159K\3\2\2\2\u015a"+
-		"\u015d\5N(\2\u015b\u015d\5P)\2\u015c\u015a\3\2\2\2\u015c\u015b\3\2\2\2"+
-		"\u015dM\3\2\2\2\u015e\u015f\7\21\2\2\u015fO\3\2\2\2\u0160\u0163\5R*\2"+
-		"\u0161\u0163\5T+\2\u0162\u0160\3\2\2\2\u0162\u0161\3\2\2\2\u0163Q\3\2"+
-		"\2\2\u0164\u0165\7\23\2\2\u0165S\3\2\2\2\u0166\u0167\7\26\2\2\u0167U\3"+
-		"\2\2\2\u0168\u0169\7\22\2\2\u0169W\3\2\2\2\u016a\u0173\5J&\2\u016b\u016e"+
-		"\5J&\2\u016c\u016d\7\5\2\2\u016d\u016f\5J&\2\u016e\u016c\3\2\2\2\u016f"+
-		"\u0170\3\2\2\2\u0170\u016e\3\2\2\2\u0170\u0171\3\2\2\2\u0171\u0173\3\2"+
-		"\2\2\u0172\u016a\3\2\2\2\u0172\u016b\3\2\2\2\u0173Y\3\2\2\2\u0174\u0175"+
-		"\7\21\2\2\u0175\u0176\7\27\2\2\u0176\u0177\5X-\2\u0177\u0178\7\30\2\2"+
-		"\u0178[\3\2\2\2!gi\u0083\u0088\u00a1\u00a6\u00ad\u00b3\u00c0\u00ca\u00d4"+
-		"\u00e0\u00e9\u00f1\u00f9\u0101\u0109\u0111\u0119\u0121\u0129\u0130\u0137"+
-		"\u013b\u0140\u014c\u0158\u015c\u0162\u0170\u0172";
+		",\t,\4-\t-\4.\t.\4/\t/\4\60\t\60\3\2\3\2\3\2\3\2\3\2\3\3\3\3\7\3h\n\3"+
+		"\f\3\16\3k\13\3\3\4\6\4n\n\4\r\4\16\4o\3\5\6\5s\n\5\r\5\16\5t\3\6\3\6"+
+		"\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\b\3\b\3\b\7\b\u0088"+
+		"\n\b\f\b\16\b\u008b\13\b\3\t\7\t\u008e\n\t\f\t\16\t\u0091\13\t\3\n\3\n"+
+		"\3\n\3\n\3\n\3\n\3\n\3\13\3\13\3\13\5\13\u009d\n\13\3\f\3\f\3\f\3\f\3"+
+		"\f\3\f\3\r\3\r\5\r\u00a7\n\r\3\16\3\16\3\16\3\17\3\17\3\17\3\20\3\20\5"+
+		"\20\u00b1\n\20\3\21\3\21\3\21\3\22\3\22\3\22\3\23\3\23\3\24\3\24\5\24"+
+		"\u00bd\n\24\3\25\3\25\3\26\3\26\3\26\7\26\u00c4\n\26\f\26\16\26\u00c7"+
+		"\13\26\3\27\3\27\3\27\7\27\u00cc\n\27\f\27\16\27\u00cf\13\27\3\30\3\30"+
+		"\3\30\7\30\u00d4\n\30\f\30\16\30\u00d7\13\30\3\31\3\31\3\31\7\31\u00dc"+
+		"\n\31\f\31\16\31\u00df\13\31\3\32\3\32\3\32\7\32\u00e4\n\32\f\32\16\32"+
+		"\u00e7\13\32\3\33\3\33\3\33\7\33\u00ec\n\33\f\33\16\33\u00ef\13\33\3\34"+
+		"\3\34\3\34\7\34\u00f4\n\34\f\34\16\34\u00f7\13\34\3\35\3\35\3\35\7\35"+
+		"\u00fc\n\35\f\35\16\35\u00ff\13\35\3\36\3\36\3\36\3\36\3\36\5\36\u0106"+
+		"\n\36\3\37\3\37\3\37\3\37\3\37\5\37\u010d\n\37\3 \3 \3 \7 \u0112\n \f"+
+		" \16 \u0115\13 \3 \5 \u0118\n \3!\3!\3!\5!\u011d\n!\3\"\3\"\3\"\3\"\3"+
+		"\"\3\"\3#\3#\3$\3$\5$\u0129\n$\3%\3%\3&\3&\3&\3\'\3\'\3(\3(\3(\5(\u0135"+
+		"\n(\3)\3)\5)\u0139\n)\3*\3*\3+\3+\5+\u013f\n+\3,\3,\3-\3-\3.\3.\3/\3/"+
+		"\3/\3/\6/\u014b\n/\r/\16/\u014c\5/\u014f\n/\3\60\3\60\3\60\3\60\3\60\3"+
+		"\60\2\2\61\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\66"+
+		"8:<>@BDFHJLNPRTVXZ\\^\2\2\2\u0147\2`\3\2\2\2\4i\3\2\2\2\6m\3\2\2\2\br"+
+		"\3\2\2\2\nv\3\2\2\2\f}\3\2\2\2\16\u0089\3\2\2\2\20\u008f\3\2\2\2\22\u0092"+
+		"\3\2\2\2\24\u009c\3\2\2\2\26\u009e\3\2\2\2\30\u00a6\3\2\2\2\32\u00a8\3"+
+		"\2\2\2\34\u00ab\3\2\2\2\36\u00b0\3\2\2\2 \u00b2\3\2\2\2\"\u00b5\3\2\2"+
+		"\2$\u00b8\3\2\2\2&\u00bc\3\2\2\2(\u00be\3\2\2\2*\u00c0\3\2\2\2,\u00c8"+
+		"\3\2\2\2.\u00d0\3\2\2\2\60\u00d8\3\2\2\2\62\u00e0\3\2\2\2\64\u00e8\3\2"+
+		"\2\2\66\u00f0\3\2\2\28\u00f8\3\2\2\2:\u0105\3\2\2\2<\u010c\3\2\2\2>\u0117"+
+		"\3\2\2\2@\u011c\3\2\2\2B\u011e\3\2\2\2D\u0124\3\2\2\2F\u0128\3\2\2\2H"+
+		"\u012a\3\2\2\2J\u012c\3\2\2\2L\u012f\3\2\2\2N\u0134\3\2\2\2P\u0138\3\2"+
+		"\2\2R\u013a\3\2\2\2T\u013e\3\2\2\2V\u0140\3\2\2\2X\u0142\3\2\2\2Z\u0144"+
+		"\3\2\2\2\\\u014e\3\2\2\2^\u0150\3\2\2\2`a\5\4\3\2ab\5\16\b\2bc\5\20\t"+
+		"\2cd\7\2\2\3d\3\3\2\2\2eh\5\6\4\2fh\5\b\5\2ge\3\2\2\2gf\3\2\2\2hk\3\2"+
+		"\2\2ig\3\2\2\2ij\3\2\2\2j\5\3\2\2\2ki\3\2\2\2ln\5\n\6\2ml\3\2\2\2no\3"+
+		"\2\2\2om\3\2\2\2op\3\2\2\2p\7\3\2\2\2qs\5\f\7\2rq\3\2\2\2st\3\2\2\2tr"+
+		"\3\2\2\2tu\3\2\2\2u\t\3\2\2\2vw\7\3\2\2wx\5F$\2xy\7\4\2\2yz\5T+\2z{\7"+
+		"\30\2\2{|\7\5\2\2|\13\3\2\2\2}~\7\6\2\2~\177\5F$\2\177\u0080\7\4\2\2\u0080"+
+		"\u0081\5T+\2\u0081\u0082\7\30\2\2\u0082\u0083\7\5\2\2\u0083\r\3\2\2\2"+
+		"\u0084\u0085\5 \21\2\u0085\u0086\7\5\2\2\u0086\u0088\3\2\2\2\u0087\u0084"+
+		"\3\2\2\2\u0088\u008b\3\2\2\2\u0089\u0087\3\2\2\2\u0089\u008a\3\2\2\2\u008a"+
+		"\17\3\2\2\2\u008b\u0089\3\2\2\2\u008c\u008e\5\22\n\2\u008d\u008c\3\2\2"+
+		"\2\u008e\u0091\3\2\2\2\u008f\u008d\3\2\2\2\u008f\u0090\3\2\2\2\u0090\21"+
+		"\3\2\2\2\u0091\u008f\3\2\2\2\u0092\u0093\5\24\13\2\u0093\u0094\7\n\2\2"+
+		"\u0094\u0095\5&\24\2\u0095\u0096\7\13\2\2\u0096\u0097\5> \2\u0097\u0098"+
+		"\7\5\2\2\u0098\23\3\2\2\2\u0099\u009d\5\26\f\2\u009a\u009d\5\30\r\2\u009b"+
+		"\u009d\5$\23\2\u009c\u0099\3\2\2\2\u009c\u009a\3\2\2\2\u009c\u009b\3\2"+
+		"\2\2\u009d\25\3\2\2\2\u009e\u009f\7\7\2\2\u009f\u00a0\5F$\2\u00a0\u00a1"+
+		"\7\4\2\2\u00a1\u00a2\5N(\2\u00a2\u00a3\7\30\2\2\u00a3\27\3\2\2\2\u00a4"+
+		"\u00a7\5\32\16\2\u00a5\u00a7\5\34\17\2\u00a6\u00a4\3\2\2\2\u00a6\u00a5"+
+		"\3\2\2\2\u00a7\31\3\2\2\2\u00a8\u00a9\7\r\2\2\u00a9\u00aa\5\36\20\2\u00aa"+
+		"\33\3\2\2\2\u00ab\u00ac\7\16\2\2\u00ac\u00ad\5\36\20\2\u00ad\35\3\2\2"+
+		"\2\u00ae\u00b1\5 \21\2\u00af\u00b1\5\"\22\2\u00b0\u00ae\3\2\2\2\u00b0"+
+		"\u00af\3\2\2\2\u00b1\37\3\2\2\2\u00b2\u00b3\7\17\2\2\u00b3\u00b4\5N(\2"+
+		"\u00b4!\3\2\2\2\u00b5\u00b6\7\20\2\2\u00b6\u00b7\5*\26\2\u00b7#\3\2\2"+
+		"\2\u00b8\u00b9\7\b\2\2\u00b9%\3\2\2\2\u00ba\u00bd\5*\26\2\u00bb\u00bd"+
+		"\5$\23\2\u00bc\u00ba\3\2\2\2\u00bc\u00bb\3\2\2\2\u00bd\'\3\2\2\2\u00be"+
+		"\u00bf\5*\26\2\u00bf)\3\2\2\2\u00c0\u00c5\5,\27\2\u00c1\u00c2\7\31\2\2"+
+		"\u00c2\u00c4\5,\27\2\u00c3\u00c1\3\2\2\2\u00c4\u00c7\3\2\2\2\u00c5\u00c3"+
+		"\3\2\2\2\u00c5\u00c6\3\2\2\2\u00c6+\3\2\2\2\u00c7\u00c5\3\2\2\2\u00c8"+
+		"\u00cd\5.\30\2\u00c9\u00ca\7\32\2\2\u00ca\u00cc\5.\30\2\u00cb\u00c9\3"+
+		"\2\2\2\u00cc\u00cf\3\2\2\2\u00cd\u00cb\3\2\2\2\u00cd\u00ce\3\2\2\2\u00ce"+
+		"-\3\2\2\2\u00cf\u00cd\3\2\2\2\u00d0\u00d5\5\60\31\2\u00d1\u00d2\7\33\2"+
+		"\2\u00d2\u00d4\5\60\31\2\u00d3\u00d1\3\2\2\2\u00d4\u00d7\3\2\2\2\u00d5"+
+		"\u00d3\3\2\2\2\u00d5\u00d6\3\2\2\2\u00d6/\3\2\2\2\u00d7\u00d5\3\2\2\2"+
+		"\u00d8\u00dd\5\62\32\2\u00d9\u00da\7\34\2\2\u00da\u00dc\5\62\32\2\u00db"+
+		"\u00d9\3\2\2\2\u00dc\u00df\3\2\2\2\u00dd\u00db\3\2\2\2\u00dd\u00de\3\2"+
+		"\2\2\u00de\61\3\2\2\2\u00df\u00dd\3\2\2\2\u00e0\u00e5\5\64\33\2\u00e1"+
+		"\u00e2\7\35\2\2\u00e2\u00e4\5\64\33\2\u00e3\u00e1\3\2\2\2\u00e4\u00e7"+
+		"\3\2\2\2\u00e5\u00e3\3\2\2\2\u00e5\u00e6\3\2\2\2\u00e6\63\3\2\2\2\u00e7"+
+		"\u00e5\3\2\2\2\u00e8\u00ed\5\66\34\2\u00e9\u00ea\7\36\2\2\u00ea\u00ec"+
+		"\5\66\34\2\u00eb\u00e9\3\2\2\2\u00ec\u00ef\3\2\2\2\u00ed\u00eb\3\2\2\2"+
+		"\u00ed\u00ee\3\2\2\2\u00ee\65\3\2\2\2\u00ef\u00ed\3\2\2\2\u00f0\u00f5"+
+		"\58\35\2\u00f1\u00f2\7!\2\2\u00f2\u00f4\58\35\2\u00f3\u00f1\3\2\2\2\u00f4"+
+		"\u00f7\3\2\2\2\u00f5\u00f3\3\2\2\2\u00f5\u00f6\3\2\2\2\u00f6\67\3\2\2"+
+		"\2\u00f7\u00f5\3\2\2\2\u00f8\u00fd\5:\36\2\u00f9\u00fa\7\"\2\2\u00fa\u00fc"+
+		"\5:\36\2\u00fb\u00f9\3\2\2\2\u00fc\u00ff\3\2\2\2\u00fd\u00fb\3\2\2\2\u00fd"+
+		"\u00fe\3\2\2\2\u00fe9\3\2\2\2\u00ff\u00fd\3\2\2\2\u0100\u0101\7 \2\2\u0101"+
+		"\u0106\5<\37\2\u0102\u0103\7\37\2\2\u0103\u0106\5<\37\2\u0104\u0106\5"+
+		"<\37\2\u0105\u0100\3\2\2\2\u0105\u0102\3\2\2\2\u0105\u0104\3\2\2\2\u0106"+
+		";\3\2\2\2\u0107\u010d\5L\'\2\u0108\u0109\7\27\2\2\u0109\u010a\5*\26\2"+
+		"\u010a\u010b\7\30\2\2\u010b\u010d\3\2\2\2\u010c\u0107\3\2\2\2\u010c\u0108"+
+		"\3\2\2\2\u010d=\3\2\2\2\u010e\u0113\5@!\2\u010f\u0110\7\t\2\2\u0110\u0112"+
+		"\5@!\2\u0111\u010f\3\2\2\2\u0112\u0115\3\2\2\2\u0113\u0111\3\2\2\2\u0113"+
+		"\u0114\3\2\2\2\u0114\u0118\3\2\2\2\u0115\u0113\3\2\2\2\u0116\u0118\5$"+
+		"\23\2\u0117\u010e\3\2\2\2\u0117\u0116\3\2\2\2\u0118?\3\2\2\2\u0119\u011d"+
+		"\5B\"\2\u011a\u011d\5\36\20\2\u011b\u011d\5D#\2\u011c\u0119\3\2\2\2\u011c"+
+		"\u011a\3\2\2\2\u011c\u011b\3\2\2\2\u011dA\3\2\2\2\u011e\u011f\7\7\2\2"+
+		"\u011f\u0120\5F$\2\u0120\u0121\7\4\2\2\u0121\u0122\5N(\2\u0122\u0123\7"+
+		"\30\2\2\u0123C\3\2\2\2\u0124\u0125\5N(\2\u0125E\3\2\2\2\u0126\u0129\5"+
+		"H%\2\u0127\u0129\5J&\2\u0128\u0126\3\2\2\2\u0128\u0127\3\2\2\2\u0129G"+
+		"\3\2\2\2\u012a\u012b\5L\'\2\u012bI\3\2\2\2\u012c\u012d\7\37\2\2\u012d"+
+		"\u012e\5L\'\2\u012eK\3\2\2\2\u012f\u0130\5N(\2\u0130M\3\2\2\2\u0131\u0135"+
+		"\5P)\2\u0132\u0135\5Z.\2\u0133\u0135\5^\60\2\u0134\u0131\3\2\2\2\u0134"+
+		"\u0132\3\2\2\2\u0134\u0133\3\2\2\2\u0135O\3\2\2\2\u0136\u0139\5R*\2\u0137"+
+		"\u0139\5T+\2\u0138\u0136\3\2\2\2\u0138\u0137\3\2\2\2\u0139Q\3\2\2\2\u013a"+
+		"\u013b\7\21\2\2\u013bS\3\2\2\2\u013c\u013f\5V,\2\u013d\u013f\5X-\2\u013e"+
+		"\u013c\3\2\2\2\u013e\u013d\3\2\2\2\u013fU\3\2\2\2\u0140\u0141\7\23\2\2"+
+		"\u0141W\3\2\2\2\u0142\u0143\7\26\2\2\u0143Y\3\2\2\2\u0144\u0145\7\22\2"+
+		"\2\u0145[\3\2\2\2\u0146\u014f\5N(\2\u0147\u014a\5N(\2\u0148\u0149\7\4"+
+		"\2\2\u0149\u014b\5N(\2\u014a\u0148\3\2\2\2\u014b\u014c\3\2\2\2\u014c\u014a"+
+		"\3\2\2\2\u014c\u014d\3\2\2\2\u014d\u014f\3\2\2\2\u014e\u0146\3\2\2\2\u014e"+
+		"\u0147\3\2\2\2\u014f]\3\2\2\2\u0150\u0151\7\21\2\2\u0151\u0152\7\27\2"+
+		"\2\u0152\u0153\5\\/\2\u0153\u0154\7\30\2\2\u0154_\3\2\2\2\37giot\u0089"+
+		"\u008f\u009c\u00a6\u00b0\u00bc\u00c5\u00cd\u00d5\u00dd\u00e5\u00ed\u00f5"+
+		"\u00fd\u0105\u010c\u0113\u0117\u011c\u0128\u0134\u0138\u013e\u014c\u014e";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

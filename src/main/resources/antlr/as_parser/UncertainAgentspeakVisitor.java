@@ -32,17 +32,11 @@ import main.java.uncertain_agentspeak.agentspeak.terms.constants.Number;
 import main.java.uncertain_agentspeak.agentspeak.terms.constants.numbers.DoubleNum;
 import main.java.uncertain_agentspeak.agentspeak.terms.constants.numbers.IntNum;
 import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
+import main.java.uncertain_agentspeak.uncertainty.epistemic_states.CompactEpistemicState;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.compact_epistemic_states.CompactPossibilisticEpistemicState;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.compact_epistemic_states.CompactProbabilisticEpistemicState;
 import main.resources.antlr.UncertainAgentspeakBaseVisitor;
 import main.resources.antlr.UncertainAgentspeakParser;
-//import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakBaseVisitor;
-//import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakParser;
-////import uncertain_agentspeak.UncertainAgentspeakParser;
-////import uncertain_agentspeak.UncertainAgentspeakBaseVisitor;
-//import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakBaseVisitor;
-////import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakParser;
-////import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakParser.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -90,9 +84,6 @@ public class UncertainAgentspeakVisitor extends UncertainAgentspeakBaseVisitor<O
     @Override
     public Plan visitPlan(UncertainAgentspeakParser.PlanContext ctx) {
         if (ctx.context() != null && ctx.body() != null && ctx.event() != null) {
-//            Event event = visitEvent(ctx.event());
-//            LogicalExpression context = visitContext(ctx.context());
-//            ArrayList<Action> body = visitBody(ctx.body());
             return new Plan(visitEvent(ctx.event()), visitContext(ctx.context()), visitBody(ctx.body()));
         } else {
             //TODO: add exception
@@ -164,18 +155,6 @@ public class UncertainAgentspeakVisitor extends UncertainAgentspeakBaseVisitor<O
         }
     }
 
-//    @Override
-//    public LogicalExpression visitOr_expr(UncertainAgentspeakParser.Or_exprContext ctx) {
-//        if (ctx.less_than_expr().size() > 1) {
-//            for (int i =0; i < ctx.less_than_expr().size(); i++) {
-//                Disjunction disjunction = new Disjunction(visitLess_than_expr(ctx.less_than_expr(i)),visitLess_than_expr(ctx.less_than_expr(i+1)));
-//            }
-//        } else {
-//            return visitLess_than_expr(ctx.less_than_expr(0));
-//        }
-//    }
-
-
     @Override
     public LogicalExpression visitLess_than_expr(UncertainAgentspeakParser.Less_than_exprContext ctx) {
         if (ctx.less_equals_expr().size() > 1) {
@@ -218,15 +197,6 @@ public class UncertainAgentspeakVisitor extends UncertainAgentspeakBaseVisitor<O
         }
     }
 
-//    @Override
-//    public LogicalExpression visitGreater_equals_expr(UncertainAgentspeakParser.Greater_equals_exprContext ctx) throws Exception {
-////        if (ctx.negation_expr().size() > 1) {
-//        if (ctx.equals_expr().size() > 1) {
-//            return new GreaterEqualsPlausibility(visitNegation_expr(ctx.negation_expr(0)),visitNegation_expr(ctx.negation_expr(1)));
-//        } else {
-//            return visitNegation_expr(ctx.negation_expr(0));
-//        }
-//    }
     @Override
     public LogicalExpression visitGreater_equals_expr(UncertainAgentspeakParser.Greater_equals_exprContext ctx) {
         if (ctx.equals_expr().size() > 1) {
@@ -288,67 +258,6 @@ public class UncertainAgentspeakVisitor extends UncertainAgentspeakBaseVisitor<O
             return visitBelief_atom(ctx.belief_atom());
         }
     }
-
-
-
-//    @Override
-//    public LogicalExpression visitLog_expr(UncertainAgentspeakParser.Log_exprContext ctx) {
-//        if (ctx.belief_literal() != null) {
-//            visitBelief_literal(ctx.belief_literal());
-//        } else if (ctx.conjunction() != null)
-////        if (ctx. != null) {
-////            return visitSimple_log_expr(ctx.simple_log_expr());
-////        } else if (ctx.negation_as_failure() != null) {
-////            return visitNegation_as_failure(ctx.negation_as_failure());
-////        } else if (ctx.)
-//    }
-
-//    @Override
-//    public StrongNegation visitStrong_negation(UncertainAgentspeakParser.Strong_negationContext ctx) {
-//        return new StrongNegation(visitLog_expr(ctx.log_expr()));
-//    }
-//
-//    @Override
-//    public Conjunction visitConjunction(UncertainAgentspeakParser.ConjunctionContext ctx) {
-//        return new Conjunction(visitLog_expr(ctx.log_expr(0)),visitLog_expr(ctx.log_expr(1)));
-//    }
-//
-//    @Override
-//    public LogicalExpression visitBraced_term(UncertainAgentspeakParser.Braced_termContext ctx) {
-//        return visitLog_expr(ctx.log_expr());
-//    }
-//
-//    @Override
-//    public Disjunction visitDisjunction(UncertainAgentspeakParser.DisjunctionContext ctx) {
-//        return new Disjunction(visitLog_expr(ctx.log_expr(0)),visitLog_expr(ctx.log_expr(1)));
-//    }
-//
-//    @Override
-//    public NegationAsFailure visitNegation_as_failure(UncertainAgentspeakParser.Negation_as_failureContext ctx) {
-//        return new NegationAsFailure(visitLog_expr(ctx.log_expr()));
-//    }
-
-//    @Override
-//    public LogicalExpression visitSimple_log_expr(UncertainAgentspeakParser.Simple_log_exprContext ctx) {
-//        if (ctx.belief_literal() != null) {
-//            return visitBelief_literal(ctx.belief_literal());
-//        } else if (ctx.variable() != null) {
-//            return visitVariable(ctx.variable());
-//        } else if (ctx.rel_expr() != null) {
-//            return visitRel_expr(ctx.rel_expr());
-//        }
-//    }
-
-//    @Override
-//    public RelationalExpression visitRel_expr(UncertainAgentspeakParser.Rel_exprContext ctx) {
-//        if (ctx.)
-//    }
-//
-//    @Override
-//    public T visitRel_term(UncertainAgentspeakParser.Rel_termContext ctx) {
-//
-//    }
-
 
     @Override
     public EventTrigger visitEvent(UncertainAgentspeakParser.EventContext ctx) {
@@ -448,99 +357,115 @@ public class UncertainAgentspeakVisitor extends UncertainAgentspeakBaseVisitor<O
     @Override
     public GlobalUncertainBelief visitInit_bels(UncertainAgentspeakParser.Init_belsContext ctx) {
         GlobalUncertainBelief globalUncertainBelief = new GlobalUncertainBelief();
+        HashSet<CompactEpistemicState> epistemicStateHashSet = new HashSet<>();
 
-        for (UncertainAgentspeakParser.Probabilistic_belContext probabilistic_belContext : ctx.probabilistic_bel()) {
-            CompactProbabilisticEpistemicState probBelief = visitProbabilistic_bel(probabilistic_belContext);
-            try {
-                globalUncertainBelief.addEpistemicState(probBelief);
-            } catch (Exception e) {
-                e.printStackTrace();
+//        HashSet<EpistemicState> epistemicStates = new HashSet<>();
+
+        for (UncertainAgentspeakParser.Probabilistic_esContext probabilistic_esContext : ctx.probabilistic_es()) {
+            HashSet<HashMap<String, BeliefLiteral>> epistemicStates = new HashSet<>();
+            HashSet<String> functors = new HashSet<>();
+
+            for (UncertainAgentspeakParser.Probabilistic_belContext probabilistic_belContext : probabilistic_esContext.probabilistic_bel()) {
+
+                BeliefLiteral beliefLiteral;
+                String functor;
+                HashMap<String, BeliefLiteral> beliefMap = new HashMap<>();
+
+                beliefLiteral = visitBelief_literal(probabilistic_belContext.belief_literal());
+                if (probabilistic_belContext.belief_literal().negative_literal() != null) {
+                    functor = probabilistic_belContext.belief_literal().negative_literal().belief_atom().term().structure().ATOM().toString();
+                } else {
+                    functor = probabilistic_belContext.belief_literal().positive_literal().belief_atom().term().structure().ATOM().toString();
+                }
+
+                beliefMap.put(functor, beliefLiteral);
+                functors.add(functor);
+                epistemicStates.add(beliefMap);
+            }
+
+            for (String functor : functors) {
+                HashSet<BeliefAtom> domain = new HashSet<>();
+                CompactProbabilisticEpistemicState compactProbabilisticEpistemicState = null;
+                for (HashMap<String, BeliefLiteral> beliefMap : epistemicStates) {
+                    if (beliefMap.containsKey(functor)) {
+                        domain.add(beliefMap.get(functor).getBeliefAtom());
+                    }
+                }
+                try {
+                    compactProbabilisticEpistemicState = new CompactProbabilisticEpistemicState(domain);
+                    for (UncertainAgentspeakParser.Probabilistic_belContext probabilistic_belContext : probabilistic_esContext.probabilistic_bel()) {
+                        Number weight = visitNumber(probabilistic_belContext.number());
+                        double weightDouble = weight.getDoubleVal();
+                        BeliefLiteral beliefLiteral = visitBelief_literal(probabilistic_belContext.belief_literal());
+                        String[] string = beliefLiteral.getBeliefAtom().toString().split("\\(");
+                        if (functor.equals(string[0])) {
+                            compactProbabilisticEpistemicState.revise(beliefLiteral, weightDouble);
+                        }
+                    }
+                    epistemicStateHashSet.add(compactProbabilisticEpistemicState);
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
             }
         }
-        for (UncertainAgentspeakParser.Possibilistic_belContext possibilistic_belContext : ctx.possibilistic_bel()) {
-            CompactPossibilisticEpistemicState possBelief = visitPossibilistic_bel(possibilistic_belContext);
+
+        for (UncertainAgentspeakParser.Possibilistic_esContext possibilistic_esContext : ctx.possibilistic_es()) {
+            HashSet<HashMap<String, BeliefAtom>> epistemicStates = new HashSet<>();
+            HashSet<String> functors = new HashSet<>();
+
+            for (UncertainAgentspeakParser.Possibilistic_belContext possibilistic_belContext : possibilistic_esContext.possibilistic_bel()) {
+
+                BeliefAtom beliefAtom;
+                String functor;
+                HashMap<String, BeliefAtom> beliefMap = new HashMap<>();
+                if (possibilistic_belContext.belief_literal().negative_literal() != null) {
+                    beliefAtom = visitBelief_atom(possibilistic_belContext.belief_literal().negative_literal().belief_atom());
+                    functor = possibilistic_belContext.belief_literal().negative_literal().belief_atom().term().structure().ATOM().toString();
+                } else {
+                    beliefAtom = visitBelief_atom(possibilistic_belContext.belief_literal().positive_literal().belief_atom());
+                    functor = possibilistic_belContext.belief_literal().positive_literal().belief_atom().term().structure().ATOM().toString();
+                }
+                beliefMap.put(functor, beliefAtom);
+                functors.add(functor);
+                epistemicStates.add(beliefMap);
+            }
+
+            for (String functor : functors) {
+                HashSet<BeliefAtom> domain = new HashSet<>();
+                CompactPossibilisticEpistemicState compactPossibilisticEpistemicState = null;
+                for (HashMap<String, BeliefAtom> beliefMap : epistemicStates) {
+                    if (beliefMap.containsKey(functor)) {
+                        domain.add(beliefMap.get(functor));
+                    }
+                }
+                try {
+                    compactPossibilisticEpistemicState= new CompactPossibilisticEpistemicState(domain);
+                    for (UncertainAgentspeakParser.Possibilistic_belContext possibilistic_belContext : possibilistic_esContext.possibilistic_bel()) {
+                        Number weight = visitNumber(possibilistic_belContext.number());
+                        double weightDouble = weight.getDoubleVal();
+                        BeliefLiteral beliefLiteral = visitBelief_literal(possibilistic_belContext.belief_literal());
+                        String[] string = beliefLiteral.getBeliefAtom().toString().split("\\(");
+                        if (functor.equals(string[0])) {
+                            compactPossibilisticEpistemicState.revise(beliefLiteral, weightDouble);
+                        }
+                    }
+                    epistemicStateHashSet.add(compactPossibilisticEpistemicState);
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
+            }
+        }
+
+        for (CompactEpistemicState epistemicState : epistemicStateHashSet) {
+
             try {
-                globalUncertainBelief.addEpistemicState(possBelief);
+                globalUncertainBelief.addEpistemicState(epistemicState);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
         return globalUncertainBelief;
-    }
-
-    @Override
-    public CompactPossibilisticEpistemicState visitPossibilistic_bel(UncertainAgentspeakParser.Possibilistic_belContext ctx) {
-        HashSet<BeliefAtom> domain = new HashSet<BeliefAtom>();
-        HashMap<BeliefAtom, Double> weightedBeliefBase = new HashMap<BeliefAtom, Double>();
-
-        // Instantiate probabilistic epistemic state with given domain
-        for (int ii=0; ii<ctx.belief_literal().size(); ii++) {
-            BeliefAtom beliefAtom;
-            if (ctx.belief_literal(ii).negative_literal() != null) {
-                beliefAtom = visitBelief_atom(ctx.belief_literal(ii).negative_literal().belief_atom());
-            } else {
-                beliefAtom = visitBelief_atom(ctx.belief_literal(ii).positive_literal().belief_atom());
-            }
-            domain.add(beliefAtom);
-        }
-        CompactPossibilisticEpistemicState possBelief = null;
-        try {
-            possBelief = new CompactPossibilisticEpistemicState(domain);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // Revise epistemic state with associated weights
-        for (int ii=0; ii<ctx.belief_literal().size(); ii++) {
-            Number weight = visitNumber(ctx.number(ii));
-            double weightDouble = weight.getDoubleVal();
-            BeliefLiteral beliefLiteral = visitBelief_literal(ctx.belief_literal(ii));
-            try {
-                possBelief.revise(beliefLiteral, weightDouble);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        return possBelief;
-    }
-
-    @Override
-    public CompactProbabilisticEpistemicState visitProbabilistic_bel(UncertainAgentspeakParser.Probabilistic_belContext ctx) {
-        HashSet<BeliefAtom> domain = new HashSet<BeliefAtom>();
-        HashMap<BeliefAtom, Double> weightedBeliefBase = new HashMap<BeliefAtom, Double>();
-
-        // Instantiate probabilistic epistemic state with given domain
-        for (int ii=0; ii<ctx.belief_literal().size(); ii++) {
-            BeliefAtom beliefAtom;
-            if (ctx.belief_literal(ii).negative_literal() != null) {
-                beliefAtom = visitBelief_atom(ctx.belief_literal(ii).negative_literal().belief_atom());
-            } else {
-                beliefAtom = visitBelief_atom(ctx.belief_literal(ii).positive_literal().belief_atom());
-            }
-            domain.add(beliefAtom);
-        }
-        CompactProbabilisticEpistemicState probBelief = null;
-        try {
-            probBelief = new CompactProbabilisticEpistemicState(domain);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // Revise epistemic state with associated weights
-        for (int ii=0; ii<ctx.belief_literal().size(); ii++) {
-            Number weight = visitNumber(ctx.number(ii));
-            double weightDouble = weight.getDoubleVal();
-            BeliefLiteral beliefLiteral = visitBelief_literal(ctx.belief_literal(ii));
-            try {
-                probBelief.revise(beliefLiteral, weightDouble);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        return probBelief;
     }
 
     @Override
@@ -567,55 +492,6 @@ public class UncertainAgentspeakVisitor extends UncertainAgentspeakBaseVisitor<O
         Term term = visitTerm(context.term());
         return new BeliefAtom(term);
     }
-
-//    @Override
-//    public BeliefAtom visitBelief(UncertainAgentspeakParser.BeliefContext context) {
-//        if (context.arguments_list().children.size() == 1) {
-//            Term term = visitTerm(context.arguments_list().term(0));
-//            //            belief.setBelief(term);
-//            return new BeliefAtom(term);
-//        }
-//        return null;
-//    }
-
-//    @Override
-//    public Weight visitWeight(UncertainAgentspeakParser.WeightContext ctx) {
-//
-//    }
-
-//    @Override
-//    public BeliefAtom visitBelief(UncertainAgentspeakParser.BeliefContext context) {
-////        Belief belief = null;
-//
-////        System.out.println(context.arguments_list().children.size());
-//        if (context.arguments_list().children.size() == 1) {
-//            Term term = visitTerm(context.arguments_list().term(0));
-//            //            belief.setBelief(term);
-//            return new BeliefAtom(term);
-//        }
-//        return null;
-//    }
-
-//    @Override
-//    public void visitUncertainAgentspeak(UncertainAgentspeakParser.UncertainAgentspeakContext ctx) {
-//
-//    }
-
-//    @Override
-//    public Goal visitGoal(UncertainAgentspeakParser.GoalContext context){ //throws ParseException {
-//        Goal goal = null;
-//        if (context.children.size() == 2) {
-//            if (context.children.get(0).getText().equals("!")) {
-//                goal = new AchievementGoal(new Belief(visitTerm(context.term())));
-//            } else if (context.children.get(0).getText().equals("?")) {
-//                goal = new TestGoal(new Belief(visitTerm(context.term())));
-//            }
-////            } else {
-////                throw new ParseException("Goal must be either achievement \"!\" or test \"?\"",1);
-////            }
-//        }
-//        return goal;
-//    }
 
     @Override
     public Term visitTerm(UncertainAgentspeakParser.TermContext context) {

@@ -40,6 +40,30 @@ public class UncertainAgentspeakBaseListener implements UncertainAgentspeakListe
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterProbabilistic_es(UncertainAgentspeakParser.Probabilistic_esContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitProbabilistic_es(UncertainAgentspeakParser.Probabilistic_esContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPossibilistic_es(UncertainAgentspeakParser.Possibilistic_esContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPossibilistic_es(UncertainAgentspeakParser.Possibilistic_esContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterProbabilistic_bel(UncertainAgentspeakParser.Probabilistic_belContext ctx) { }
 	/**
 	 * {@inheritDoc}
