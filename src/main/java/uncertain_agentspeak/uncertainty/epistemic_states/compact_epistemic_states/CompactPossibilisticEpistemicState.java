@@ -1,10 +1,8 @@
 package main.java.uncertain_agentspeak.uncertainty.epistemic_states.compact_epistemic_states;
 
-import main.java.uncertain_agentspeak.agentspeak.LogicalExpression;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.BeliefAtom;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.Conjunction;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.Disjunction;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.BeliefLiteral;
+import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Contradiction;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.CompactEpistemicState;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.Weight;
 
@@ -33,6 +31,16 @@ public class CompactPossibilisticEpistemicState extends CompactEpistemicState {
     @Override
     public Weight getInitialWeight() {
         return new Weight(1, 1);
+    }
+
+    @Override
+    public double getMinWeight() {
+        return 0;
+    }
+
+    @Override
+    public double getMaxWeight() {
+        return 1;
     }
 
     @Override
@@ -95,26 +103,16 @@ public class CompactPossibilisticEpistemicState extends CompactEpistemicState {
         return this.getWeight(beliefLiteral);
     }
 
-    public double getLambda(BeliefAtom beliefAtom) {
-        return this.getWeightedBeliefBase().get(beliefAtom).getPositive();
-    }
-
     @Override
-    public double getLambda(BeliefLiteral beliefLiteral, HashSet<BeliefLiteral> beliefLiterals) throws Exception {
-        BeliefAtom beliefAtom = beliefLiteral.getBeliefAtom();
-        if (beliefLiteral.isPositive()) {
-            return this.getWeightedBeliefBase().get(beliefAtom).getPositive();
-        } else {
-            return this.getWeightedBeliefBase().get(beliefAtom).getNegative();
+    public double getLambda(BeliefLiteral beliefLiteral, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
+        HashSet<BeliefLiteral> boundedLiteralsCopy = (HashSet<BeliefLiteral>) boundedLiterals.clone();
+        boundedLiteralsCopy.add(beliefLiteral);
+        for (BeliefLiteral boundedLiteral : boundedLiterals) {
+            if (boundedLiteralsCopy.contains(boundedLiteral.negation())) {
+                return getLambda(new Contradiction(), boundedLiteralsCopy);
+            }
         }
-    }
-
-    public double getLambda(Conjunction conjunction) throws Exception {
-        return Math.max(this.getLambda(conjunction.getLeft()), this.getLambda(conjunction.getRight()));
-    }
-
-    public double getLambda(Disjunction disjunction) throws Exception {
-        return Math.min(this.getLambda(disjunction.getLeft()), this.getLambda(disjunction.getRight()));
+        return getPossibilityMeasure(beliefLiteral);
     }
 
     @Override
