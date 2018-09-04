@@ -77,7 +77,7 @@ public class Conjunction extends Operator {
     @Override
     public Operator convertToNNF(boolean propogateStrongNegation) throws Exception {
         if (propogateStrongNegation) {
-            return new Disjunction(this.getLeft().convertToNNF(propogateStrongNegation),this.getRight().convertToNNF(propogateStrongNegation));
+            return new Disjunction(this.getLeft().convertToNNF(true),this.getRight().convertToNNF(true));
         } else {
             return new Conjunction(this.getLeft().convertToNNF(false), this.getRight().convertToNNF(false));
         }

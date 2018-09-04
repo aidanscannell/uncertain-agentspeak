@@ -31,8 +31,8 @@ public class StrongNegation extends Negation {
     }
 
     @Override
-    public LogicalExpression convertToNNF(boolean propogateStrongNegation) throws Exception {
-        if (propogateStrongNegation) {
+    public LogicalExpression convertToNNF(boolean propagateStrongNegation) throws Exception {
+        if (propagateStrongNegation) {
             return this.getTerm().convertToNNF(false);
         } else {
             return this.getTerm().convertToNNF(true);

@@ -75,7 +75,7 @@ public class GreaterThanPlausibility extends Operator {
     @Override
     public Operator convertToNNF(boolean propogateStrongNegation) throws Exception {
         if (propogateStrongNegation) {
-            return new GreaterEqualsPlausibility(this.getLeft().convertToNNF(propogateStrongNegation),this.getRight().convertToNNF(propogateStrongNegation));
+            return new GreaterEqualsPlausibility(this.getRight().convertToNNF(propogateStrongNegation),this.getLeft().convertToNNF(propogateStrongNegation));
         } else {
             return new GreaterThanPlausibility(this.getLeft().convertToNNF(false), this.getRight().convertToNNF(false));
         }

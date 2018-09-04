@@ -2,10 +2,8 @@ package main.java.uncertain_agentspeak.agentspeak;
 
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.BeliefAtom;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.Terminal;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.Conjunction;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.BeliefLiteral;
 
-import javax.naming.OperationNotSupportedException;
 import java.util.HashSet;
 
 public abstract class LogicalExpression {
@@ -24,7 +22,11 @@ public abstract class LogicalExpression {
 
     public abstract LogicalExpression substitute(Unifier unifier) throws Exception;
 
-    public abstract LogicalExpression convertToNNF(boolean propogateStrongNegation) throws Exception;
+    public LogicalExpression convertToNNF() throws Exception {
+        return this.convertToNNF(false);
+    }
+
+    public abstract LogicalExpression convertToNNF(boolean propagateStrongNegation) throws Exception;
 
     public abstract boolean inNNF();
 
