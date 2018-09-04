@@ -57,7 +57,7 @@ public class CompactEpistemicState extends EpistemicState {
         BeliefAtom beliefAtom = beliefLiteral.getBeliefAtom();
 
         if (!this.getDomain().contains(beliefAtom)) {
-            throw new Exception("Belief atom not in domain");
+            throw new Exception("Belief atom not in domain: " + beliefAtom.toString());
         }
 
         if (weightedBeliefBase.containsKey(beliefAtom)) {
@@ -108,7 +108,7 @@ public class CompactEpistemicState extends EpistemicState {
 
     protected double getWeight(PositiveLiteral positiveLiteral) throws Exception {
         BeliefAtom beliefAtom = positiveLiteral.getBeliefAtom();
-        if (super.getDomain().contains(beliefAtom)) {
+        if (getDomain().contains(beliefAtom)) {
             if (this.weightedBeliefBase.containsKey(beliefAtom)) {
                 return this.weightedBeliefBase.get(positiveLiteral.getBeliefAtom()).getPositive();
             } else {
@@ -125,7 +125,7 @@ public class CompactEpistemicState extends EpistemicState {
             if (this.weightedBeliefBase.containsKey(beliefAtom)) {
                 return this.weightedBeliefBase.get(negativeLiteral.getBeliefAtom()).getNegative();
             } else {
-                return this.getInitialWeight().getPositive();
+                return this.getInitialWeight().getNegative();
             }
         } else {
             throw new Exception("Belief atom not contained in domain");
@@ -189,11 +189,11 @@ public class CompactEpistemicState extends EpistemicState {
         return this.getMaxWeight() - sum;
     }
 
-    private double getLambda(Contradiction contradiction, HashSet<BeliefLiteral> boundedLiterals) {
+    public double getLambda(Contradiction contradiction, HashSet<BeliefLiteral> boundedLiterals) {
         return this.getMinWeight();
     }
 
-    private double getLambda(Tautology tautology, HashSet<BeliefLiteral> boundedLiterals) {
+    public double getLambda(Tautology tautology, HashSet<BeliefLiteral> boundedLiterals) {
         return this.getMaxWeight();
     }
 
@@ -211,13 +211,7 @@ public class CompactEpistemicState extends EpistemicState {
     }
 
     public double getLambda(Disjunction disjunction, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
-        double left = this.getLambda(disjunction.getLeft(), boundedLiterals);
-        double right = this.getLambda(disjunction.getRight(), boundedLiterals);
-        if (left >= right) {
-            return left;
-        } else {
-            return right;
-        }
+        return Math.max(getLambda(disjunction.getLeft(), boundedLiterals),getLambda(disjunction.getRight(), boundedLiterals));
     }
 
     private double getLambda(NegationAsFailure negationAsFailure, HashSet<BeliefLiteral> boundedLiterals) throws Exception {
@@ -245,7 +239,6 @@ public class CompactEpistemicState extends EpistemicState {
     public String toString() {
         String string = "{";
         Iterator it = weightedBeliefBase.entrySet().iterator();
-
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
             string += "[" + pair.getKey().toString() + ", " + pair.getValue().toString() + "]";
