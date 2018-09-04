@@ -3,10 +3,7 @@ package main.java.uncertain_agentspeak.uncertainty;
 import main.java.uncertain_agentspeak.agentspeak.LogicalExpression;
 import main.java.uncertain_agentspeak.agentspeak.Unifier;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.BeliefAtom;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.Conjunction;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.Disjunction;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.GreaterEqualsPlausibility;
-import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.GreaterThanPlausibility;
+import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.*;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.negations.NegationAsFailure;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.negations.StrongNegation;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.relational_expressions.Equal;
@@ -15,7 +12,6 @@ import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.B
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.Primitive;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Contradiction;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Tautology;
-import main.java.uncertain_agentspeak.uncertainty.sat_solver.SATsolver;
 
 import java.util.HashSet;
 
@@ -53,32 +49,32 @@ public abstract class EpistemicState {
     public abstract double getLambda(LogicalExpression logicalExpression) throws Exception;
 
     public LogicalExpression pare(LogicalExpression logicalExpression) throws Exception {
-        if (logicalExpression instanceof Conjunction) {
-            return this.pare((Conjunction) logicalExpression);
-        } else if (logicalExpression instanceof Disjunction) {
-            return this.pare((Disjunction) logicalExpression);
-        } else if (logicalExpression instanceof GreaterEqualsPlausibility) {
-            return this.pare((GreaterEqualsPlausibility) logicalExpression);
-        } else if (logicalExpression instanceof GreaterThanPlausibility) {
-            return this.pare((GreaterThanPlausibility) logicalExpression);
-        } else if (logicalExpression instanceof StrongNegation) {
-            return this.pare((StrongNegation) logicalExpression);
-        } else if (logicalExpression instanceof NegationAsFailure) {
-            return this.pare((NegationAsFailure) logicalExpression);
-        } else if (logicalExpression instanceof Equal) {
-            return this.pare((Equal) logicalExpression);
-        } else if (logicalExpression instanceof NotEqual) {
-            return this.pare((NotEqual) logicalExpression);
-        } else if (logicalExpression instanceof BeliefAtom) {
-            return this.pare((BeliefAtom) logicalExpression);
-        } else if (logicalExpression instanceof BeliefLiteral) {
-            return this.pare((BeliefLiteral) logicalExpression);
-        } else if (logicalExpression instanceof Contradiction) {
+        if(logicalExpression instanceof Contradiction) {
             return this.pare((Contradiction) logicalExpression);
-        } else if (logicalExpression instanceof Tautology) {
+        } else if(logicalExpression instanceof Tautology) {
             return this.pare((Tautology) logicalExpression);
+        } else if(logicalExpression instanceof BeliefAtom) {
+            return this.pare((BeliefAtom) logicalExpression);
+        } else if(logicalExpression instanceof BeliefLiteral) {
+            return this.pare((BeliefLiteral) logicalExpression);
+        } else if(logicalExpression instanceof Conjunction) {
+            return this.pare((Conjunction) logicalExpression);
+        } else if(logicalExpression instanceof Disjunction) {
+            return this.pare((Disjunction) logicalExpression);
+        } else if(logicalExpression instanceof GreaterEqualsPlausibility) {
+            return this.pare((GreaterEqualsPlausibility) logicalExpression);
+        } else if(logicalExpression instanceof GreaterThanPlausibility) {
+            return this.pare((GreaterThanPlausibility) logicalExpression);
+        } else if(logicalExpression instanceof StrongNegation) {
+            return this.pare((StrongNegation) logicalExpression);
+        } else if(logicalExpression instanceof NegationAsFailure) {
+            return this.pare((NegationAsFailure) logicalExpression);
+        } else if(logicalExpression instanceof Equal) {
+            return this.pare((Equal)logicalExpression);
+        } else if(logicalExpression instanceof NotEqual) {
+            return this.pare((NotEqual)logicalExpression);
         } else {
-            throw new Exception("Formula not normalised");
+            throw new UnsupportedOperationException("Formula not normalised");
         }
     }
 
@@ -90,7 +86,6 @@ public abstract class EpistemicState {
         return new Disjunction(this.pare(disjunction.getLeft()), this.pare(disjunction.getRight()));
     }
 
-    // TODO: Some formulas must have each operand as a classical formula
     public Primitive pare(GreaterEqualsPlausibility greaterEqualsPlausibility) throws Exception {
         double left = this.getLambda(new StrongNegation(greaterEqualsPlausibility.getLeft()));
         double right = this.getLambda(new StrongNegation(greaterEqualsPlausibility.getRight()));
@@ -132,7 +127,7 @@ public abstract class EpistemicState {
     }
 
     public Primitive pare(NotEqual notEqual) throws Exception {
-        if (notEqual.getLeft() != notEqual.getRight()) {
+        if (!notEqual.getLeft().equals(notEqual.getRight())) {
             return new Tautology();
         } else {
             return new Contradiction();
@@ -159,14 +154,13 @@ public abstract class EpistemicState {
         return entails(logicalExpression, new Unifier());
     }
 
-    //TODO: check for NNF
     public Unifier entails(LogicalExpression logicalExpression, Unifier unifier) throws Exception {
         LogicalExpression groundLogicalExpression = logicalExpression.substitute(unifier);
         if (!domain.containsAll(groundLogicalExpression.getBeliefAtoms())) {
             return null;
         }
-        LogicalExpression pare = pare(groundLogicalExpression).convertToNNF(false);
-        LogicalExpression pareNegation = pare(new StrongNegation(groundLogicalExpression)).convertToNNF(false);
+        LogicalExpression pare = pare(groundLogicalExpression).convertToNNF();
+        LogicalExpression pareNegation = pare(new StrongNegation(pare)).convertToNNF();
         double pareLambda = getLambda(pare);
         double pareLambdaNegation = getLambda(pareNegation);
         if (pareLambda > pareLambdaNegation) {
