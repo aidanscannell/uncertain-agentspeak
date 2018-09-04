@@ -23,6 +23,7 @@ import main.java.uncertain_agentspeak.mas.MASProject;
 import main.resources.antlr.mas_parser.ProjectParser;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 
 /**
  * FXML Controller class
@@ -52,13 +53,14 @@ public class MainController implements Initializable {
     private MASProject project;
     private File projectDirectory;
 
-    private final static Logger LOGGER = LogManager.getLogger(Main.class.getName());
+    private final static Logger LOGGER = LogManager.getLogger("Main Controller");
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ThreadContext.put("logFilename","Main");
     }
 
     @FXML
@@ -86,15 +88,12 @@ public class MainController implements Initializable {
 
     @FXML
     private void runProject(ActionEvent event) {
-
         File file = null;
         FileInputStream fis = null;
         try {
-
             for (File fileMAS : projectDirectory.listFiles()) {
 
                 if (fileMAS.getName().contains(".mas")) {
-                    System.out.println(fileMAS.getName());
                     file = fileMAS;
                 }
             }

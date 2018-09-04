@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 
 /**
  *
@@ -14,9 +15,10 @@ import org.apache.log4j.Logger;
  */
 public class Main extends Application {
 
-    private final static Logger LOGGER = LogManager.getLogger(Main.class.getName());
+    private final static Logger LOGGER = LogManager.getLogger("Main");
 
     public static void main(String[] args) {
+        ThreadContext.put("logFilename","Main");
         LOGGER.info("Loading application...");
         launch(args);
     }

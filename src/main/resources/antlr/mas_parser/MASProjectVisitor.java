@@ -6,6 +6,7 @@ import main.java.uncertain_agentspeak.environment.Environment;
 import main.java.uncertain_agentspeak.mas.MASProject;
 import main.resources.antlr.MASProjectBaseVisitor;
 import main.resources.antlr.MASProjectParser;
+import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,9 +16,11 @@ import java.util.List;
 
 public class MASProjectVisitor extends MASProjectBaseVisitor<Object> {
 
+    private Logger LOGGER = Logger.getLogger("Main");
+
     public MASProject visitMas_project(MASProjectParser.Mas_projectContext ctx) {
         String name = null;
-        List<Agent> agentList = new ArrayList<Agent>();
+        List<Agent> agentList = new ArrayList<>();
         Environment environment = new Environment();
         if (ctx.name() != null) {
             name = ctx.name().ATOM().toString();
@@ -31,7 +34,7 @@ public class MASProjectVisitor extends MASProjectBaseVisitor<Object> {
                     String directory = System.getProperty("user.dir");
                     String filepath = directory + "/src/test/java/" + name + "/agents/" + agentName + ".agent";
                     File file = new File(filepath);
-                    FileInputStream fis = null;
+                    FileInputStream fis;
                     if (agentContext.numAgents() != null) {
                         for (int i=0; i<Integer.parseInt(agentContext.numAgents().getChild(0).toString()); i++) {
                             try {
@@ -40,11 +43,12 @@ public class MASProjectVisitor extends MASProjectBaseVisitor<Object> {
                                 agent.setName(agentName + Integer.toString(i));
                                 agent.setId(agentID);
                                 agentList.add(agent);
-                                System.out.println("Successfully instantiated agent: " + agent.getName());
+                                LOGGER.info("Successfully instantiated agent: " + agent.getName());
+                                agentID++;
                             } catch (FileNotFoundException e) {
-                                System.err.println("File not found: " + agentName);
+                                LOGGER.error("File not found: " + agentName);
                             } catch (Exception e) {
-                                System.err.println("Error parsing file");
+                                LOGGER.error("Error parsing file: " + e);
                             }
                         }
                     } else {
@@ -54,18 +58,18 @@ public class MASProjectVisitor extends MASProjectBaseVisitor<Object> {
                             agent.setName(agentName + Integer.toString(1));
                             agent.setId(agentID);
                             agentList.add(agent);
-                            System.out.println("Successfully instantiated agent: " + agent.getName());
+                            LOGGER.info("Successfully instantiated agent: " + agent.getName());
                         } catch (FileNotFoundException e) {
-                            System.err.println("File not found: " + agentName);
+                            LOGGER.error("File not found: " + agentName);
                         } catch (Exception e) {
-                            System.err.println("Error parsing file");
+                            LOGGER.error("Error parsing file: " + e);
                         }
                     }
                     agentID++;
                 }
             }
             if (ctx.content().environment() != null) {
-                List args = new ArrayList();
+                ArrayList args = new ArrayList();
                 Object arg = null;
                 for (int i=0; i<ctx.content().environment().arguments_list().arg().size(); i++) {
                     if (ctx.content().environment().arguments_list().arg(i).NUMBER() != null) {
@@ -81,7 +85,8 @@ public class MASProjectVisitor extends MASProjectBaseVisitor<Object> {
                     java.lang.reflect.Constructor constructor = cl.getConstructor(List.class, List.class);
                     environment = (Environment) constructor.newInstance(args, agentList);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    LOGGER.error("Error instantiating environment: " + e);
+//                    e.printStackTrace();
                 }
             }
         }
