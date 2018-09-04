@@ -8,7 +8,6 @@ package main.java.uncertain_agentspeak.ui.main;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.concurrent.*;
 import javafx.event.ActionEvent;
@@ -18,7 +17,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Window;
-import main.java.uncertain_agentspeak.agentspeak.Agent;
 import main.java.uncertain_agentspeak.mas.MASProject;
 import main.resources.antlr.mas_parser.ProjectParser;
 import org.apache.log4j.LogManager;
@@ -142,7 +140,7 @@ public class MainController implements Initializable {
             for (File child : childs) {
                 item.getChildren().add(createTree(child));
             }
-            item.setGraphic(new ImageView(getClass().getResource("../icons/folder.png").toExternalForm()));
+            item.setGraphic(new ImageView(getClass().getResource("/main/java/uncertain_agentspeak/ui/icons/folder.png").toExternalForm()));
         } else {
 //            item.setGraphic(new ImageView(getClass().getResource("text-x-generic.png").toExternalForm()));
         }
