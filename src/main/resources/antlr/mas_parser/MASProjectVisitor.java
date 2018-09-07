@@ -6,7 +6,10 @@ import main.java.uncertain_agentspeak.environment.Environment;
 import main.java.uncertain_agentspeak.mas.MASProject;
 import main.resources.antlr.MASProjectBaseVisitor;
 import main.resources.antlr.MASProjectParser;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,11 +19,12 @@ import java.util.List;
 
 public class MASProjectVisitor extends MASProjectBaseVisitor<Object> {
 
-    private Logger LOGGER = Logger.getLogger("Main");
+    private Logger LOGGER = LogManager.getLogger("Parser");
 
     public MASProject visitMas_project(MASProjectParser.Mas_projectContext ctx) {
+        ThreadContext.put("logFilename","Main");
         String name = null;
-        List<Agent> agentList = new ArrayList<>();
+        ArrayList<Agent> agentList = new ArrayList<>();
         Environment environment = new Environment();
         if (ctx.name() != null) {
             name = ctx.name().ATOM().toString();
