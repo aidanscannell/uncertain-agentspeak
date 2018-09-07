@@ -3,6 +3,8 @@ package main.java.uncertain_agentspeak.agentspeak.terms;
 import main.java.uncertain_agentspeak.agentspeak.Term;
 import main.java.uncertain_agentspeak.agentspeak.Unifier;
 
+import java.util.HashSet;
+
 /** Class that implements a term that represents a Variable */
 public class Variable extends Term {
 
@@ -50,6 +52,13 @@ public class Variable extends Term {
         } else {
             return this;
         }
+    }
+
+    @Override
+    public HashSet<Variable> getVariables() {
+        HashSet<Variable> variables = new HashSet<>();
+        variables.add(this);
+        return variables;
     }
 
     @Override

@@ -5,6 +5,7 @@ import main.java.uncertain_agentspeak.agentspeak.Unifier;
 import main.java.uncertain_agentspeak.agentspeak.terms.constants.Atom;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -89,6 +90,15 @@ public class Structure extends Term {
              newArgs.add(arg.substitute(unifier));
          }
          return new Structure(this.functor,newArgs);
+    }
+
+    @Override
+    public HashSet<Variable> getVariables() {
+        HashSet<Variable> variables = new HashSet<>();
+        for (int i = 0; i<this.getArity(); i++){
+            variables.addAll(this.getArgument(i).getVariables());
+        }
+        return variables;
     }
 
     @Override

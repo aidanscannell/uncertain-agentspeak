@@ -3,6 +3,8 @@ package main.java.uncertain_agentspeak.agentspeak.terms;
 import main.java.uncertain_agentspeak.agentspeak.Term;
 import main.java.uncertain_agentspeak.agentspeak.Unifier;
 
+import java.util.HashSet;
+
 /** Class that implements a term that represents constants (atom, number, text) */
 public class Constant extends Term {
 
@@ -31,6 +33,11 @@ public class Constant extends Term {
     @Override
     public Constant substitute(Unifier unifier) {
         return this;
+    }
+
+    @Override
+    public HashSet<Variable> getVariables() {
+        return new HashSet<>();
     }
 
 }

@@ -2,6 +2,8 @@ package main.java.uncertain_agentspeak.agentspeak;
 
 import main.java.uncertain_agentspeak.agentspeak.terms.*;
 
+import java.util.HashSet;
+
 /** Common class that implements all terms */
 public abstract class Term {
 
@@ -23,8 +25,6 @@ public abstract class Term {
     public abstract Unifier unify(Variable var);
     public abstract Unifier unify(Structure struct);
 
-    public abstract Term substitute(Unifier unifier);
-
     public Unifier unify(Term term, Unifier unifier) {
         if (unifier != null) {
             Unifier copy = unifier.copy();
@@ -39,5 +39,9 @@ public abstract class Term {
             return null;
         }
     }
+
+    public abstract Term substitute(Unifier unifier);
+
+    public abstract HashSet<Variable> getVariables();
 
 }
