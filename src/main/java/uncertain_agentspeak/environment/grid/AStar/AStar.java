@@ -172,15 +172,10 @@ public class AStar {
     }
 
     private boolean isObstacle(Node node) {
-//        if (grid[node.getPosition().getRow()][node.getPosition().getCol()] != 0) {
+        if (node.getPosition().getCol() >= grid[0].length || node.getPosition().getRow() >= grid.length) {
+            return true;
+        }
         return grid[node.getPosition().getCol()][node.getPosition().getRow()] != 0;
-        //        RoomScanner roomScanner = new RoomScanner();
-//        ArrayList<Node> obstacles = roomScanner.getObstacles();
-//        for (Node n : obstacles) {
-//            if (node.equals(n)) {
-//                return true;
-//            }
-//        }
     }
 
     private ArrayList<Node> getNeighbours(Node node) {
