@@ -1,13 +1,18 @@
 package main.java.uncertain_agentspeak.environment.grid;
 
-import org.apache.log4j.Logger;
+import main.java.uncertain_agentspeak.environment.grid.AStar.AStar;
+import main.java.uncertain_agentspeak.environment.grid.AStar.Node;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class GridWorldModel {
 
-    protected Logger LOGGER   = Logger.getLogger("Model");
+    protected Logger LOGGER   = LogManager.getLogger("Model");
 
     public static final int EMPTY = 0;
     public static final int OBSTACLE = 2;
@@ -16,8 +21,8 @@ public class GridWorldModel {
     protected int width;
     protected int height;
     protected int[][] grid;
-    protected Location[] agentPositions;
-    private GridWorldView gridWorldView;
+    public Position[] agentPositions;
+    protected GridWorldView gridWorldView;
     protected HashMap<String, Integer> agentList;
 
     protected Random random = new Random();
@@ -33,10 +38,19 @@ public class GridWorldModel {
             }
         }
 
-        agentPositions = new Location[numAgents];
+        agentPositions = new Position[numAgents];
         for (int i=0; i<numAgents; i++) {
-            agentPositions[i] = new Location(-1,-1);
+            agentPositions[i] = new Position(-1,-1);
         }
+    }
+
+    public ArrayList<Node> aStar(int agentID, int targetX, int targetY) {
+        Node start = new Node(getAgentPos(agentID).x, getAgentPos(agentID).y);
+        Node target = new Node(targetX, targetY);
+        AStar astar = new AStar(grid, width, height);
+//        System.out.println("aStar start: " + start.toString());
+//        System.out.println("aStar target: " + target.toString());
+        return astar.findPath(start, target);
     }
 
     public void setGridWorldView(GridWorldView gridWorldView) {
@@ -63,6 +77,10 @@ public class GridWorldModel {
         return agentPositions.length;
     }
 
+    public HashMap<String, Integer> getAgentList() {
+        return agentList;
+    }
+
     public int getAgentAtPos(int x, int y) {
         for (int i=0; i<agentPositions.length; i++) {
             if (agentPositions[i].x == x && agentPositions[i].y == y) {
@@ -72,11 +90,11 @@ public class GridWorldModel {
         return -1;
     }
 
-    public int getAgentAtPos(Location location) {
-        return getAgentAtPos(location.x, location.y);
+    public int getAgentAtPos(Position position) {
+        return getAgentAtPos(position.x, position.y);
     }
 
-    protected Location getAgentPos(int ag) {
+    protected Position getAgentPos(int ag) {
         try {
             if (agentPositions[ag].x == -1)
                 return null;
@@ -87,15 +105,15 @@ public class GridWorldModel {
         }
     }
 
-    protected void setPos(int object, Location oldPos, Location newPos) {
+    protected void setPos(int object, Position oldPos, Position newPos) {
         if (oldPos != null) {
             remove(object, oldPos.x, oldPos.y);
         }
         add(object, newPos.x, newPos.y);
     }
 
-//    public void setAgPos(int ag, Location l) {
-//        Location oldLoc = getAgentPos(ag);
+//    public void setAgPos(int ag, Position l) {
+//        Position oldLoc = getAgentPos(ag);
 //        if (oldLoc != null) {
 //            remove(AGENT, oldLoc.x, oldLoc.y);
 //        }
@@ -104,26 +122,26 @@ public class GridWorldModel {
 //    }
 //
 //    public void setAgPos(int ag, int x, int y) {
-//        setAgPos(ag, new Location(x, y));
+//        setAgPos(ag, new Position(x, y));
 //    }
 
     protected boolean inGrid(int x, int y) {
         return x < this.width && x >= 0 && y < this.height && y >= 0;
     }
 
-    protected boolean inGrid(Location location) {
-        return inGrid(location.x, location.y);
+    protected boolean inGrid(Position position) {
+        return inGrid(position.x, position.y);
     }
 
     protected boolean hasObject(int object, int x, int y) {
         return inGrid(x, y) && grid[x][y] == object;
     }
 
-    protected boolean hasObject(int object, Location location) {
-        return hasObject(object, location.x, location.y);
+    protected boolean hasObject(int object, Position position) {
+        return hasObject(object, position.x, position.y);
     }
 
-    public void add(int value, Location l) {
+    public void add(int value, Position l) {
         add(value, l.x, l.y);
     }
 
@@ -132,7 +150,7 @@ public class GridWorldModel {
         if (gridWorldView != null) gridWorldView.update(x,y);
     }
 
-    protected void remove(int value, Location l) {
+    protected void remove(int value, Position l) {
         remove(value, l.x, l.y);
     }
 
@@ -145,7 +163,7 @@ public class GridWorldModel {
         return grid[x][y] == 0;
     }
 
-    protected boolean isFree(Location l) {
+    protected boolean isFree(Position l) {
         return isFree(l.x, l.y);
     }
 
@@ -153,7 +171,7 @@ public class GridWorldModel {
         return inGrid(x, y) && (grid[x][y] & OBSTACLE) == 0 && (grid[x][y] & AGENT) == 0;
     }
 
-    protected boolean isFree(int obj, Location l) {
+    protected boolean isFree(int obj, Position l) {
         return inGrid(l.x, l.y) && (grid[l.x][l.y] & obj) == 0;
     }
 
@@ -161,18 +179,18 @@ public class GridWorldModel {
         return inGrid(x, y) && (grid[x][y] & obj) == 0;
     }
 
-    protected boolean isFreeOfObstacle(Location l) {
+    protected boolean isFreeOfObstacle(Position l) {
         return isFree(OBSTACLE, l);
     }
     protected boolean isFreeOfObstacle(int x, int y) {
         return isFree(OBSTACLE, x, y);
     }
 
-    protected Location getFreePos() {
+    protected Position getFreePos() {
         for (int i=0; i<(getWidth()*getHeight()*5); i++) {
             int x = random.nextInt(getWidth());
             int y = random.nextInt(getHeight());
-            Location l = new Location(x,y);
+            Position l = new Position(x,y);
             if (isFree(l)) {
                 return l;
             }

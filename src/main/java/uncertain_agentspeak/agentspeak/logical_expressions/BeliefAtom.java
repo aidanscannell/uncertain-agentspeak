@@ -7,7 +7,6 @@ import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.B
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.belief_literals.NegativeLiteral;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.belief_literals.PositiveLiteral;
 
-import javax.naming.OperationNotSupportedException;
 import java.util.HashSet;
 
 public class BeliefAtom extends LogicalExpression {

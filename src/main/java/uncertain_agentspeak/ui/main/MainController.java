@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main.java.uncertain_agentspeak.ui.main;
 
 import java.io.File;
@@ -10,6 +5,7 @@ import java.io.FileInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.*;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,10 +13,13 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Window;
+
+import main.java.uncertain_agentspeak.agentspeak.Agent;
 import main.java.uncertain_agentspeak.mas.MASProject;
 import main.resources.antlr.mas_parser.ProjectParser;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 
 /**
@@ -47,7 +46,7 @@ public class MainController implements Initializable {
     @FXML
     private TextArea textArea;
 
-    private ExecutorService executorService = Executors.newSingleThreadExecutor();
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
     private MASProject project;
     private File projectDirectory;
 
@@ -116,17 +115,41 @@ public class MainController implements Initializable {
                 project.run();
                 return null;
             };
-            executorService.submit(callableTask);
+            executor.submit(callableTask);
         } catch (Exception e) {
             LOGGER.error("Error running project: " + e);
         }
 
     }
 
+
+
     @FXML
-    private void stopProject(ActionEvent event) {
+    public void stopProject(ActionEvent event) {
+        for (Agent agent : project.getAgents()) {
+            agent.setRunning(false);
+        }
+        stop();
+    }
+
+    public void stop() {
         project.stop();
-        executorService.shutdownNow();
+        ThreadContext.put("logFilename","Main");
+        try {
+            LOGGER.info("Attempt to shutdown main project executor");
+            executor.shutdown();
+            executor.awaitTermination(1000, TimeUnit.MILLISECONDS);
+        }
+        catch (InterruptedException e) {
+            LOGGER.info("Tasks interrupted");
+        }
+        finally {
+            if (!executor.isTerminated()) {
+                LOGGER.error("Cancel non-finished tasks");
+            }
+            executor.shutdownNow();
+            LOGGER.info("Shutdown finished");
+        }
     }
 
     @FXML

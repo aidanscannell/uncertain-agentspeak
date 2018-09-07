@@ -1,16 +1,29 @@
 package main.java.uncertain_agentspeak.agentspeak;
 
+import main.java.uncertain_agentspeak.agentspeak.actions.belief_actions.ReviseBeliefAction;
+import main.java.uncertain_agentspeak.agentspeak.logical_expressions.BeliefAtom;
 import main.java.uncertain_agentspeak.environment.Environment;
+import main.java.uncertain_agentspeak.environment.EnvironmentEvent;
+import main.java.uncertain_agentspeak.environment.EnvironmentEventListener;
+import main.java.uncertain_agentspeak.ui.agent_console.AgentEvent;
+import main.java.uncertain_agentspeak.ui.agent_console.AgentEventListener;
+import main.java.uncertain_agentspeak.environment.ViewEventListener;
 import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
-import org.apache.log4j.Logger;
+
+import main.java.uncertain_agentspeak.uncertainty.epistemic_states.CompactEpistemicState;
+import main.resources.antlr.as_parser.AgentParser;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
+import java.sql.Timestamp;
 
-public class Agent {
+public class Agent implements EnvironmentEventListener, ViewEventListener {
 
-    private Logger LOGGER = Logger.getLogger("Agent");
+    private Logger LOGGER = LogManager.getLogger("Agent");
+
+    private final AgentParser parser = new AgentParser();
 
     private GlobalUncertainBelief beliefBase;
     private EventSet eventSet;
@@ -19,12 +32,16 @@ public class Agent {
     private Environment environment;
     private String name;
     private int id;
+    private boolean isRunning;
+
+    private AgentEventListener listener;
 
     public Agent(){
         this.beliefBase = new BeliefBase();
         this.eventSet = new EventSet();
         this.planLibrary = new PlanLibrary();
         this.intentionSet = new IntentionSet();
+        isRunning = true;
     }
 
     public void setBeliefBase(GlobalUncertainBelief beliefBase) {
@@ -49,13 +66,14 @@ public class Agent {
 
     public void setName(String name) {
         this.name = name;
-//        LOGGER = LogManager.getLogger(name);
-//        ThreadContext.put("logFilename",name);
-//        Thread.currentThread().setName(name);
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setRunning(boolean running) {
+        isRunning = running;
     }
 
     public GlobalUncertainBelief getBeliefBase() {
@@ -82,11 +100,32 @@ public class Agent {
         return id;
     }
 
-    public void run() throws Exception {
+    public void reviseBelief(String input) {
+        ReviseBeliefAction reviseBeliefAction = parser.parseAction(input);
+        try {
+            reviseBeliefAction.executeAction(name, new Intention(), new Unifier(), beliefBase, eventSet, environment);
+            LOGGER.info("Successfully revised GUB for ReviseBeliefAction with input: " + input);
+        } catch (Exception e) {
+            LOGGER.warn("Error revising GUB for ReviseBeliefAction with input: " + input);
+        }
+        try {
+            HashSet<BeliefAtom> domain = new HashSet<>();
+            domain.add(reviseBeliefAction.getBeliefLiteral().getBeliefAtom());
+            CompactEpistemicState epistemicState = new CompactEpistemicState(domain);
+            beliefBase.addEpistemicState(epistemicState);
+            reviseBeliefAction.executeAction(name, new Intention(), new Unifier(), beliefBase, eventSet, environment);
+            LOGGER.info("Successfully added new epistemic state and revised GUB with input: " + input);
+        } catch (Exception e) {
+            LOGGER.warn("Error adding/revising GUB with input: " + input);
+        }
+    }
+
+    public void run() {
 
         ThreadContext.put("logFilename",name);
+//        System.out.println(beliefBase.toString());
 
-        while (!eventSet.isEmpty() || !intentionSet.isEmpty()) {
+        while ((!eventSet.isEmpty() || !intentionSet.isEmpty()) && isRunning == true) {
 
             try { Thread.sleep(1000); } catch (Exception e) {}
 
@@ -94,14 +133,24 @@ public class Agent {
 
                 Event event = eventSet.selectEvent();
                 LOGGER.info("Event selected: " + event.toString());
+                notifyListener("Event selected: " + event.toString());
 
                 if (event != null) {
-                    IntendedMeans intendedMeans = selectPlan(event);
-                    if (intendedMeans != null) {
-                        LOGGER.info("Plan selected: " + intendedMeans.getPlan().toString() + "     " + intendedMeans.getUnifier().toString());
-                        intentionSet.addIntention(event, intendedMeans);
-                        LOGGER.info("Intention added: " + intentionSet.toString());
+                    try {
+                        IntendedMeans intendedMeans = selectPlan(event);
+                        if (intendedMeans != null) {
+                            LOGGER.info("Plan selected: " + intendedMeans.getPlan().toString() + "     " + intendedMeans.getUnifier().toString());
+                            notifyListener("Plan selected: " + intendedMeans.getPlan().toString() + "     " + intendedMeans.getUnifier().toString());
+                            intentionSet.addIntention(event, intendedMeans);
+                            LOGGER.info("Intention added: " + intentionSet.toString());
+                            //TODO: peeking at correct intention??
+                            notifyListener("Intention added: " + intentionSet.peekFirst().toString());
+                        }
+                    } catch (Exception e) {
+                        LOGGER.error("Error selecting plan: " + e);
                     }
+
+
                 }
             }
 
@@ -109,10 +158,17 @@ public class Agent {
 
                 Intention intention = intentionSet.selectIntention();
                 LOGGER.info("Intention selected: " + intention.toString());
+                notifyListener("Intention selected: " + intention.toString());
 
                 if (intention != null) {
-                    intention.executeIntention(name, intentionSet, beliefBase, eventSet, environment);
-                    LOGGER.info("Intention executed");
+                    try {
+                        intention.executeIntention(name, intentionSet, beliefBase, eventSet, environment);
+                        LOGGER.info("Intention executed");
+                        notifyListener("Intention executed");
+                    } catch (Exception e) {
+                            LOGGER.error("Error executing intention: " + e);
+                    }
+
                 }
             }
         }
@@ -122,8 +178,10 @@ public class Agent {
         Deque<IntendedMeans> relevantPlans = selectRelevantPlans(event);
         if (!relevantPlans.isEmpty()) {
             LOGGER.info("First Relevant Plan: " + relevantPlans.getFirst().getPlan().toString());
+            notifyListener("Relevant Plan: " + relevantPlans.getFirst().getPlan().toString());
             Deque<IntendedMeans> applicablePlans = selectApplicablePlans(relevantPlans);
             if (!applicablePlans.isEmpty()) {
+                notifyListener("Applicable Plan: " + applicablePlans.getFirst().getPlan().toString());
                 return selectPlan(applicablePlans);
             }
         }
@@ -153,12 +211,43 @@ public class Agent {
             LogicalExpression context = relevantPlan.getPlan().getContext(); // get context of current plan
             if (context != null) {
                 Unifier applicableUnifier = this.getBeliefBase().entails(context, relevantPlan.getUnifier());
+//                Unifier applicableUnifier = this.getBeliefBase().entails(context.substitute(relevantPlan.getUnifier()));
+//                System.out.println("Unifier: " + applicableUnifier.toString());
                 if (applicableUnifier != null) {
                     applicablePlans.add(new IntendedMeans(relevantPlan.getPlan(),applicableUnifier));
                 }
             }
         }
         return applicablePlans;
+    }
+
+    /** Handle event from environment (percepts) */
+    @Override
+    public void handleEnvEvent(EnvironmentEvent environmentEvent) {
+        LOGGER.info("Agent perceived: " + environmentEvent.getAgentPercepts().toString());
+        if (environmentEvent.getAgentPercepts() != null) {
+            for (String belief : environmentEvent.getAgentPercepts()) {
+                reviseBelief(belief);
+            }
+        }
+    }
+
+    /** Handle event from GUI (GridWorldView) when user wants to stop running */
+    @Override
+    public void handleEvent(EventObject event) {
+        isRunning = false;
+    }
+
+    public void notifyListener(String text) {
+        Date date = new Date();
+        Timestamp timestamp = new Timestamp(date.getTime());
+        AgentEvent event = new AgentEvent(this, text, timestamp);
+        AgentEventListener interested = listener;
+        interested.handleEvent(event);
+    }
+
+    public void addAgentEventListener(AgentEventListener listener) {
+        this.listener = listener;
     }
 
 }

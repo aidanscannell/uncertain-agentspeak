@@ -1,29 +1,23 @@
 package main.java.uncertain_agentspeak.environment;
 
 import javafx.application.Platform;
-import javafx.stage.Stage;
+
 import main.java.uncertain_agentspeak.agentspeak.Agent;
-import main.java.uncertain_agentspeak.agentspeak.LogicalExpression;
 import main.java.uncertain_agentspeak.agentspeak.actions.EnvironmentAction;
-import main.java.uncertain_agentspeak.environment.grid.GridWorldModel;
-import main.java.uncertain_agentspeak.environment.grid.GridWorldView;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
-import test.java.marsExplorationScenario.environment.MarsModel;
-import test.java.marsExplorationScenario.environment.MarsView;
 
 import java.util.*;
 import java.util.concurrent.*;
 
 public class Environment {
 
-    protected Logger LOGGER = Logger.getLogger("Environment");
+    protected Logger LOGGER = LogManager.getLogger("Environment");
 
-    protected GridWorldModel model;
-    protected GridWorldView stage;
-
-    private List<LogicalExpression> percepts = Collections.synchronizedList(new ArrayList<>());
-    private Map<String, List<LogicalExpression>> agentPercepts = new ConcurrentHashMap<>();
+    private List<String> perceptsAllAgents = Collections.synchronizedList(new ArrayList<>());
+    private Map<String, ArrayList<String>> agentPercepts = new ConcurrentHashMap<>();
 
     protected int numAgents;
     protected List<Agent> agents;
@@ -31,14 +25,12 @@ public class Environment {
 
     private Set<String> upToDateAgents = Collections.synchronizedSet(new HashSet<>());
 
-//    private Stage stage;
+    private EnvironmentEventListener[] listeners;
 
     public Environment() {
-//        executor = Executors.newFixedThreadPool(4);
     }
 
     public Environment(List args, List<Agent> agents) {
-//        executor = Executors.newFixedThreadPool(4);
         this.agents = agents;
         init(args);
     }
@@ -50,23 +42,30 @@ public class Environment {
     public boolean scheduleAction(String agentName, EnvironmentAction action) {
         LOGGER.info("Agent " + agentName + ", scheduling action: " + action.toString());
 
+        System.out.println("Agent percepts start: " + agentPercepts.toString());
+
         runAndWait( () -> {
             try {
                 ThreadContext.put("logFilename",agentName);
-                LOGGER.info("Agent " + agentName + ", executing " + action.toString() + " on MarsEnvironment.");
-                executeAction(agentName, action);
-                LOGGER.info("Environment action executed: " + action.toString());
+                LOGGER.info("Agent " + agentName + ", executing " + action.toString() + " on Environment.");
+                if (executeAction(agentName, action)) {
+                    LOGGER.info("Environment action executed: " + action.toString());
+                } else {
+                    LOGGER.info("Error executing environment action: " + action.toString());
+                }
             } catch (Exception e) {
                 LOGGER.error("Error executing environment action: " + action.toString() + ". Error: " + e.toString());
-//                e.printStackTrace();
+                e.printStackTrace();
             }
+            notifyListener(agentName);
             ThreadContext.put("logFilename","Main");
         });
+        System.out.println("Agent percepts end: " + agentPercepts.toString());
         return true;
         //TODO return true/false accordingly
     }
 
-    public synchronized boolean executeAction(String agentName, EnvironmentAction action) {
+    public synchronized boolean executeAction(String agentName, EnvironmentAction action) throws Exception {
         LOGGER.info("environment action from schedule action: " + action.toString());
         LOGGER.info("The action " + action + " done by " + agentName + " is not implemented in the default environment.");
         return false;
@@ -97,50 +96,132 @@ public class Environment {
         }
     }
 
+//    public void notifyListeners(Environment env) {
+//        EnvironmentEvent event = new EnvironmentEvent(this, agentPercepts.g, perceptsAllAgents);
+//        EnvironmentEventListener interested[] = listeners;
+//        for (int i = 0; i < interested.length; i++)
+//            interested[i].handleEnvEvent(event);
+//    }
 
-//    public Collection<LogicalExpression> getPercepts(String agentName) {
+    public void notifyListener(String agentName) {
+        if (agentPercepts.containsKey(agentName) && !upToDateAgents.contains(agentName)) {
+            upToDateAgents.add(agentName);
+            EnvironmentEvent event = new EnvironmentEvent(this, agentPercepts.get(agentName));
+            EnvironmentEventListener interested[] = listeners;
+            int i = agentList.get(agentName);
+            interested[i].handleEnvEvent(event);
+        }
+    }
+
+    public void addEnvEventListener(EnvironmentEventListener listener) {
+        if (listeners == null) {
+            listeners = new EnvironmentEventListener[] { listener };
+        } else {
+            EnvironmentEventListener results[] = new EnvironmentEventListener[listeners.length + 1];
+            for (int i = 0; i < listeners.length; i++)
+                results[i] = listeners[i];
+            results[listeners.length] = listener;
+            listeners = results;
+        }
+    }
+
+
+    /** Override in users evnironment to enable MASProject to listen for events from GUI (stage) */
+    public void addViewEventListener(ViewEventListener viewEventListener) {
+    }
+
+//    /** Return percepts for a given agent */
+//    public ArrayList<String> getPercepts(String agentName) {
 //        if (upToDateAgents.contains(agentName)) {
 //            return null;
 //        }
-//
 //        upToDateAgents.add(agentName);
-//
-//        int size = percepts.size();
-//        List<LogicalExpression> agl = agentPercepts.get(agentName);
-//        if (agl != null) {
-//            size += agl.size();
+//        int size = perceptsAllAgents.size();
+//        ArrayList<String> agPercepts = agentPercepts.get(agentName);
+//        if (agPercepts != null) {
+//            size += agPercepts.size();
 //        }
-//        Collection<LogicalExpression> p = new ArrayList<>(size);
+//        ArrayList<String> p = new ArrayList<>(size);
 //
-//        if (!percepts.isEmpty()) {
-//            synchronized (percepts) {
-//                p.addAll(percepts);
+//        if (!perceptsAllAgents.isEmpty()) {
+//            synchronized (perceptsAllAgents) {
+//                p.addAll(perceptsAllAgents);
 //            }
 //        }
-//        if (agl != null) {
-//            synchronized (agl) {
-//                p.addAll(agl);
+//        if (agPercepts != null) {
+//            synchronized (agPercepts) {
+//                p.addAll(agPercepts);
 //            }
 //        }
 //        return p;
 //    }
 
-//    public void addPercept(LogicalExpression... perceptions) {
-//        if (perceptions != null) {
-//            for (LogicalExpression per: perceptions) {
-//                if (! percepts.contains(per)) {
-//                    percepts.add(per);
+//    /** Add percept for every agent */
+//    public void addPercept(ArrayList<String> percepts) {
+//        if (percepts != null) {
+//            for (String percept : percepts) {
+//                if (!perceptsAllAgents.contains(percept)) {
+//                    perceptsAllAgents.add(percept);
 //                }
 //            }
 //            upToDateAgents.clear();
 //        }
 //    }
-
-//    public boolean removePercept(LogicalExpression per) {
-//        if (per != null) {
+//
+//    /** Remove percept for all agents */
+//    public boolean removePercept(ArrayList<String> percepts) {
+//        boolean success = false;
+//        if (percepts != null) {
 //            upToDateAgents.clear();
-//            return percepts.remove(per);
+//            for (String percept : percepts) {
+//                if (perceptsAllAgents.contains(percept)) {
+//                    perceptsAllAgents.remove(percept);
+//                    success = true;
+//                }
+//            }
 //        }
-//        return false;
+//        return success;
 //    }
+
+    /** Add percept for single agent */
+    public void addPercept(String agentName, ArrayList<String> percepts) {
+        if (percepts != null && agentList.containsKey(agentName) && !agentPercepts.containsValue(percepts)) {
+            ArrayList<String> agentPerceptsOld = agentPercepts.get(agentName);
+//            if (agentPerceptsOld == null) {
+//                agentPercepts.put(agentName, agentPerceptsOld);
+//            }
+            agentPercepts.put(agentName, percepts);
+            upToDateAgents.remove(agentName);
+//            for (String percept: percepts) {
+//                if (!perceptsAllAgents.contains(percept)) {
+//                    upToDateAgents.remove(agentName);
+//                    perceptsAllAgents.add(percept);
+//                }
+//            }
+        }
+    }
+
+    /** Add percept for single agent */
+    public void removePercept(String agentName, ArrayList<String> percepts) {
+        if (percepts != null && agentList.containsKey(agentName) && agentPercepts.containsValue(percepts)) {
+            agentPercepts.remove(agentName, percepts);
+            upToDateAgents.remove(agentName);
+        }
+    }
+
+    /** Clear all agents percepts */
+    public void clearPercepts() {
+        if (!agentPercepts.isEmpty()) {
+            upToDateAgents.clear();
+            agentPercepts.clear();
+        }
+    }
+
+    /** Clear all of one agents percepts */
+    public void clearPercepts(String agentName) {
+        if (!agentPercepts.containsKey(agentName)) {
+            upToDateAgents.remove(agentName);
+            agentPercepts.remove(agentName);
+        }
+    }
 }

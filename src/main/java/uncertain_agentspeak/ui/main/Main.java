@@ -1,12 +1,15 @@
 package main.java.uncertain_agentspeak.ui.main;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
+import javafx.stage.WindowEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 
 /**
@@ -33,6 +36,11 @@ public class Main extends Application {
             primaryStage.setTitle("Uncertain Agentspeak IDE");
             primaryStage.setScene(new Scene(root, 900, 500));
             primaryStage.show();
+            primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent we) {
+                    controller.stop();
+                }
+            });
             LOGGER.info("Loaded Uncertain AgentSpeak IDE");
         } catch (Exception e) {
             LOGGER.error("Error loading main.fxml : " + e);

@@ -71,7 +71,5 @@ libs/
 
 # Log4j2 binaries
 apache_log4j/
-.idea/artifacts/
-.idea/compiler.xml
-.idea/excludeFromValidation.xml
+.idea/
 src/META-INF/

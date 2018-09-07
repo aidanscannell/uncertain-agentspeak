@@ -178,25 +178,36 @@ public class MarsWorldFactory {
     /** world with SAMPLE_A and obstacles */
     public static MarsModel world2(List<Agent> agents) {
         MarsModel model = new MarsModel(15, 15, agents.size());
+
+        // Location 1
         model.add(MarsModel.WATER_OR_ICE, 4, 3);
 
-//        model.add(MarsModel.FOSSILS, 8, 4);
+        // Location 2
+//        model.add(MarsModel.FOSSILS, 1, 6);
 
-        model.add(MarsModel.LIVING_ORGANISMS, 14, 3);
+        // Location 3
+        model.add(MarsModel.LIVING_ORGANISMS, 3, 14);
 
-        model.add(MarsModel.WATER_OR_ICE, 1, 6);
+        // Location 4
+        model.add(MarsModel.WATER_OR_ICE, 8, 4);
 
+        // Location 5
         model.add(MarsModel.FOSSILS, 8, 9);
 
-//        model.add(MarsModel.WATER_OR_ICE, 14, 6);
+        // Location 6
+//        model.add(MarsModel.WATER_OR_ICE, 6, 14);
 
-        model.add(MarsModel.FOSSILS, 3, 14);
+        // Location 7
+        model.add(MarsModel.FOSSILS, 14, 3);
 
-//        model.add(MarsModel.WATER_OR_ICE, 9, 14);
+        // Location 8
+//        model.add(MarsModel.WATER_OR_ICE, 14, 9);
 
+        // Location 9
 //        model.add(MarsModel.WATER_OR_ICE, 14, 12);
 
         model.initAgents(agents);
+        model.initLocations();
         return model;
     }
 }

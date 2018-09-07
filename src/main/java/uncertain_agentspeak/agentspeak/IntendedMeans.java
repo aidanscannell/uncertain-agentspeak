@@ -1,7 +1,6 @@
 package main.java.uncertain_agentspeak.agentspeak;
 
 import main.java.uncertain_agentspeak.agentspeak.actions.goal_actions.AchievementGoalAction;
-import main.java.uncertain_agentspeak.agentspeak.actions.goal_actions.TestGoalAction;
 import main.java.uncertain_agentspeak.environment.Environment;
 import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
 

@@ -9,7 +9,7 @@ MAS marsExplorationScenario {
     agents:
         sampleAgentA ;
 
-        // sampleAgentB ;
+        sampleAgentB ;
 
         // analysisAgent ;
 
