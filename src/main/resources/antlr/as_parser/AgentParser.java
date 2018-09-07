@@ -1,17 +1,14 @@
 package main.resources.antlr.as_parser;
 
-//import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakLexer;
-//import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakParser;
-//import main.resources.antlr.uncertain_agentspeak.UncertainAgentspeakVisitor;
-import main.java.uncertain_agentspeak.agentspeak.Agent;
-import main.java.uncertain_agentspeak.agentspeak.LogicalExpression;
-import main.java.uncertain_agentspeak.agentspeak.Plan;
-import main.java.uncertain_agentspeak.agentspeak.Term;
+import main.java.uncertain_agentspeak.agentspeak.*;
+import main.java.uncertain_agentspeak.agentspeak.actions.BeliefAction;
+import main.java.uncertain_agentspeak.agentspeak.actions.belief_actions.ReviseBeliefAction;
+import main.java.uncertain_agentspeak.agentspeak.event_triggers.belief_event_triggers.ReviseBeliefET;
+import main.java.uncertain_agentspeak.agentspeak.events.ExternalEvent;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.BeliefAtom;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.BeliefLiteral;
 import main.resources.antlr.UncertainAgentspeakLexer;
 import main.resources.antlr.UncertainAgentspeakParser;
-import main.resources.antlr.as_parser.UncertainAgentspeakVisitor;
 
 import org.antlr.v4.runtime.*;
 
@@ -105,6 +102,32 @@ public class AgentParser {
 
         UncertainAgentspeakParser.Log_exprContext log_exprContext = agentspeakParser.log_expr();
         return (LogicalExpression) uncertainAgentspeakVisitor.visitLog_expr(log_exprContext);
+    }
+
+    public Event parseEvent(String input) {
+        ANTLRInputStream inputStream = new ANTLRInputStream(input);
+        UncertainAgentspeakLexer agentspeakLexer = new UncertainAgentspeakLexer(inputStream);
+        CommonTokenStream commonTokenStream = new CommonTokenStream(agentspeakLexer);
+        UncertainAgentspeakParser agentspeakParser= new UncertainAgentspeakParser(commonTokenStream);
+
+        UncertainAgentspeakVisitor uncertainAgentspeakVisitor = new UncertainAgentspeakVisitor();
+
+        UncertainAgentspeakParser.EventContext eventContext = agentspeakParser.event();
+        ReviseBeliefET reviseBeliefET = (ReviseBeliefET) uncertainAgentspeakVisitor.visitEvent(eventContext);
+        return new ExternalEvent(reviseBeliefET);
+    }
+
+    public ReviseBeliefAction parseAction(String input) {
+        ANTLRInputStream inputStream = new ANTLRInputStream(input);
+        UncertainAgentspeakLexer agentspeakLexer = new UncertainAgentspeakLexer(inputStream);
+        CommonTokenStream commonTokenStream = new CommonTokenStream(agentspeakLexer);
+        UncertainAgentspeakParser agentspeakParser= new UncertainAgentspeakParser(commonTokenStream);
+
+        UncertainAgentspeakVisitor uncertainAgentspeakVisitor = new UncertainAgentspeakVisitor();
+
+        UncertainAgentspeakParser.Belief_actionContext belief_actionContext = agentspeakParser.belief_action();
+        ReviseBeliefAction beliefAction = (ReviseBeliefAction) uncertainAgentspeakVisitor.visitBelief_action(belief_actionContext);
+        return beliefAction;
     }
 
 }
