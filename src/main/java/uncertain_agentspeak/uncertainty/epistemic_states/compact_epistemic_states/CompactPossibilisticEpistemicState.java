@@ -66,22 +66,27 @@ public class CompactPossibilisticEpistemicState extends CompactEpistemicState {
             /** Check if the belief literal equals the domain belief atom, if it is positive or negative and then
              * revise accordingly
              * **/
+            double alpha;
+            Weight oldWeight = getPossibilityMeasure(beliefAtom);
+            if (beliefLiteral.isPositive()) {
+                alpha = Math.max(oldWeight.getPositive(), 1 - weight);
+            } else {
+                alpha = Math.max(1 - weight, oldWeight.getNegative());
+            }
             if (beliefLiteral.getBeliefAtom().equals(beliefAtomDomain)) {
                 if (beliefLiteral.isPositive()) {
-                    w.setNegative(Math.min(w.getNegative(),1-weight));
+                    w.setNegative(Math.min(w.getNegative(), Math.min(1-weight, alpha)));
+                    w.setPositive(Math.min(w.getPositive(), alpha));
                 } else {
-                    w.setPositive(Math.min(w.getPositive(),1-weight));
+                    w.setNegative(Math.min(w.getNegative(), alpha));
+                    w.setPositive(Math.min(w.getPositive(),Math.min(1-weight, alpha)));
                 }
             } else {
-                double alpha;
-                if (beliefLiteral.isPositive()) {
-                    alpha = Math.max(w.getPositive(), 1 - weight);
-                } else {
-                    alpha = Math.max(1 - weight, w.getNegative());
-                }
+
                 w.setPositive(Math.min(w.getPositive(),alpha));
                 w.setNegative(Math.min(w.getNegative(),alpha));
             }
+
 
             /** If the atom is contained in the weighted belief base and it's revised weight is equal to the initial
              * possibilistic weight then remove it from the weighted belief base, otherwise put the belief atom and
