@@ -1,6 +1,7 @@
 package main.java.uncertain_agentspeak.uncertainty;
 
 import main.java.uncertain_agentspeak.agentspeak.LogicalExpression;
+import main.java.uncertain_agentspeak.agentspeak.Term;
 import main.java.uncertain_agentspeak.agentspeak.Unifier;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.BeliefAtom;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.RelationalExpression;
@@ -10,17 +11,17 @@ import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.B
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.Primitive;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Contradiction;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Tautology;
+import main.java.uncertain_agentspeak.agentspeak.terms.Variable;
 import main.java.uncertain_agentspeak.exceptions.NotGroundException;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.CompactEpistemicState;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.compact_epistemic_states.CompactPossibilisticEpistemicState;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.compact_epistemic_states.CompactProbabilisticEpistemicState;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.time.temporal.Temporal;
+import java.util.*;
 
 public class GlobalUncertainBelief {
 
@@ -93,19 +94,70 @@ public class GlobalUncertainBelief {
         return false;
     }
 
+    private HashSet<Unifier> getUnifiers(LogicalExpression logicalExpression, Unifier unifier) throws Exception {
+
+        HashSet<BeliefAtom> beliefAtoms = logicalExpression.substitute(unifier).getBeliefAtoms();
+        ArrayList<Variable> freeVariables = new ArrayList<>();
+
+        // Get the free variables in the logical expression
+        for ( BeliefAtom beliefAtom : beliefAtoms) {
+            if (!beliefAtom.isGround()) {
+                freeVariables.addAll(beliefAtom.getTerm().getVariables());
+            }
+        }
+//        System.out.println("Free variables: " + freeVariables.toString());
+//        System.out.println("Belief Atoms subbed: " + beliefAtoms.toString());
+
+        // Get the set of Term's each free variable could be instantiated with
+        HashMap<Variable, HashSet<Term>> varTermMap = new HashMap<>();
+        for (Variable variable : freeVariables) {
+            for (CompactEpistemicState compactEpistemicState : getRelevantEpistemicStates(logicalExpression.substitute(unifier))) {
+                for (BeliefAtom beliefAtom : beliefAtoms) {
+                    if (beliefAtom.getTerm().getVariables() != null) {
+                        if (beliefAtom.getTerm().getVariables().contains(variable)) {
+                            varTermMap.put(variable, compactEpistemicState.getUnifiers(beliefAtom, variable));
+                        }
+                    }
+                }
+            }
+        }
+//        System.out.println("Terms for each variable: " + varTermMap.toString());
+
+        // recursive method to create a Unifier for every combination of variable substitution
+        return combine(0, unifier, varTermMap, new HashSet<>());
+    }
+
+    public HashSet<Unifier> combine(int index, Unifier current, Map<Variable,HashSet<Term>> map, HashSet<Unifier> list) {
+        if(index == map.size()) {
+            Unifier newUnifier = new Unifier();
+            for(Variable key: current.keySet()) {
+                newUnifier.put(key, current.get(key));
+            }
+            list.add(newUnifier);
+        } else {
+            Object currentKey = map.keySet().toArray()[index];
+            for(Term value: map.get(currentKey)) {
+                current.put((Variable)currentKey, value);
+                combine(index + 1, current, map, list);
+                current.remove(currentKey);
+            }
+        }
+        return list;
+    }
+
     public Unifier entails(LogicalExpression logicalExpression) throws Exception {
         return entails(logicalExpression, new Unifier());
     }
 
     public Unifier entails(LogicalExpression logicalExpression, Unifier unifier) throws Exception {
-//        System.out.println("getting unifiers");
+//        System.out.println("Getting unifiers");
         HashSet<Unifier> unifiers = this.getUnifiers(logicalExpression, unifier);
-//        System.out.println("Got unifiers");
-//        System.out.println(unifiers);
+//        System.out.println("Got unifiers: " + unifiers);
+//        System.out.println("Got unifiers, size: " + unifiers.size());
 
         for (Unifier u : unifiers) {
-//            System.out.println("NEW UNIFIER TEST: " + u);
-//            System.out.println(logicalExpression.getClass());
+//            System.out.println("Testing unifier: " + u);
+//            System.out.println("Formula class: " + logicalExpression.getClass() + " for " + logicalExpression);
             Unifier unifierValid = null;
             if (logicalExpression instanceof Conjunction) {
                 unifierValid = entails((Conjunction) logicalExpression, u);
@@ -128,8 +180,6 @@ public class GlobalUncertainBelief {
             } else if (logicalExpression instanceof Tautology) {
                 unifierValid = entails((Tautology) logicalExpression, u);
             }
-//            System.out.println("Valid unifier: " + unifierValid);
-//            System.out.println(logicalExpression.getClass());
             if (unifierValid != null) {
                 return  unifierValid;
             }
@@ -366,101 +416,6 @@ public class GlobalUncertainBelief {
             }
         }
         return null;
-    }
-
-
-    private HashSet<Unifier> getUnifiers(LogicalExpression logicalExpression, Unifier unifier) throws Exception {
-
-        if(logicalExpression instanceof Primitive) {
-            return this.getUnifiers((Primitive)logicalExpression, unifier);
-        } else if(logicalExpression instanceof BeliefAtom) {
-            return this.getUnifiers((BeliefAtom)logicalExpression, unifier);
-        } else if(logicalExpression instanceof BeliefLiteral) {
-            return this.getUnifiers((BeliefLiteral)logicalExpression, unifier);
-        } else if(logicalExpression instanceof Conjunction) {
-            return this.getUnifiers((Conjunction)logicalExpression, unifier);
-        } else if(logicalExpression instanceof Disjunction) {
-            return this.getUnifiers((Disjunction)logicalExpression, unifier);
-        } else if(logicalExpression instanceof GreaterEqualsPlausibility) {
-            return this.getUnifiers((GreaterEqualsPlausibility)logicalExpression, unifier);
-        } else if(logicalExpression instanceof GreaterThanPlausibility) {
-            return this.getUnifiers((GreaterThanPlausibility)logicalExpression, unifier);
-        } else if(logicalExpression instanceof Negation) {
-            return this.getUnifiers((Negation)logicalExpression, unifier);
-        } else if(logicalExpression instanceof RelationalExpression) {
-            return this.getUnifiers((RelationalExpression)logicalExpression, unifier);
-        } else {
-            return null;
-//            //TODO: throw exception
-        }
-    }
-
-    private HashSet<Unifier> getUnifiers(Conjunction conjunction, Unifier unifier) throws Exception {
-        HashSet<Unifier> unifiersL = this.getUnifiers(conjunction.getLeft(), unifier);
-        HashSet<Unifier> unifiersR = new HashSet<>();
-        for (Unifier u : unifiersL) {
-            unifiersR.addAll(this.getUnifiers(conjunction.getRight(), u));
-        }
-        return unifiersR;
-    }
-
-    private HashSet<Unifier> getUnifiers(Disjunction disjunction, Unifier unifier) throws  Exception {
-        HashSet<Unifier> unifiersL = this.getUnifiers(disjunction.getLeft(), unifier);
-        HashSet<Unifier> unifiersR = new HashSet<>();
-        for (Unifier u : unifiersL) {
-            unifiersR.addAll(this.getUnifiers(disjunction.getRight(), u));
-        }
-        return unifiersR;
-    }
-
-    private HashSet<Unifier> getUnifiers(Primitive primitive, Unifier unifier) {
-        HashSet<Unifier> unifiers = new HashSet<>();
-        unifiers.add(unifier);
-        return unifiers;
-    }
-
-    private HashSet<Unifier> getUnifiers(GreaterEqualsPlausibility greaterEqualsPlausibility, Unifier unifier) throws Exception {
-        HashSet<Unifier> unifiersL = this.getUnifiers(greaterEqualsPlausibility.getLeft(), unifier);
-        HashSet<Unifier> unifiersR = new HashSet<>();
-        for (Unifier u : unifiersL) {
-            unifiersR.addAll(this.getUnifiers(greaterEqualsPlausibility.getRight(), u));
-        }
-        return unifiersR;
-    }
-
-    private HashSet<Unifier> getUnifiers(GreaterThanPlausibility greaterThanPlausibility, Unifier unifier) throws Exception {
-        HashSet<Unifier> unifiersL = this.getUnifiers(greaterThanPlausibility.getLeft(), unifier);
-        HashSet<Unifier> unifiersR = new HashSet<>();
-        for (Unifier u : unifiersL) {
-            unifiersR.addAll(this.getUnifiers(greaterThanPlausibility.getRight(), u));
-        }
-        return unifiersR;
-    }
-
-    private HashSet<Unifier> getUnifiers(Negation negation, Unifier unifier) throws Exception {
-        return this.getUnifiers(negation.getTerm(), unifier);
-    }
-
-    private HashSet<Unifier> getUnifiers(BeliefAtom beliefAtom, Unifier unifier) {
-        HashSet<Unifier> unifiers = new HashSet<>();
-        for (BeliefAtom beliefAtomDomain : domain) {
-            Unifier u = beliefAtom.substitute(unifier).getTerm().unify(beliefAtomDomain.getTerm());
-            if (u != null) {
-                u.putAll(unifier);
-                unifiers.add(u);
-            }
-        }
-        return unifiers;
-    }
-
-    private HashSet<Unifier> getUnifiers(BeliefLiteral beliefLiteral, Unifier unifier) {
-        return this.getUnifiers(beliefLiteral.getBeliefAtom(), unifier);
-    }
-
-    private HashSet<Unifier> getUnifiers(RelationalExpression relationalExpression, Unifier unifier) throws Exception {
-        HashSet<Unifier> unifiers = new HashSet<>();
-        unifiers.add(unifier);
-        return unifiers;
     }
 
     @Override

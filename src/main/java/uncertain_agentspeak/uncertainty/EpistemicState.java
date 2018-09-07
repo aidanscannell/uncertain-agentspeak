@@ -1,6 +1,7 @@
 package main.java.uncertain_agentspeak.uncertainty;
 
 import main.java.uncertain_agentspeak.agentspeak.LogicalExpression;
+import main.java.uncertain_agentspeak.agentspeak.Term;
 import main.java.uncertain_agentspeak.agentspeak.Unifier;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.BeliefAtom;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.operators.*;
@@ -12,7 +13,10 @@ import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.B
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.Primitive;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Contradiction;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Tautology;
+import main.java.uncertain_agentspeak.agentspeak.terms.Variable;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public abstract class EpistemicState {
@@ -44,6 +48,18 @@ public abstract class EpistemicState {
             }
         }
         return false;
+    }
+
+    public HashSet<Term> getUnifiers(BeliefAtom beliefAtom, Variable variable) {
+        HashSet<Term> terms = new HashSet<>();
+        for (BeliefAtom beliefAtomDomain : domain) {
+            Unifier unifier = beliefAtom.getTerm().unify(beliefAtomDomain.getTerm());
+            Term term = unifier.get(variable);
+            if (unifier != null) {
+                terms.add(term);
+            }
+        }
+        return terms;
     }
 
     public abstract double getLambda(LogicalExpression logicalExpression) throws Exception;
@@ -163,6 +179,7 @@ public abstract class EpistemicState {
         LogicalExpression pareNegation = pare(new StrongNegation(pare)).convertToNNF();
         double pareLambda = getLambda(pare);
         double pareLambdaNegation = getLambda(pareNegation);
+//        System.out.println("Lamda: " + pareLambda + " and lambdaNeg: " + pareLambdaNegation + " for " + logicalExpression);
         if (pareLambda > pareLambdaNegation) {
             return unifier;
         } else {
