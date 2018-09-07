@@ -22,10 +22,12 @@ public class PositiveLiteral extends BeliefLiteral {
         return new PositiveLiteral(super.getBeliefAtom().substitute(unifier));
     }
 
+    @Override
     public Unifier unify(PositiveLiteral positiveLiteral) {
         return super.getBeliefAtom().getTerm().unify(positiveLiteral.getBeliefAtom().getTerm());
     }
 
+    @Override
     public Unifier unify(NegativeLiteral negativeLiteral) {
         return null;
     }

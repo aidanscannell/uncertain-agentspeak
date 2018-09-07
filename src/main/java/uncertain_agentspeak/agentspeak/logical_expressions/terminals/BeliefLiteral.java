@@ -5,10 +5,17 @@ import main.java.uncertain_agentspeak.agentspeak.logical_expressions.BeliefAtom;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.Terminal;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.belief_literals.NegativeLiteral;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.belief_literals.PositiveLiteral;
+import main.resources.antlr.as_parser.AgentParser;
 
 import java.util.HashSet;
 
 public abstract class BeliefLiteral extends Terminal {
+
+    public final static AgentParser parser = new AgentParser();
+
+    public BeliefLiteral parseBeliefLiteral(String string) {
+        return parser.parseBeliefLiteral(string);
+    }
 
     private BeliefAtom beliefAtom;
 
@@ -53,6 +60,20 @@ public abstract class BeliefLiteral extends Terminal {
         } else {
             return null;
         }
+    }
+
+    public Unifier unify(PositiveLiteral positiveLiteral) {
+        if (this instanceof PositiveLiteral) {
+            return beliefAtom.getTerm().unify(positiveLiteral.getBeliefAtom().getTerm());
+        }
+        return null;
+    }
+
+    public Unifier unify(NegativeLiteral negativeLiteral) {
+        if (this instanceof NegativeLiteral) {
+            return beliefAtom.getTerm().unify(negativeLiteral.getBeliefAtom().getTerm());
+        }
+        return null;
     }
 
     @Override
