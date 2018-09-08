@@ -1,10 +1,10 @@
 package main.java.uncertain_agentspeak.ui.main;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.*;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.concurrent.*;
+import java.util.logging.Level;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -81,6 +81,18 @@ public class MainController implements Initializable {
                 }
             }
         });
+
+        locationTreeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newVlaue) -> {
+            TreeItem<File> selectedItem = locationTreeView.getSelectionModel().getSelectedItem();
+            if (selectedItem != null) {
+                File selectedFile = selectedItem.getValue();
+                if (selectedFile.isFile()) {
+                    loadFileContents(selectedFile);
+                }
+            }
+        });
+
+//        loadFileContents(projectDirectory);
     }
 
     @FXML
@@ -133,7 +145,9 @@ public class MainController implements Initializable {
     }
 
     public void stop() {
-        project.stop();
+        if (project != null) {
+            project.stop();
+        }
         ThreadContext.put("logFilename","Main");
         try {
             LOGGER.info("Attempt to shutdown main project executor");
@@ -162,53 +176,27 @@ public class MainController implements Initializable {
         if (childs != null) {
             for (File child : childs) {
                 item.getChildren().add(createTree(child));
+                item.setGraphic(new ImageView(getClass().getResource("/main/java/uncertain_agentspeak/ui/icons/folder.png").toExternalForm()));
             }
-            item.setGraphic(new ImageView(getClass().getResource("/main/java/uncertain_agentspeak/ui/icons/folder.png").toExternalForm()));
-        } else {
-//            item.setGraphic(new ImageView(getClass().getResource("text-x-generic.png").toExternalForm()));
         }
         return item;
     }
 
-    //    public void loadTreeItems() {
-//        TreeView<File> tree = new TreeView<>();
-//        tree.setRoot(createTree(new File(".")));
-//        tree.setCellFactory((e) -> new TreeCell<File>(){
-//            @Override
-//            protected void updateItem(File item, boolean empty) {
-//                super.updateItem(item, empty);
-//                if(item != null) {
-//                    setText(item.getName());
-//                    setGraphic(getTreeItem().getGraphic());
-//                } else {
-//                    setText("");
-//                    setGraphic(null);
-//                }
-//            }
-//        });
-//        locationTreeView.setRoot(createTree(new File(".")));
-//    }
+    public void loadFileContents(File file) {
+        try {
+            textArea.clear();
+            List<String> lines = new ArrayList<>();
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            while ((line = br.readLine()) != null) {
+                textArea.appendText("\n" + line);
+            }
+            br.close();
+        } catch (FileNotFoundException ex) {
+            LOGGER.error("Error loading file into text area: " + ex);
+        } catch (IOException ex) {
+            LOGGER.error("Error loading file into text area: " + ex);
+        }
+    }
 
-
-//    @FXML
-//    @SuppressWarnings("NestedAssignment")
-//    public void showFileLines() throws InterruptedException, ExecutionException {
-//
-//        future = executorService.submit(new Callable<List<String>>() {
-//            public List<String> call() throws Exception {
-//                return reader.read(new File(MainController.this.urlTextField.getText()));
-//            }
-//        });
-//
-//        List<String> lines = future.get();
-//        executorService.shutdownNow();
-//        linesTextArea.clear();
-//        for (String line : lines ) {
-//            linesTextArea.appendText(line + "\n");
-//        }
-//
-//
-//    }
-
-    
 }
