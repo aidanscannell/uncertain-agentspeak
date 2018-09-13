@@ -24,6 +24,11 @@ public class DeleteGoalET extends GoalEventTrigger {
     }
 
     @Override
+    public DeleteGoalET substitute(Unifier unifier) throws Exception {
+        return new DeleteGoalET(this.getGoal().substitute(unifier));
+    }
+
+    @Override
     public String toString() {
         return "-" + super.getGoal().toString();
     }

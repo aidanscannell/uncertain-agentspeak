@@ -29,10 +29,15 @@ public class ReviseBeliefAction extends BeliefAction {
         } else if (this.weight.substitute(unifier) instanceof DoubleNum) {
             weight = (DoubleNum) this.weight.substitute(unifier);
         }
+        System.out.println("weight is: " + weight.getClass());
 //        System.out.println("Attempting to revise GUB with: (" + beliefLiteral.toString() + ", " + weight + ")");
         beliefBase.revise(beliefLiteral, weight.getDoubleVal());
         eventSet.add(new ExternalEvent(new ReviseBeliefET(beliefLiteral,this.weight.substitute(unifier))));
         return unifier;
+    }
+
+    public ReviseBeliefAction substitute(Unifier unifier) {
+        return new ReviseBeliefAction(this.getBeliefLiteral().substitute(unifier),weight.substitute(unifier));
     }
 
     @Override

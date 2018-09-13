@@ -45,6 +45,11 @@ public class ReviseBeliefET extends BeliefEventTrigger {
     }
 
     @Override
+    public ReviseBeliefET substitute(Unifier unifier) {
+        return new ReviseBeliefET(getBeliefLiteral().substitute(unifier),weight.substitute(unifier));
+    }
+
+    @Override
     public String toString() {
         return "*(" + super.getBeliefLiteral().toString() + ", " + weight.toString() + ")";
     }

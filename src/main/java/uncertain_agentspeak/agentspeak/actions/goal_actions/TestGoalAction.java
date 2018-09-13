@@ -23,4 +23,9 @@ public class TestGoalAction extends GoalAction {
         }
         return unifier;
     }
+
+    @Override
+    public TestGoalAction substitute(Unifier unifier) {
+        return new TestGoalAction(new TestGoal(this.getGoal().getTerm().substitute(unifier)));
+    }
 }

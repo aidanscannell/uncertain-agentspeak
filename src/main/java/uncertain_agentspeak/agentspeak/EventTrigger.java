@@ -23,4 +23,6 @@ public abstract class EventTrigger {
     public abstract Unifier unify(DeleteGoalET deleteGoalET);
 
     public abstract Unifier unify(ReviseBeliefET reviseBeliefET);
+
+    public abstract EventTrigger substitute(Unifier unifier) throws Exception;
 }

@@ -24,6 +24,11 @@ public class AddGoalET extends GoalEventTrigger {
     }
 
     @Override
+    public AddGoalET substitute(Unifier unifier) throws Exception {
+        return new AddGoalET(this.getGoal().substitute(unifier));
+    }
+
+    @Override
     public String toString() {
         return "+" + super.getGoal().toString();
     }
