@@ -5,7 +5,6 @@ import main.java.uncertain_agentspeak.agentspeak.terms.constants.numbers.DoubleN
 
 import java.util.ArrayList;
 import java.util.EventObject;
-import java.util.HashMap;
 import java.util.Map;
 
 public class EnvironmentEvent extends EventObject {

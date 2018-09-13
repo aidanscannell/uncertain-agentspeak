@@ -42,7 +42,7 @@ public class AgentConsole extends Stage {
     public TabPane addTabPane() {
         agentTabs = new HashMap<>();
         TabPane tabPane = new TabPane();
-        tabPane.setPrefSize(1280, 400);
+        tabPane.setPrefSize(1280, 380);
         VBox.setVgrow(tabPane, Priority.ALWAYS);
         for (Agent agent : agents) {
             AgentTab tab = new AgentTab(agent.getName());

@@ -38,67 +38,10 @@ public class AStar {
             closedList.add(current);
             openList.remove(current);
 
+            System.out.println("Before is in list:");
+//            System.out.println("cloase list:" + closedList);
             if (isInList(target, closedList)) {
-//                System.out.println("total nodes A: " + nodes);
-                return getPath(current);
-            }
-
-            ArrayList<Node> neighbours = getNeighbours(current);
-            nodes += neighbours.size();
-
-            for (Node n : neighbours) {
-                n.setG(current.getG() + 1);
-                n.setParent(current);
-
-                if (isInList(n, closedList)) {
-                    continue;
-                }
-
-                if (!isInList(n, openList)) {
-                    openList.add(n);
-                } else {
-                    if (current.getG() + 1 < n.getG()) {
-                        n.setParent(current);
-                    }
-                }
-            }
-
-        } while (!openList.isEmpty());
-
-        return null;
-    }
-
-    public ArrayList<Node> findPathConsideringOtherRobot(Node start, Node target, ArrayList<Node> path) {
-        ArrayList<Node> openList = new ArrayList<>();
-        ArrayList<Node> closedList = new ArrayList<>();
-
-        start.setG(0);
-        start.setH(manhattanDistance(start, target));
-        start.setParent(null);
-        openList.add(start);
-
-        int nodes = 0;
-
-        Node current;
-        do {
-
-            current = lowestScore(openList);
-            int i = getPathPosition(current);
-            if (i-1 < path.size()-1) {
-                if (path.get(i - 1).equals(current)) {
-                    //System.out.println("index: " + i + ", node: " + current.toString());
-//                System.out.println("Robot 2 considering new position " + current.toString() + " at step " + i + " ** Conflict **");
-//                System.out.println("Resolving -- Robot 2 considering alternative new position "
-//                        +  nextLowestScore(openList, current).toString() + " at step " + i);
-                    current = nextLowestScore(openList, current);
-                }
-            }
-
-            closedList.add(current);
-            openList.remove(current);
-
-            if (isInList(target, closedList)) {
-                System.out.println("total nodes B: " + nodes);
+                System.out.println("total nodes A: " + nodes);
                 return getPath(current);
             }
 
@@ -139,18 +82,6 @@ public class AStar {
         return node;
     }
 
-    private Node nextLowestScore(ArrayList<Node> list, Node excludedNode) {
-        double minF = list.get(0).getF();
-        Node node = list.get(0);
-        for (Node n : list) {
-            if (n.getF() < minF && !n.equals(excludedNode)) {
-                minF = n.getF();
-                node = n;
-            }
-        }
-        return node;
-    }
-
     private boolean isInList(Node node, ArrayList<Node> list) {
         for (Node n : list) {
             if (n.equals(node)) {
@@ -168,7 +99,7 @@ public class AStar {
     private boolean isInsideBounds(Point point, int rows, int columns){
         int row = point.getRow();
         int col = point.getCol();
-        return (row >= 1) && (row <= rows) && (col >= 1) && (col <= columns);
+        return (row >= 0) && (row <= rows) && (col >= 0) && (col <= columns);
     }
 
     private boolean isObstacle(Node node) {
@@ -226,15 +157,5 @@ public class AStar {
         }
         Collections.reverse(path);
         return path;
-    }
-
-    private int getPathPosition(Node node) {
-        Node n = node;
-        int i = 0;
-        while (n != null) {
-            i++;
-            n = n.getParent();
-        }
-        return i;
     }
 }

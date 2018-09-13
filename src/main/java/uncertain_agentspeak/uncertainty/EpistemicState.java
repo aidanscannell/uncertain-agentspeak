@@ -15,8 +15,6 @@ import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.p
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Tautology;
 import main.java.uncertain_agentspeak.agentspeak.terms.Variable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 public abstract class EpistemicState {
@@ -179,7 +177,6 @@ public abstract class EpistemicState {
         LogicalExpression pareNegation = pare(new StrongNegation(pare)).convertToNNF();
         double pareLambda = getLambda(pare);
         double pareLambdaNegation = getLambda(pareNegation);
-//        System.out.println("Lamda: " + pareLambda + " and lambdaNeg: " + pareLambdaNegation + " for " + logicalExpression);
         if (pareLambda > pareLambdaNegation) {
             return unifier;
         } else {

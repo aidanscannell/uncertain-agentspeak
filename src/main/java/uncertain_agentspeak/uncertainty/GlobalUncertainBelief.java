@@ -12,6 +12,7 @@ import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.P
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Contradiction;
 import main.java.uncertain_agentspeak.agentspeak.logical_expressions.terminals.primitives.Tautology;
 import main.java.uncertain_agentspeak.agentspeak.terms.Variable;
+import main.java.uncertain_agentspeak.agentspeak.terms.constants.numbers.DoubleNum;
 import main.java.uncertain_agentspeak.exceptions.NotGroundException;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.CompactEpistemicState;
 import main.java.uncertain_agentspeak.uncertainty.epistemic_states.compact_epistemic_states.CompactPossibilisticEpistemicState;
@@ -45,8 +46,6 @@ public class GlobalUncertainBelief {
         }
         this.domain.addAll(epistemicState.getDomain());
         epistemicStates.put(epistemicState.getDomain(), epistemicState);
-//        System.out.println("\nSuccessfully added epistemic state.");
-//        LOGGER.info("Successfully added epistemic state.");
     }
 
     public HashMap<HashSet<BeliefAtom>, CompactEpistemicState> getGUB() {
@@ -75,8 +74,6 @@ public class GlobalUncertainBelief {
                 CompactEpistemicState epistemicState = epistemicStateEntry.getValue();
                 epistemicState.revise(beliefLiteral, weight);
                 epistemicStates.put(domain, epistemicState);
-//                System.out.println("Revised Epistemic State: " + epistemicState.toString());
-//                LOGGER.info("Successfully revised epistemic state: ");
                 return;
             }
         }
@@ -105,8 +102,6 @@ public class GlobalUncertainBelief {
                 freeVariables.addAll(beliefAtom.getTerm().getVariables());
             }
         }
-//        System.out.println("Free variables: " + freeVariables.toString());
-//        System.out.println("Belief Atoms subbed: " + beliefAtoms.toString());
 
         // Get the set of Term's each free variable could be instantiated with
         HashMap<Variable, HashSet<Term>> varTermMap = new HashMap<>();
@@ -121,7 +116,6 @@ public class GlobalUncertainBelief {
                 }
             }
         }
-//        System.out.println("Terms for each variable: " + varTermMap.toString());
 
         // recursive method to create a Unifier for every combination of variable substitution
         return combine(0, unifier, varTermMap, new HashSet<>());
@@ -150,14 +144,9 @@ public class GlobalUncertainBelief {
     }
 
     public Unifier entails(LogicalExpression logicalExpression, Unifier unifier) throws Exception {
-//        System.out.println("Getting unifiers");
         HashSet<Unifier> unifiers = this.getUnifiers(logicalExpression, unifier);
-//        System.out.println("Got unifiers: " + unifiers);
-//        System.out.println("Got unifiers, size: " + unifiers.size());
 
         for (Unifier u : unifiers) {
-//            System.out.println("Testing unifier: " + u);
-//            System.out.println("Formula class: " + logicalExpression.getClass() + " for " + logicalExpression);
             Unifier unifierValid = null;
             if (logicalExpression instanceof Conjunction) {
                 unifierValid = entails((Conjunction) logicalExpression, u);
@@ -227,19 +216,15 @@ public class GlobalUncertainBelief {
     private Unifier entails(Conjunction conjunction, Unifier unifier) throws Exception {
         Conjunction groundConjunction = conjunction.substitute(unifier);
         if (this.languageContains(groundConjunction)) {
-//            System.out.println("CONJUNCTION FIRST: " + groundConjunction.toString());
             HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundConjunction);
-//            System.out.println("RELEVANT ES: " + relevantEpistemicStates.toString());
             for (CompactEpistemicState compactEpistemicState : relevantEpistemicStates) {
                 Unifier unifierValid = compactEpistemicState.entails(conjunction, unifier);
                 if (unifierValid != null) {
-//                    System.out.println("UNIFIER VALID: " + unifierValid);
                     return unifierValid;
                 }
             }
             return null;
         } else {
-//            System.out.println("CONJUNCTION SECOND: " + groundConjunction.toString());
             Unifier unifierLeft = this.entails(conjunction.getLeft(), unifier);
             Unifier unifierRight = null;
             if (unifierLeft != null) {
@@ -251,7 +236,6 @@ public class GlobalUncertainBelief {
 
     private Unifier entails(Disjunction disjunction, Unifier unifier) throws Exception {
         Disjunction groundDisjunction = disjunction.substitute(unifier);
-//        System.out.println("DISJUNCTION: " + groundDisjunction);
         if (this.languageContains(groundDisjunction)) {
             HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundDisjunction);
             for (CompactEpistemicState compactEpistemicState : relevantEpistemicStates) {
@@ -271,9 +255,7 @@ public class GlobalUncertainBelief {
 
     private Unifier entails(GreaterEqualsPlausibility greaterEqualsPlausibility, Unifier unifier) throws Exception {
         GreaterEqualsPlausibility groundGreaterEqualsPlausibility = greaterEqualsPlausibility.substitute(unifier);
-//        System.out.println("GREATER EQUALS: " + groundGreaterEqualsPlausibility.toString());
         if (this.languageContains(groundGreaterEqualsPlausibility)) {
-//            System.out.println("GREATER EQUAL IN LANGUAGE: " + groundGreaterEqualsPlausibility.toString());
             HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundGreaterEqualsPlausibility);
             for (CompactEpistemicState compactEpistemicState : relevantEpistemicStates) {
                 Unifier unifierValid = compactEpistemicState.entails(greaterEqualsPlausibility, unifier);
@@ -283,7 +265,6 @@ public class GlobalUncertainBelief {
             }
             return null;
         } else {
-//            System.out.println("GREATER EQUAL NOT IN LANGUAGE: " + groundGreaterEqualsPlausibility.toString());
             if (groundGreaterEqualsPlausibility.isGround() ) {
                 if (languageContains(groundGreaterEqualsPlausibility.getLeft()) && languageContains(groundGreaterEqualsPlausibility.getRight())) {
                     double lambdaLeft = 0;
@@ -305,23 +286,18 @@ public class GlobalUncertainBelief {
                     }
                     if (classLeft instanceof CompactProbabilisticEpistemicState && !(classRight instanceof CompactProbabilisticEpistemicState)) {
                         LOGGER.error("The operands of a qualitative operator must be of the same type");
-//                        throw new Exception("The operands of a qualitative operator must be of the same type");
                     } else if (classLeft instanceof CompactPossibilisticEpistemicState && !(classRight instanceof CompactPossibilisticEpistemicState)) {
                         LOGGER.error("The operands of a qualitative operator must be of the same type");
-//                        throw new Exception("The operands of a qualitative operator must be of the same type");
                     }
 
-//                    System.out.println("GUB entailment with >= : left lambda = " + lambdaLeft + ", right lambda = " + lambdaRight);
                     if (lambdaLeft <= lambdaRight) {
-//                        System.out.println("Lambda left <= lambda right");
                         return unifier;
                     }
                     return null;
+
                 } else {
-                    //TODO: Add exception
-                    LOGGER.error("The operands must be formulas in the language L_G");
-//                    System.out.println("The operands must be formulas in the language L_G");
-                    return null;
+                        LOGGER.error("The operands must be formulas in the language L_G");
+                        return null;
                 }
             } else {
                 LOGGER.error("Formula is not ground.");
@@ -332,7 +308,6 @@ public class GlobalUncertainBelief {
 
     private Unifier entails(GreaterThanPlausibility greaterThanPlausibility, Unifier unifier) throws Exception {
         GreaterThanPlausibility groundGreaterThanPlausibility = greaterThanPlausibility.substitute(unifier);
-//        System.out.println("GREATER THAN: " + groundGreaterThanPlausibility.toString());
         if (this.languageContains(groundGreaterThanPlausibility)) {
             HashSet<CompactEpistemicState> relevantEpistemicStates = getRelevantEpistemicStates(groundGreaterThanPlausibility);
             for (CompactEpistemicState compactEpistemicState : relevantEpistemicStates) {
@@ -364,27 +339,21 @@ public class GlobalUncertainBelief {
                     }
                     if (classLeft instanceof CompactProbabilisticEpistemicState && !(classRight instanceof CompactProbabilisticEpistemicState)) {
                         LOGGER.error("The operands of a qualitative operator must be of the same type");
-//                        throw new Exception("The operands of a qualitative operator must be of the same type");
                     } else if (classLeft instanceof CompactPossibilisticEpistemicState && !(classRight instanceof CompactPossibilisticEpistemicState)) {
                         LOGGER.error("The operands of a qualitative operator must be of the same type");
-//                        throw new Exception("The operands of a qualitative operator must be of the same type");
                     }
 
-//                    System.out.println("GUB entailment with > : left lambda = " + lambdaLeft + ", right lambda = " + lambdaRight);
                     if (lambdaLeft < lambdaRight) {
-//                        System.out.println("Lambda left < lambda right");
                         return unifier;
                     }
                     return null;
                 } else {
                     //TODO: Add exception
                     LOGGER.error("The operands must be formulas in the language L_G");
-//                    System.out.println("The operands must be formulas in the language L_G");
                     return null;
                 }
             } else {
                 LOGGER.error("Formula is not ground.");
-//                System.out.println("Formula is not ground.");
                 return null;
             }
         }
