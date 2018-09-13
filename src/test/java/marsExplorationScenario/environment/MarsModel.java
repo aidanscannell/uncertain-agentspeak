@@ -25,6 +25,9 @@ public class MarsModel extends GridWorldModel {
     public static final int LIVING_ORGANISMS = 16;
 
     public Set<String> agentsWithWater;
+    public HashMap<String,Agent> agents;
+
+    public AgentParser parser = new AgentParser();
 
     public MarsModel(int width, int height, int numAgents) {
         super(width, height, numAgents);
@@ -32,7 +35,9 @@ public class MarsModel extends GridWorldModel {
     }
 
     public void initAgents(List<Agent> agents) {
+        this.agents = new HashMap<>();
         for (Agent agent : agents) {
+            this.agents.put(agent.getName(), agent);
             Position position = getFreePos();
             agentPositions[agent.getId()] = position;
             if (agent.getName().contains("sampleAgentA")) {
@@ -40,15 +45,16 @@ public class MarsModel extends GridWorldModel {
             } else if (agent.getName().contains("sampleAgentB")) {
                 add(SAMPLE_B_AGENT, position.x, position.y);
             } else if (agent.getName().contains("analysisAgent")) {
+                position.x = 7; position.y = 7;
                 add(ANALYSIS_AGENT, position.x, position.y);
             } else if (agent.getName().contains("excavationAgent")) {
                 add(EXCAVATION_AGENT, position.x, position.y);
             }
 
-//            AgentParser parser = new AgentParser();
-//            try {
-//                agent.getBeliefBase().revise(parser.parseBeliefLiteral("at(position(" + getLocation(position.x, position.y) +"))"),1);
-//            } catch (Exception e) {}
+
+            try {
+                agent.getBeliefBase().revise(parser.parseBeliefLiteral("at(position(" + getLocation(position.x, position.y) +"))"),1);
+            } catch (Exception e) {}
         }
     }
 
@@ -79,6 +85,7 @@ public class MarsModel extends GridWorldModel {
 
     /** Move agent to target location  */
     public boolean travel(String agentName, EnvironmentAction action) throws Exception {
+        System.out.println("Inside travel");
         int agentID = agentList.get(agentName);
 //        System.out.println("AGENT POSITIONS BEFORE MOVE" + agentPositions[agentID].toString());
         String []splits = action.toString().replaceAll("^\\s*travel\\(location\\(|\\)\\)\\s*$", "").split("\\s*,\\s*");
@@ -92,16 +99,31 @@ public class MarsModel extends GridWorldModel {
         } else {
             throw new Exception("Could not parse action: " + action.toString());
         }
+        System.out.println("x = " + x + ", y = " + y);
+        Position oldPos = new Position(agentPositions[agentID].x,agentPositions[agentID].y);
         LOGGER.info("Agent " + agentName + " moving from (" + agentPositions[agentID].x + ", " + agentPositions[agentID].y + ") to ("
                 + x + ", " + y + ")");
 
         ArrayList<Node> path = aStar(agentID, x, y);
+        System.out.println(x);
+        System.out.println(y);
+        System.out.println(agentID);
         if (path.size() > 0) {
             for (Node node : path) {
                 move(agentName, new Position(node.getPosition().getRow(), node.getPosition().getCol()));
             }
         }
+        System.out.println("after mvoe");
         if ( (agentPositions[agentID].x >= x-1 && agentPositions[agentID].x <= x+1) || (agentPositions[agentID].y >= y-1 && agentPositions[agentID].y <= y+1) ) {
+//            double weight = Math.random() * (1 - 0.6) + 0.6;
+//            try {
+//                ArrayList<String> beliefUpdate = new ArrayList<>();
+//                beliefUpdate.add("*(at(location(" + oldPos.x + ", " + oldPos.y +" )), W)");
+//                beliefUpdate.add("*(at(location(" + agentPositions[agentID].x + ", " + agentPositions[agentID].y +")), W)");
+//                addPercept(agentName,beliefUpdate);
+////                agents.get(agentName).getBeliefBase().revise(parser.parseBeliefLiteral(c);
+//                agents.get(agentName).getBeliefBase().revise(parser.parseBeliefLiteral("at(position(" + agentPositions[agentID].x + ", " + agentPositions[agentID].y +"))"),weight);
+//            } catch (Exception e) {}
             return true;
         }
 //        System.out.println("AGENT POSITIONS AFTER MOVE: " + agentPositions[agentID].x + ", " + agentPositions[agentID].y);
@@ -143,23 +165,83 @@ public class MarsModel extends GridWorldModel {
         } else if (splits.contains("living_organism")) {
             objectNum = MarsModel.LIVING_ORGANISMS;
         }
+        System.out.println("before loop");
+        int locNum = getLocation(getAgentPos(agentID).x,getAgentPos(agentID).y);
+        boolean success = false;
+        int x_item = -1; int y_item = -1;
+        for (int x=locations[locNum-1].getX_min(); x<=locations[locNum-1].getX_max(); x++) {
+            for (int y=locations[locNum-1].getY_min(); y<=locations[locNum-1].getY_max(); y++) {
+                if (grid[x][y] == WATER_OR_ICE) {
+                    System.out.println("INSIDE WATER_OR_ICE");
+                    x_item = x;
+                    y_item = y;
+                }
+            }
+        }
+        ArrayList<Node> path = aStar(agentID, x_item, y_item);
+        if (path.size() > 0) {
+            for (Node node : path) {
+                move(agentName, new Position(node.getPosition().getRow(), node.getPosition().getCol()));
+            }
+        }
+        if ( (agentPositions[agentID].x >= x_item-1 && agentPositions[agentID].x <= x_item+1) || (agentPositions[agentID].y >= y_item-1 && agentPositions[agentID].y <= y_item+1) ) {
+            Position l = getAgentPos(agentID);
+            System.out.println("after loop : " + success);
+            if (!agentsWithWater.contains(agentID)) {
+                if (hasObject(objectNum, l.x + 1, l.y)) {
+                    remove(objectNum, l.x + 1, l.y);
+                    agentsWithWater.add(agentName);
+                    return true;
+                } else if (hasObject(objectNum, l.x, l.y + 1)) {
+                    remove(objectNum, l.x, l.y + 1);
+                    agentsWithWater.add(agentName);
+                    return true;
+                } else if (hasObject(objectNum, l.x - 1, l.y)) {
+                    remove(objectNum, l.x - 1, l.y);
+                    agentsWithWater.add(agentName);
+                    return true;
+                } else if (hasObject(objectNum, l.x, l.y - 1)) {
+                    remove(objectNum, l.x, l.y - 1);
+                    agentsWithWater.add(agentName);
+                    return true;
+                } else {
+                    LOGGER.warn("Agent " + agentName + " is trying to collect sample number " + objectNum + ", but there is none at " + l.x + "x" + l.y + "!");
+                }
+            } else {
+                LOGGER.warn("Agent " + agentName + " is trying to collect sample number " + objectNum + ", but is already carrying a sample!");
+            }
+        }
+        return false;
+    }
+
+    public boolean depositSample(String agentName, EnvironmentAction action) {
+        int agentID = agentList.get(agentName);
+        int objectNum = -1;
+        String splits = action.toString().replaceAll("^\\s*depositSample\\(|\\)\\s*$", "");
+        if (splits.contains("water")) {
+            objectNum = MarsModel.WATER_OR_ICE;
+        } else if (splits.contains("fossil")) {
+            objectNum = MarsModel.FOSSILS;
+        } else if (splits.contains("living_organism")) {
+            objectNum = MarsModel.LIVING_ORGANISMS;
+        }
         Position l = getAgentPos(agentID);
-        if (!agentsWithWater.contains(agentID)) {
-            if (hasObject(objectNum, l.x+1, l.y)) {
-                remove(objectNum, l.x+1, l.y);
-                agentsWithWater.add(agentName);
+        if (agentsWithWater.contains(agentID)) {
+            if (hasObject( ANALYSIS_AGENT,l.x+1, l.y)) {
+//                remove(objectNum, l.x+1, l.y);
+                agentsWithWater.remove(agentName);
                 return true;
-            } else if (hasObject(objectNum, l.x, l.y+1)) {
-                remove(objectNum, l.x, l.y+1);
-                agentsWithWater.add(agentName);
+            } else if (hasObject(ANALYSIS_AGENT, l.x, l.y+1)) {
+//                remove(objectNum, l.x, l.y+1);
+                agentsWithWater.remove(agentName);
                 return true;
-            } else if (hasObject(objectNum, l.x-1, l.y)) {
-                remove(objectNum, l.x-1, l.y);
-                agentsWithWater.add(agentName);
+            } else if (hasObject(ANALYSIS_AGENT, l.x-1, l.y)) {
+//                remove(objectNum, l.x-1, l.y);
+                agentsWithWater.remove(agentName);
                 return true;
-            } else if (hasObject(objectNum, l.x, l.y-1)) {
-                remove(objectNum, l.x, l.y-1);
-                agentsWithWater.add(agentName);
+            } else if (hasObject(ANALYSIS_AGENT, l.x, l.y-1)) {
+//                remove(objectNum, l.x, l.y-1);
+                agentsWithWater.remove(agentName);
                 return true;
             } else {
                 LOGGER.warn("Agent " + agentName + " is trying to collect sample number " + objectNum + ", but there is none at " + l.x + "x" + l.y + "!");

@@ -1,0 +1,9 @@
+// Initial Beliefs
+**(has(water), 0).
+**(has(fossil), 0).
+**(has(living_organism), 0).
+
+
+// Plans
+*(has(X), W1) : W1 > 0.7 <- analyse(X); *()
+

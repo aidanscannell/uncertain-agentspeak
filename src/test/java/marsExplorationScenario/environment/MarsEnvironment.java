@@ -65,11 +65,44 @@ public class MarsEnvironment extends Environment {
     @Override
     public synchronized boolean executeAction(String agentName, EnvironmentAction action) throws Exception {
         boolean result = false;
+        clearPercepts(agentName);
         if (action.getFunctor().equals("travel")) {
+            int locationNum1 = model.getLocation(model.agentPositions[agentList.get(agentName)].x,model.agentPositions[agentList.get(agentName)].y);
+            System.out.println(locationNum1);
             result = model.travel(agentName, action);
+            int locationNum2 = model.getLocation(model.agentPositions[agentList.get(agentName)].x,model.agentPositions[agentList.get(agentName)].y);
+            System.out.println(locationNum2);
+            if (result && locationNum1 != locationNum2) {
+                System.out.println("Adding percept");
+                ArrayList<String> beliefUpdate = new ArrayList<>();
+                double weight2 = Math.random() * (1 - 0.7) + 0.7;
+                beliefUpdate.add("*(at(location(" + locationNum2 + ")), " + weight2 + ")");
+                double weight1 = Math.random() * (0.3);
+                beliefUpdate.add("*(at(location(" + locationNum1 + ")), " + weight1 + ")");
+                System.out.println("created");
+                addPercept(agentName, beliefUpdate);
+                System.out.println("added");
+            }
         } else if (action.getFunctor().equals("collectSample")) {
+            System.out.println("before: " + getAgentPercepts());
             result = model.collectSample(agentName, action);
-            clearPercepts(agentName);
+            System.out.println("after: " + getAgentPercepts());
+        } else if (action.getFunctor().equals("depositSample")) {
+            result = model.depositSample(agentName, action);
+            ArrayList<String> beliefUpdate = new ArrayList<>();
+            String splits = action.toString().replaceAll("^\\s*depositSample\\(|\\)\\s*$", "");
+            String item = "";
+            if (splits.contains("water")) {
+                item = "water";
+            } else if (splits.contains("fossil")) {
+                item = "fossil";
+            } else if (splits.contains("living_organism")) {
+                item = "living_organism";
+            }
+            beliefUpdate.add("*(carrying(" + item + "), " + 0 + ")");
+            System.out.println("created");
+            addPercept(agentName, beliefUpdate);
+//            clearPercepts(agentName);
         }
         if (result) {
             updateAgentPercepts(agentName);
@@ -90,15 +123,39 @@ public class MarsEnvironment extends Environment {
         if (model.agentsWithWater.contains(agentName)) {
             ArrayList<String> beliefUpdate = new ArrayList<>();
             beliefUpdate.add("*(carrying(water), 1)");
+//            beliefUpdate.add("*(water_or_ice(location(" + locationNum + ")), 0)");
             addPercept(agentName,beliefUpdate);
         }
+//        ArrayList<String> beliefUpdate = new ArrayList<>();
+//        double weight = Math.random() * (1 - 0.6) + 0.6;
+//        beliefUpdate.add("*(at(location(" + locationNum + ")), " + weight + ")");
+//        addPercept(agentName,beliefUpdate);
     }
 
     public void updateAgentPercepts(String agentName, int x, int y) {
 
+//        if (model.getGrid()[x][y] == model.WATER_OR_ICE) {
+//            ArrayList<String> beliefUpdate = new ArrayList<>();
+//            beliefUpdate.add("*(water_or_ice(location(" + x + "," + y + ")), 1).");
+//            addPercept(agentName,beliefUpdate);
+//        }
         if (model.getGrid()[x][y] == model.WATER_OR_ICE) {
             ArrayList<String> beliefUpdate = new ArrayList<>();
-            beliefUpdate.add("*(water_or_ice(location(" + x + "," + y + ")), 1).");
+            double weight = Math.random() * (1 - 0.6) + 0.6;
+//            beliefUpdate.add("*(water_or_ice(location(" + x + "," + y + ")), " + weight + ").");
+            beliefUpdate.add("*(water_or_ice(location(" + model.getLocation(x,y) + ")), " + weight + ").");
+            addPercept(agentName,beliefUpdate);
+        } else if (model.getGrid()[x][y] == model.FOSSILS) {
+            ArrayList<String> beliefUpdate = new ArrayList<>();
+            double weight = Math.random() * (1 - 0.6) + 0.6;
+//            beliefUpdate.add("*(water_or_ice(location(" + x + "," + y + ")), " + weight + ").");
+            beliefUpdate.add("*(fossil(location(" + model.getLocation(x,y) + ")), " + weight + ").");
+            addPercept(agentName,beliefUpdate);
+        } else if (model.getGrid()[x][y] == model.LIVING_ORGANISMS) {
+            ArrayList<String> beliefUpdate = new ArrayList<>();
+            double weight = Math.random() * (1 - 0.6) + 0.6;
+//            beliefUpdate.add("*(water_or_ice(location(" + x + "," + y + ")), " + weight + ").");
+            beliefUpdate.add("*(living_organisms(location(" + model.getLocation(x,y) + ")), " + weight + ").");
             addPercept(agentName,beliefUpdate);
         }
     }

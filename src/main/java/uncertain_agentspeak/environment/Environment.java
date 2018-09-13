@@ -16,10 +16,10 @@ public class Environment {
 
     protected Logger LOGGER = LogManager.getLogger("Environment");
 
-    private List<String> perceptsAllAgents = Collections.synchronizedList(new ArrayList<>());
+//    private List<String> perceptsAllAgents = Collections.synchronizedList(new ArrayList<>());
     private Map<String, ArrayList<String>> agentPercepts = new ConcurrentHashMap<>();
 
-    protected int numAgents;
+//    protected int numAgents;
     protected List<Agent> agents;
     protected HashMap<String, Integer> agentList;
 
@@ -37,6 +37,10 @@ public class Environment {
 
     /** Overwritten by user environment. */
     public void init(List args) {
+    }
+
+    public Map<String, ArrayList<String>> getAgentPercepts() {
+        return agentPercepts;
     }
 
     public boolean scheduleAction(String agentName, EnvironmentAction action) {
@@ -111,6 +115,7 @@ public class Environment {
             int i = agentList.get(agentName);
             interested[i].handleEnvEvent(event);
         }
+        clearPercepts(agentName);
     }
 
     public void addEnvEventListener(EnvironmentEventListener listener) {
@@ -185,12 +190,18 @@ public class Environment {
 
     /** Add percept for single agent */
     public void addPercept(String agentName, ArrayList<String> percepts) {
-        if (percepts != null && agentList.containsKey(agentName) && !agentPercepts.containsValue(percepts)) {
+        System.out.println("Adding percept: " + percepts);
+        if (percepts != null && agentList.containsKey(agentName)) {
+            System.out.println("Inside if statement");
             ArrayList<String> agentPerceptsOld = agentPercepts.get(agentName);
-//            if (agentPerceptsOld == null) {
-//                agentPercepts.put(agentName, agentPerceptsOld);
-//            }
+            System.out.println("old percepts: " + agentPerceptsOld);
+            if (agentPerceptsOld != null) {
+                percepts.addAll(agentPerceptsOld);
+            }
+
+            System.out.println("old + new percepts: " + percepts);
             agentPercepts.put(agentName, percepts);
+            System.out.println("added");
             upToDateAgents.remove(agentName);
 //            for (String percept: percepts) {
 //                if (!perceptsAllAgents.contains(percept)) {
@@ -201,7 +212,7 @@ public class Environment {
         }
     }
 
-    /** Add percept for single agent */
+    /** Remove percept for single agent */
     public void removePercept(String agentName, ArrayList<String> percepts) {
         if (percepts != null && agentList.containsKey(agentName) && agentPercepts.containsValue(percepts)) {
             agentPercepts.remove(agentName, percepts);
@@ -219,9 +230,14 @@ public class Environment {
 
     /** Clear all of one agents percepts */
     public void clearPercepts(String agentName) {
-        if (!agentPercepts.containsKey(agentName)) {
+        System.out.println("attempting to clear percepts for : " + agentName);
+        System.out.println("agentpercepts: " + agentPercepts);
+        if (agentPercepts.containsKey(agentName)) {
+            System.out.println("inside clear if");
+            System.out.println(agentPercepts);
             upToDateAgents.remove(agentName);
             agentPercepts.remove(agentName);
+            System.out.println(agentPercepts);
         }
     }
 }

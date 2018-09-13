@@ -1,4 +1,14 @@
 # Initial beliefs.
+***(water_or_ice(location(1)),0.9).
+***(water_or_ice(location(2)),0.85).
+***(~water_or_ice(location(3)),0.5).
+***(water_or_ice(location(4)),0.35).
+***(water_or_ice(location(5)),0.5).
+***(water_or_ice(location(6)),0.4).
+***(water_or_ice(location(7)),0.3).
+***(~water_or_ice(location(8)),0.2).
+***(~water_or_ice(location(9)),0.1).
+
 ***(~fossil(location(1)),0.9).
 ***(~fossil(location(2)),0.85).
 ***(~fossil(location(3)),0.5).
@@ -19,6 +29,16 @@
 ***(~living_organism(location(8)),0.4).
 ***(~living_organism(location(9)),0.6).
 
+**(at(location(1)),0).
+**(at(location(2)),0).
+**(at(location(3)),0).
+**(at(location(4)),0).
+**(at(location(5)),0).
+**(at(location(6)),0).
+**(at(location(7)),0).
+**(at(location(8)),0).
+**(at(location(9)),0).
+
 **(carrying(fossil),0).
 **(carrying(living_organism),0).
 
@@ -29,15 +49,22 @@
 
 +!exploreMars : fossil(location(X)) > fossil(location(Y)) && fossil(location(X)) > fossil(location(Y1)) &&
                 X \== Y && X \== Y1 &&
-                Y \== Y1 <- !findWater(location(X)); !exploreMars.
+                Y \== Y1 <- !findSample(location(X)).
 
-+!findWater(location(X)) : fossil(location(Z)) > fossil(location(X)) && Z \== X <- !findWater(location(Z)).
-+!findWater(location(X)) : fossil(location(Z)) <= fossil(location(X)) && Z \== X <- travel(location(X)).
++!findSample(location(X)) : fossil(location(Z)) > fossil(location(X)) && Z \== X <- !findSample(location(Z)).
++!findSample(location(X)) : fossil(location(Z)) <= fossil(location(X)) && Z \== X <- travel(location(X)).
 
-#+!findWater(location(X)) : living_organism(location(Z)) > living_organism(location(X)) && Z \== X <- !findWater(location(Z)).
-#+!findWater(location(X)) : living_organism(location(Z)) <= living_organism(location(X)) && Z \== X <- travel(location(X)).
+
 
 *(fossil(location(X,Y)), 1) : true <- travel(location(X,Y)); collectSample(fossil); *(fossil(location(X,Y)), 0).
 *(living_organism(location(X,Y)), 1) : true <- travel(location(X,Y)); collectSample(living_organism); *(living_organism(location(X,Y)), 0).
 
-*(carrying(water),1) : true <- ?analysisAgent(location(X,Y)); travel(location(X,Y)).
+
+
+*(fossil(location(X)), W) : water_or_ice(location(X)) > water_or_ice(location(X1)) && at(location(X))  <- collectSample(water).
+
+#*(water_or_ice(location(X)), W) : ~water_or_ice(location(X) <- !exploreMars.
+
+*(carrying(A), W) : carrying(A) && at(location(X)) <- travel(location(8,7));
+                                                      depositSample(A);
+                                                      !exploreMars.
