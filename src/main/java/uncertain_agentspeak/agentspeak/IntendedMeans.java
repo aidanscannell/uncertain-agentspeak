@@ -50,7 +50,7 @@ public class IntendedMeans {
         ArrayList<Action> actions = this.plan.getActions();
         if (actionsRemaining()) {
             Action action = actions.get(this.index);
-            System.out.println("Action to execute: " + action.toString());
+//            System.out.println("Action to execute: " + action.toString());
             if (action instanceof AchievementGoalAction) {
                 subGoalFlag = true;
             }

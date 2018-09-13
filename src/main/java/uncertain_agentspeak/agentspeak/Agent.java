@@ -100,6 +100,7 @@ public class Agent implements EnvironmentEventListener, ViewEventListener {
         return id;
     }
 
+    /** Revise agents belief base based on environmental perceptions */
     public void reviseBelief(String input) {
         ReviseBeliefAction reviseBeliefAction = parser.parseAction(input);
         try {
@@ -107,19 +108,22 @@ public class Agent implements EnvironmentEventListener, ViewEventListener {
             LOGGER.info("Successfully revised GUB for ReviseBeliefAction with input: " + input);
         } catch (Exception e) {
             LOGGER.warn("Error revising GUB for ReviseBeliefAction with input: " + input);
+
+            try {
+                HashSet<BeliefAtom> domain = new HashSet<>();
+                domain.add(reviseBeliefAction.getBeliefLiteral().getBeliefAtom());
+                CompactEpistemicState epistemicState = new CompactEpistemicState(domain);
+                beliefBase.addEpistemicState(epistemicState);
+                reviseBeliefAction.executeAction(name, new Intention(), new Unifier(), beliefBase, eventSet, environment);
+                LOGGER.info("Successfully added new epistemic state and revised GUB with input: " + input);
+            } catch (Exception e1) {
+                LOGGER.warn("Error adding/revising GUB with input: " + input);
+            }
         }
-        try {
-            HashSet<BeliefAtom> domain = new HashSet<>();
-            domain.add(reviseBeliefAction.getBeliefLiteral().getBeliefAtom());
-            CompactEpistemicState epistemicState = new CompactEpistemicState(domain);
-            beliefBase.addEpistemicState(epistemicState);
-            reviseBeliefAction.executeAction(name, new Intention(), new Unifier(), beliefBase, eventSet, environment);
-            LOGGER.info("Successfully added new epistemic state and revised GUB with input: " + input);
-        } catch (Exception e) {
-            LOGGER.warn("Error adding/revising GUB with input: " + input);
-        }
+
     }
 
+    /** Agents main method - acting as it's interpreter */
     public void run() {
 
         ThreadContext.put("logFilename",name);
@@ -127,24 +131,26 @@ public class Agent implements EnvironmentEventListener, ViewEventListener {
 
         while ((!eventSet.isEmpty() || !intentionSet.isEmpty()) && isRunning == true) {
 
+            System.out.println(beliefBase.toString());
+
             try { Thread.sleep(1000); } catch (Exception e) {}
 
             if (!eventSet.isEmpty()) {
 
-                Event event = eventSet.selectEvent();
-                LOGGER.info("Event selected: " + event.toString());
-                notifyListener("Event selected: " + event.toString());
+                Event event = selectEvent();
+                LOGGER.info("Event selected: \n\t" + event.toString());
+                notifyListener("Event selected: \n\t" + event.toString());
 
                 if (event != null) {
                     try {
                         IntendedMeans intendedMeans = selectPlan(event);
                         if (intendedMeans != null) {
-                            LOGGER.info("Plan selected: " + intendedMeans.getPlan().toString() + "     " + intendedMeans.getUnifier().toString());
-                            notifyListener("Plan selected: " + intendedMeans.getPlan().toString() + "     " + intendedMeans.getUnifier().toString());
+                            LOGGER.info("Plan selected: \n\t" + intendedMeans.getPlan().toString() + "     " + intendedMeans.getUnifier().toString());
+                            notifyListener("Plan selected: \n\t" + intendedMeans.getPlan().substitute(intendedMeans.getUnifier()).toString());
                             intentionSet.addIntention(event, intendedMeans);
-                            LOGGER.info("Intention added: " + intentionSet.toString());
+                            LOGGER.info("Intention added: \n\t" + intentionSet.peekLast().toString());
                             //TODO: peeking at correct intention??
-                            notifyListener("Intention added: " + intentionSet.peekFirst().toString());
+                            notifyListener("Intention added: \n\t" + intentionSet.peekLast().toString());
                         }
                     } catch (Exception e) {
                         LOGGER.error("Error selecting plan: " + e);
@@ -156,9 +162,11 @@ public class Agent implements EnvironmentEventListener, ViewEventListener {
 
             if (!intentionSet.isEmpty()) {
 
-                Intention intention = intentionSet.selectIntention();
-                LOGGER.info("Intention selected: " + intention.toString());
-                notifyListener("Intention selected: " + intention.toString());
+                notifyListener("Intention set: " + intentionSet.toString());
+                LOGGER.info("Intention set: " + intentionSet.toString());
+                Intention intention = selectIntention();
+                LOGGER.info("Intention selected: \n\t" + intention.toString());
+                notifyListener("Intention selected: \n\t" + intention.toString());
 
                 if (intention != null) {
                     try {
@@ -174,23 +182,35 @@ public class Agent implements EnvironmentEventListener, ViewEventListener {
         }
     }
 
+    /** AgentSpeak(L) selection functions */
+    protected Event selectEvent(){
+        return eventSet.poll();
+    }
+
+    private IntendedMeans selectOption(Deque<IntendedMeans> applicablePlans) {
+        return applicablePlans.peekFirst();
+    }
+
+    public Intention selectIntention(){
+        return intentionSet.pollLast();
+    }
+
+    /** Methos for selecting relevant and applicable plans */
     private IntendedMeans selectPlan(Event event) throws Exception {
         Deque<IntendedMeans> relevantPlans = selectRelevantPlans(event);
         if (!relevantPlans.isEmpty()) {
-            LOGGER.info("First Relevant Plan: " + relevantPlans.getFirst().getPlan().toString());
-            notifyListener("Relevant Plan: " + relevantPlans.getFirst().getPlan().toString());
+            LOGGER.info(relevantPlansToString(relevantPlans));
+            notifyListener(relevantPlansToString(relevantPlans));
             Deque<IntendedMeans> applicablePlans = selectApplicablePlans(relevantPlans);
             if (!applicablePlans.isEmpty()) {
-                notifyListener("Applicable Plan: " + applicablePlans.getFirst().getPlan().toString());
-                return selectPlan(applicablePlans);
+                LOGGER.info(appliablePlansToString(applicablePlans));
+                notifyListener(appliablePlansToString(applicablePlans));
+                return selectOption(applicablePlans);
             }
         }
         return null;
     }
 
-    private IntendedMeans selectPlan(Deque<IntendedMeans> applicablePlans) {
-        return applicablePlans.peekFirst();
-    }
 
     private Deque<IntendedMeans> selectRelevantPlans(Event event) {
         Deque<IntendedMeans> relevantPlans = new LinkedList<>();
@@ -219,6 +239,33 @@ public class Agent implements EnvironmentEventListener, ViewEventListener {
             }
         }
         return applicablePlans;
+    }
+
+    /** toString methods */
+    private String appliablePlansToString(Deque<IntendedMeans> applicablePlans) {
+        String applicablePlansString = "Applicable Plans:";
+        for (IntendedMeans plan : applicablePlans) {
+            Unifier unifier = plan.getUnifier();
+            try {
+                applicablePlansString += "\n\t" + plan.getPlan().substitute(unifier).toString();
+            } catch (Exception e) {
+                LOGGER.warn("Error substituting unifier into plan context whilst creating applicable plan string: " + e);
+            }
+        }
+        return applicablePlansString;
+    }
+
+    private String relevantPlansToString(Deque<IntendedMeans> relevantPlans) {
+        String applicablePlansString = "Relevant Plans:";
+        for (IntendedMeans plan : relevantPlans) {
+            Unifier unifier = plan.getUnifier();
+            try {
+                applicablePlansString += "\n\t" + plan.getPlan().substitute(unifier).toString();
+            } catch (Exception e) {
+                LOGGER.warn("Error substituting unifier into plan context whilst creating relevant plan string: " + e);
+            }
+        }
+        return applicablePlansString;
     }
 
     /** Handle event from environment (percepts) */

@@ -30,6 +30,16 @@ public class Plan {
 //        return event.getEventTrigger().getBeliefGoal().getTerm();
 //    }
 
+    public Plan substitute(Unifier unifier) throws Exception {
+        EventTrigger eventTriggerSub = this.eventTrigger.substitute(unifier);
+        LogicalExpression contextSub = context.substitute(unifier);
+        ArrayList<Action> bodySub = new ArrayList<>();
+        for (Action action : actions) {
+            bodySub.add(action.substitute(unifier));
+        }
+        return new Plan(eventTriggerSub, contextSub, bodySub);
+    }
+
     @Override
     public String toString() {
         String eventTriggerString = eventTrigger.toString();

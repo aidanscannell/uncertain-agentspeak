@@ -4,9 +4,9 @@ import java.util.LinkedList;
 
 public class IntentionSet extends LinkedList<Intention> {
 
-    public Intention selectIntention(){
-        return this.pop();
-    }
+//    public Intention selectIntention(){
+//        return this.pollLast();
+//    }
 
     public void addIntention(Event event, IntendedMeans intendedMeans) {
         Intention intention = event.getIntention();
@@ -16,9 +16,12 @@ public class IntentionSet extends LinkedList<Intention> {
 
     @Override
     public String toString() {
+        IntentionSet intentionSet = (IntentionSet) this.clone();
         StringBuilder string = new StringBuilder();
-        for (Intention intention : this) {
-            string.append("\n\t" + intention.toString());
+        int ii =1;
+        for (int i=intentionSet.size()-1; i>=0; i--) {
+            string.append("\n\t Intention " + ii + ":" + intentionSet.get(i).toString("\n\t\t"));
+            ii++;
         }
         return string.toString();
     }

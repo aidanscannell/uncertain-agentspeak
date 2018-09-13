@@ -3,43 +3,42 @@ package main.java.uncertain_agentspeak.agentspeak;
 import main.java.uncertain_agentspeak.environment.Environment;
 import main.java.uncertain_agentspeak.uncertainty.GlobalUncertainBelief;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.LinkedList;
 
 public class Intention {
 
-    private Deque<IntendedMeans> plansUnified;
+    private LinkedList<IntendedMeans> plansUnified;
 
     public Intention(){
-        this.plansUnified = new ArrayDeque<>();
+        this.plansUnified = new LinkedList<>();
     }
 
-    private IntendedMeans pop(){
-        return plansUnified.pop();
+    private IntendedMeans pollLast(){
+        return plansUnified.pollLast();
     }
 
     public void push(IntendedMeans intendedMeans){
-        this.plansUnified.push(intendedMeans);
+        this.plansUnified.add(intendedMeans);
     }
 
     public void executeIntention(String name, IntentionSet intentionSet, GlobalUncertainBelief beliefBase, EventSet eventSet, Environment environment) throws Exception {
-        IntendedMeans intendedMeans = this.plansUnified.peek();
-        boolean propagateFlag = false;
+        IntendedMeans intendedMeans = this.plansUnified.peekLast();
+        boolean complete = false;
         boolean subGoalFlag = intendedMeans.executeAction(name,this, beliefBase, eventSet, environment);
         if (!subGoalFlag) {
-            while(!this.plansUnified.getFirst().actionsRemaining()) {
+            while(!this.plansUnified.getLast().actionsRemaining()) {
                 if (this.plansUnified.size() == 1) {
-                    propagateFlag = true;
+                    complete = true;
                 } else {
-                    IntendedMeans top = this.pop();
-                    this.plansUnified.peekFirst().getUnifier().putAll(top.getUnifier());
+                    IntendedMeans top = this.pollLast();
+//                    this.plansUnified.peekLast().getUnifier().putAll(top.getUnifier());
                 }
-                if (!this.plansUnified.peekFirst().actionsRemaining()) {
+                if (!this.plansUnified.peekLast().actionsRemaining()) {
                     System.out.println("Break out of intention while loop");
                     break;
                 }
             }
-            if (!propagateFlag) {
+            if (!complete) {
                 intentionSet.add(this);
             }
         }
@@ -47,13 +46,47 @@ public class Intention {
 
     @Override
     public String toString() {
+        LinkedList<IntendedMeans> intention = (LinkedList<IntendedMeans>) plansUnified.clone();
         StringBuilder string = new StringBuilder();
-        for (IntendedMeans intendedMean : plansUnified) {
-            if (intendedMean != plansUnified.getFirst()) {
+        for (int i=intention.size()-1; i>=0; i--) {
+            if (intention.get(i) != plansUnified.getLast()) {
                 string.append("\n\t");
             }
-            string.append("" + intendedMean.getPlan().toString());
+            Unifier unifier = intention.get(i).getUnifier();
+            try {
+                string.append(intention.get(i).getPlan().substitute(unifier).toString());
+            } catch (Exception e) {
+                //TODO: catch exception
+            }
         }
+//        for (IntendedMeans intendedMean : plansUnified) {
+//            if (intendedMean != plansUnified.getFirst()) {
+//                string.append("\n\t");
+//            }
+//            string.append("" + intendedMean.getPlan().toString());
+//        }
+        return string.toString();
+    }
+
+    public String toString(String prefix) {
+        LinkedList<IntendedMeans> intention = (LinkedList<IntendedMeans>) plansUnified.clone();
+        StringBuilder string = new StringBuilder();
+        for (int i=intention.size()-1; i>=0; i--) {
+            string.append(prefix);
+            Unifier unifier = intention.get(i).getUnifier();
+            try {
+                string.append(intention.get(i).getPlan().substitute(unifier).toString());
+            } catch (Exception e) {
+                //TODO: catch exception
+            }
+
+        }
+//        for (IntendedMeans intendedMean : plansUnified) {
+//            if (intendedMean != plansUnified.getFirst()) {
+//                string.append("\n\t");
+//            }
+//            string.append("" + intendedMean.getPlan().toString());
+//        }
         return string.toString();
     }
 }

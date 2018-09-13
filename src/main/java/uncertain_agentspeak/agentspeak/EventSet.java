@@ -4,9 +4,9 @@ import java.util.LinkedList;
 
 public class EventSet extends LinkedList<Event> {
 
-    public Event selectEvent(){
-        return this.pop();
-    }
+//    public Event selectEvent(){
+//        return this.poll();
+//    }
 
     @Override
     public String toString() {
