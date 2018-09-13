@@ -64,20 +64,20 @@ public class Structure extends Term {
 
     /** Unify two structures if they have the same functor and arity. */
     public Unifier unify(Structure struct){
-        if ( (this.getFunctor().toString().equals(struct.getFunctor().toString())) && (this.getArity() == struct.getArity()) ) {
-            Unifier unifier = new Unifier();
-            for (int i = 0; i<this.getArity(); i++){
-                Term termStruct = struct.getArgument(i);
-                Term termThis = this.getArgument(i);
-
-                Unifier argUnifier = termThis.unify(termStruct, unifier);
-                if (argUnifier != null) {
-                    unifier.putAll(argUnifier);
-                } else {
-                    return null;
+        if ( (this.getFunctor().toString().equals(struct.getFunctor().toString())) ) {
+            if ((this.getArity() == struct.getArity())) {
+                Unifier unifier = new Unifier();
+                for (int i = 0; i < this.getArity(); i++) {
+                    Unifier argUnifier = this.getArgument(i).unify(struct.getArgument(i), unifier);
+                    if (argUnifier != null) {
+                        unifier.putAll(argUnifier);
+                    } else {
+                        return null;
+                    }
                 }
+                return unifier;
             }
-            return unifier;
+            return null;
         } else {
             return null;
         }
